@@ -53,7 +53,7 @@ export default function ServicesList() {
     ];
 
     return (
-        <section ref={containerRef} className="pt-24 pb-24 mb-0 md:-mb-16 bg-[#FFFBF5] relative z-30 rounded-b-[50px] overflow-visible">
+        <section ref={containerRef} className="pt-0 md:pt-24 pb-24 mb-0 md:-mb-16 bg-[#FFFBF5] relative z-30 rounded-b-[50px] overflow-visible">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {services.map((service, i) => (

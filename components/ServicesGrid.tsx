@@ -44,7 +44,7 @@ export default function ServicesGrid() {
     );
 
     return (
-        <section ref={containerRef} className="py-16 bg-[#FFFBF5]">
+        <section ref={containerRef} className="pt-16 pb-0 md:pb-16 bg-[#FFFBF5]">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="relative inline-block mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#2D2D2D] text-center relative z-10">
