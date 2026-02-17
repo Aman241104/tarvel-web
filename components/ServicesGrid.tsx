@@ -178,7 +178,7 @@ export default function ServicesGrid() {
                             {/* Price Tag */}
                             <div className="bg-white text-[#2D2D2D] px-4 py-2 md:px-6 md:py-3 rounded-full font-bold shadow-lg transform rotate-3 group-hover:rotate-0 group-hover:scale-110 transition-all duration-300">
                                 <span className="text-xs uppercase text-gray-400 block tracking-wider">From</span>
-                                <span className="text-xl md:text-2xl">$299</span>
+                                <span className="text-xl md:text-2xl">₹24,999</span>
                             </div>
                         </div>
                     </div>
