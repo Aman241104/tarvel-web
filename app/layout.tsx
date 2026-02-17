@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Mulish } from "next/font/google"; // Luxury Fonts
 import "./globals.css";
 import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
+import CustomCursor from "@/components/ui/CustomCursor";
+
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -28,6 +30,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${playfair.variable} ${mulish.variable}`}>
             <body className="font-body bg-arctic-white antialiased text-text-dark relative">
+                <CustomCursor />
                 {/* Global Noise Overlay */}
                 <div className="fixed inset-0 z-[9999] pointer-events-none opacity-[0.03] mix-blend-overlay"
                     style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}>

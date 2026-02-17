@@ -1,94 +1,90 @@
 'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { FaBars, FaTimes, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useState } from 'react';
+import Link from 'next/link';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { Menu } from 'lucide-react';
+import Magnetic from '@/components/ui/Magnetic';
+import MobileMenu from './MobileMenu';
+
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const containerRef = useRef<HTMLElement>(null);
+    const linksRef = useRef<HTMLDivElement>(null);
+    const ctaRef = useRef<HTMLAnchorElement>(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    useGSAP(
+        () => {
+            gsap.from(containerRef.current, {
+                y: -100,
+                opacity: 0,
+                duration: 1.2,
+                ease: 'elastic.out(1, 0.5)',
+                delay: 0.2, // Small delay to let content load a bit
+            });
+        },
+        { scope: containerRef }
+    );
 
     const navLinks = [
-        { name: 'Home', href: '#hero' },
-        { name: 'About', href: '#about' },
-        { name: 'Services', href: '#services' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Home', href: '#home' },
+        { name: 'Story', href: '#stories' },
+        { name: 'Trips', href: '#about' }, // Sujal section
+        { name: 'Gallery', href: '#services' }, // Services Grid
     ];
 
     return (
-        <nav
-            className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${scrolled
-                    ? 'w-[90%] md:w-auto bg-white/80 backdrop-blur-md shadow-xl py-3 px-8 rounded-full border border-white/20'
-                    : 'w-[90%] md:w-auto bg-white/60 backdrop-blur-sm py-4 px-8 rounded-full mt-2'
-                }`}
-        >
-            <div className="flex justify-between items-center gap-8">
-                <Link href="/" className="text-xl font-bold font-heading text-sky-600 whitespace-nowrap">
-                    Destination Anywhere
+        <>
+            <nav
+                ref={containerRef}
+                className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl bg-white/80 backdrop-blur-md rounded-full border border-white/50 shadow-lg shadow-black/5 flex items-center justify-between px-6 py-3"
+            >
+                {/* Left: Logo */}
+                <Link href="#home" className="text-xl font-bold text-[#2D2D2D] font-sans tracking-tight">
+                    PopVoyager
                 </Link>
-                <div className="hidden md:flex space-x-6 items-center whitespace-nowrap">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-gray-700 hover:text-sky-500 font-medium transition-colors text-sm uppercase tracking-wide"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
-                <div className="hidden md:block">
-                    <a
-                        href="https://wa.me/918511071506"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-sky-500 text-white px-5 py-2 rounded-full hover:bg-sky-600 transition-colors flex items-center gap-2 text-sm font-semibold shadow-md active:scale-95 transform duration-150"
-                    >
-                        <FaWhatsapp /> Plan Trip
-                    </a>
-                </div>
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden text-gray-700 text-2xl"
-                >
-                    {isOpen ? <FaTimes /> : <FaBars />}
-                </button>
-            </div>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden absolute top-full left-0 mt-4 w-full bg-white/95 backdrop-blur-xl shadow-2xl rounded-3xl p-6 flex flex-col items-center space-y-4 border border-gray-100">
+                {/* Center: Navigation Links (Desktop) */}
+                <div className="hidden md:flex items-center gap-1" ref={linksRef}>
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="text-gray-700 hover:text-sky-500 font-medium text-lg w-full text-center py-2"
+                            className="group relative px-4 py-2 text-sm font-medium text-[#2D2D2D] transition-colors duration-300"
                         >
-                            {link.name}
+                            <span className="relative z-10">{link.name}</span>
+                            <span className="absolute inset-0 bg-gray-100 rounded-full scale-0 transition-transform duration-300 ease-out group-hover:scale-100 -z-0 origin-center opacity-0 group-hover:opacity-100" />
                         </Link>
                     ))}
-                    <a
-                        href="https://wa.me/918511071506"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-sky-500 text-white px-8 py-3 rounded-full hover:bg-sky-600 transition-colors flex items-center gap-2 w-full justify-center shadow-lg"
-                    >
-                        <FaWhatsapp /> Plan Trip
-                    </a>
                 </div>
-            )}
-        </nav>
+
+                {/* Right: CTA Button (Desktop) & Mobile Menu */}
+                <div className="flex items-center gap-4">
+                    {/* Desktop CTA */}
+                    <Magnetic>
+                        <Link
+                            ref={ctaRef}
+                            href="#services"
+                            className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-[#FF6B6B] text-white text-sm font-bold rounded-full transition-transform duration-300 hover:scale-105 hover:rotate-2 shadow-sm"
+                        >
+                            Book Now
+                        </Link>
+                    </Magnetic>
+
+                    {/* Mobile Menu Icon */}
+                    <button
+                        onClick={() => setIsMobileMenuOpen(true)}
+                        className="md:hidden p-2 text-[#2D2D2D] hover:bg-black/5 rounded-full transition-colors"
+                    >
+                        <Menu className="w-6 h-6" />
+                    </button>
+                </div>
+            </nav>
+
+            {/* Mobile Menu Overlay */}
+            <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} links={navLinks} />
+        </>
     );
 }

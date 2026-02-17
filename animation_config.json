@@ -1,0 +1,57 @@
+{
+  "component_specs": {
+    "hero_carousel": {
+      "type": "3D Coverflow Slider",
+      "physics": {
+        "drag_constraints": { "left": -1000, "right": 1000 },
+        "center_snap": true,
+        "perspective": "1000px"
+      },
+      "card_states": {
+        "active": {
+          "scale": 1.1,
+          "rotateY": 0,
+          "zIndex": 10,
+          "opacity": 1,
+          "brightness": 1.0
+        },
+        "sibling": {
+          "scale": 0.85,
+          "rotateY": "calc(direction * 45deg)",
+          "zIndex": 5,
+          "opacity": 0.7,
+          "brightness": 0.6
+        },
+        "distant": {
+          "scale": 0.6,
+          "rotateY": "calc(direction * 65deg)",
+          "zIndex": 0,
+          "opacity": 0,
+          "brightness": 0.4
+        }
+      },
+      "foreground_elements": {
+        "clouds": {
+          "layer_type": "Parallax PNG",
+          "animation": "Continuous horizontal drift (loop)",
+          "z_index": 20
+        }
+      }
+    },
+    "interactive_assets": {
+      "3d_plane": {
+        "source": "Spline (URL placeholder)",
+        "trigger": "Scroll Position",
+        "path": "Bezier curve across sections"
+      }
+    }
+  },
+  "theme_corrections": {
+    "contrast_fix": {
+      "text_primary": "#0B1120 (Deep Navy)",
+      "text_secondary": "#334155 (Slate Blue)",
+      "glass_card_bg": "rgba(255, 255, 255, 0.65)",
+      "glass_border": "1px solid rgba(255, 255, 255, 0.8)"
+    }
+  }
+}
