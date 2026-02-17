@@ -51,7 +51,7 @@ export default function TravelerSection() {
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-24">
+                <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
 
                     {/* Left: Typography */}
                     <div ref={textRef} className="w-full md:w-1/2 relative z-10">
@@ -104,7 +104,7 @@ export default function TravelerSection() {
 
                             {/* Polaroid Frame */}
                             <div className="bg-white p-4 pb-16 shadow-2xl rotate-1 md:rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105">
-                                <div className="relative overflow-hidden w-[300px] h-[350px] md:w-[400px] md:h-[450px] bg-gray-200">
+                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[400px] md:h-[450px] bg-gray-200">
                                     <img
                                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop"
                                         alt="Sujal Soni"
