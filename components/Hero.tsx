@@ -174,12 +174,17 @@ export default function Hero() {
 
                 {/* Subtext Pill */}
                 <Magnetic strength={0.2}>
-                    <div className="mt-8 px-6 py-3 bg-white rounded-full border border-black/5 shadow-md flex items-center gap-2 transform hover:scale-105 transition-transform cursor-pointer">
+                    <a
+                        href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-8 px-6 py-3 bg-white rounded-full border border-black/5 shadow-md flex items-center gap-2 transform hover:scale-105 transition-transform cursor-pointer"
+                    >
                         <span className="text-[#2D2D2D] font-bold text-sm uppercase tracking-wide">
                             Plan your trip
                         </span>
                         <span className="text-xl">✈️</span>
-                    </div>
+                    </a>
                 </Magnetic>
             </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Search, MapPin, Calendar, Users } from 'lucide-react';
+import { Search, MapPin, Calendar, Users, Plane } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -9,6 +9,11 @@ export default function SearchWidget() {
     const containerRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [activeInput, setActiveInput] = useState<string | null>(null);
+
+    // Form State
+    const [location, setLocation] = useState('');
+    const [date, setDate] = useState('');
+    const [guests, setGuests] = useState('');
 
     useGSAP(() => {
         // Entrance animation
@@ -20,6 +25,22 @@ export default function SearchWidget() {
             ease: 'power3.out',
         });
     }, { scope: containerRef });
+
+    const handlePlanTrip = () => {
+        const baseUrl = "https://wa.me/918511071506";
+        const message = `Hi Sujal, I want to plan a trip! 
+        
+Location: ${location || 'Not specified'}
+Date: ${date || 'Not specified'}
+Guests: ${guests || 'Not specified'}
+
+Can you help me with the itinerary?`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const finalUrl = `${baseUrl}?text=${encodedMessage}`;
+
+        window.open(finalUrl, '_blank');
+    };
 
     return (
         <div
@@ -34,12 +55,14 @@ export default function SearchWidget() {
                         <div className="bg-[#FFFBF5] p-2 rounded-full">
                             <MapPin className="text-[#2D2D2D] w-5 h-5" />
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Location</label>
                             <input
                                 type="text"
                                 placeholder="Where to?"
                                 className="bg-transparent outline-none text-[#2D2D2D] font-medium placeholder:text-gray-400 w-full"
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                                 onFocus={() => setActiveInput('location')}
                                 onBlur={() => setActiveInput(null)}
                             />
@@ -55,12 +78,14 @@ export default function SearchWidget() {
                         <div className="bg-[#FFFBF5] p-2 rounded-full">
                             <Calendar className="text-[#2D2D2D] w-5 h-5" />
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Date</label>
                             <input
                                 type="text"
                                 placeholder="Add dates"
                                 className="bg-transparent outline-none text-[#2D2D2D] font-medium placeholder:text-gray-400 w-full"
+                                value={date}
+                                onChange={(e) => setDate(e.target.value)}
                                 onFocus={() => setActiveInput('date')}
                                 onBlur={() => setActiveInput(null)}
                             />
@@ -76,12 +101,14 @@ export default function SearchWidget() {
                         <div className="bg-[#FFFBF5] p-2 rounded-full">
                             <Users className="text-[#2D2D2D] w-5 h-5" />
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Guests</label>
                             <input
                                 type="text"
                                 placeholder="Add guests"
                                 className="bg-transparent outline-none text-[#2D2D2D] font-medium placeholder:text-gray-400 w-full"
+                                value={guests}
+                                onChange={(e) => setGuests(e.target.value)}
                                 onFocus={() => setActiveInput('guests')}
                                 onBlur={() => setActiveInput(null)}
                             />
@@ -89,13 +116,14 @@ export default function SearchWidget() {
                     </div>
                 </div>
 
-                {/* Search Button */}
+                {/* Plan Button */}
                 <button
                     ref={buttonRef}
-                    className="bg-[#FF6B6B] hover:bg-[#ff5252] text-white p-5 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 m-1 md:m-0 w-full md:w-auto flex justify-center items-center gap-2 md:gap-0"
+                    onClick={handlePlanTrip}
+                    className="bg-[#FF6B6B] hover:bg-[#ff5252] text-white p-5 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 m-1 md:m-0 w-full md:w-auto flex justify-center items-center gap-3 md:min-w-[180px]"
                 >
-                    <Search className="w-6 h-6" />
-                    <span className="md:hidden font-bold">Search</span>
+                    <Plane className="w-6 h-6" />
+                    <span className="font-bold text-lg whitespace-nowrap">Plan My Trip</span>
                 </button>
 
             </div>

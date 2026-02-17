@@ -52,10 +52,15 @@ export default function CTASection() {
                 </div>
 
                 <div>
-                    <button className="group bg-white text-[#2D2D2D] px-10 py-5 rounded-full text-xl font-bold font-heading shadow-[8px_8px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 flex items-center gap-3 mx-auto">
+                    <a
+                        href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group bg-white text-[#2D2D2D] px-10 py-5 rounded-full text-xl font-bold font-heading shadow-[8px_8px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 flex items-center gap-3 mx-auto inline-flex"
+                    >
                         <span>Start Planning</span>
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

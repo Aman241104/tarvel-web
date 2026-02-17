@@ -109,7 +109,7 @@ export default function Footer() {
                         <h4 className="font-bold text-lg mb-6 opacity-80">Support</h4>
                         <ul className="space-y-4 font-medium">
                             <li><Link href="#" className="hover:opacity-70 transition-opacity block">FAQ</Link></li>
-                            <li><Link href="#" className="hover:opacity-70 transition-opacity block">Contact Us</Link></li>
+                            <li><a href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block">Contact Us</a></li>
                             <li><Link href="#" className="hover:opacity-70 transition-opacity block">Travel Insurance</Link></li>
                         </ul>
                     </div>

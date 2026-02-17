@@ -78,7 +78,7 @@ export default function CustomCursor() {
     }, []);
 
     return (
-        <>
+        <div className="hidden md:block">
             {/* Main Dot - The Anchor */}
             <div
                 ref={cursorRef}
@@ -99,6 +99,6 @@ export default function CustomCursor() {
                     {cursorText}
                 </span>
             </div>
-        </>
+        </div>
     );
 }

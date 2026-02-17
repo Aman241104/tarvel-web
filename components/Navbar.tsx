@@ -64,13 +64,15 @@ export default function Navbar() {
                 <div className="flex items-center gap-4">
                     {/* Desktop CTA */}
                     <Magnetic>
-                        <Link
+                        <a
                             ref={ctaRef}
-                            href="#services"
+                            href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-[#FF6B6B] text-white text-sm font-bold rounded-full transition-transform duration-300 hover:scale-105 hover:rotate-2 shadow-sm"
                         >
                             Book Now
-                        </Link>
+                        </a>
                     </Magnetic>
 
                     {/* Mobile Menu Icon */}
