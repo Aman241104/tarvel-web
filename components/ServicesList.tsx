@@ -50,11 +50,11 @@ export default function ServicesList() {
     return (
         <section ref={containerRef} className="pt-24 pb-24 mb-12 md:-mb-16 bg-[#FFFBF5] relative z-30 rounded-b-[50px] overflow-visible">
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
                     {services.map((service, i) => (
                         <div key={i} className="relative group perspective-1000">
                             {/* String/Cord */}
-                            <div className="absolute -top-24 left-1/2 -ml-[1px] w-[2px] h-24 bg-gray-300 z-0 origin-bottom transition-transform duration-500 group-hover:rotate-2" />
+                            <div className="hidden md:block absolute -top-24 left-1/2 -ml-[1px] w-[2px] h-24 bg-gray-300 z-0 origin-bottom transition-transform duration-500 group-hover:rotate-2" />
 
                             {/* Luggage Tag Card */}
                             <div
