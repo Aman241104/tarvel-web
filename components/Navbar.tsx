@@ -43,7 +43,7 @@ export default function Navbar() {
             >
                 {/* Left: Logo */}
                 <Link href="#home" className="text-xl font-bold text-[#2D2D2D] font-sans tracking-tight">
-                    PopVoyager
+                    Destination Anywhere
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}

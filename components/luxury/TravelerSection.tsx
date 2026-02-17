@@ -74,11 +74,11 @@ export default function TravelerSection() {
                         <div className="flex flex-col gap-4 text-gray-500 font-medium">
                             <div className="flex items-center gap-3">
                                 <span className="w-2 h-2 bg-black rounded-full" />
-                                <span className="text-sm md:text-base">Global Explorer & Curator</span>
+                                <span className="text-sm md:text-base">Founder</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <span className="w-2 h-2 bg-black rounded-full" />
-                                <span className="text-sm md:text-base">Obsessed with "Hidden Gems"</span>
+                                <span className="text-sm md:text-base">Tours & Travels Company</span>
                             </div>
                         </div>
 

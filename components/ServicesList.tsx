@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileText, Map, LifeBuoy } from 'lucide-react';
+import { FileText, Map, LifeBuoy, Globe, Plane, Hotel } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,26 +31,31 @@ export default function ServicesList() {
 
     const services = [
         {
-            icon: FileText,
-            title: 'Visa & Paperwork',
-            desc: "We handle the boring stuff so you can just fly.",
+            icon: Globe,
+            title: 'International Tour Packages',
+            desc: "Discover the world with our curated international journeys.",
         },
         {
             icon: Map,
-            title: 'Custom Itineraries',
-            desc: "No cookie-cutter trips. Your journey, your rules.",
+            title: 'Domestic Tour Packages',
+            desc: "Explore the hidden gems of our beautiful country.",
         },
         {
-            icon: LifeBuoy,
-            title: '24/7 Support',
-            desc: "Lost? Confused? We are one text away.",
+            icon: Plane,
+            title: 'Flight Tickets',
+            desc: "Seamless booking for your next adventure.",
+        },
+        {
+            icon: Hotel,
+            title: 'Hotel Bookings',
+            desc: "Luxury stays and comfortable accommodations worldwide.",
         },
     ];
 
     return (
         <section ref={containerRef} className="pt-24 pb-24 mb-0 md:-mb-16 bg-[#FFFBF5] relative z-30 rounded-b-[50px] overflow-visible">
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {services.map((service, i) => (
                         <div key={i} className="relative group perspective-1000">
                             {/* String/Cord */}

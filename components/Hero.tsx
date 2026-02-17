@@ -140,7 +140,7 @@ export default function Hero() {
             {/* Typography: Central Heading */}
             <div ref={textRef} className="relative z-20 text-center flex flex-col items-center">
                 <h1 className="font-black text-4xl md:text-7xl leading-tight text-[#2D2D2D] font-sans tracking-tight">
-                    <span className="block">ESCAPE THE</span>
+                    <span className="block">YOUR JOURNEY</span>
                     <span className="relative block text-transparent bg-clip-text stroke-current mt-2 pb-4">
                         {/* Outline Text Effect */}
                         <span
@@ -150,10 +150,10 @@ export default function Hero() {
                                 WebkitTextFillColor: 'transparent'
                             }}
                         >
-                            ORDINARY
+                            BEGINS ANYWHERE
                         </span>
                         {/* Invisible spacer to hold the dimensions */}
-                        <span className="opacity-0">ORDINARY</span>
+                        <span className="opacity-0">BEGINS ANYWHERE</span>
 
                         {/* Yellow Scribble Underline */}
                         <svg

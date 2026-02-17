@@ -83,7 +83,7 @@ export default function Footer() {
 
                     {/* Col 1: Brand */}
                     <div className="col-span-1 md:col-span-1">
-                        <h3 className="text-3xl font-black font-heading mb-6 tracking-tighter">PopVoyager</h3>
+                        <h3 className="text-3xl font-black font-heading mb-6 tracking-tighter">Destination Anywhere & Co.</h3>
                         <div className="flex gap-4">
                             <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white hover:text-[#4ECDC4] transition-colors">
                                 <Instagram className="w-5 h-5" />
@@ -138,7 +138,7 @@ export default function Footer() {
                 >
                     {[...Array(6)].map((_, i) => (
                         <span key={i} className="text-white/50 font-bold tracking-[0.2em] text-xs md:text-sm mx-8 uppercase">
-                            Let&apos;s Go • Pop Viewer • Explore • Escape •
+                            Let&apos;s Go • Destination Anywhere • Explore • Escape •
                         </span>
                     ))}
                 </div>
