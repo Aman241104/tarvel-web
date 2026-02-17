@@ -30,7 +30,7 @@ export default function CTASection() {
     );
 
     return (
-        <section ref={containerRef} className="pt-16 pb-32 mt-0 md:-mt-32 md:pt-48 bg-[#FF6B6B] relative z-10 overflow-hidden">
+        <section ref={containerRef} className="pt-32 pb-32 -mt-24 md:-mt-32 md:pt-48 bg-[#FF6B6B] relative z-10 overflow-hidden">
             {/* Ticket Stubs Decoration */}
             <div className="absolute top-10 left-0 -translate-x-1/2 rotate-12 opacity-20 md:opacity-100">
                 <div className="w-64 h-32 bg-white border-dashed border-4 border-black/10 rounded-lg transform -rotate-12" />
