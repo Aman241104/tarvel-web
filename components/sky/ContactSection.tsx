@@ -28,7 +28,7 @@ export default function ContactSection() {
                                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                                     <Mail className="w-6 h-6" />
                                 </div>
-                                <a href="mailto:destinationanywhereo@gmail.com" className="hover:text-sky-100 transition">destinationanywhereo@gmail.com</a>
+                                <a href="mailto:destinationanywhere@gmail.com" className="hover:text-sky-100 transition">destinationanywhere@gmail.com</a>
                             </div>
 
                             <div className="flex items-start gap-4">

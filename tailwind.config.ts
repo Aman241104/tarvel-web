@@ -35,6 +35,7 @@ const config: Config = {
                     800: '#075985',
                     900: '#0c4a6e',
                 },
+                'text-navy': '#0F172A', // Deep Navy for better contrast
             },
             borderRadius: {
                 'stadium': '50px',
@@ -45,7 +46,30 @@ const config: Config = {
                 body: ['var(--font-mulish)', 'sans-serif'],
                 primary: ['var(--font-playfair)', 'serif'],
                 secondary: ['var(--font-mulish)', 'sans-serif'],
+                handwriting: ['var(--font-caveat)', 'cursive'],
             },
+            backgroundImage: {
+                'paper-pattern': "url('https://www.transparenttextures.com/patterns/cream-paper.png')", // Optional subtle pattern
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-5px)' },
+                },
+                'spin-slow': {
+                    from: { transform: 'rotate(0deg)' },
+                    to: { transform: 'rotate(360deg)' },
+                },
+                'pulse-ring': {
+                    '0%': { transform: 'scale(1)', opacity: '0.6' },
+                    '100%': { transform: 'scale(1.8)', opacity: '0' },
+                },
+            },
+            animation: {
+                float: 'float 3s ease-in-out infinite',
+                'spin-slow': 'spin-slow 10s linear infinite',
+                'pulse-ring': 'pulse-ring 2s ease-out infinite',
+            }
         },
     },
     plugins: [],

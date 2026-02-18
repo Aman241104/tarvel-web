@@ -14,7 +14,7 @@ export default function Footer() {
                             <a href="#about" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>Our Story</a>
                         </li>
                         <li className="hover:text-accent-gold cursor-pointer transition-colors">
-                            <a href="https://www.instagram.com/destination__anywhere/" target="_blank">Journal</a>
+                            <a href="https://www.instagram.com/destinationanywhere_co/" target="_blank">Journal</a>
                         </li>
                         <li className="hover:text-accent-gold cursor-pointer transition-colors">
                             <a href="#contact" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact</a>
@@ -28,7 +28,7 @@ export default function Footer() {
                         Gota, Ahmedabad – 382481
                     </p>
                     <a href="tel:+918511071506" className="block text-lg font-body text-white/40 hover:text-white transition-colors">+91 85110 71506</a>
-                    <a href="mailto:destinationanywhereo@gmail.com" className="block mt-2 text-lg font-body text-white/40 hover:text-white transition-colors">destinationanywhereo@gmail.com</a>
+                    <a href="mailto:destinationanywhere@gmail.com" className="block mt-2 text-lg font-body text-white/40 hover:text-white transition-colors">destinationanywhere@gmail.com</a>
                 </div>
             </div>
 

@@ -11,6 +11,7 @@ import WhatsAppButton from "@/components/luxury/WhatsAppButton";
 import ServicesList from "@/components/ServicesList";
 import CTASection from "@/components/CTASection";
 import TapeMarquee from "@/components/TapeMarquee";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 
 export default function Home() {
     return (
@@ -19,7 +20,7 @@ export default function Home() {
             <Navbar />
             <WhatsAppButton />
 
-            <div className="relative z-30 bg-bg-light dark:bg-bg-dark shadow-2xl rounded-b-[50px] transition-colors duration-500">
+            <div className="relative z-30 bg-bg-light dark:bg-bg-dark shadow-2xl rounded-b-[10px] transition-colors duration-500">
                 <section id="home">
                     <Hero />
                 </section>
@@ -38,10 +39,14 @@ export default function Home() {
                 </section>
             </div>
 
+            {/* Smooth gradient transition from paper-warm to CTA coral */}
+            <div className="h-24 md:h-32 bg-gradient-to-b from-[#FFFBF5] to-[#FF6B6B]/20 relative z-20" />
+
             <CTASection />
 
             {/* Final Footer Section */}
             <Footer />
+            <MobileStickyCTA />
         </main>
     );
 }

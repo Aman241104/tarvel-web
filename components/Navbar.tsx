@@ -49,14 +49,15 @@ export default function Navbar() {
                 {/* Center: Navigation Links (Desktop) */}
                 <div className="hidden md:flex items-center gap-1" ref={linksRef}>
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="group relative px-4 py-2 text-sm font-medium text-[#2D2D2D] transition-colors duration-300"
-                        >
-                            <span className="relative z-10">{link.name}</span>
-                            <span className="absolute inset-0 bg-gray-100 rounded-full scale-0 transition-transform duration-300 ease-out group-hover:scale-100 -z-0 origin-center opacity-0 group-hover:opacity-100" />
-                        </Link>
+                        <Magnetic key={link.name} strength={0.3}>
+                            <Link
+                                href={link.href}
+                                className="group relative px-4 py-2 text-sm font-medium text-[#2D2D2D] transition-colors duration-300 inline-block"
+                            >
+                                <span className="relative z-10">{link.name}</span>
+                                <span className="absolute inset-0 bg-gray-100 rounded-full scale-0 transition-transform duration-300 ease-out group-hover:scale-100 -z-0 origin-center opacity-0 group-hover:opacity-100" />
+                            </Link>
+                        </Magnetic>
                     ))}
                 </div>
 

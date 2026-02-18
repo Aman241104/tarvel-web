@@ -65,7 +65,7 @@ export default function ContactCard() {
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-xs md:text-sm uppercase tracking-widest text-text-light/40 dark:text-text-dark/40 mb-1">Email Us</p>
-                                        <p className="text-sm md:text-xl font-medium text-text-light dark:text-text-dark break-all">destinationanywhereo@gmail.com</p>
+                                        <p className="text-sm md:text-xl font-medium text-text-light dark:text-text-dark break-all">destinationanywhere@gmail.com</p>
                                     </div>
                                 </div>
                             </div>

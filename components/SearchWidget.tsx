@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { Search, MapPin, Calendar, Users, Plane } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 export default function SearchWidget() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -26,8 +27,9 @@ export default function SearchWidget() {
         });
     }, { scope: containerRef });
 
+    const { openWhatsApp } = useWhatsApp();
+
     const handlePlanTrip = () => {
-        const baseUrl = "https://wa.me/918511071506";
         const message = `Hi Sujal, I want to plan a trip! 
         
 Location: ${location || 'Not specified'}
@@ -36,10 +38,7 @@ Guests: ${guests || 'Not specified'}
 
 Can you help me with the itinerary?`;
 
-        const encodedMessage = encodeURIComponent(message);
-        const finalUrl = `${baseUrl}?text=${encodedMessage}`;
-
-        window.open(finalUrl, '_blank');
+        openWhatsApp(undefined, message);
     };
 
     return (

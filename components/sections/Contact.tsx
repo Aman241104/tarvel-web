@@ -42,9 +42,9 @@ export default function Contact() {
                                 <div className="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white"><FaPhone /></div>
                                 <span className="font-semibold text-gray-800">+91 85110 71506</span>
                             </a>
-                            <a href="mailto:destinationanywhereo@gmail.com" className="flex items-center gap-4 p-4 bg-white/60 rounded-2xl hover:bg-white transition-colors duration-300">
+                            <a href="mailto:destinationanywhere@gmail.com" className="flex items-center gap-4 p-4 bg-white/60 rounded-2xl hover:bg-white transition-colors duration-300">
                                 <div className="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white"><FaEnvelope /></div>
-                                <span className="font-semibold text-gray-800 break-all">destinationanywhereo@gmail.com</span>
+                                <span className="font-semibold text-gray-800 break-all">destinationanywhere@gmail.com</span>
                             </a>
                             <div className="flex items-center gap-4 p-4 bg-white/60 rounded-2xl hover:bg-white transition-colors duration-300">
                                 <div className="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white"><FaMapMarkerAlt /></div>

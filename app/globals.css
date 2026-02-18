@@ -16,8 +16,134 @@
   }
 }
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+}
+
+/* Custom Scrollbar for that 'Premium' feel */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFBF5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F59E0B;
+  /* Accent Gold */
+  border-radius: 7px;
+  border: 4px solid #FFFBF5;
+  /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0EA5E9;
+  /* Sky Blue on hover */
+}
+
 body {
   color: var(--foreground);
-  background: linear-gradient(to bottom, #E0F2FE 0%, #FFFFFF 100%);
+  background-color: theme('colors.bg-light');
   min-height: 100vh;
+}
+
+/* ========================================
+   TACTILE ELEGANCE — Design System Utilities
+   ======================================== */
+
+/* Paper Texture Backgrounds */
+.paper-warm {
+  background-color: #FFFBF5;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23FFFBF5' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-blend-mode: soft-light;
+}
+
+.paper-cool {
+  background-color: #F8FAFB;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F8FAFB' surfaceScale='1'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-blend-mode: soft-light;
+}
+
+.paper-aged {
+  background-color: #F5F0E8;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='6' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F5F0E8' surfaceScale='2'%3E%3CfeDistantLight azimuth='30' elevation='45'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-blend-mode: soft-light;
+}
+
+/* Ambient Shadow — Floating 2mm off the page */
+.shadow-ambient {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-ambient-sm {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Torn/Organic Photo Edges */
+.border-torn {
+  clip-path: polygon(0% 2%, 3% 0%, 8% 1.5%, 15% 0.5%, 22% 2%, 30% 0%, 38% 1%,
+      45% 0.5%, 52% 2%, 60% 0%, 68% 1.5%, 75% 0%, 82% 2%, 90% 0.5%,
+      95% 1%, 100% 0%,
+      100% 98%, 97% 100%, 92% 98.5%, 85% 100%, 78% 98%, 70% 100%,
+      62% 99%, 55% 100%, 48% 98%, 40% 100%, 32% 98.5%, 25% 100%,
+      18% 98%, 10% 99.5%, 5% 99%, 0% 100%);
+}
+
+/* Photo Corner Decorations */
+.photo-corner::before,
+.photo-corner::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.photo-corner::before {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.photo-corner::after {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Printed Photo Filter */
+.filter-printed {
+  filter: sepia(5%) contrast(1.03) saturate(1.05);
+}
+
+/* Tape Strip Decoration */
+.tape-strip {
+  position: relative;
+}
+
+.tape-strip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 60px;
+  height: 18px;
+  background: rgba(245, 158, 11, 0.25);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  z-index: 10;
+  pointer-events: none;
 }

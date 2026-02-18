@@ -39,12 +39,67 @@ export default function ServicesGrid() {
                     start: 'top 70%',
                 },
             });
+
+            // Parallax Images
+            cardsRef.current.forEach((card) => {
+                const img = card?.querySelector('img');
+                if (img) {
+                    gsap.fromTo(img,
+                        { yPercent: -15, scale: 1.2 },
+                        {
+                            yPercent: 15,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top bottom',
+                                end: 'bottom top',
+                                scrub: true
+                            }
+                        }
+                    );
+                }
+            });
         },
         { scope: containerRef }
     );
 
+    const handleMouseMove = (e: React.MouseEvent, index: number) => {
+        const card = cardsRef.current[index];
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        gsap.to(card, {
+            rotateX,
+            rotateY,
+            scale: 1.03,
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto',
+            transformPerspective: 800,
+        });
+    };
+
+    const handleMouseLeave = (index: number) => {
+        const card = cardsRef.current[index];
+        if (!card) return;
+        gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: true,
+        });
+    };
+
     return (
-        <section ref={containerRef} className="pt-16 pb-0 md:pb-16 bg-[#FFFBF5]">
+        <section ref={containerRef} className="pt-16 pb-0 md:pb-8 bg-[#FFFBF5] paper-warm">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="relative inline-block mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#2D2D2D] text-center relative z-10">
@@ -72,20 +127,24 @@ export default function ServicesGrid() {
                     {/* Card 1: Flight Bookings (Wide - Top Left) */}
                     <div
                         ref={(el) => { cardsRef.current[0] = el; }}
-                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-xl"
+                        onMouseMove={(e) => handleMouseMove(e, 0)}
+                        onMouseLeave={() => handleMouseLeave(0)}
+                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient"
                     >
                         {/* Stronger Gradient for Readability */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none" />
+                        {/* Number Badge */}
+                        <span className="absolute top-6 left-6 z-20 font-handwriting text-4xl text-white/30 select-none">01</span>
                         <Image
                             src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
                             alt="Flight Bookings"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="object-cover transition-transform duration-700"
                             sizes="(max-width: 768px) 100vw, 66vw"
                         />
 
                         {/* Content */}
-                        <div className="absolute bottom-8 left-8 z-20 transform transition-transform duration-500 group-hover:-translate-y-2">
+                        <div className="absolute bottom-8 left-8 z-20">
                             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full w-fit mb-4">
                                 <Plane className="text-white w-6 h-6" />
                             </div>
@@ -108,8 +167,12 @@ export default function ServicesGrid() {
                     {/* Card 2: Solo Adventures (Tall/Vertical - Right) */}
                     <div
                         ref={(el) => { cardsRef.current[1] = el; }}
-                        className="group relative col-span-1 md:col-span-1 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-xl bg-[#FACC15] flex flex-col pt-12"
+                        onMouseMove={(e) => handleMouseMove(e, 1)}
+                        onMouseLeave={() => handleMouseLeave(1)}
+                        className="group relative col-span-1 md:col-span-1 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient bg-[#FACC15] flex flex-col pt-12"
                     >
+                        {/* Number Badge */}
+                        <span className="absolute top-6 left-6 z-20 font-handwriting text-4xl text-[#2D2D2D]/20 select-none">02</span>
                         {/* Subtle Topographic Pattern */}
                         <div className="absolute inset-0 opacity-[0.08]"
                             style={{
@@ -150,15 +213,19 @@ export default function ServicesGrid() {
                     {/* Card 3: Luxury Resorts (Wide - Bottom Left) */}
                     <div
                         ref={(el) => { cardsRef.current[2] = el; }}
-                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-xl"
+                        onMouseMove={(e) => handleMouseMove(e, 2)}
+                        onMouseLeave={() => handleMouseLeave(2)}
+                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient"
                     >
                         {/* Enhanced Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none" />
+                        {/* Number Badge */}
+                        <span className="absolute top-6 left-6 z-20 font-handwriting text-4xl text-white/50 select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">03</span>
                         <Image
                             src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
                             alt="Luxury Resorts"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="object-cover transition-transform duration-700"
                             sizes="100vw"
                         />
 

@@ -55,10 +55,18 @@ export default function CustomCursor() {
             // Check for interactive elements
             const isLink = target.closest('a, button, .cursor-pointer, input');
             const isCard = target.closest('.group'); // Cards usually have 'group'
+            const isCTA = target.closest('button');
+            const isImage = target.closest('img, .story-image, [class*="aspect-"]');
 
-            if (isCard && !isLink) {
+            if (isCTA) {
                 setIsHovering(true);
-                setCursorText('Explore');
+                setCursorText('✈️');
+            } else if (isImage && isCard) {
+                setIsHovering(true);
+                setCursorText('Explore →');
+            } else if (isCard && !isLink) {
+                setIsHovering(true);
+                setCursorText('View');
             } else if (isLink) {
                 setIsHovering(true);
                 setCursorText(''); // Just expand

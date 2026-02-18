@@ -20,12 +20,12 @@ export default function InstagramFeed() {
                     Travel Stories & Destinations
                 </h2>
                 <a
-                    href="https://www.instagram.com/destnation_anywhere/"
+                    href="https://www.instagram.com/destinationanywhere_co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sky-primary font-bold text-lg hover:underline flex items-center justify-center gap-2"
                 >
-                    <Instagram size={20} /> @destination__anywhere
+                    <Instagram size={20} /> @destinationanywhere_co
                 </a>
             </div>
 

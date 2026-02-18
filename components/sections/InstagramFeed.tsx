@@ -15,12 +15,12 @@ export default function InstagramFeed() {
                         Travel Stories & Destinations
                     </h3>
                     <a
-                        href="https://www.instagram.com/destnation_anywhere/"
+                        href="https://www.instagram.com/destinationanywhere_co/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sky-600 font-semibold hover:text-sky-700 transition-colors"
                     >
-                        <FaInstagram className="text-xl" /> @destination__anywhere
+                        <FaInstagram className="text-xl" /> @destinationanywhere_co
                     </a>
                 </div>
 
@@ -28,7 +28,7 @@ export default function InstagramFeed() {
                     {posts.map((post) => (
                         <a
                             key={post}
-                            href="https://www.instagram.com/destnation_anywhere/"
+                            href="https://www.instagram.com/destinationanywhere_co/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="aspect-square bg-gray-200 rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-md transition-all"
