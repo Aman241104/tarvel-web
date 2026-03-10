@@ -100,6 +100,28 @@ export default function Testimonials() {
                     <p className="mt-8 text-gray-500 font-body text-lg max-w-xl mx-auto opacity-80">
                         We don't just book trips, we protect your precious time. Here's what our travelers say.
                     </p>
+
+                    {/* Trust Block (2026 Trend) */}
+                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-8">
+                        <div className="flex items-center gap-2 text-gray-400">
+                            <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[10px] font-black uppercase tracking-widest">Verified Reviews</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-400">
+                            <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[10px] font-black uppercase tracking-widest">Zero Hidden Fees</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-400">
+                            <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[10px] font-black uppercase tracking-widest">24/7 Concierge</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-16 items-stretch">
