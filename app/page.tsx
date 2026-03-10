@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
 import PopularDestinations from "@/components/sections/PopularDestinations";
-import TravelGallery from "@/components/sections/TravelGallery";
 import ServicesGrid from "@/components/ServicesGrid";
 import TravelerSection from "@/components/luxury/TravelerSection";
 import Testimonials from "@/components/luxury/Testimonials";
@@ -66,8 +65,6 @@ export default function Home() {
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </a>
                 </div>
-
-                <TravelGallery />
 
                 <section id="marquee" className="relative z-20 py-12 -my-12">
                     <TapeMarquee />
