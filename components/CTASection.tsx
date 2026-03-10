@@ -107,8 +107,9 @@ export default function CTASection() {
                             
                             <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                                 <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
-                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">Dear,</label>
+                                    <label htmlFor="traveler-name" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Dear,</label>
                                     <input 
+                                        id="traveler-name"
                                         type="text" 
                                         placeholder="Traveler's Name"
                                         required
@@ -119,10 +120,11 @@ export default function CTASection() {
                                 </div>
                                 
                                 <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
-                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">I'm dreaming of</label>
+                                    <label htmlFor="destination" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">I'm dreaming of</label>
                                     <div className="flex items-center gap-2">
-                                        <MapPin className="text-gray-300 w-4 h-4 md:w-5 md:h-5" />
+                                        <MapPin className="text-gray-300 w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                                         <input 
+                                            id="destination"
                                             type="text" 
                                             placeholder="Where to?"
                                             className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-300"
@@ -133,8 +135,9 @@ export default function CTASection() {
                                 </div>
 
                                 <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
-                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">Any special notes?</label>
+                                    <label htmlFor="special-notes" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Any special notes?</label>
                                     <textarea 
+                                        id="special-notes"
                                         placeholder="Beach club, restaurants, hidden gems..."
                                         rows={2}
                                         className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-300"
@@ -145,9 +148,10 @@ export default function CTASection() {
 
                                 <button 
                                     type="submit"
+                                    aria-label="Send message to Sujal"
                                     className="md:hidden w-full bg-brand-coral text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
                                 >
-                                    Send Message <Send className="w-4 h-4" />
+                                    Send Message <Send className="w-4 h-4" aria-hidden="true" />
                                 </button>
                             </form>
                         </div>

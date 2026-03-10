@@ -150,9 +150,12 @@ export default function Navbar() {
                     {/* Mobile Menu Icon */}
                     <button
                         onClick={() => setIsMobileMenuOpen(true)}
+                        aria-label="Open mobile menu"
+                        aria-expanded={isMobileMenuOpen}
+                        aria-controls="mobile-menu"
                         className={`lg:hidden p-2.5 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/20 text-text-navy'}`}
                     >
-                        <Menu className="w-6 h-6" />
+                        <Menu className="w-6 h-6" aria-hidden="true" />
                     </button>
                 </div>
             </nav>

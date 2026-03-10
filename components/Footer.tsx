@@ -116,13 +116,13 @@ export default function Footer() {
                         <h3 className="text-3xl md:text-4xl font-black font-heading mb-8 tracking-tighter text-white leading-tight">Destination<br />Anywhere & Co.</h3>
                         <div className="flex gap-4">
                             <Magnetic>
-                                <a href="#" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                <a href="#" aria-label="Visit our Instagram page" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
+                                    <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                 </a>
                             </Magnetic>
                             <Magnetic>
-                                <a href="#" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Twitter className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                <a href="#" aria-label="Visit our Twitter page" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
+                                    <Twitter className="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                 </a>
                             </Magnetic>
                         </div>
@@ -157,13 +157,16 @@ export default function Footer() {
                             Subscribe to get the latest travel updates and secret deals.
                         </p>
                         <form className="relative group">
+                            <label htmlFor="newsletter-email" className="sr-only">Enter your email address to subscribe</label>
                             <input
+                                id="newsletter-email"
                                 type="email"
                                 placeholder="Enter your email"
+                                required
                                 className="w-full bg-black/10 border border-white/20 rounded-2xl px-8 py-5 outline-none focus:bg-black/20 focus:border-white/40 transition-all text-white placeholder:text-white/40 font-bold"
                             />
-                            <button className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-110 transition-all shadow-2xl">
-                                <Send className="w-6 h-6" />
+                            <button type="submit" aria-label="Subscribe to newsletter" className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-110 transition-all shadow-2xl">
+                                <Send className="w-6 h-6" aria-hidden="true" />
                             </button>
                         </form>
                     </div>

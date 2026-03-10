@@ -39,6 +39,9 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
     return (
         <div
             ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
             onClick={onClose}
         >
@@ -54,16 +57,17 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     />
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors z-50"
+                        aria-label="Close service details"
+                        className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors z-50 focus:outline-none focus:ring-2 focus:ring-white"
                     >
-                        <X className="w-6 h-6 text-white" />
+                        <X className="w-6 h-6 text-white" aria-hidden="true" />
                     </button>
                 </div>
 
                 {/* Content */}
                 <div className="px-6 md:px-8 pb-8 -mt-12 relative z-10">
                     <div className="bg-white rounded-2xl p-5 md:p-6 shadow-md border border-gray-100 mb-6">
-                        <h3 className="text-2xl md:text-3xl font-heading font-black text-text-navy mb-2">
+                        <h3 id="modal-title" className="text-2xl md:text-3xl font-heading font-black text-text-navy mb-2">
                             {service.title}
                         </h3>
                         <p className="text-gray-500 font-medium leading-relaxed text-sm md:text-base">

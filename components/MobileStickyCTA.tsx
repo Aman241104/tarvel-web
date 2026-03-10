@@ -38,7 +38,8 @@ export default function MobileStickyCTA() {
         >
             <button
                 onClick={() => openWhatsApp('Sticky Mobile CTA')}
-                className="w-full bg-brand-teal text-white py-4 rounded-2xl shadow-[0_20px_50px_rgba(46,196,182,0.4)] flex items-center justify-between px-6 border border-white/20 active:scale-95 transition-all"
+                aria-label="Plan your trip via WhatsApp"
+                className="w-full bg-brand-teal text-white py-4 rounded-2xl shadow-[0_20px_50px_rgba(46,196,182,0.4)] flex items-center justify-between px-6 border border-white/20 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-white/50"
             >
                 <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md">

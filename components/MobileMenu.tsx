@@ -69,6 +69,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection }: Mo
 
             {/* Luggage Tag Panel */}
             <div
+                id="mobile-menu"
                 ref={tagRef}
                 className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-brand-teal text-white rounded-b-[40px] pt-24 pb-12 px-8 shadow-[0_30px_60px_rgba(0,0,0,0.3)] -translate-y-full pointer-events-auto border-x-[6px] border-b-[6px] border-white/20"
             >
@@ -80,9 +81,10 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection }: Mo
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 p-3 bg-white/10 rounded-full hover:bg-white/20 active:scale-90 transition-all text-white z-50"
+                    aria-label="Close mobile menu"
+                    className="absolute top-6 right-6 p-3 bg-white/10 rounded-full hover:bg-white/20 active:scale-90 transition-all text-white z-50 focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                    <X className="w-6 h-6" />
+                    <X className="w-6 h-6" aria-hidden="true" />
                 </button>
 
                 {/* Links */}

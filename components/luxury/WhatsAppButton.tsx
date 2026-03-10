@@ -36,7 +36,8 @@ export default function WhatsAppButton() {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative group bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300"
+                aria-label="Chat with us on WhatsApp"
+                className="relative group bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
             >
                 {/* Pulse Effect */}
                 <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75 group-hover:opacity-100 duration-1000" />

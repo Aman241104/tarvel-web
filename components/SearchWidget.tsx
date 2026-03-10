@@ -58,11 +58,12 @@ Can you help me with the itinerary?`;
                 <div className={`relative flex-1 w-full md:w-auto p-3 md:p-4 rounded-3xl md:rounded-full transition-all duration-500 ${activeInput === 'location' ? 'bg-white shadow-lg scale-[1.02] z-10' : 'hover:bg-white/40'}`}>
                     <div className="flex items-center gap-4">
                         <div className="bg-brand-teal/5 p-2 rounded-full shrink-0">
-                            <MapPin className="text-brand-teal w-4 h-4 md:w-5 md:h-5" />
+                            <MapPin className="text-brand-teal w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                         </div>
                         <div className="flex flex-col w-full text-left">
-                            <label className="text-[10px] md:text-[11px] font-black text-brand-teal/50 uppercase tracking-[0.15em] mb-0.5">Where to?</label>
+                            <label htmlFor="location-input" className="text-[10px] md:text-[11px] font-black text-brand-teal/50 uppercase tracking-[0.15em] mb-0.5 cursor-pointer">Where to?</label>
                             <input
+                                id="location-input"
                                 type="text"
                                 placeholder="Japan, Bali, Paris..."
                                 className="bg-transparent outline-none text-text-navy font-black text-sm md:text-base placeholder:text-text-navy/30 w-full"
@@ -81,11 +82,12 @@ Can you help me with the itinerary?`;
                 <div className={`relative flex-1 w-full md:w-auto p-3 md:p-4 rounded-3xl md:rounded-full transition-all duration-500 ${activeInput === 'date' ? 'bg-white shadow-lg scale-[1.02] z-10' : 'hover:bg-white/40'}`}>
                     <div className="flex items-center gap-4">
                         <div className="bg-brand-coral/5 p-2 rounded-full shrink-0">
-                            <Calendar className="text-brand-coral w-4 h-4 md:w-5 md:h-5" />
+                            <Calendar className="text-brand-coral w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                         </div>
                         <div className="flex flex-col w-full text-left">
-                            <label className="text-[10px] md:text-[11px] font-black text-brand-coral/50 uppercase tracking-[0.15em] mb-0.5">When?</label>
+                            <label htmlFor="date-input" className="text-[10px] md:text-[11px] font-black text-brand-coral/50 uppercase tracking-[0.15em] mb-0.5 cursor-pointer">When?</label>
                             <input
+                                id="date-input"
                                 type="text"
                                 placeholder="Spring 2026"
                                 className="bg-transparent outline-none text-text-navy font-black text-sm md:text-base placeholder:text-text-navy/30 w-full"
@@ -104,11 +106,12 @@ Can you help me with the itinerary?`;
                 <div className={`relative flex-1 w-full md:w-auto p-3 md:p-4 rounded-3xl md:rounded-full transition-all duration-500 ${activeInput === 'guests' ? 'bg-white shadow-lg scale-[1.02] z-10' : 'hover:bg-white/40'}`}>
                     <div className="flex items-center gap-4">
                         <div className="bg-brand-yellow/5 p-2 rounded-full shrink-0">
-                            <Users className="text-brand-yellow w-4 h-4 md:w-5 md:h-5" />
+                            <Users className="text-brand-yellow w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                         </div>
                         <div className="flex flex-col w-full text-left">
-                            <label className="text-[10px] md:text-[11px] font-black text-brand-yellow/50 uppercase tracking-[0.15em] mb-0.5">Guests?</label>
+                            <label htmlFor="guests-input" className="text-[10px] md:text-[11px] font-black text-brand-yellow/50 uppercase tracking-[0.15em] mb-0.5 cursor-pointer">Guests?</label>
                             <input
+                                id="guests-input"
                                 type="text"
                                 placeholder="Group of 4"
                                 className="bg-transparent outline-none text-text-navy font-black text-sm md:text-base placeholder:text-text-navy/30 w-full"
@@ -125,6 +128,7 @@ Can you help me with the itinerary?`;
                 <button
                     ref={buttonRef}
                     onClick={handlePlanTrip}
+                    aria-label="Submit trip details"
                     className="bg-text-navy hover:bg-brand-coral text-white p-4 md:p-5 rounded-3xl md:rounded-full shadow-2xl transition-all duration-700 hover:scale-105 active:scale-95 mt-2 md:mt-0 w-full md:w-auto flex justify-center items-center gap-3 md:min-w-[200px] group relative overflow-hidden"
                 >
                     <span className="relative z-10 font-black text-[11px] uppercase tracking-[0.2em] whitespace-nowrap">Plan Journey</span>
