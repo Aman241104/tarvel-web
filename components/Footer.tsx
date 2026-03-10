@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { Instagram, Twitter, Send, Linkedin } from 'lucide-react';
+import { Instagram, Twitter, Send, Linkedin, Mail, Phone, MapPin, Award, Star } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 import Magnetic from '@/components/ui/Magnetic';
 import Image from 'next/image';
@@ -19,16 +19,29 @@ export default function Footer() {
 
     useGSAP(
         () => {
-            // Mega Type Parallax
+            // Mega Type Parallax - slower and deeper
             gsap.to('.mega-type', {
-                yPercent: -20,
+                yPercent: -15,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top bottom',
                     end: 'bottom bottom',
-                    scrub: 1,
+                    scrub: 1.5,
                 },
+            });
+
+            // Floating contact items stagger
+            gsap.from('.footer-contact-item', {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 80%',
+                }
             });
         },
         { scope: containerRef }
@@ -51,156 +64,185 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-brand-teal pt-48 pb-16 overflow-hidden z-10 text-white">
-            {/* Wave Divider (Top) - Transitions from Red CTA to Teal Footer */}
+        <footer ref={containerRef} className="relative bg-brand-teal pt-56 pb-12 overflow-hidden z-10 text-white">
+            {/* Organic Wave Divider (Double Layered) */}
             <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-0">
-                <svg
-                    className="relative block w-full h-[100px] md:h-[160px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
-                    data-name="Layer 1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                        fill="#FF5A5F"
-                    ></path>
+                <svg className="relative block w-full h-[120px] md:h-[180px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FF5A5F" opacity="0.3"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.51,22.43-10.89,44.78-22.1,66.66-33.33V0Z" fill="#FF5A5F"></path>
                 </svg>
             </div>
 
-            {/* Paper Plane - Interactive */}
+            {/* Floating Paper Plane */}
             <div
                 ref={planeRef}
-                className="absolute top-32 left-0 text-white w-24 h-24 md:w-40 md:h-40 z-20 cursor-pointer drop-shadow-2xl"
+                className="absolute top-40 left-0 text-white w-24 h-24 md:w-48 md:h-48 z-20 cursor-pointer drop-shadow-2xl"
                 onMouseEnter={handleFlyPlane}
                 onClick={handleFlyPlane}
             >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="opacity-80">
-                    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <svg viewBox="0 0 24 24" fill="currentColor" className="opacity-60 hover:opacity-100 transition-opacity">
+                    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </div>
 
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
 
-            {/* Compass Rose Watermark */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] pointer-events-none z-0 opacity-[0.03]">
-                <svg viewBox="0 0 200 200" fill="currentColor" className="w-full h-full">
-                    {/* Outer circle */}
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" strokeWidth="1" />
-                    <circle cx="100" cy="100" r="85" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                    {/* Cardinal points */}
-                    <polygon points="100,5 108,80 100,70 92,80" /> {/* N */}
-                    <polygon points="195,100 120,108 130,100 120,92" /> {/* E */}
-                    <polygon points="100,195 92,120 100,130 108,120" /> {/* S */}
-                    <polygon points="5,100 80,92 70,100 80,108" /> {/* W */}
-                    {/* Intercardinal points */}
-                    <polygon points="167,33 115,85 120,80 125,85" opacity="0.6" /> {/* NE */}
-                    <polygon points="167,167 115,115 120,120 125,115" opacity="0.6" /> {/* SE */}
-                    <polygon points="33,167 85,115 80,120 85,125" opacity="0.6" /> {/* SW */}
-                    <polygon points="33,33 85,85 80,80 75,85" opacity="0.6" /> {/* NW */}
-                    {/* Center */}
-                    <circle cx="100" cy="100" r="6" />
-                    <circle cx="100" cy="100" r="3" fill="none" stroke="white" strokeWidth="1" />
-                    {/* Labels */}
-                    <text x="100" y="22" textAnchor="middle" fontSize="10" fontWeight="bold" fontFamily="serif">N</text>
-                    <text x="100" y="188" textAnchor="middle" fontSize="10" fontWeight="bold" fontFamily="serif">S</text>
-                    <text x="12" y="104" textAnchor="middle" fontSize="10" fontWeight="bold" fontFamily="serif">W</text>
-                    <text x="188" y="104" textAnchor="middle" fontSize="10" fontWeight="bold" fontFamily="serif">E</text>
-                </svg>
-            </div>
-
-            <div className="container mx-auto px-6 relative z-10 pb-32">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
-
-                    {/* Col 1: Brand */}
-                    <div className="col-span-2 lg:col-span-1">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/40 bg-white">
-                                <Image src="/assets/logo.png" alt="Logo" fill className="object-cover" />
+                    {/* Col 1: The Boutique Identity (4 cols) */}
+                    <div className="lg:col-span-4 space-y-10">
+                        <div className="flex flex-col gap-6">
+                            <div className="relative w-16 h-16 rounded-3xl overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
+                                <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover p-2" />
                             </div>
-                            <h3 className="text-2xl md:text-3xl font-black font-heading tracking-tighter text-white leading-tight">Destination<br />Anywhere & Co.</h3>
+                            <div>
+                                <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-white leading-tight">
+                                    Destination<br />Anywhere & Co.
+                                </h3>
+                                <p className="text-white/50 font-body text-xs uppercase tracking-[0.4em] mt-2 font-black">Luxury Travel Boutique</p>
+                            </div>
                         </div>
-                        <p className="text-white/60 font-body text-sm mb-8 max-w-xs italic leading-relaxed">
-                            Crafting boutique travel experiences that turn your dreams into stamped passports.
+                        
+                        <p className="text-white/70 font-body text-lg leading-relaxed italic max-w-sm">
+                            "We don't just book trips; we protect your most precious asset—your time. Every stamp in your passport is a story we help you write."
                         </p>
+
                         <div className="flex gap-4">
-                            <Magnetic>
-                                <a href="#" aria-label="Visit our Instagram page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                                </a>
-                            </Magnetic>
-                            <Magnetic>
-                                <a href="#" aria-label="Visit our LinkedIn page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                                </a>
-                            </Magnetic>
-                            <Magnetic>
-                                <a href="#" aria-label="Visit our Twitter page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Twitter className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                                </a>
-                            </Magnetic>
+                            {[
+                                { icon: Instagram, label: "Instagram", href: "#" },
+                                { icon: Linkedin, label: "LinkedIn", href: "#" },
+                                { icon: Twitter, label: "Twitter", href: "#" }
+                            ].map((social) => (
+                                <Magnetic key={social.label}>
+                                    <a 
+                                        href={social.href} 
+                                        aria-label={`Visit our ${social.label} page`}
+                                        className="bg-white/10 border border-white/10 p-4 rounded-2xl hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl"
+                                    >
+                                        <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                                    </a>
+                                </Magnetic>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Col 2: Company */}
-                    <div>
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Company</h4>
-                        <ul className="space-y-4 font-black text-sm uppercase tracking-widest text-white">
-                            <li><Link href="/about" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">About Us</Link></li>
-                            <li><Link href="/services" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Services</Link></li>
-                            <li><Link href="/destinations" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Destinations</Link></li>
-                            <li><Link href="/contact" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Contact</Link></li>
+                    {/* Col 2: The Journey Links (2 cols) */}
+                    <div className="lg:col-span-2 pt-4">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">The Journey</h4>
+                        <ul className="space-y-5 font-black text-sm uppercase tracking-widest text-white/80">
+                            {['About Us', 'Bespoke Services', 'Private Stories', 'Contact Sujal'].map((item) => (
+                                <li key={item}>
+                                    <Link href="#" className="hover:text-brand-yellow transition-all flex items-center gap-2 group">
+                                        <span className="w-0 group-hover:w-4 h-px bg-brand-yellow transition-all overflow-hidden" />
+                                        {item}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Col 3: Services */}
-                    <div>
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Our Craft</h4>
-                        <ul className="space-y-4 font-black text-sm uppercase tracking-widest text-white">
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Flight Booking</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Luxury Stays</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Tour Packages</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Concierge</Link></li>
-                        </ul>
+                    {/* Col 3: Contact & HQ (3 cols) */}
+                    <div className="lg:col-span-3 pt-4">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">Boutique HQ</h4>
+                        <div className="space-y-8">
+                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                                    <Mail className="w-4 h-4" />
+                                </div>
+                                <div>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Email Us</p>
+                                    <p className="text-sm font-bold tracking-wide">concierge@destanywhere.com</p>
+                                </div>
+                            </div>
+                            
+                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                                    <Phone className="w-4 h-4" />
+                                </div>
+                                <div>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Direct Line</p>
+                                    <p className="text-sm font-bold tracking-wide">+91 85110 71506</p>
+                                </div>
+                            </div>
+
+                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                                    <MapPin className="w-4 h-4" />
+                                </div>
+                                <div>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Office</p>
+                                    <p className="text-sm font-bold tracking-wide">Ahmedabad, Gujarat, India</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Col 4: Newsletter */}
-                    <div className="col-span-2 lg:col-span-1">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Newsletter</h4>
-                        <p className="text-white font-body text-sm mb-6 leading-relaxed italic opacity-80">
-                            Join our inner circle for secret deals and travel updates.
+                    {/* Col 4: Newsletter & Accolades (3 cols) */}
+                    <div className="lg:col-span-3 pt-4">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">Stay Inspired</h4>
+                        <p className="text-white/70 font-body text-sm mb-8 leading-relaxed italic">
+                            Join our inner circle for secret destinations and curated travel insights delivered to your inbox.
                         </p>
-                        <form className="relative group max-w-xs">
-                            <label htmlFor="newsletter-email" className="sr-only">Enter your email address to subscribe</label>
+                        <form className="relative group mb-12">
+                            <label htmlFor="footer-newsletter" className="sr-only">Email Address</label>
                             <input
-                                id="newsletter-email"
+                                id="footer-newsletter"
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder="Your Email Address"
                                 required
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-white placeholder:text-white/30 font-bold text-sm"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-white placeholder:text-white/30 font-bold text-sm"
                             />
-                            <button type="submit" aria-label="Subscribe to newsletter" className="absolute right-2 top-2 bg-brand-yellow text-text-navy p-2.5 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-xl">
-                                <Send className="w-4 h-4" aria-hidden="true" />
+                            <button type="submit" aria-label="Subscribe" className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                                <Send className="w-5 h-5" aria-hidden="true" />
                             </button>
                         </form>
+
+                        {/* Brand Accolades */}
+                        <div className="flex items-center gap-6 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <div className="flex items-center gap-2">
+                                <Award className="w-5 h-5" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Boutique<br/>certified</span>
+                            </div>
+                            <div className="w-px h-8 bg-white/20" />
+                            <div className="flex items-center gap-2">
+                                <Star className="w-5 h-5 fill-current" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">5-Star<br/>Service</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 mt-24 pt-10 flex flex-col md:flex-row justify-between items-center text-white/40 text-[10px] uppercase font-black tracking-[0.2em] text-center md:text-left">
-                    <p className="mb-4 md:mb-0">&copy; {new Date().getFullYear()} Destination Anywhere & Co. All rights reserved.</p>
-                    <div className="flex gap-6 md:gap-10">
-                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+                {/* Bottom Legal bar */}
+                <div className="border-t border-white/5 mt-24 pt-12 pb-8 flex flex-col md:flex-row justify-between items-center text-white/30 text-[9px] uppercase font-black tracking-[0.3em] text-center md:text-left">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 mb-6 md:mb-0">
+                        <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co.</p>
+                        <p className="hidden md:block opacity-20">|</p>
+                        <div className="flex gap-8">
+                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+                            <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3 italic font-handwriting text-lg text-white/20">
+                        Made with love for the curious <Heart className="w-4 h-4 fill-white/10 border-none" />
                     </div>
                 </div>
             </div>
 
-            {/* MEGA TYPE */}
-            <div className="absolute bottom-[-2vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.03]">
-                <h1 className="mega-type text-[12vw] md:text-[16vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.6] tracking-tighter">
-                    DESTINATION ANYWHERE
+            {/* MEGA TYPE SIGNATURE */}
+            <div className="absolute bottom-[-2vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.02]">
+                <h1 className="mega-type text-[12vw] md:text-[18vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.5] tracking-tighter uppercase">
+                    Destination Anywhere
                 </h1>
             </div>
         </footer>
+    );
+}
+
+function Heart({ className }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
     );
 }
