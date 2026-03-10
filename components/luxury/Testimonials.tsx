@@ -81,7 +81,7 @@ export default function Testimonials() {
     }, { scope: containerRef });
 
     return (
-        <section id="testimonials" ref={containerRef} className="py-20 md:py-32 bg-bg-light paper-warm relative overflow-hidden">
+        <section id="testimonials" ref={containerRef} className="py-20 md:py-32 bg-[#F8F9FA] paper-warm relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 <div className="text-center mb-16 relative inline-block mx-auto w-full">
                     <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy relative z-10 inline-block">
@@ -106,10 +106,11 @@ export default function Testimonials() {
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}
-                            className={`testimonial-card ${t.bgColor} ${t.rotation} p-8 md:p-10 rounded-[2.5rem] shadow-ambient-lg border border-white/40 relative group hover:scale-105 transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+                            className={`testimonial-card bg-white p-8 md:p-10 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+                            style={{ transform: `rotate(${i % 2 === 0 ? '-1deg' : '1deg'})` }}
                         >
                             {/* Tape Piece */}
-                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-80 group-hover:opacity-100 transition-opacity`} />
                             
                             <div className="flex gap-1 text-brand-yellow mb-8 relative z-10 scale-90 origin-left">
                                 {[...Array(5)].map((_, j) => (
@@ -121,8 +122,8 @@ export default function Testimonials() {
                                 "{t.quote}"
                             </p>
                             
-                            <div className="mt-auto border-t border-black/5 pt-6">
-                                <div className="font-handwriting text-3xl md:text-4xl text-brand-teal rotate-[-2deg] mb-2 font-black">
+                            <div className="mt-auto border-t border-black/[0.03] pt-6">
+                                <div className="font-handwriting text-3xl md:text-4xl text-brand-teal rotate-[-1deg] mb-2 font-black">
                                     {t.highlight}
                                 </div>
                                 <div className="font-body font-black text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">

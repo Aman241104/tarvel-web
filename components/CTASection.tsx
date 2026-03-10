@@ -54,19 +54,18 @@ export default function CTASection() {
     };
 
     return (
-        <section ref={containerRef} className="py-24 md:py-48 bg-brand-coral relative overflow-hidden">
+        <section ref={containerRef} className="py-24 md:py-48 bg-[#FF5A5F] relative overflow-hidden">
             {/* Decorative background elements */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                 <div className="cta-parallax absolute top-20 left-20 w-80 h-80 border-4 border-white/20 rounded-full animate-spin-slow" />
-                 <div className="cta-parallax absolute bottom-40 right-20 w-[600px] h-[600px] border-2 border-white/10 rounded-full" />
-                 <div className="absolute top-1/2 left-1/4 w-px h-64 bg-white/20 rotate-45" />
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                 <div className="cta-parallax absolute top-20 left-20 w-80 h-80 border-4 border-white rounded-full animate-spin-slow" />
+                 <div className="cta-parallax absolute bottom-40 right-20 w-[600px] h-[600px] border-2 border-white rounded-full" />
             </div>
 
             <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center mb-16">
                 <h2 className="text-white font-heading font-black text-4xl md:text-7xl mb-4 leading-none tracking-tighter opacity-100">
                     Your Journey Starts with a <span className="italic text-brand-yellow drop-shadow-lg">Note</span>
                 </h2>
-                <p className="text-white/80 font-body text-lg md:text-xl max-w-2xl mx-auto italic mb-10">
+                <p className="text-white/90 font-body text-lg md:text-xl max-w-2xl mx-auto italic mb-10">
                     Drop us a line and let's craft an itinerary that's uniquely yours.
                 </p>
 
@@ -101,25 +100,25 @@ export default function CTASection() {
                     <div className="flex flex-col md:flex-row gap-8 md:gap-20">
                         {/* Left Side: Message Area */}
                         <div className="flex-1 text-left">
-                            <h2 className="font-handwriting text-4xl md:text-5xl text-brand-teal mb-8 md:mb-10 rotate-[-1deg] md:rotate-[-2deg]">
+                            <h2 className="font-handwriting text-4xl md:text-5xl text-[#2EC4B6] mb-8 md:mb-10 rotate-[-1deg] md:rotate-[-2deg]">
                                 Postcard from your dreams
                             </h2>
                             
                             <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
                                     <label htmlFor="traveler-name" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Dear,</label>
                                     <input 
                                         id="traveler-name"
                                         type="text" 
                                         placeholder="Traveler's Name"
                                         required
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-300"
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-200"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                                     />
                                 </div>
                                 
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
                                     <label htmlFor="destination" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">I'm dreaming of</label>
                                     <div className="flex items-center gap-2">
                                         <MapPin className="text-gray-300 w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
@@ -127,20 +126,20 @@ export default function CTASection() {
                                             id="destination"
                                             type="text" 
                                             placeholder="Where to?"
-                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-300"
+                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-200"
                                             value={formData.destination}
                                             onChange={(e) => setFormData({...formData, destination: e.target.value})}
                                         />
                                     </div>
                                 </div>
 
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
                                     <label htmlFor="special-notes" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Any special notes?</label>
                                     <textarea 
                                         id="special-notes"
                                         placeholder="Beach club, restaurants, hidden gems..."
                                         rows={2}
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-300"
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-200"
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
@@ -149,7 +148,7 @@ export default function CTASection() {
                                 <button 
                                     type="submit"
                                     aria-label="Send message to Sujal"
-                                    className="md:hidden w-full bg-brand-coral text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                                    className="md:hidden w-full bg-[#FF5A5F] text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
                                 >
                                     Send Message <Send className="w-4 h-4" aria-hidden="true" />
                                 </button>
@@ -185,7 +184,7 @@ export default function CTASection() {
 
                             <button 
                                 onClick={handleSubmit}
-                                className="hidden md:flex group relative bg-brand-coral text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 mt-12 md:mt-16 self-end overflow-hidden"
+                                className="hidden md:flex group relative bg-[#FF5A5F] text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 mt-12 md:mt-16 self-end overflow-hidden"
                             >
                                 <span className="relative z-10">Send the Postcard</span>
                                 <Send className="relative z-10 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -193,7 +192,7 @@ export default function CTASection() {
                             </button>
 
                             <div className="mt-8 md:mt-10 flex items-center gap-3 text-gray-400 font-handwriting text-xl md:text-2xl self-end italic opacity-80">
-                                With Love, Sujal <Heart className="w-4 h-4 md:w-5 md:h-5 text-brand-coral fill-brand-coral animate-pulse" />
+                                With Love, Sujal <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#FF5A5F] fill-[#FF5A5F] animate-pulse" />
                             </div>
                         </div>
                     </div>

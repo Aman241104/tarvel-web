@@ -258,7 +258,7 @@ export default function Hero() {
                     </svg>
                 </div>
 
-                <h1 className="flex flex-col items-center justify-center w-full">
+                <h1 className="flex flex-col items-center justify-center w-full mb-4 md:mb-0">
                     <span className="font-body font-bold text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.4em] text-brand-teal uppercase mb-4 md:mb-6 min-h-[1.5em] px-4 text-center">
                         {greeting}
                     </span>
@@ -285,7 +285,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtext Pill & Social Proof */}
-                <div className="mt-8 md:mt-12 flex flex-col items-center gap-6">
+                <div className="mt-12 md:mt-16 flex flex-col items-center gap-8">
                     <Magnetic strength={0.2}>
                         <button
                             onClick={() => openWhatsApp('Hero Section - "PLAN YOUR TRIP"')}
@@ -300,10 +300,10 @@ export default function Hero() {
                     </Magnetic>
 
                     {/* High-end Social Proof */}
-                    <div className="flex items-center gap-4 bg-white/40 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/50 shadow-sm animate-float">
-                        <div className="flex -space-x-2">
+                    <div className="flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/50 shadow-ambient-sm animate-float">
+                        <div className="flex -space-x-3">
                             {[1, 2, 3].map((i) => (
-                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden relative">
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
                                     <Image 
                                         src={`https://i.pravatar.cc/100?img=${i + 10}`} 
                                         alt="Traveler" 
@@ -316,12 +316,12 @@ export default function Hero() {
                         <div className="flex flex-col items-start">
                             <div className="flex gap-0.5">
                                 {[...Array(5)].map((_, i) => (
-                                    <svg key={i} className="w-3 h-3 text-brand-yellow fill-current" viewBox="0 0 20 20">
+                                    <svg key={i} className="w-3.5 h-3.5 text-brand-yellow fill-current" viewBox="0 0 20 20">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
                                 ))}
                             </div>
-                            <span className="text-[10px] font-black text-text-navy/60 uppercase tracking-widest">
+                            <span className="text-[10px] font-black text-text-navy/60 uppercase tracking-[0.15em]">
                                 500+ Happy Explorers
                             </span>
                         </div>

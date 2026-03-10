@@ -169,7 +169,7 @@ export default function VisualStory() {
                         >
                             {/* Text Side */}
                             <div className="story-text w-full lg:w-[45%] text-left relative">
-                                <span className="text-6xl md:text-8xl font-black text-black/[0.03] absolute -top-12 md:-top-20 -left-2 md:-left-8 select-none">0{index + 1}</span>
+                                <span className="text-7xl md:text-8xl font-black text-black/[0.03] absolute -top-10 md:-top-20 -left-2 md:-left-8 select-none">0{index + 1}</span>
                                 
                                 <h2 className="text-3xl md:text-6xl font-black font-heading text-text-navy mb-6 md:mb-8 leading-[1.1] tracking-tight relative z-10">
                                     {story.title.split(' ').map((word, wIndex) => (
@@ -196,11 +196,11 @@ export default function VisualStory() {
                                         </span>
                                     ))}
                                 </h2>
-                                <p className="text-base md:text-xl text-gray-500 font-body leading-relaxed max-w-md opacity-80">
+                                <p className="text-base md:text-xl text-gray-500 font-body leading-relaxed max-w-md opacity-80 mb-8 md:mb-0">
                                     {story.description}
                                 </p>
                                 
-                                <button className="mt-8 md:mt-10 group flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-widest text-text-navy hover:text-brand-coral transition-colors">
+                                <button className="hidden md:flex group items-center gap-3 text-sm font-black uppercase tracking-widest text-text-navy hover:text-brand-coral transition-colors mt-10">
                                     Read Full Story
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                                 </button>
@@ -209,7 +209,7 @@ export default function VisualStory() {
                             {/* Image Side */}
                             <div className="story-image-container w-full lg:w-[50%] relative aspect-[4/5] md:aspect-[3/2] lg:aspect-[4/5] perspective-1000">
                                 <div
-                                    className={`relative w-full h-full overflow-hidden border-[8px] md:border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
+                                    className={`relative w-full h-full overflow-hidden border-[6px] md:border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
                                 >
                                     <Image
                                         src={story.image}
@@ -222,7 +222,7 @@ export default function VisualStory() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </div>
                                 {/* Decorative elements */}
-                                <div className={`absolute -inset-4 md:-inset-6 -z-10 transform translate-x-4 translate-y-4 ${story.shapeClass} ${rotation} bg-gray-50 opacity-40 border border-black/5`} />
+                                <div className={`absolute -inset-2 md:-inset-6 -z-10 transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 ${story.shapeClass} ${rotation} bg-gray-50 opacity-40 border border-black/5`} />
                             </div>
                         </div>
                     );

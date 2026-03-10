@@ -128,51 +128,51 @@ export default function TravelerSection() {
                             MEET THE CAPTAIN
                         </div>
 
-                        <h2 className="text-4xl md:text-7xl lg:text-8xl font-heading font-black mb-8 leading-[0.9]">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-10 leading-[0.85] tracking-tighter">
                             Sujal<br />
-                            <span className="relative inline-block px-2 mt-2">
-                                <span className="absolute inset-x-0 bottom-1 top-2 bg-brand-yellow -skew-x-3 transform -rotate-1 rounded-sm mix-blend-multiply" />
+                            <span className="relative inline-block px-4 mt-4 py-1">
+                                <span className="absolute inset-0 bg-brand-yellow -rotate-1 rounded-sm mix-blend-multiply opacity-90" />
                                 <span className="relative z-10 text-black">Soni</span>
                             </span>
                         </h2>
 
-                        <p className="text-xl text-gray-600 font-body leading-relaxed mb-8 max-w-md italic opacity-90">
+                        <p className="text-xl md:text-2xl text-gray-600 font-body leading-relaxed mb-10 max-w-md italic opacity-90 border-l-4 border-brand-teal pl-6">
                             "I don't just book tickets; I curate memories. Every journey is a story waiting to be written."
                         </p>
 
-                        <div className="flex flex-col gap-4 text-gray-500 font-medium">
-                            <div className="flex items-center gap-3">
-                                <span className="w-2 h-2 bg-brand-teal rounded-full" />
-                                <span className="text-sm md:text-base tracking-wide uppercase font-bold text-gray-400">Founder</span>
+                        <div className="flex flex-col gap-5 text-gray-500 font-medium">
+                            <div className="flex items-center gap-4">
+                                <div className="w-2.5 h-2.5 bg-brand-teal rounded-full shadow-[0_0_10px_rgba(46,196,182,0.4)]" />
+                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-text-navy/40">Founder</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <span className="w-2 h-2 bg-brand-coral rounded-full" />
-                                <span className="text-sm md:text-base tracking-wide uppercase font-bold text-gray-400">Tours & Travels Company</span>
+                            <div className="flex items-center gap-4">
+                                <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_10px_rgba(255,107,107,0.4)]" />
+                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-text-navy/40">Travel Boutique & Co.</span>
                             </div>
                         </div>
 
                         {/* Stat Counters */}
-                        <div className="flex justify-between md:justify-start gap-4 md:gap-12 mt-10 mb-8">
-                            <div className="text-left">
+                        <div className="flex justify-between md:justify-start gap-4 md:gap-16 mt-12 mb-10">
+                            <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="9">0</span>
-                                    <span className="text-xl md:text-2xl font-black text-brand-teal ml-1">+</span>
+                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
+                                    <span className="text-2xl font-black text-brand-teal ml-1">+</span>
                                 </div>
-                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Years XP</p>
+                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-teal transition-colors">Years XP</p>
                             </div>
-                            <div className="text-left">
+                            <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="15">0</span>
-                                    <span className="text-xl md:text-2xl font-black text-brand-coral ml-1">+</span>
+                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="15">15</span>
+                                    <span className="text-2xl font-black text-brand-coral ml-1">+</span>
                                 </div>
-                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Countries</p>
+                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-coral transition-colors">Countries</p>
                             </div>
-                            <div className="text-left">
+                            <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="500">0</span>
-                                    <span className="text-xl md:text-2xl font-black text-brand-yellow ml-1">+</span>
+                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="500">500</span>
+                                    <span className="text-2xl font-black text-brand-yellow ml-1">+</span>
                                 </div>
-                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Clients</p>
+                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-yellow transition-colors">Clients</p>
                             </div>
                         </div>
 
