@@ -151,13 +151,6 @@ export default function VisualStory() {
 
     return (
         <section ref={containerRef} className="py-20 md:py-40 bg-white paper-cool overflow-hidden relative">
-            {/* Progress Tracker (Side) */}
-            <div className="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4">
-                {stories.map((s, i) => (
-                    <div key={s.id} className="progress-dot w-2 h-2 rounded-full bg-gray-200 transition-all duration-300" />
-                ))}
-            </div>
-
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 <div className="text-center mb-20 md:mb-32 max-w-2xl mx-auto">
                     <span className="text-brand-coral font-black text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 block">Visual Stories</span>
