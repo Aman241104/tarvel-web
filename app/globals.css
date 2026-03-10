@@ -82,10 +82,42 @@ body {
     0 16px 48px rgba(0, 0, 0, 0.04);
 }
 
+.shadow-ambient-lg {
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    0 24px 64px rgba(0, 0, 0, 0.06);
+}
+
 .shadow-ambient-sm {
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.02),
     0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Washi Tape Effect */
+.washi-tape {
+  position: absolute;
+  height: 20px;
+  width: 70px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  mix-blend-mode: multiply;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  z-index: 20;
+}
+
+.washi-tape-yellow {
+  background-color: rgba(255, 191, 0, 0.3);
+}
+
+.washi-tape-coral {
+  background-color: rgba(255, 107, 107, 0.3);
+}
+
+.washi-tape-teal {
+  background-color: rgba(46, 196, 182, 0.3);
 }
 
 /* Torn/Organic Photo Edges */

@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileText, Map, LifeBuoy, Globe, Plane, Hotel } from 'lucide-react';
+import { FileText, Map, LifeBuoy, Globe, Plane, Hotel, Camera, Banknote, Star } from 'lucide-react';
 import Magnetic from './ui/Magnetic';
 import ServiceModal from './ui/ServiceModal';
 
@@ -27,7 +27,7 @@ export default function ServicesList() {
                         y: 0,
                         opacity: 1,
                         duration: 1.5,
-                        delay: i * 0.15,
+                        delay: i * 0.1,
                         ease: 'elastic.out(1, 0.4)',
                         scrollTrigger: {
                             trigger: containerRef.current,
@@ -43,28 +43,52 @@ export default function ServicesList() {
     const services = [
         {
             icon: Globe,
-            title: 'International Tour Packages',
-            desc: "Discover the world with our curated international journeys.",
-            details: ["Custom Itineraries", "Visa Assistance", "Local Guides", "24/7 Support"]
+            title: 'Tour Packages',
+            desc: "End-to-end curated domestic and international packages.",
+            details: ["Custom Itineraries", "Local Guides", "24/7 Support", "Zero Stress"]
         },
         {
-            icon: Map,
-            title: 'Domestic Tour Packages',
-            desc: "Explore the hidden gems of our beautiful country.",
-            details: ["Weekend Getaways", "Family Packages", "Honeymoon Specials", "Group Tours"]
+            icon: Star,
+            title: 'Concierge Booking',
+            desc: "Exclusive restaurant and beach club reservations.",
+            details: ["Fine Dining", "Beach Clubs", "VIP Access", "Event Tickets"]
         },
         {
             icon: Plane,
             title: 'Flight Tickets',
-            desc: "Seamless booking for your next adventure.",
-            details: ["Best Price Guarantee", "Zero Cancellation", "Seat Selection", "Web Check-in"]
+            desc: "Seamless booking for domestic and international flights.",
+            details: ["Best Price Guarantee", "Seat Selection", "Web Check-in", "Corporate Fares"]
         },
         {
             icon: Hotel,
             title: 'Hotel Bookings',
-            desc: "Luxury stays and comfortable accommodations worldwide.",
-            details: ["Luxury Resorts", "Boutique Stays", "Homestays", "Verified Reviews"]
+            desc: "Luxury stays and handpicked accommodations worldwide.",
+            details: ["Luxury Resorts", "Boutique Stays", "Villas", "Verified Properties"]
         },
+        {
+            icon: Camera,
+            title: 'Sightseeings',
+            desc: "Immersive local experiences and guided tours.",
+            details: ["Private Tours", "Hidden Gems", "Group Excursions", "Cultural Immersions"]
+        },
+        {
+            icon: FileText,
+            title: 'Visa Services',
+            desc: "Hassle-free visa processing and documentation support.",
+            details: ["Tourist Visas", "Business Visas", "Document Review", "Interview Prep"]
+        },
+        {
+            icon: Banknote,
+            title: 'Currency Exchange',
+            desc: "Secure and competitive forex services for your trip.",
+            details: ["Best Rates", "Multi-Currency Cards", "Cash Delivery", "Secure Transactions"]
+        },
+        {
+            icon: Map,
+            title: 'Custom Holidays',
+            desc: "100% personalized itineraries crafted for your unique style.",
+            details: ["Honeymoons", "Anniversaries", "Solo Travel", "Family Trips"]
+        }
     ];
 
     return (
@@ -84,32 +108,36 @@ export default function ServicesList() {
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}
-                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 bg-gray-300 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
+                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-gray-400/60 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
 
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-white border-2 border-gray-100 p-8 pt-12 text-center shadow-ambient transition-transform duration-500 transform origin-top group-hover:rotate-2 group-hover:shadow-2xl"
+                                className="relative bg-white border border-gray-100 p-8 pt-12 text-center shadow-ambient-lg transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-2xl rounded-xl"
                                 style={{
-                                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 10%, 100% 100%, 0% 100%, 0% 10%)',
-                                    borderRadius: '0 0 1rem 1rem'
+                                    clipPath: 'polygon(30% 0%, 70% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%)',
                                 }}
                             >
-                                {/* Hole Punch */}
-                                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#FFFBF5] rounded-full border-2 border-gray-200 shadow-inner z-20" />
-                                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-black/10 z-20" />
+                                {/* Hole Punch with Metal Eyelet Effect */}
+                                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-gray-200 via-white to-gray-300 rounded-full border-[1.5px] border-gray-400/30 shadow-inner z-20 flex items-center justify-center">
+                                    <div className="w-3 h-3 bg-bg-paper rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]" />
+                                </div>
 
 
                                 <Magnetic strength={0.4}>
-                                    <div className="bg-yellow-300 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                                        <service.icon className="w-8 h-8 text-black" />
+                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500 ${
+                                        i % 3 === 0 ? 'bg-brand-yellow/20 text-brand-yellow' : 
+                                        i % 3 === 1 ? 'bg-brand-coral/20 text-brand-coral' : 
+                                        'bg-brand-teal/20 text-brand-teal'
+                                    }`}>
+                                        <service.icon className="w-8 h-8" />
                                     </div>
                                 </Magnetic>
 
-                                <h3 className="text-2xl font-bold font-heading text-[#2D2D2D] mb-4">
+                                <h3 className="text-xl font-black font-heading text-text-navy mb-4 tracking-tight leading-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-500 font-medium">
+                                <p className="text-gray-400 font-body text-sm leading-relaxed">
                                     {service.desc}
                                 </p>
                             </div>

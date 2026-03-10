@@ -116,7 +116,7 @@ export default function TravelerSection() {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="bg-white text-[#2D2D2D] py-16 md:py-24 relative overflow-hidden">
+        <section id="about" ref={containerRef} className="bg-white text-[#2D2D2D] py-16 md:py-24 relative overflow-hidden">
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
@@ -131,58 +131,64 @@ export default function TravelerSection() {
                         <h2 className="text-4xl md:text-7xl lg:text-8xl font-heading font-black mb-8 leading-[0.9]">
                             Sujal<br />
                             <span className="relative inline-block px-2 mt-2">
-                                <span className="absolute inset-0 bg-[#FACC15] -skew-x-3 transform -rotate-1 rounded-sm mix-blend-multiply" />
+                                <span className="absolute inset-x-0 bottom-1 top-2 bg-brand-yellow -skew-x-3 transform -rotate-1 rounded-sm mix-blend-multiply" />
                                 <span className="relative z-10 text-black">Soni</span>
                             </span>
                         </h2>
 
-                        <p className="text-xl text-gray-600 font-body leading-relaxed mb-8 max-w-md">
+                        <p className="text-xl text-gray-600 font-body leading-relaxed mb-8 max-w-md italic opacity-90">
                             "I don't just book tickets; I curate memories. Every journey is a story waiting to be written."
                         </p>
 
                         <div className="flex flex-col gap-4 text-gray-500 font-medium">
                             <div className="flex items-center gap-3">
-                                <span className="w-2 h-2 bg-black rounded-full" />
-                                <span className="text-sm md:text-base">Founder</span>
+                                <span className="w-2 h-2 bg-brand-teal rounded-full" />
+                                <span className="text-sm md:text-base tracking-wide uppercase font-bold text-gray-400">Founder</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <span className="w-2 h-2 bg-black rounded-full" />
-                                <span className="text-sm md:text-base">Tours & Travels Company</span>
+                                <span className="w-2 h-2 bg-brand-coral rounded-full" />
+                                <span className="text-sm md:text-base tracking-wide uppercase font-bold text-gray-400">Tours & Travels Company</span>
                             </div>
                         </div>
 
                         {/* Stat Counters */}
-                        <div className="flex gap-8 mt-8 mb-6">
-                            <div className="text-center">
-                                <span className="stat-number text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]" data-target="250">0</span>
-                                <span className="text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]">+</span>
-                                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Trips</p>
+                        <div className="flex justify-between md:justify-start gap-4 md:gap-12 mt-10 mb-8">
+                            <div className="text-left">
+                                <div className="flex items-baseline">
+                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="9">0</span>
+                                    <span className="text-xl md:text-2xl font-black text-brand-teal ml-1">+</span>
+                                </div>
+                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Years XP</p>
                             </div>
-                            <div className="text-center">
-                                <span className="stat-number text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]" data-target="15">0</span>
-                                <span className="text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]">+</span>
-                                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Countries</p>
+                            <div className="text-left">
+                                <div className="flex items-baseline">
+                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="15">0</span>
+                                    <span className="text-xl md:text-2xl font-black text-brand-coral ml-1">+</span>
+                                </div>
+                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Countries</p>
                             </div>
-                            <div className="text-center">
-                                <span className="stat-number text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]" data-target="1000">0</span>
-                                <span className="text-3xl md:text-4xl font-heading font-black text-[#2D2D2D]">+</span>
-                                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Travelers</p>
+                            <div className="text-left">
+                                <div className="flex items-baseline">
+                                    <span className="stat-number text-3xl sm:text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums" data-target="500">0</span>
+                                    <span className="text-xl md:text-2xl font-black text-brand-yellow ml-1">+</span>
+                                </div>
+                                <p className="text-[9px] md:text-[10px] text-gray-400 uppercase font-black tracking-widest mt-1">Clients</p>
                             </div>
                         </div>
 
                         {/* Signature: SVG handwriting path draw */}
-                        <div className="mt-8 opacity-100 rotate-[-4deg]">
+                        <div className="mt-8 opacity-100 rotate-[-2deg]">
                             <svg viewBox="0 0 300 40" className="w-64 h-10" fill="none">
                                 <path
                                     className="signature-path"
                                     d="M5 25 C 20 5, 35 35, 50 20 C 65 5, 80 35, 95 20 C 110 5, 125 35, 140 20 C 155 5, 170 30, 185 20 C 200 10, 215 30, 230 20 C 245 10, 260 25, 275 20"
-                                    stroke="#6B7280"
-                                    strokeWidth="2.5"
+                                    stroke="#2EC4B6"
+                                    strokeWidth="3"
                                     strokeLinecap="round"
                                     style={{ strokeDasharray: 500, strokeDashoffset: 500 }}
                                 />
                             </svg>
-                            <span className="font-handwriting text-2xl md:text-3xl text-gray-400 block mt-1">
+                            <span className="font-handwriting text-3xl md:text-4xl text-gray-500 block mt-2 opacity-80">
                                 Let's get lost together.
                             </span>
                         </div>
@@ -192,39 +198,33 @@ export default function TravelerSection() {
                     <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
                         <div ref={imageRef} className="relative z-10 group w-[85%] md:w-auto">
                             {/* Tape Sticker */}
-                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-12 bg-[#e6e6e6] opacity-80 rotate-[-2deg] z-20 shadow-sm backdrop-blur-sm"
-                                style={{
-                                    clipPath: "polygon(2% 0, 98% 0, 100% 100%, 0% 100%)", // Rough edges can be SVG, for now simple box
-                                    backgroundImage: "radial-gradient(#00000005 20%, transparent 20%)",
-                                    backgroundSize: "4px 4px"
-                                }}
-                            />
+                            <div className="washi-tape washi-tape-teal -top-4 left-1/2 -translate-x-1/2 w-40 h-14 -rotate-2 opacity-70" />
 
                             {/* Polaroid Frame */}
-                            <div className="bg-white p-4 pb-16 shadow-2xl rotate-1 md:rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105 relative">
+                            <div className="bg-white p-4 pb-20 shadow-ambient-lg rotate-1 md:rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105 relative rounded-sm">
                                 {/* Film Strip Sprocket Holes */}
-                                <div className="absolute left-0 top-4 bottom-16 w-4 flex flex-col justify-between items-center py-2 z-30">
-                                    {[...Array(8)].map((_, i) => (
-                                        <div key={i} className="w-2.5 h-4 bg-black/10 rounded-sm" />
+                                <div className="absolute left-1 top-4 bottom-20 w-3 flex flex-col justify-between items-center py-2 z-30 opacity-20">
+                                    {[...Array(6)].map((_, i) => (
+                                        <div key={i} className="w-2 h-4 bg-black rounded-full" />
                                     ))}
                                 </div>
-                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[400px] md:h-[450px] bg-gray-200">
+                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[380px] md:h-[440px] bg-gray-100 shadow-inner">
                                     <img
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop"
+                                        src="/assets/owner-image.png"
                                         alt="Sujal Soni"
-                                        className="w-full h-full object-cover filter contrast-110 saturate-110 transition-transform duration-700 group-hover:scale-110"
+                                        className="w-full h-full object-cover filter contrast-[1.05] saturate-[1.1] transition-transform duration-700 group-hover:scale-110"
                                     />
                                     {/* Film Grain/Dust Overlay */}
-                                    <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none" />
                                 </div>
-                                <div className="mt-4 font-handwriting text-2xl text-center text-gray-400 rotate-[-1deg] font-bold">
-                                    Patagonia, 2023
+                                <div className="mt-6 font-handwriting text-2xl text-center text-gray-400 rotate-[-1deg] font-bold">
+                                    Founder, Destination Anywhere
                                 </div>
                             </div>
 
                             {/* Backdrop Shape (Coral/Teal) — parallax targets */}
-                            <div className="backdrop-teal absolute inset-0 bg-[#4ECDC4] -z-10 rotate-[-6deg] translate-y-4 rounded-xl scale-95" />
-                            <div className="backdrop-coral absolute inset-0 bg-[#FF6B6B] -z-20 rotate-[5deg] translate-x-4 rounded-xl scale-95 opacity-50" />
+                            <div className="backdrop-teal absolute inset-0 bg-brand-teal -z-10 rotate-[-6deg] translate-y-4 rounded-3xl scale-95 opacity-20" />
+                            <div className="backdrop-coral absolute inset-0 bg-brand-coral -z-20 rotate-[5deg] translate-x-4 rounded-3xl scale-95 opacity-10" />
                         </div>
                     </div>
 

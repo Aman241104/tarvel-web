@@ -10,10 +10,11 @@ import { useWhatsApp } from '@/hooks/useWhatsApp';
 interface MobileMenuProps {
     isOpen: boolean;
     onClose: () => void;
-    links: { name: string; href: string }[];
+    links: { name: string; href: string; id: string }[];
+    activeSection?: string;
 }
 
-export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, links, activeSection }: MobileMenuProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const tagRef = useRef<HTMLDivElement>(null);
     const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -69,7 +70,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
             {/* Luggage Tag Panel */}
             <div
                 ref={tagRef}
-                className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-[#4ECDC4] text-white rounded-b-[40px] pt-24 pb-12 px-8 shadow-2xl -translate-y-full pointer-events-auto border-x-4 border-b-4 border-white/20"
+                className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-brand-teal text-white rounded-b-[40px] pt-24 pb-12 px-8 shadow-2xl -translate-y-full pointer-events-auto border-x-4 border-b-4 border-white/20"
             >
                 {/* Hole Punch Visual */}
                 <div className="absolute top-8 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black/20 shadow-inner" />
@@ -90,10 +91,15 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
                             href={link.href}
                             onClick={onClose}
                             ref={(el) => { linksRef.current[i] = el; }}
-                            className="group flex items-center justify-between text-3xl font-bold font-heading hover:text-[#FFFBF5] transition-colors border-b border-white/20 pb-2"
+                            className={`group flex items-center justify-between text-3xl font-bold font-heading transition-all border-b border-white/20 pb-2 ${
+                                activeSection === link.id ? 'text-white translate-x-2' : 'text-white/60 hover:text-white'
+                            }`}
                         >
-                            <span>{link.name}</span>
-                            <ArrowRight className="w-6 h-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                            <span className="flex items-center gap-3">
+                                {activeSection === link.id && <div className="w-2 h-2 rounded-full bg-brand-yellow" />}
+                                {link.name}
+                            </span>
+                            <ArrowRight className={`w-6 h-6 transition-all duration-300 ${activeSection === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}`} />
                         </Link>
                     ))}
                 </nav>
@@ -106,9 +112,9 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
                             openWhatsApp('Mobile Menu - Quick Plan');
                             onClose();
                         }}
-                        className="w-full bg-white text-[#4ECDC4] font-bold py-4 rounded-full shadow-[4px_4px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
+                        className="w-full bg-white text-brand-teal font-black py-4 rounded-full shadow-[4px_4px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
                     >
-                        <Phone className="w-5 h-5" />
+                        <Phone className="w-5 h-5 fill-current" />
                         <span>Plan My Trip</span>
                     </button>
                 </div>

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import VisualStory from "@/components/VisualStory";
 import ServicesGrid from "@/components/ServicesGrid";
 import TravelerSection from "@/components/luxury/TravelerSection";
+import Testimonials from "@/components/luxury/Testimonials";
 import Footer from "@/components/Footer";
 
 import WhatsAppButton from "@/components/luxury/WhatsAppButton";
@@ -27,9 +28,8 @@ export default function Home() {
                 <section id="stories">
                     <VisualStory />
                 </section>
-                <section id="about">
-                    <TravelerSection />
-                </section>
+                <TravelerSection />
+                <Testimonials />
                 <section id="marquee" className="relative z-20 -my-8 overflow-hidden">
                     <TapeMarquee />
                 </section>
@@ -40,7 +40,7 @@ export default function Home() {
             </div>
 
             {/* Smooth gradient transition from paper-warm to CTA coral */}
-            <div className="h-24 md:h-32 bg-gradient-to-b from-[#FFFBF5] to-[#FF6B6B]/20 relative z-20" />
+            <div className="h-32 md:h-64 bg-gradient-to-b from-bg-paper to-brand-coral relative z-20" />
 
             <CTASection />
 

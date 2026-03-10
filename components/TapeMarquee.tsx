@@ -25,18 +25,20 @@ export default function TapeMarquee() {
             ScrollTrigger.create({
                 onUpdate: (self) => {
                     const velocity = Math.abs(self.getVelocity());
-                    const timeScale = 1 + (velocity / 500);
+                    const targetTimeScale = 1 + (velocity / 2000); // More conservative scaling
 
                     gsap.to(tween, {
-                        timeScale: timeScale,
-                        duration: 0.2,
+                        timeScale: targetTimeScale,
+                        duration: 0.8, // Slower smoothing
+                        ease: 'power2.out',
                         overwrite: true
                     });
 
                     gsap.to(tween, {
                         timeScale: 1,
-                        duration: 0.5,
-                        delay: 0.1,
+                        duration: 1.5,
+                        delay: 0.2,
+                        ease: 'power1.inOut',
                         overwrite: 'auto'
                     });
                 }

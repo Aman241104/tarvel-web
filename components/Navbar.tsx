@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Menu } from 'lucide-react';
@@ -14,48 +15,117 @@ export default function Navbar() {
     const linksRef = useRef<HTMLDivElement>(null);
     const ctaRef = useRef<HTMLAnchorElement>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 30);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const sections = ['home', 'stories', 'about', 'testimonials', 'services'];
+        const observers = sections.map((id) => {
+            const section = document.getElementById(id);
+            if (!section) return null;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(id);
+                    }
+                },
+                { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+            );
+            observer.observe(section);
+            return observer;
+        });
+
+        return () => observers.forEach((o) => o?.disconnect());
+    }, []);
 
     useGSAP(
         () => {
             gsap.from(containerRef.current, {
                 y: -100,
                 opacity: 0,
-                duration: 1.2,
-                ease: 'elastic.out(1, 0.5)',
-                delay: 0.2, // Small delay to let content load a bit
+                duration: 1.5,
+                ease: 'expo.out',
+                delay: 0.2,
             });
         },
         { scope: containerRef }
     );
 
+    // Sliding indicator animation
+    useGSAP(() => {
+        const activeLink = linksRef.current?.querySelector(`[data-nav-id="${activeSection}"]`);
+        const indicator = containerRef.current?.querySelector('.nav-indicator');
+        
+        if (activeLink && indicator) {
+            const { offsetLeft, offsetWidth } = activeLink as HTMLElement;
+            gsap.to(indicator, {
+                x: offsetLeft,
+                width: offsetWidth,
+                duration: 0.6,
+                ease: 'elastic.out(1, 0.8)',
+            });
+        }
+    }, [activeSection]);
+
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'Story', href: '#stories' },
-        { name: 'Trips', href: '#about' }, // Sujal section
-        { name: 'Gallery', href: '#services' }, // Services Grid
+        { name: 'Home', href: '#home', id: 'home' },
+        { name: 'Story', href: '#stories', id: 'stories' },
+        { name: 'Trips', href: '#about', id: 'about' },
+        { name: 'Reviews', href: '#testimonials', id: 'testimonials' },
+        { name: 'Gallery', href: '#services', id: 'services' },
     ];
 
     return (
         <>
             <nav
                 ref={containerRef}
-                className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl bg-white/80 backdrop-blur-md rounded-full border border-white/50 shadow-lg shadow-black/5 flex items-center justify-between px-6 py-3"
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl transition-all duration-1000 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
+                    scrolled 
+                    ? 'bg-white/90 backdrop-blur-2xl py-2 scale-[0.98] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/50' 
+                    : 'bg-white/40 backdrop-blur-md shadow-xl border-white/20'
+                }`}
             >
                 {/* Left: Logo */}
-                <Link href="#home" className="text-xl font-bold text-[#2D2D2D] font-sans tracking-tight">
-                    Destination Anywhere
+                <Link href="#home" className="flex items-center gap-3 group">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-md group-hover:scale-110 transition-transform duration-500">
+                         <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover" />
+                    </div>
+                    <div className="flex flex-col">
+                        <span className={`text-sm font-black tracking-tight hidden md:block transition-colors duration-500 ${scrolled ? 'text-text-navy' : 'text-text-navy'}`}>
+                            Destination Anywhere
+                        </span>
+                        <span className={`text-[9px] uppercase tracking-[0.2em] opacity-40 hidden lg:block font-black transition-colors duration-500 ${scrolled ? 'text-text-navy' : 'text-text-navy'}`}>
+                            Travel Boutique
+                        </span>
+                    </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden md:flex items-center gap-1" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-0 relative bg-black/[0.03] p-1 rounded-full border border-black/[0.03]" ref={linksRef}>
+                    {/* Sliding Indicator Background */}
+                    <div className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none" />
+                    
                     {navLinks.map((link) => (
-                        <Magnetic key={link.name} strength={0.3}>
+                        <Magnetic key={link.name} strength={0.2}>
                             <Link
                                 href={link.href}
-                                className="group relative px-4 py-2 text-sm font-medium text-[#2D2D2D] transition-colors duration-300 inline-block"
+                                data-nav-id={link.id}
+                                className={`group relative px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-500 rounded-full inline-block z-10 ${
+                                    activeSection === link.id 
+                                    ? 'text-brand-coral' 
+                                    : 'text-text-navy opacity-50 hover:opacity-100'
+                                }`}
                             >
-                                <span className="relative z-10">{link.name}</span>
-                                <span className="absolute inset-0 bg-gray-100 rounded-full scale-0 transition-transform duration-300 ease-out group-hover:scale-100 -z-0 origin-center opacity-0 group-hover:opacity-100" />
+                                {link.name}
                             </Link>
                         </Magnetic>
                     ))}
@@ -70,16 +140,17 @@ export default function Navbar() {
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-[#FF6B6B] text-white text-sm font-bold rounded-full transition-transform duration-300 hover:scale-105 hover:rotate-2 shadow-sm"
+                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,107,107,0.35)] shadow-xl relative overflow-hidden group"
                         >
-                            Book Now
+                            <span className="relative z-10">Plan My Journey</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                         </a>
                     </Magnetic>
 
                     {/* Mobile Menu Icon */}
                     <button
                         onClick={() => setIsMobileMenuOpen(true)}
-                        className="md:hidden p-2 text-[#2D2D2D] hover:bg-black/5 rounded-full transition-colors"
+                        className={`md:hidden p-2.5 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/20 text-text-navy'}`}
                     >
                         <Menu className="w-6 h-6" />
                     </button>
@@ -87,7 +158,7 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Menu Overlay */}
-            <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} links={navLinks} />
+            <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} links={navLinks} activeSection={activeSection} />
         </>
     );
 }

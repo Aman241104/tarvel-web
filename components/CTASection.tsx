@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import { Send, MapPin, Heart } from 'lucide-react';
 import Image from 'next/image';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 
@@ -12,105 +12,192 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function CTASection() {
     const containerRef = useRef<HTMLElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const postcardRef = useRef<HTMLDivElement>(null);
     const { openWhatsApp } = useWhatsApp();
+    const [formData, setFormData] = useState({ name: '', destination: '', message: '' });
 
     useGSAP(
         () => {
-            gsap.from(textRef.current, {
-                scale: 0.85,
+            gsap.from(postcardRef.current, {
+                y: 150,
+                rotateX: -25,
                 opacity: 0,
-                duration: 1.2,
-                ease: 'back.out(2)',
+                duration: 2,
+                ease: 'back.out(1.2)',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 70%',
+                    start: 'top 75%',
+                    toggleActions: 'play none none reverse',
                 },
+            });
+
+            // Parallax for background doodles
+            gsap.to('.cta-parallax', {
+                y: -50,
+                rotation: 10,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true,
+                }
             });
         },
         { scope: containerRef }
     );
 
-    const handleMouseEnter = () => {
-        if (!buttonRef.current) return;
-        gsap.to(buttonRef.current, {
-            scale: 1.1,
-            duration: 0.8,
-            ease: 'elastic.out(1, 0.3)',
-            overwrite: true,
-        });
-    };
-
-    const handleMouseLeave = () => {
-        if (!buttonRef.current) return;
-        gsap.to(buttonRef.current, {
-            scale: 1,
-            duration: 0.5,
-            ease: 'power2.out',
-            overwrite: true,
-        });
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const message = `Hi Sujal, I'm ${formData.name}. I'm dreaming of ${formData.destination || 'a trip'}. ${formData.message}`;
+        openWhatsApp('Postcard Form', message);
     };
 
     return (
-        <section ref={containerRef} className="pt-32 pb-32 -mt-24 md:-mt-32 md:pt-48 bg-[#FF6B6B] relative z-10 overflow-hidden">
-            {/* Ticket Stubs Decoration */}
-            <div className="absolute top-10 left-0 -translate-x-1/2 rotate-12 opacity-20 md:opacity-100 mix-blend-overlay">
-                <div className="w-64 h-32 bg-white border-dashed border-4 border-white/50 rounded-lg transform -rotate-12" />
-            </div>
-            <div className="absolute bottom-10 right-0 translate-x-1/2 -rotate-12 opacity-20 md:opacity-100 mix-blend-overlay">
-                <div className="w-64 h-32 bg-yellow-300 border-dashed border-4 border-white/50 rounded-lg transform rotate-12" />
-            </div>
-
-            {/* Postage Stamp Decoration */}
-            <div className="absolute top-12 right-12 hidden md:block rotate-12 opacity-50">
-                <svg viewBox="0 0 80 100" className="w-20 h-24" fill="none">
-                    <rect x="4" y="4" width="72" height="92" rx="2" fill="white" stroke="white" strokeWidth="2" />
-                    <rect x="8" y="8" width="64" height="60" rx="1" fill="#FF6B6B" opacity="0.3" />
-                    <text x="40" y="82" textAnchor="middle" fill="white" fontSize="7" fontFamily="serif" fontWeight="bold">VIA AIR MAIL</text>
-                    <text x="40" y="94" textAnchor="middle" fill="white" fontSize="6" fontFamily="sans-serif">PAR AVION</text>
-                    <path d="M20 30 L40 20 L60 30 L40 40Z" fill="white" opacity="0.5" />
-                    <circle cx="40" cy="48" r="8" fill="none" stroke="white" strokeWidth="1" opacity="0.5" />
-                </svg>
+        <section ref={containerRef} className="py-24 md:py-48 bg-brand-coral relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                 <div className="cta-parallax absolute top-20 left-20 w-80 h-80 border-4 border-white/20 rounded-full animate-spin-slow" />
+                 <div className="cta-parallax absolute bottom-40 right-20 w-[600px] h-[600px] border-2 border-white/10 rounded-full" />
+                 <div className="absolute top-1/2 left-1/4 w-px h-64 bg-white/20 rotate-45" />
             </div>
 
-            {/* Doodles */}
-            <svg className="absolute top-1/4 left-1/4 w-12 h-12 text-yellow-300 animate-pulse hidden md:block" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-            </svg>
-
-
-            <div className="container mx-auto px-6 text-center relative z-10" ref={textRef}>
-                <h2 className="text-4xl md:text-7xl font-black font-heading text-white mb-6 leading-tight select-none">
-                    Don&apos;t just like the photos.
+            <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center mb-16">
+                <h2 className="text-white font-heading font-black text-4xl md:text-7xl mb-4 leading-none tracking-tighter opacity-100">
+                    Your Journey Starts with a <span className="italic text-brand-yellow drop-shadow-lg">Note</span>
                 </h2>
-                <div className="inline-block relative mb-12 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                    {/* Hand-drawn Highlight Effect */}
-                    <svg className="absolute inset-0 w-full h-full -z-10 scale-110 text-yellow-300" viewBox="0 0 300 60" preserveAspectRatio="none" fill="currentColor">
-                        <path d="M5,10 Q150,5 295,15 Q280,50 10,45 Q20,25 5,10 Z" />
-                    </svg>
+                <p className="text-white/80 font-body text-lg md:text-xl max-w-2xl mx-auto italic mb-10">
+                    Drop us a line and let's craft an itinerary that's uniquely yours.
+                </p>
 
-                    <span className="relative z-10 text-4xl md:text-6xl font-black font-heading italic text-[#2D2D2D] px-6 py-2 block">
-                        Live the story.
-                    </span>
+                {/* Trust Signal: Recent Review Snippet */}
+                <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/20 text-white shadow-2xl animate-float">
+                    <div className="flex -space-x-2">
+                        <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative">
+                            <Image src="https://i.pravatar.cc/100?img=32" alt="Reviewer" fill className="object-cover" />
+                        </div>
+                    </div>
+                    <div className="text-left">
+                        <p className="text-[11px] font-black italic leading-tight">"Sujal made our Bali trip magical. 10/10!"</p>
+                        <div className="flex gap-0.5 mt-1">
+                            {[...Array(5)].map((_, i) => (
+                                <svg key={i} className="w-2.5 h-2.5 text-brand-yellow fill-current" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            ))}
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div>
-                    <button
-                        ref={buttonRef}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => openWhatsApp('CTA Section - "Live the Story"')}
-                        className="group relative bg-white text-[#2D2D2D] px-10 py-5 rounded-full text-xl font-bold font-heading shadow-[8px_8px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 flex items-center gap-3 mx-auto inline-flex"
-                    >
-                        {/* Pulse Ring */}
-                        <span className="absolute inset-0 rounded-full border-2 border-white/60 animate-pulse-ring pointer-events-none" />
-                        <span>Start Planning</span>
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <p className="mt-4 text-white/80 font-handwriting text-xl rotate-2">
-                        It's about time!
-                    </p>
+            <div className="container mx-auto px-6 max-w-5xl">
+                <div 
+                    ref={postcardRef}
+                    className="relative bg-white shadow-2xl p-6 md:p-12 rounded-sm transform md:rotate-[-1deg] overflow-hidden group border-[6px] md:border-[12px] border-white outline outline-1 outline-black/5"
+                >
+                    {/* The Center Vertical Line */}
+                    <div className="absolute top-12 bottom-12 left-1/2 w-[2px] bg-gray-100 hidden md:block" />
+
+                    <div className="flex flex-col md:flex-row gap-8 md:gap-20">
+                        {/* Left Side: Message Area */}
+                        <div className="flex-1 text-left">
+                            <h2 className="font-handwriting text-4xl md:text-5xl text-brand-teal mb-8 md:mb-10 rotate-[-1deg] md:rotate-[-2deg]">
+                                Postcard from your dreams
+                            </h2>
+                            
+                            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">Dear,</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Traveler's Name"
+                                        required
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-300"
+                                        value={formData.name}
+                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                    />
+                                </div>
+                                
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">I'm dreaming of</label>
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="text-gray-300 w-4 h-4 md:w-5 md:h-5" />
+                                        <input 
+                                            type="text" 
+                                            placeholder="Where to?"
+                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-300"
+                                            value={formData.destination}
+                                            onChange={(e) => setFormData({...formData, destination: e.target.value})}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-2">
+                                    <label className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60">Any special notes?</label>
+                                    <textarea 
+                                        placeholder="Beach club, restaurants, hidden gems..."
+                                        rows={2}
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-300"
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                    />
+                                </div>
+
+                                <button 
+                                    type="submit"
+                                    className="md:hidden w-full bg-brand-coral text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                                >
+                                    Send Message <Send className="w-4 h-4" />
+                                </button>
+                            </form>
+                        </div>
+
+                        {/* Right Side: Stamp & Address */}
+                        <div className="flex-1 flex flex-col justify-between items-end relative">
+                            {/* Postage Stamp */}
+                            <div className="stamp-parallax w-28 h-36 md:w-36 md:h-44 bg-white border-[4px] md:border-[6px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block">
+                                 <div className="absolute inset-0 bg-brand-yellow/10 opacity-0 group-hover/stamp:opacity-100 transition-opacity z-10" />
+                                 <div className="relative w-full h-full bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden">
+                                      <Image 
+                                        src="/assets/logo.png" 
+                                        alt="Stamp" 
+                                        fill 
+                                        className="object-contain p-3 md:p-4 grayscale group-hover/stamp:grayscale-0 transition-all duration-700 scale-90 group-hover/stamp:scale-105" 
+                                      />
+                                 </div>
+                            </div>
+
+                            <div className="w-full mt-8 md:mt-16 space-y-6 md:space-y-10 text-left">
+                                <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
+                                     <p className="font-handwriting text-2xl md:text-3xl text-gray-400 tracking-wide">Destination Anywhere & Co.</p>
+                                </div>
+                                <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
+                                     <p className="font-body font-black text-gray-400 text-[10px] md:text-xs tracking-[0.3em] uppercase opacity-60">Global Luxury Concierge</p>
+                                </div>
+                                <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
+                                     <p className="font-body font-black text-gray-400 text-[10px] md:text-xs tracking-[0.3em] uppercase opacity-60">Est. 2015</p>
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={handleSubmit}
+                                className="hidden md:flex group relative bg-brand-coral text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 mt-12 md:mt-16 self-end overflow-hidden"
+                            >
+                                <span className="relative z-10">Send the Postcard</span>
+                                <Send className="relative z-10 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                <div className="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                            </button>
+
+                            <div className="mt-8 md:mt-10 flex items-center gap-3 text-gray-400 font-handwriting text-xl md:text-2xl self-end italic opacity-80">
+                                With Love, Sujal <Heart className="w-4 h-4 md:w-5 md:h-5 text-brand-coral fill-brand-coral animate-pulse" />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Faint Text Mark (Rubber Stamp Effect) */}
+                    <div className="absolute bottom-4 left-4 opacity-[0.03] select-none pointer-events-none rotate-[-15deg]">
+                         <p className="text-8xl font-black font-heading uppercase">Approved</p>
+                    </div>
                 </div>
             </div>
         </section>

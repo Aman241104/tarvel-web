@@ -6,6 +6,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import CursorStamper from "@/components/ui/CursorStamper";
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import PostItCTA from "@/components/ui/PostItCTA";
 import { Providers } from "./providers";
 
 
@@ -45,7 +46,10 @@ export default function RootLayout({
                 <SmoothScroll>
                     <CustomCursor />
                     <CursorStamper />
-                    <Providers>{children}</Providers>
+                    <Providers>
+                        {children}
+                        <PostItCTA />
+                    </Providers>
                 </SmoothScroll>
             </body>
         </html>

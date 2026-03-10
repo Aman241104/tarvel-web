@@ -8,8 +8,12 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                'brand-coral': '#FF6B6B',
+                'brand-teal': '#2EC4B6',
+                'brand-yellow': '#FFBF00',
                 'bg-dark': '#050505',
                 'bg-light': '#F2F0E9', // Warm Beige
+                'bg-paper': '#FFFBF5', // Premium Paper
                 'text-dark': '#ffffff',
                 'text-light': '#1a1a1a',
                 'sky-primary': '#0EA5E9', // Vivid Sky Blue

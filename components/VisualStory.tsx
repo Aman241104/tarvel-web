@@ -54,20 +54,21 @@ export default function VisualStory() {
             storyRefs.current.forEach((story, i) => {
                 if (!story) return;
 
+                const imgContainer = story.querySelector('.story-image-container');
                 const img = story.querySelector('.story-image');
                 const text = story.querySelector('.story-text');
                 const brushUnderline = story.querySelector('.brush-underline');
 
-                // Image Reveal
+                // Advanced Image Reveal with 3D feel
                 gsap.fromTo(
-                    img,
-                    { scale: 0.8, opacity: 0, rotation: 5 },
+                    imgContainer,
+                    { scale: 0.9, opacity: 0, rotateY: 15 },
                     {
                         scale: 1,
                         opacity: 1,
-                        rotation: 0,
-                        duration: 1.2,
-                        ease: 'back.out(1.7)',
+                        rotateY: 0,
+                        duration: 1.5,
+                        ease: 'power3.out',
                         scrollTrigger: {
                             trigger: story,
                             start: 'top 80%',
@@ -76,17 +77,15 @@ export default function VisualStory() {
                     }
                 );
 
-                // Text Slide
-                const xStart = i % 2 === 0 ? -50 : 50;
-
+                // Text Staggered Reveal
                 gsap.fromTo(
                     text,
-                    { x: xStart, opacity: 0 },
+                    { y: 50, opacity: 0 },
                     {
-                        x: 0,
+                        y: 0,
                         opacity: 1,
-                        duration: 1,
-                        ease: 'power3.out',
+                        duration: 1.2,
+                        ease: 'expo.out',
                         scrollTrigger: {
                             trigger: story,
                             start: 'top 75%',
@@ -102,7 +101,7 @@ export default function VisualStory() {
                         { strokeDashoffset: 200 },
                         {
                             strokeDashoffset: 0,
-                            duration: 1,
+                            duration: 1.2,
                             ease: 'power2.out',
                             scrollTrigger: {
                                 trigger: story,
@@ -112,86 +111,90 @@ export default function VisualStory() {
                     );
                 }
 
-                // Parallax Effect (Internal Image Movement)
-                gsap.fromTo(
-                    img,
-                    { yPercent: -10, scale: 1.1 },
-                    {
-                        yPercent: 10,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: story,
-                            start: 'top bottom',
-                            end: 'bottom top',
-                            scrub: true,
-                        },
-                    }
-                );
+                // Parallax Effect (Smooth scrub)
+                if (img) {
+                    gsap.fromTo(
+                        img,
+                        { scale: 1.2, yPercent: -10 },
+                        {
+                            scale: 1,
+                            yPercent: 10,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: story,
+                                start: 'top bottom',
+                                end: 'bottom top',
+                                scrub: true,
+                            },
+                        }
+                    );
+                }
             });
 
-            // Timeline progress line
-            const timelineLine = containerRef.current?.querySelector('.story-timeline-line');
-            if (timelineLine) {
-                gsap.fromTo(
-                    timelineLine,
-                    { scaleY: 0 },
-                    {
-                        scaleY: 1,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: containerRef.current,
-                            start: 'top 60%',
-                            end: 'bottom 40%',
-                            scrub: true,
-                        },
-                    }
-                );
-            }
+            // Section Progress Tracker (Dot Indicator)
+            const dots = containerRef.current?.querySelectorAll('.progress-dot');
+            storyRefs.current.forEach((story, i) => {
+                if (!story || !dots?.[i]) return;
+                ScrollTrigger.create({
+                    trigger: story,
+                    start: 'top center',
+                    end: 'bottom center',
+                    onEnter: () => gsap.to(dots[i], { scale: 1.5, backgroundColor: '#FF6B6B', duration: 0.3 }),
+                    onLeave: () => gsap.to(dots[i], { scale: 1, backgroundColor: '#E2E8F0', duration: 0.3 }),
+                    onEnterBack: () => gsap.to(dots[i], { scale: 1.5, backgroundColor: '#FF6B6B', duration: 0.3 }),
+                    onLeaveBack: () => gsap.to(dots[i], { scale: 1, backgroundColor: '#E2E8F0', duration: 0.3 }),
+                });
+            });
         },
         { scope: containerRef }
     );
 
     return (
-        <section ref={containerRef} className="py-12 md:py-16 bg-white paper-cool overflow-hidden relative">
-            {/* Timeline progress line */}
-            <div className="story-timeline-line absolute left-1/2 top-16 bottom-16 w-[3px] bg-gradient-to-b from-transparent via-gray-300 to-transparent -translate-x-1/2 origin-top hidden md:block z-[1]" />
+        <section ref={containerRef} className="py-24 md:py-40 bg-white paper-cool overflow-hidden relative">
+            {/* Progress Tracker (Side) */}
+            <div className="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4">
+                {stories.map((s, i) => (
+                    <div key={s.id} className="progress-dot w-2 h-2 rounded-full bg-gray-200 transition-all duration-300" />
+                ))}
+            </div>
 
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
+                <div className="text-center mb-32 max-w-2xl mx-auto">
+                    <span className="text-brand-coral font-black text-xs uppercase tracking-[0.3em] mb-4 block">Visual Stories</span>
+                    <h2 className="text-4xl md:text-7xl font-heading font-black text-text-navy leading-none">The Art of <br/><span className="italic text-brand-teal">Exploration</span></h2>
+                </div>
+
                 {stories.map((story, index) => {
-                    const isReversed = index % 2 !== 0; // Even index (0, 2) = Left Text, Odd (1) = Right Text
-                    // Scrapbook Style: Alternating Rotations & Hard Shadows
+                    const isReversed = index % 2 !== 0;
                     const rotation = index % 2 === 0 ? '-rotate-1' : 'rotate-1';
-                    const shadow = 'shadow-[8px_8px_0px_rgba(0,0,0,0.15)]';
 
                     return (
                         <div
                             key={story.id}
                             ref={(el) => { storyRefs.current[index] = el; }}
-                            className={`flex flex-col items-center gap-8 md:gap-16 mb-12 md:mb-16 last:mb-0 w-full ${isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
-                                }`}
+                            className={`flex flex-col md:flex-row items-center justify-between gap-16 md:gap-24 mb-32 md:mb-56 last:mb-0 w-full ${isReversed ? 'md:flex-row-reverse' : ''}`}
                         >
                             {/* Text Side */}
-                            <div className="story-text flex-1 text-center md:text-left relative">
-                                {/* Doodle Icon */}
-                                <div className={`absolute -top-8 ${isReversed ? '-right-4' : '-left-4'} hidden md:block opacity-20 animate-float`}>
-                                    <story.Icon className={`w-12 h-12 ${story.accentColor.replace('text-', 'stroke-')}`} />
-                                </div>
-
-                                <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#2D2D2D] mb-6 leading-tight">
+                            <div className="story-text w-full md:w-[45%] text-left relative">
+                                <span className="text-5xl md:text-8xl font-black text-black/[0.03] absolute -top-12 md:-top-20 -left-4 md:-left-8 select-none">0{index + 1}</span>
+                                
+                                <h2 className="text-4xl md:text-6xl font-black font-heading text-text-navy mb-8 leading-[1.1] tracking-tight relative z-10">
                                     {story.title.split(' ').map((word, wIndex) => (
                                         <span
                                             key={wIndex}
-                                            className={`relative inline-block ${word.includes(story.highlightWord) ? story.accentColor : ''}`}
+                                            className={`relative inline-block ${word.includes(story.highlightWord) ? (
+                                                index === 0 ? 'text-brand-coral' : index === 1 ? 'text-brand-teal' : 'text-brand-yellow'
+                                            ) : ''}`}
                                         >
                                             {word}{' '}
                                             {word.includes(story.highlightWord) && (
-                                                <svg className="absolute -bottom-1 left-0 w-full h-3 z-0" viewBox="0 0 200 12" preserveAspectRatio="none">
+                                                <svg className="absolute -bottom-2 left-0 w-full h-4 z-0" viewBox="0 0 200 12" preserveAspectRatio="none">
                                                     <path
                                                         className="brush-underline"
                                                         d="M2 9C15 4 30 11 50 7C70 3 85 12 105 6C125 2 140 10 160 8C175 5 190 11 198 7"
                                                         fill="none"
                                                         stroke="currentColor"
-                                                        strokeWidth="4"
+                                                        strokeWidth="6"
                                                         strokeLinecap="round"
                                                         style={{ strokeDasharray: 200, strokeDashoffset: 200 }}
                                                     />
@@ -200,26 +203,33 @@ export default function VisualStory() {
                                         </span>
                                     ))}
                                 </h2>
-                                <p className="text-lg text-gray-600 font-sans leading-relaxed max-w-md mx-auto md:mx-0">
+                                <p className="text-lg md:text-xl text-gray-500 font-body leading-relaxed max-w-md opacity-80">
                                     {story.description}
                                 </p>
+                                
+                                <button className="mt-10 group flex items-center gap-3 text-sm font-black uppercase tracking-widest text-text-navy hover:text-brand-coral transition-colors">
+                                    Read Full Story
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                                </button>
                             </div>
 
                             {/* Image Side */}
-                            <div className="story-image flex-1 relative w-full max-w-lg aspect-[4/5] md:aspect-square">
+                            <div className="story-image-container w-full md:w-[50%] relative aspect-[4/5] md:aspect-[4/5] perspective-1000">
                                 <div
-                                    className={`relative w-full h-full overflow-hidden border-4 border-white ${story.shapeClass} ${rotation} shadow-ambient`}
+                                    className={`relative w-full h-full overflow-hidden border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
                                 >
                                     <Image
                                         src={story.image}
                                         alt={story.title}
                                         fill
-                                        className="object-cover filter-printed"
-                                        sizes="(max-width: 768px) 100vw, 500px"
+                                        className="story-image object-cover filter-printed transition-transform duration-1000"
+                                        sizes="(max-width: 768px) 100vw, 800px"
                                     />
+                                    {/* Overlay Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </div>
-                                {/* Decorative blob/bg behind image? Optional but adds depth */}
-                                <div className={`absolute inset-0 -z-10 transform translate-x-4 translate-y-4 ${story.shapeClass} bg-gray-100/50`} />
+                                {/* Decorative elements */}
+                                <div className={`absolute -inset-4 md:-inset-6 -z-10 transform translate-x-4 translate-y-4 ${story.shapeClass} ${rotation} bg-gray-50 opacity-40 border border-black/5`} />
                             </div>
                         </div>
                     );

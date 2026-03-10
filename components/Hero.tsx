@@ -211,21 +211,24 @@ export default function Hero() {
                     ref={(el) => { stickerRefs.current[i] = el; }}
                     onMouseEnter={() => handleStickerHover(i, true)}
                     onMouseLeave={() => handleStickerHover(i, false)}
-                    className={`absolute p-2 bg-white shadow-ambient rounded-sm z-10 ${sticker.className} transition-transform will-change-transform ${i < 2 ? 'block' : 'hidden md:block'} cursor-pointer`}
-                    style={{ transform: `rotate(${Math.random() * 4 - 2}deg)` }} // Subtle random rotation
+                    className={`absolute p-2 bg-white shadow-ambient-lg rounded-sm z-10 ${sticker.className} transition-transform will-change-transform hidden md:block cursor-pointer`}
+                    style={{ transform: `rotate(${Math.random() * 4 - 2}deg)` }}
                 >
+                    {/* Washi Tape Decoration */}
+                    <div className={`washi-tape -top-3 left-1/2 -translate-x-1/2 -rotate-2 ${i % 2 === 0 ? 'washi-tape-yellow' : 'washi-tape-coral'}`} />
+
                     {/* Polaroid Style Border */}
                     <div className="relative w-full h-full bg-gray-100/50">
-                        <div className="absolute top-0 left-0 w-full h-full border-[12px] border-b-[40px] border-white shadow-inner"></div>
+                        <div className="absolute top-0 left-0 w-full h-full border-[10px] border-b-[36px] border-white shadow-inner"></div>
                         <Image
                             src={sticker.src}
                             alt={sticker.alt}
                             fill
-                            className="object-cover p-[12px] pb-[40px] filter-printed"
+                            className="object-cover p-[10px] pb-[36px] filter-printed"
                             sizes="(max-width: 768px) 150px, 350px"
                         />
-                        <div className="absolute bottom-2 left-0 w-full text-center">
-                            <span className="font-handwriting text-gray-500 text-xs tracking-widest uppercase opacity-60">
+                        <div className="absolute bottom-1 left-0 w-full text-center">
+                            <span className="font-handwriting text-gray-400 text-[10px] tracking-widest uppercase">
                                 {sticker.alt}
                             </span>
                         </div>
@@ -236,9 +239,9 @@ export default function Hero() {
 
 
             {/* Typography: Central Heading */}
-            <div ref={textRef} className="relative z-20 text-center flex flex-col items-center max-w-4xl mx-auto">
+            <div ref={textRef} className="relative z-20 text-center flex flex-col items-center max-w-4xl mx-auto -mt-20 md:-mt-10 px-4">
                 {/* Doodle: Star */}
-                <svg className="absolute -top-12 -right-8 w-16 h-16 text-accent-gold opacity-80 animate-spin-slow" viewBox="0 0 100 100" fill="currentColor">
+                <svg className="absolute -top-16 -right-12 w-14 h-14 text-brand-yellow opacity-80 animate-spin-slow hidden md:block" viewBox="0 0 100 100" fill="currentColor">
                     <path d="M50 0L61 35L98 35L68 57L79 91L50 70L21 91L32 57L2 35L39 35L50 0Z" />
                 </svg>
 
@@ -254,44 +257,75 @@ export default function Hero() {
                     </svg>
                 </div>
 
-                <h1 className="flex flex-col items-center justify-center">
-                    <span className="font-body font-bold text-xs md:text-lg tracking-[0.15em] md:tracking-[0.3em] text-sky-primary uppercase mb-4 min-h-[1.5em] px-4 text-center">
+                <h1 className="flex flex-col items-center justify-center w-full">
+                    <span className="font-body font-bold text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.4em] text-brand-teal uppercase mb-4 md:mb-6 min-h-[1.5em] px-4 text-center">
                         {greeting}
                     </span>
 
-                    <span className="font-heading font-black text-6xl md:text-9xl leading-[0.9] text-text-navy tracking-tighter relative">
+                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[90vw]">
                         {'DESTINATION'.split('').map((char, i) => (
                             <span key={i} className="dest-char inline-block" aria-hidden={i > 0}>
                                 {char}
                             </span>
                         ))}
                         {/* Doodle: Arrow */}
-                        <svg className="absolute -left-16 top-1/2 w-24 h-12 text-sky-400 -rotate-12 hidden md:block" viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3">
+                        <svg className="absolute -left-12 md:-left-20 top-1/2 w-12 h-6 md:w-20 md:h-10 text-brand-teal -rotate-12 hidden sm:block" viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3">
                             <path d="M0 25C20 25 40 10 60 40M60 40L40 35M60 40L50 50" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </span>
 
-                    <span className="font-heading font-italic text-5xl md:text-8xl leading-none text-transparent bg-clip-text bg-gradient-to-r from-sky-primary to-accent-gold relative mt-2">
+                    <span className="font-handwriting text-[12vw] sm:text-6xl md:text-9xl leading-none text-brand-yellow relative mt-2 md:mt-4 drop-shadow-sm transform -rotate-2">
                         Anywhere
                         {/* Underline */}
-                        <svg className="absolute -bottom-4 left-0 w-full h-6 text-accent-gold opacity-60" viewBox="0 0 200 20" preserveAspectRatio="none">
-                            <path className="hero-underline" d="M5 15Q100 0 195 15" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" style={{ strokeDasharray: 200, strokeDashoffset: 200 }} />
+                        <svg className="absolute -bottom-2 left-0 w-full h-4 md:h-6 text-brand-teal opacity-60" viewBox="0 0 200 20" preserveAspectRatio="none">
+                            <path className="hero-underline" d="M5 15Q100 0 195 15" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" style={{ strokeDasharray: 200, strokeDashoffset: 200 }} />
                         </svg>
                     </span>
                 </h1>
 
-                {/* Subtext Pill */}
-                <Magnetic strength={0.2}>
-                    <button
-                        onClick={() => openWhatsApp('Hero Section - "Plan your trip"')}
-                        className="mt-8 px-6 py-3 bg-white rounded-full border border-black/5 shadow-ambient-sm flex items-center gap-2 transform hover:scale-105 transition-transform cursor-pointer"
-                    >
-                        <span className="text-[#2D2D2D] font-bold text-sm uppercase tracking-wide">
-                            Plan your trip
-                        </span>
-                        <span className="text-xl">✈️</span>
-                    </button>
-                </Magnetic>
+                {/* Subtext Pill & Social Proof */}
+                <div className="mt-8 md:mt-12 flex flex-col items-center gap-6">
+                    <Magnetic strength={0.2}>
+                        <button
+                            onClick={() => openWhatsApp('Hero Section - "PLAN YOUR TRIP"')}
+                            className="px-8 py-4 bg-brand-coral text-white rounded-full shadow-[0_20px_40px_rgba(255,107,107,0.3)] flex items-center gap-4 transform hover:scale-105 transition-all group overflow-hidden relative"
+                        >
+                            <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.2em]">
+                                Start Your Story
+                            </span>
+                            <span className="relative z-10 text-xl group-hover:translate-x-1 transition-transform">✈️</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                        </button>
+                    </Magnetic>
+
+                    {/* High-end Social Proof */}
+                    <div className="flex items-center gap-4 bg-white/40 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/50 shadow-sm animate-float">
+                        <div className="flex -space-x-2">
+                            {[1, 2, 3].map((i) => (
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden relative">
+                                    <Image 
+                                        src={`https://i.pravatar.cc/100?img=${i + 10}`} 
+                                        alt="Traveler" 
+                                        fill 
+                                        className="object-cover"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-col items-start">
+                            <div className="flex gap-0.5">
+                                {[...Array(5)].map((_, i) => (
+                                    <svg key={i} className="w-3 h-3 text-brand-yellow fill-current" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                ))}
+                            </div>
+                            <span className="text-[10px] font-black text-text-navy/60 uppercase tracking-widest">
+                                500+ Happy Explorers
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* Scroll Indicator */}
