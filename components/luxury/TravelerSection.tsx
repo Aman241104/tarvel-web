@@ -131,8 +131,8 @@ export default function TravelerSection() {
                         <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-10 leading-[0.85] tracking-tighter text-text-navy">
                             Sujal<br />
                             <span className="relative inline-block px-4 mt-4 py-1">
-                                <span className="absolute inset-0 bg-brand-yellow -rotate-1 rounded-sm mix-blend-multiply opacity-90" />
-                                <span className="relative z-10 text-white">Soni</span>
+                                <span className="absolute inset-0 bg-brand-yellow -rotate-1 rounded-sm opacity-90" />
+                                <span className="relative z-10 text-text-navy">Soni</span>
                             </span>
                         </h2>
 

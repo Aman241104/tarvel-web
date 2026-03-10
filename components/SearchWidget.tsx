@@ -46,16 +46,16 @@ Can you help me with the itinerary?`;
             ref={containerRef}
             className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 z-30 w-[94%] md:w-[90%] max-w-4xl"
         >
-            <div className="bg-bg-paper/80 backdrop-blur-2xl border border-white/10 rounded-[2rem] md:rounded-full p-2 md:p-3 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-stretch md:items-center gap-1 md:gap-0 relative">
+            <div className="bg-white/90 backdrop-blur-2xl border border-black/5 rounded-[2rem] md:rounded-full p-2 md:p-3 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-stretch md:items-center gap-1 md:gap-0 relative">
                 
                 {/* Concierge Badge */}
-                <div className="absolute -top-9 left-6 md:left-12 bg-white/5 backdrop-blur-xl px-3 py-1 rounded-full border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/40 flex items-center gap-2">
+                <div className="absolute -top-9 left-6 md:left-12 bg-white/80 backdrop-blur-xl px-3 py-1 rounded-full border border-black/5 text-[9px] font-black uppercase tracking-widest text-text-navy/40 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse" />
                     Concierge Online
                 </div>
 
                 {/* Location Input - Full width on mobile */}
-                <div className={`relative flex-[1.5] p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'location' ? 'bg-white/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-white/5'}`}>
+                <div className={`relative flex-[1.5] p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'location' ? 'bg-black/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-black/5'}`}>
                     <div className="flex items-center gap-3 md:gap-4">
                         <div className="bg-brand-teal/10 p-2 rounded-full shrink-0">
                             <MapPin className="text-brand-teal w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
@@ -66,7 +66,7 @@ Can you help me with the itinerary?`;
                                 id="location-input"
                                 type="text"
                                 placeholder="Japan, Bali, Paris..."
-                                className="bg-transparent outline-none text-white font-black text-xs md:text-base placeholder:text-white/20 w-full"
+                                className="bg-transparent outline-none text-text-navy font-black text-xs md:text-base placeholder:text-text-navy/20 w-full"
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 onFocus={() => setActiveInput('location')}
@@ -76,12 +76,12 @@ Can you help me with the itinerary?`;
                     </div>
                 </div>
 
-                <div className="hidden md:block w-px h-8 bg-white/5 mx-2" />
+                <div className="hidden md:block w-px h-8 bg-black/5 mx-2" />
 
                 {/* Mobile Row for Date and Guests */}
                 <div className="flex md:contents gap-1">
                     {/* Date Input */}
-                    <div className={`relative flex-1 p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'date' ? 'bg-white/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-white/5'}`}>
+                    <div className={`relative flex-1 p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'date' ? 'bg-black/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-black/5'}`}>
                         <div className="flex items-center gap-2 md:gap-4">
                             <div className="bg-brand-coral/10 p-1.5 md:p-2 rounded-full shrink-0">
                                 <Calendar className="text-brand-coral w-3.5 h-3.5 md:w-5 md:h-5" aria-hidden="true" />
@@ -92,7 +92,7 @@ Can you help me with the itinerary?`;
                                     id="date-input"
                                     type="text"
                                     placeholder="Spring '26"
-                                    className="bg-transparent outline-none text-white font-black text-xs md:text-base placeholder:text-white/20 w-full"
+                                    className="bg-transparent outline-none text-text-navy font-black text-xs md:text-base placeholder:text-text-navy/20 w-full"
                                     value={date}
                                     onChange={(e) => setDate(e.target.value)}
                                     onFocus={() => setActiveInput('date')}
@@ -102,10 +102,10 @@ Can you help me with the itinerary?`;
                         </div>
                     </div>
 
-                    <div className="hidden md:block w-px h-8 bg-white/5 mx-2" />
+                    <div className="hidden md:block w-px h-8 bg-black/5 mx-2" />
 
                     {/* Guests Input */}
-                    <div className={`relative flex-1 p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'guests' ? 'bg-white/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-white/5'}`}>
+                    <div className={`relative flex-1 p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'guests' ? 'bg-black/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-black/5'}`}>
                         <div className="flex items-center gap-2 md:gap-4">
                             <div className="bg-brand-yellow/10 p-1.5 md:p-2 rounded-full shrink-0">
                                 <Users className="text-brand-yellow w-3.5 h-3.5 md:w-5 md:h-5" aria-hidden="true" />
@@ -116,7 +116,7 @@ Can you help me with the itinerary?`;
                                     id="guests-input"
                                     type="text"
                                     placeholder="4 People"
-                                    className="bg-transparent outline-none text-white font-black text-xs md:text-base placeholder:text-white/20 w-full"
+                                    className="bg-transparent outline-none text-text-navy font-black text-xs md:text-base placeholder:text-text-navy/20 w-full"
                                     value={guests}
                                     onChange={(e) => setGuests(e.target.value)}
                                     onFocus={() => setActiveInput('guests')}

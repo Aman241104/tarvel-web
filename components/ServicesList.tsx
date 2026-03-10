@@ -108,7 +108,7 @@ export default function ServicesList() {
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}
-                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-white/20 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
+                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-black/20 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
 
                             {/* Luggage Tag Card */}
                             <div

@@ -112,7 +112,7 @@ export default function CTASection() {
                                         type="text" 
                                         placeholder="Traveler's Name"
                                         required
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-200"
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-400"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                                     />
@@ -126,7 +126,7 @@ export default function CTASection() {
                                             id="destination"
                                             type="text" 
                                             placeholder="Where to?"
-                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-200"
+                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-400"
                                             value={formData.destination}
                                             onChange={(e) => setFormData({...formData, destination: e.target.value})}
                                         />
@@ -139,7 +139,7 @@ export default function CTASection() {
                                         id="special-notes"
                                         placeholder="Beach club, restaurants, hidden gems..."
                                         rows={2}
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-200"
+                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-400"
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
