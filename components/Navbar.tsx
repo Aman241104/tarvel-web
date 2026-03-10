@@ -95,31 +95,31 @@ export default function Navbar() {
                 }`}
             >
                 {/* Left: Logo */}
-                <Link href="#home" className="flex items-center gap-3 group">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-md group-hover:scale-110 transition-transform duration-500">
+                <Link href="#home" className="flex items-center gap-3 md:gap-4 group">
+                    <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-md group-hover:scale-110 transition-transform duration-500">
                          <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover" />
                     </div>
                     <div className="flex flex-col">
-                        <span className={`text-sm font-black tracking-tight hidden md:block transition-colors duration-500 ${scrolled ? 'text-text-navy' : 'text-text-navy'}`}>
+                        <span className={`text-sm md:text-base font-black tracking-tight transition-colors duration-500 ${scrolled ? 'text-text-navy' : 'text-text-navy'}`}>
                             Destination Anywhere
                         </span>
-                        <span className={`text-[9px] uppercase tracking-[0.2em] opacity-40 hidden lg:block font-black transition-colors duration-500 ${scrolled ? 'text-text-navy' : 'text-text-navy'}`}>
+                        <span className={`text-[8px] md:text-[10px] uppercase tracking-[0.2em] font-black transition-colors duration-500 ${scrolled ? 'text-text-navy/40' : 'text-text-navy/40'} hidden sm:block`}>
                             Travel Boutique
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-0 relative bg-black/[0.03] p-1 rounded-full border border-black/[0.03]" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-0 relative bg-black/[0.03] p-1.5 rounded-full border border-black/[0.03]" ref={linksRef}>
                     {/* Sliding Indicator Background */}
-                    <div className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none" />
+                    <div className="nav-indicator absolute h-[calc(100%-12px)] top-1.5 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none" />
                     
                     {navLinks.map((link) => (
                         <Magnetic key={link.name} strength={0.2}>
                             <Link
                                 href={link.href}
                                 data-nav-id={link.id}
-                                className={`group relative px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-500 rounded-full inline-block z-10 ${
+                                className={`group relative px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-500 rounded-full inline-block z-10 ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
                                     : 'text-text-navy opacity-50 hover:opacity-100'
@@ -132,7 +132,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Right: CTA Button (Desktop) & Mobile Menu */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 md:gap-4">
                     {/* Desktop CTA */}
                     <Magnetic>
                         <a
@@ -140,7 +140,7 @@ export default function Navbar() {
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden lg:inline-flex items-center justify-center px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,107,107,0.35)] shadow-xl relative overflow-hidden group"
+                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,107,107,0.35)] shadow-xl relative overflow-hidden group"
                         >
                             <span className="relative z-10">Plan My Journey</span>
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -153,9 +153,9 @@ export default function Navbar() {
                         aria-label="Open mobile menu"
                         aria-expanded={isMobileMenuOpen}
                         aria-controls="mobile-menu"
-                        className={`lg:hidden p-2.5 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/20 text-text-navy'}`}
+                        className={`lg:hidden p-3 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/40 text-text-navy shadow-sm'}`}
                     >
-                        <Menu className="w-6 h-6" aria-hidden="true" />
+                        <Menu className="w-6 h-6 md:w-7 md:h-7" aria-hidden="true" />
                     </button>
                 </div>
             </nav>

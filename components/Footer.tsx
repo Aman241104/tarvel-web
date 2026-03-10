@@ -1,13 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { Instagram, Twitter, Send } from 'lucide-react';
+import { Instagram, Twitter, Send, Linkedin } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
-import Magnetic from '@/components/ui/Magnetic'; // Import Magnetic
+import Magnetic from '@/components/ui/Magnetic';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,7 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-brand-teal pt-40 pb-16 overflow-hidden z-10 text-white">
+        <footer ref={containerRef} className="relative bg-brand-teal pt-48 pb-16 overflow-hidden z-10 text-white">
             {/* Wave Divider (Top) - Transitions from Red CTA to Teal Footer */}
             <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-0">
                 <svg
@@ -62,7 +63,7 @@ export default function Footer() {
                 >
                     <path
                         d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                        fill="#FF6B6B"
+                        fill="#FF5A5F"
                     ></path>
                 </svg>
             </div>
@@ -70,7 +71,7 @@ export default function Footer() {
             {/* Paper Plane - Interactive */}
             <div
                 ref={planeRef}
-                className="absolute top-24 left-0 text-white w-24 h-24 md:w-40 md:h-40 z-20 cursor-pointer drop-shadow-2xl"
+                className="absolute top-32 left-0 text-white w-24 h-24 md:w-40 md:h-40 z-20 cursor-pointer drop-shadow-2xl"
                 onMouseEnter={handleFlyPlane}
                 onClick={handleFlyPlane}
             >
@@ -109,20 +110,33 @@ export default function Footer() {
             </div>
 
             <div className="container mx-auto px-6 relative z-10 pb-32">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 items-start">
 
                     {/* Col 1: Brand */}
                     <div className="col-span-2 lg:col-span-1">
-                        <h3 className="text-3xl md:text-4xl font-black font-heading mb-8 tracking-tighter text-white leading-tight">Destination<br />Anywhere & Co.</h3>
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/40 bg-white">
+                                <Image src="/assets/logo.png" alt="Logo" fill className="object-cover" />
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-black font-heading tracking-tighter text-white leading-tight">Destination<br />Anywhere & Co.</h3>
+                        </div>
+                        <p className="text-white/60 font-body text-sm mb-8 max-w-xs italic leading-relaxed">
+                            Crafting boutique travel experiences that turn your dreams into stamped passports.
+                        </p>
                         <div className="flex gap-4">
                             <Magnetic>
-                                <a href="#" aria-label="Visit our Instagram page" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                                <a href="#" aria-label="Visit our Instagram page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
+                                    <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                 </a>
                             </Magnetic>
                             <Magnetic>
-                                <a href="#" aria-label="Visit our Twitter page" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
-                                    <Twitter className="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                                <a href="#" aria-label="Visit our LinkedIn page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
+                                    <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                                </a>
+                            </Magnetic>
+                            <Magnetic>
+                                <a href="#" aria-label="Visit our Twitter page" className="bg-white/10 border border-white/20 p-4 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
+                                    <Twitter className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                 </a>
                             </Magnetic>
                         </div>
@@ -130,43 +144,43 @@ export default function Footer() {
 
                     {/* Col 2: Company */}
                     <div>
-                        <h4 className="font-black text-xs uppercase tracking-[0.3em] mb-10 text-white/50">Company</h4>
-                        <ul className="space-y-6 font-bold text-lg text-white">
-                            <li><Link href="/about" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">About Us</Link></li>
-                            <li><Link href="/services" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Services</Link></li>
-                            <li><Link href="/destinations" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Destinations</Link></li>
-                            <li><Link href="/contact" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Contact</Link></li>
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Company</h4>
+                        <ul className="space-y-4 font-black text-sm uppercase tracking-widest text-white">
+                            <li><Link href="/about" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">About Us</Link></li>
+                            <li><Link href="/services" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Services</Link></li>
+                            <li><Link href="/destinations" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Destinations</Link></li>
+                            <li><Link href="/contact" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Contact</Link></li>
                         </ul>
                     </div>
 
                     {/* Col 3: Services */}
                     <div>
-                        <h4 className="font-black text-xs uppercase tracking-[0.3em] mb-10 text-white/50">Services</h4>
-                        <ul className="space-y-6 font-bold text-lg text-white">
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Flight Booking</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Hotel Reservations</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Tour Packages</Link></li>
-                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-3 transition-all inline-block">Visa Assistance</Link></li>
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Our Craft</h4>
+                        <ul className="space-y-4 font-black text-sm uppercase tracking-widest text-white">
+                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Flight Booking</Link></li>
+                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Luxury Stays</Link></li>
+                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Tour Packages</Link></li>
+                            <li><Link href="#" className="hover:text-brand-yellow hover:translate-x-2 transition-all inline-block">Concierge</Link></li>
                         </ul>
                     </div>
 
                     {/* Col 4: Newsletter */}
-                    <div>
-                        <h4 className="font-black text-xs uppercase tracking-[0.3em] mb-10 text-white/50">Newsletter</h4>
-                        <p className="text-white font-body text-lg mb-8 leading-relaxed italic opacity-80">
-                            Subscribe to get the latest travel updates and secret deals.
+                    <div className="col-span-2 lg:col-span-1">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-white/40">Newsletter</h4>
+                        <p className="text-white font-body text-sm mb-6 leading-relaxed italic opacity-80">
+                            Join our inner circle for secret deals and travel updates.
                         </p>
-                        <form className="relative group">
+                        <form className="relative group max-w-xs">
                             <label htmlFor="newsletter-email" className="sr-only">Enter your email address to subscribe</label>
                             <input
                                 id="newsletter-email"
                                 type="email"
                                 placeholder="Enter your email"
                                 required
-                                className="w-full bg-black/10 border border-white/20 rounded-2xl px-8 py-5 outline-none focus:bg-black/20 focus:border-white/40 transition-all text-white placeholder:text-white/40 font-bold"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-white placeholder:text-white/30 font-bold text-sm"
                             />
-                            <button type="submit" aria-label="Subscribe to newsletter" className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-110 transition-all shadow-2xl">
-                                <Send className="w-6 h-6" aria-hidden="true" />
+                            <button type="submit" aria-label="Subscribe to newsletter" className="absolute right-2 top-2 bg-brand-yellow text-text-navy p-2.5 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-xl">
+                                <Send className="w-4 h-4" aria-hidden="true" />
                             </button>
                         </form>
                     </div>
@@ -182,7 +196,7 @@ export default function Footer() {
             </div>
 
             {/* MEGA TYPE */}
-            <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.04]">
+            <div className="absolute bottom-[-2vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.03]">
                 <h1 className="mega-type text-[12vw] md:text-[16vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.6] tracking-tighter">
                     DESTINATION ANYWHERE
                 </h1>
