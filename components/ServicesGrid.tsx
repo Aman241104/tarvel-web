@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import { Plane, User, Bed, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Plane, User, Bed } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -126,77 +126,72 @@ export default function ServicesGrid() {
                 </div>
 
                 {/* Editorial Layout Grid */}
-                <div className="flex flex-col gap-16 md:gap-24">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-12 lg:gap-24">
                     
-                    {/* Top Row: Flight & Solo (Asymmetrical) */}
-                    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                    {/* Card 1: Flight Bookings (Wide) */}
+                    <div
+                        ref={(el) => { cardsRef.current[0] = el; }}
+                        onMouseMove={(e) => handleMouseMove(e, 0)}
+                        onMouseLeave={() => handleMouseLeave(0)}
+                        className="md:col-span-7 group relative w-full h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                        <Image
+                            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
+                            alt="Flight Bookings"
+                            fill
+                            className="object-cover filter-printed transition-transform duration-1000"
+                            sizes="(max-width: 768px) 100vw, 60vw"
+                        />
                         
-                        {/* Card 1: Flight Bookings (Wide) */}
-                        <div
-                            ref={(el) => { cardsRef.current[0] = el; }}
-                            onMouseMove={(e) => handleMouseMove(e, 0)}
-                            onMouseLeave={() => handleMouseLeave(0)}
-                            className="group relative w-full md:w-[60%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                        {/* Editorial Content Overlay */}
+                        <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20">
+                            <div className="flex items-center gap-4 mb-4 transform transition-transform duration-700 group-hover:-translate-y-2">
+                                <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20">
+                                    <Plane className="text-white w-5 h-5" strokeWidth={2.5} />
+                                </div>
+                                <span className="text-white/60 font-black text-[10px] uppercase tracking-[0.3em]">Global Access</span>
+                            </div>
+                            <h3 className="text-3xl md:text-5xl font-black text-white font-heading tracking-tighter leading-none mb-3 transform transition-transform duration-700 group-hover:-translate-y-1">
+                                Flight Concierge
+                            </h3>
+                            <p className="text-white/70 font-body text-sm md:text-base max-w-sm opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
+                                Bypass the algorithms. We secure premium routing, upgrades, and private charters.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Card 2: Solo Adventures (Tall/Narrow) */}
+                    <div
+                        ref={(el) => { cardsRef.current[1] = el; }}
+                        onMouseMove={(e) => handleMouseMove(e, 1)}
+                        onMouseLeave={() => handleMouseLeave(1)}
+                        className="md:col-span-5 group relative w-full h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[12px] border-white"
+                    >
+                        {/* Graphic Pattern */}
+                        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h-2zm0 0' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
+
+                        <div className="relative z-10 flex-1 flex flex-col justify-start transform transition-transform duration-700 group-hover:-translate-y-2">
+                            <div className="bg-bg-dark p-3 rounded-full w-fit mb-6 shadow-xl">
+                                <User className="text-brand-yellow w-5 h-5" strokeWidth={2.5} />
+                            </div>
+                            <h3 className="text-4xl md:text-5xl font-black text-bg-dark font-heading leading-[1] tracking-tighter mb-4">
+                                Solo<br />Journeys
+                            </h3>
+                            <p className="text-bg-dark/70 font-body text-sm font-medium leading-relaxed max-w-[200px]">
+                                Curated independence. Safe, deeply personal itineraries for the intrepid traveler.
+                            </p>
+                        </div>
+
+                        <div className="relative w-full h-[50%] mt-auto rounded-xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:scale-105 origin-bottom">
                             <Image
-                                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
-                                alt="Flight Bookings"
+                                src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=600&q=80"
+                                alt="Solo Traveler"
                                 fill
-                                className="object-cover filter-printed transition-transform duration-1000"
-                                sizes="(max-width: 768px) 100vw, 60vw"
+                                className="object-cover filter-printed"
+                                sizes="(max-width: 768px) 100vw, 40vw"
                             />
-                            
-                            {/* Editorial Content Overlay */}
-                            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20">
-                                <div className="flex items-center gap-4 mb-4 transform transition-transform duration-700 group-hover:-translate-y-2">
-                                    <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20">
-                                        <Plane className="text-white w-5 h-5" strokeWidth={2.5} />
-                                    </div>
-                                    <span className="text-white/60 font-black text-[10px] uppercase tracking-[0.3em]">Global Access</span>
-                                </div>
-                                <h3 className="text-3xl md:text-5xl font-black text-white font-heading tracking-tighter leading-none mb-3 transform transition-transform duration-700 group-hover:-translate-y-1">
-                                    Flight Concierge
-                                </h3>
-                                <p className="text-white/70 font-body text-sm md:text-base max-w-sm opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
-                                    Bypass the algorithms. We secure premium routing, upgrades, and private charters.
-                                </p>
-                            </div>
                         </div>
-
-                        {/* Card 2: Solo Adventures (Tall/Narrow) */}
-                        <div
-                            ref={(el) => { cardsRef.current[1] = el; }}
-                            onMouseMove={(e) => handleMouseMove(e, 1)}
-                            onMouseLeave={() => handleMouseLeave(1)}
-                            className="group relative w-full md:w-[40%] h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[12px] border-white"
-                        >
-                            {/* Graphic Pattern */}
-                            <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h-2zm0 0' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
-
-                            <div className="relative z-10 flex-1 flex flex-col justify-start transform transition-transform duration-700 group-hover:-translate-y-2">
-                                <div className="bg-bg-dark p-3 rounded-full w-fit mb-6 shadow-xl">
-                                    <User className="text-brand-yellow w-5 h-5" strokeWidth={2.5} />
-                                </div>
-                                <h3 className="text-4xl md:text-5xl font-black text-bg-dark font-heading leading-[1] tracking-tighter mb-4">
-                                    Solo<br />Journeys
-                                </h3>
-                                <p className="text-bg-dark/70 font-body text-sm font-medium leading-relaxed max-w-[200px]">
-                                    Curated independence. Safe, deeply personal itineraries for the intrepid traveler.
-                                </p>
-                            </div>
-
-                            <div className="relative w-full h-[50%] mt-auto rounded-xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:scale-105 origin-bottom">
-                                <Image
-                                    src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=600&q=80"
-                                    alt="Solo Traveler"
-                                    fill
-                                    className="object-cover filter-printed"
-                                    sizes="(max-width: 768px) 100vw, 40vw"
-                                />
-                            </div>
-                        </div>
-
                     </div>
 
                     {/* Bottom Row: Luxury Resorts (Full Width Hero-style) */}
@@ -204,7 +199,7 @@ export default function ServicesGrid() {
                         ref={(el) => { cardsRef.current[2] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 2)}
                         onMouseLeave={() => handleMouseLeave(2)}
-                        className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
+                        className="md:col-span-12 group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
                     >
                         <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
                         
@@ -241,7 +236,6 @@ export default function ServicesGrid() {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>

@@ -176,18 +176,34 @@ export default function TravelerSection() {
                             </div>
                         </div>
 
+                        {/* 9-Year Journey: Film Strip Timeline */}
+                        <div className="mt-16 md:mt-24 relative">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 mb-10 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
+                            
+                            <div className="flex flex-col sm:flex-row gap-8 md:gap-12 items-start relative">
+                                {/* Connector Line (Desktop) */}
+                                <div className="absolute top-10 left-0 w-full h-px bg-black/5 hidden sm:block z-0" />
+                                
+                                {[
+                                    { year: '2015', label: 'Passion Project', desc: 'Started with a single flight booking.' },
+                                    { year: '2019', label: '100+ Families', desc: 'Curating global summer escapes.' },
+                                    { year: '2024', label: '500+ Clients', desc: 'A boutique luxury standard.' }
+                                ].map((milestone, i) => (
+                                    <div key={milestone.year} className="relative z-10 flex-1 group">
+                                        <div className="bg-white p-2 shadow-ambient-sm group-hover:shadow-ambient-lg transition-all duration-500 rounded-sm mb-4 inline-block transform rotate-[-2deg] group-hover:rotate-0">
+                                             <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-50 flex items-center justify-center font-heading font-black text-xl md:text-2xl text-brand-teal/40 group-hover:text-brand-teal transition-colors">
+                                                 {milestone.year}
+                                             </div>
+                                        </div>
+                                        <h5 className="font-heading font-bold text-text-navy text-lg mb-1">{milestone.label}</h5>
+                                        <p className="text-xs text-gray-500 font-body leading-relaxed max-w-[150px]">{milestone.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                         {/* Signature: SVG handwriting path draw */}
-                        <div className="mt-8 opacity-100 rotate-[-2deg]">
-                            <svg viewBox="0 0 300 40" className="w-64 h-10" fill="none">
-                                <path
-                                    className="signature-path"
-                                    d="M5 25 C 20 5, 35 35, 50 20 C 65 5, 80 35, 95 20 C 110 5, 125 35, 140 20 C 155 5, 170 30, 185 20 C 200 10, 215 30, 230 20 C 245 10, 260 25, 275 20"
-                                    stroke="#2EC4B6"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    style={{ strokeDasharray: 500, strokeDashoffset: 500 }}
-                                />
-                            </svg>
+                        <div className="mt-16 md:mt-24 opacity-100 rotate-[-2deg]">
                             <span className="font-handwriting text-3xl md:text-4xl text-gray-500 block mt-2 opacity-80">
                                 Let's get lost together.
                             </span>

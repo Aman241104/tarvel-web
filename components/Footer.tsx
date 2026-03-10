@@ -64,9 +64,20 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-[#0b0b0b] pt-56 pb-12 overflow-hidden z-10 text-white">
+        <footer ref={containerRef} className="relative bg-[#070b14] pt-56 pb-12 overflow-hidden z-10 text-white">
+            {/* Dotted Background Pattern (Subtle) */}
+            <div 
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] blur-[1px]" 
+                style={{
+                    backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                    backgroundSize: '24px 24px',
+                    maskImage: 'radial-gradient(circle at center, black, transparent 80%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 80%)'
+                }}
+            />
+
             {/* Organic Wave Divider (Double Layered) */}
-            <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-0">
+            <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-10">
                 <svg className="relative block w-full h-[120px] md:h-[180px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FF5A5F" opacity="0.3"></path>
                     <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.51,22.43-10.89,44.78-22.1,66.66-33.33V0Z" fill="#FF5A5F"></path>
@@ -87,7 +98,7 @@ export default function Footer() {
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12 items-start">
 
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
@@ -96,14 +107,14 @@ export default function Footer() {
                                 <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover p-2" />
                             </div>
                             <div>
-                                <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-white leading-tight">
+                                <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
                                     Destination<br />Anywhere & Co.
                                 </h3>
-                                <p className="text-white/50 font-body text-xs uppercase tracking-[0.4em] mt-2 font-black">Luxury Travel Boutique</p>
+                                <p className="text-[#9ca3af] font-body text-xs uppercase tracking-[0.4em] mt-2 font-black">Luxury Travel Boutique</p>
                             </div>
                         </div>
                         
-                        <p className="text-white/70 font-body text-lg leading-relaxed italic max-w-sm">
+                        <p className="text-[#d1d5db] font-body text-lg leading-[1.6] italic max-w-sm">
                             "We don't just book trips; we protect your most precious asset—your time. Every stamp in your passport is a story we help you write."
                         </p>
 
@@ -128,11 +139,11 @@ export default function Footer() {
 
                     {/* Col 2: The Journey Links (2 cols) */}
                     <div className="lg:col-span-2 pt-4">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">The Journey</h4>
-                        <ul className="space-y-5 font-black text-sm uppercase tracking-widest text-white/80">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">The Journey</h4>
+                        <ul className="space-y-6 font-black text-sm uppercase tracking-widest">
                             {['About Us', 'Bespoke Services', 'Private Stories', 'Contact Sujal'].map((item) => (
                                 <li key={item}>
-                                    <Link href="#" className="hover:text-brand-yellow transition-all flex items-center gap-2 group">
+                                    <Link href="#" className="text-[#d1d5db] hover:text-[#ffffff] transition-all duration-200 ease-in-out flex items-center gap-2 group">
                                         <span className="w-0 group-hover:w-4 h-px bg-brand-yellow transition-all overflow-hidden" />
                                         {item}
                                     </Link>
@@ -143,15 +154,15 @@ export default function Footer() {
 
                     {/* Col 3: Contact & HQ (3 cols) */}
                     <div className="lg:col-span-3 pt-4">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">Boutique HQ</h4>
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">Boutique HQ</h4>
                         <div className="space-y-8">
                             <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
                                 <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Email Us</p>
-                                    <p className="text-sm font-bold tracking-wide">concierge@destanywhere.com</p>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-[#9ca3af] mb-1">Email Us</p>
+                                    <p className="text-sm font-bold tracking-wide text-[#ffffff]">concierge@destanywhere.com</p>
                                 </div>
                             </div>
                             
@@ -160,8 +171,8 @@ export default function Footer() {
                                     <Phone className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Direct Line</p>
-                                    <p className="text-sm font-bold tracking-wide">+91 85110 71506</p>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-[#9ca3af] mb-1">Direct Line</p>
+                                    <p className="text-sm font-bold tracking-wide text-[#ffffff]">+91 85110 71506</p>
                                 </div>
                             </div>
 
@@ -170,8 +181,8 @@ export default function Footer() {
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Office</p>
-                                    <p className="text-sm font-bold tracking-wide">Ahmedabad, Gujarat, India</p>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-[#9ca3af] mb-1">Office</p>
+                                    <p className="text-sm font-bold tracking-wide text-[#ffffff]">Ahmedabad, Gujarat, India</p>
                                 </div>
                             </div>
                         </div>
@@ -179,8 +190,8 @@ export default function Footer() {
 
                     {/* Col 4: Newsletter & Accolades (3 cols) */}
                     <div className="lg:col-span-3 pt-4">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-white/40 border-l-2 border-brand-yellow/30 pl-4">Stay Inspired</h4>
-                        <p className="text-white/70 font-body text-sm mb-8 leading-relaxed italic">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">Stay Inspired</h4>
+                        <p className="text-[#d1d5db] font-body text-sm mb-8 leading-[1.6] italic">
                             Join our inner circle for secret destinations and curated travel insights delivered to your inbox.
                         </p>
                         <form className="relative group mb-12">
@@ -190,7 +201,7 @@ export default function Footer() {
                                 type="email"
                                 placeholder="Your Email Address"
                                 required
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-white placeholder:text-white/30 font-bold text-sm"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-[#ffffff] placeholder:text-white/30 font-bold text-sm"
                             />
                             <button type="submit" aria-label="Subscribe" className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-2xl">
                                 <Send className="w-5 h-5" aria-hidden="true" />
@@ -200,38 +211,38 @@ export default function Footer() {
                         {/* Brand Accolades */}
                         <div className="flex items-center gap-6 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
                             <div className="flex items-center gap-2">
-                                <Award className="w-5 h-5" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Boutique<br/>certified</span>
+                                <Award className="w-5 h-5 text-[#d1d5db]" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none text-[#9ca3af]">Boutique<br/>certified</span>
                             </div>
                             <div className="w-px h-8 bg-white/20" />
                             <div className="flex items-center gap-2">
-                                <Star className="w-5 h-5 fill-current" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">5-Star<br/>Service</span>
+                                <Star className="w-5 h-5 fill-current text-brand-yellow" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none text-[#9ca3af]">5-Star<br/>Service</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Legal bar */}
-                <div className="border-t border-white/5 mt-24 pt-12 pb-8 flex flex-col md:flex-row justify-between items-center text-white/30 text-[9px] uppercase font-black tracking-[0.3em] text-center md:text-left">
+                <div className="border-t border-white/5 mt-24 pt-12 pb-8 flex flex-col md:flex-row justify-between items-center text-[#9ca3af] text-[9px] uppercase font-black tracking-[0.3em] text-center md:text-left">
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 mb-6 md:mb-0">
                         <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co.</p>
                         <p className="hidden md:block opacity-20">|</p>
                         <div className="flex gap-8">
-                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-                            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-                            <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+                            <Link href="/privacy" className="hover:text-[#ffffff] transition-colors duration-200">Privacy</Link>
+                            <Link href="/terms" className="hover:text-[#ffffff] transition-colors duration-200">Terms</Link>
+                            <Link href="/cookies" className="hover:text-[#ffffff] transition-colors duration-200">Cookies</Link>
                         </div>
                     </div>
-                    <div className="flex items-center gap-3 italic font-handwriting text-lg text-white/20">
-                        Made with love for the curious <Heart className="w-4 h-4 fill-white/10 border-none" />
+                    <div className="flex items-center gap-3 italic font-handwriting text-lg text-[#9ca3af]/40">
+                        Made with love for the curious <Heart className="w-4 h-4 fill-[#9ca3af]/20 border-none" />
                     </div>
                 </div>
             </div>
 
             {/* MEGA TYPE SIGNATURE */}
             <div className="absolute bottom-[-1vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.02]">
-                <h1 className="mega-type text-[12vw] md:text-[18vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.7] tracking-tighter uppercase">
+                <h1 className="mega-type text-[12vw] md:text-[18vw] font-black font-heading text-[#ffffff] whitespace-nowrap text-center leading-[0.7] tracking-tighter uppercase">
                     Destination Anywhere
                 </h1>
             </div>

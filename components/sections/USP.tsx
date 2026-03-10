@@ -59,8 +59,15 @@ export default function USP() {
                                 delay: i * 0.08,
                                 ease: [0.16, 1, 0.3, 1] // Custom snappy easing
                             }}
-                            className="bg-white p-8 rounded-3xl border border-black/5 hover:border-black/10 transition-all group shadow-sm hover:shadow-xl"
+                            className="bg-white p-8 rounded-3xl border border-black/5 hover:border-black/10 transition-all group shadow-sm hover:shadow-xl relative overflow-hidden"
                         >
+                            {/* Decorative "Reserved" Table Card for the 2nd item (Curated Luxury) */}
+                            {i === 1 && (
+                                <div className="absolute top-2 right-[-20px] bg-white border border-black/5 shadow-ambient-sm px-6 py-1 rotate-45 z-20 pointer-events-none">
+                                     <span className="text-[8px] font-black uppercase tracking-widest text-brand-coral">Reserved</span>
+                                </div>
+                            )}
+
                             <div className={`${usp.bg} w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                                 <usp.icon className={`${usp.color} w-7 h-7`} />
                             </div>
