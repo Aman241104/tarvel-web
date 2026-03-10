@@ -102,11 +102,11 @@ export default function Testimonials() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-16 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-16 items-stretch">
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}
-                            className={`testimonial-card ${t.bgColor} ${t.rotation} p-8 md:p-10 rounded-[2.5rem] shadow-ambient-lg border border-white/40 relative group hover:scale-105 transition-all duration-700 flex flex-col h-full`}
+                            className={`testimonial-card ${t.bgColor} ${t.rotation} p-8 md:p-10 rounded-[2.5rem] shadow-ambient-lg border border-white/40 relative group hover:scale-105 transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
                         >
                             {/* Tape Piece */}
                             <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-60 group-hover:opacity-100 transition-opacity`} />

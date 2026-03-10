@@ -34,19 +34,24 @@ export default function MobileStickyCTA() {
     return (
         <div
             ref={containerRef}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[90%] md:hidden translate-y-full opacity-0"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] w-[92%] md:hidden translate-y-full opacity-0"
         >
             <button
                 onClick={() => openWhatsApp('Sticky Mobile CTA')}
-                className="w-full bg-[#2D2D2D] text-white py-4 rounded-full shadow-2xl flex items-center justify-between px-6 border border-white/10 active:scale-95 transition-transform"
+                className="w-full bg-brand-teal text-white py-4 rounded-2xl shadow-[0_20px_50px_rgba(46,196,182,0.4)] flex items-center justify-between px-6 border border-white/20 active:scale-95 transition-all"
             >
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#4ECDC4] rounded-full flex items-center justify-center text-[#2D2D2D]">
-                        <Phone className="w-4 h-4" />
+                <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md">
+                        <Phone className="w-5 h-5 fill-current" />
                     </div>
-                    <span className="font-bold text-sm">Plan Your Trip</span>
+                    <div className="flex flex-col items-start">
+                        <span className="font-black text-[10px] uppercase tracking-[0.2em] opacity-70 leading-none mb-1">Online Now</span>
+                        <span className="font-black text-sm uppercase tracking-widest leading-none">Plan Your Trip</span>
+                    </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-gray-400" />
+                <div className="bg-white/10 p-2 rounded-lg">
+                    <ArrowRight className="w-5 h-5 text-white" />
+                </div>
             </button>
         </div>
     );

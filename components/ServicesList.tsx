@@ -113,31 +113,31 @@ export default function ServicesList() {
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-white border border-gray-100 p-8 pt-12 text-center shadow-ambient-lg transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-2xl rounded-xl"
+                                className="relative bg-white border border-gray-100 p-6 pt-10 md:p-8 md:pt-12 text-center shadow-ambient-lg transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-2xl rounded-xl"
                                 style={{
-                                    clipPath: 'polygon(30% 0%, 70% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%)',
+                                    clipPath: 'polygon(25% 0%, 75% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%)',
                                 }}
                             >
                                 {/* Hole Punch with Metal Eyelet Effect */}
-                                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-gray-200 via-white to-gray-300 rounded-full border-[1.5px] border-gray-400/30 shadow-inner z-20 flex items-center justify-center">
-                                    <div className="w-3 h-3 bg-bg-paper rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]" />
+                                <div className="absolute top-4 md:top-5 left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 bg-gradient-to-br from-gray-200 via-white to-gray-300 rounded-full border-[1.5px] border-gray-400/30 shadow-inner z-20 flex items-center justify-center">
+                                    <div className="w-2 h-2 md:w-3 md:h-3 bg-bg-paper rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]" />
                                 </div>
 
 
                                 <Magnetic strength={0.4}>
-                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500 ${
+                                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500 ${
                                         i % 3 === 0 ? 'bg-brand-yellow/20 text-brand-yellow' : 
                                         i % 3 === 1 ? 'bg-brand-coral/20 text-brand-coral' : 
                                         'bg-brand-teal/20 text-brand-teal'
                                     }`}>
-                                        <service.icon className="w-8 h-8" />
+                                        <service.icon className="w-6 h-6 md:w-8 md:h-8" />
                                     </div>
                                 </Magnetic>
 
-                                <h3 className="text-xl font-black font-heading text-text-navy mb-4 tracking-tight leading-tight">
+                                <h3 className="text-lg md:text-xl font-black font-heading text-text-navy mb-3 md:mb-4 tracking-tight leading-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-400 font-body text-sm leading-relaxed">
+                                <p className="text-gray-400 font-body text-xs md:text-sm leading-relaxed">
                                     {service.desc}
                                 </p>
                             </div>

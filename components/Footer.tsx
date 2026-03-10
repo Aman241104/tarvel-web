@@ -109,12 +109,12 @@ export default function Footer() {
             </div>
 
             <div className="container mx-auto px-6 relative z-10 pb-32">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-24">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
 
                     {/* Col 1: Brand */}
-                    <div className="col-span-1 md:col-span-1">
-                        <h3 className="text-4xl font-black font-heading mb-10 tracking-tighter text-white leading-none">Destination<br />Anywhere & Co.</h3>
-                        <div className="flex gap-6">
+                    <div className="col-span-2 lg:col-span-1">
+                        <h3 className="text-3xl md:text-4xl font-black font-heading mb-8 tracking-tighter text-white leading-tight">Destination<br />Anywhere & Co.</h3>
+                        <div className="flex gap-4">
                             <Magnetic>
                                 <a href="#" className="bg-white/10 border border-white/20 p-5 rounded-full hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl">
                                     <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -169,9 +169,9 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 mt-24 pt-10 flex flex-col md:flex-row justify-between items-center text-white/40 text-[10px] uppercase font-black tracking-[0.2em]">
-                    <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co. All rights reserved.</p>
-                    <div className="flex gap-10 mt-6 md:mt-0">
+                <div className="border-t border-white/10 mt-24 pt-10 flex flex-col md:flex-row justify-between items-center text-white/40 text-[10px] uppercase font-black tracking-[0.2em] text-center md:text-left">
+                    <p className="mb-4 md:mb-0">&copy; {new Date().getFullYear()} Destination Anywhere & Co. All rights reserved.</p>
+                    <div className="flex gap-6 md:gap-10">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
                     </div>

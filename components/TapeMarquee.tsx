@@ -47,7 +47,7 @@ export default function TapeMarquee() {
     }, { scope: marqueeRef });
 
     return (
-        <div className="relative z-20 w-[110%] -ml-[5%] md:w-[105%] md:-ml-[2.5%] -rotate-1 transform transition-transform hover:rotate-0 hover:scale-105 duration-300">
+        <div className="relative z-20 w-[120%] -ml-[10%] md:w-[105%] md:-ml-[2.5%] -rotate-1 transform transition-transform hover:rotate-0 hover:scale-105 duration-300">
             {/* Top ripped edge */}
             <div
                 className="absolute -top-2 left-0 right-0 h-3 z-10"
@@ -59,7 +59,7 @@ export default function TapeMarquee() {
 
             {/* Tape body with washi pattern */}
             <div
-                className="relative py-4 border-y-2 border-black/30 overflow-hidden"
+                className="relative py-3 md:py-4 border-y-2 border-black/30 overflow-hidden"
                 style={{
                     backgroundColor: 'rgba(250, 204, 21, 0.85)',
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L20 20M20 0L0 20' stroke='%23F59E0B' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
@@ -72,7 +72,7 @@ export default function TapeMarquee() {
                     className="flex items-center whitespace-nowrap will-change-transform"
                 >
                     {[...Array(6)].map((_, i) => (
-                        <span key={i} className="text-black/80 font-black font-heading text-xl md:text-2xl mx-8 uppercase tracking-widest flex items-center gap-4">
+                        <span key={i} className="text-black/80 font-black font-heading text-lg md:text-2xl mx-6 md:mx-8 uppercase tracking-widest flex items-center gap-3 md:gap-4">
                             YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 •
                         </span>
                     ))}

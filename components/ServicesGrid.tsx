@@ -123,13 +123,13 @@ export default function ServicesGrid() {
                     </svg>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[340px] mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-[340px] mt-16">
                     {/* Card 1: Flight Bookings (Wide - Top Left) */}
                     <div
                         ref={(el) => { cardsRef.current[0] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 0)}
                         onMouseLeave={() => handleMouseLeave(0)}
-                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg border border-white/10"
+                        className="group relative col-span-1 md:col-span-2 lg:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg border border-white/10"
                     >
                         {/* Stronger Gradient for Readability */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
@@ -140,7 +140,7 @@ export default function ServicesGrid() {
                             alt="Flight Bookings"
                             fill
                             className="object-cover transition-transform duration-700"
-                            sizes="(max-width: 768px) 100vw, 66vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw"
                         />
 
                         {/* Content */}
@@ -169,7 +169,7 @@ export default function ServicesGrid() {
                         ref={(el) => { cardsRef.current[1] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 1)}
                         onMouseLeave={() => handleMouseLeave(1)}
-                        className="group relative col-span-1 md:col-span-1 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg bg-brand-yellow flex flex-col pt-10"
+                        className="group relative col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg bg-brand-yellow flex flex-col pt-10"
                     >
                         {/* Number Badge */}
                         <span className="absolute top-6 left-8 z-20 font-handwriting text-5xl text-black/10 select-none">02</span>
@@ -204,7 +204,7 @@ export default function ServicesGrid() {
                                     alt="Solo Traveler"
                                     fill
                                     className="object-cover rounded-t-[2.5rem] shadow-2xl border-x-[6px] border-t-[6px] border-white/30"
-                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                             </div>
                         </div>
@@ -215,7 +215,7 @@ export default function ServicesGrid() {
                         ref={(el) => { cardsRef.current[2] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 2)}
                         onMouseLeave={() => handleMouseLeave(2)}
-                        className="group relative col-span-1 md:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg border border-white/10"
+                        className="group relative col-span-1 md:col-span-1 lg:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-ambient-lg border border-white/10"
                     >
                         {/* Enhanced Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
@@ -226,7 +226,7 @@ export default function ServicesGrid() {
                             alt="Luxury Resorts"
                             fill
                             className="object-cover transition-transform duration-700"
-                            sizes="100vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 66vw"
                         />
 
                         <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-0">

@@ -140,7 +140,7 @@ export default function Navbar() {
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,107,107,0.35)] shadow-xl relative overflow-hidden group"
+                            className="hidden lg:inline-flex items-center justify-center px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,107,107,0.35)] shadow-xl relative overflow-hidden group"
                         >
                             <span className="relative z-10">Plan My Journey</span>
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -150,7 +150,7 @@ export default function Navbar() {
                     {/* Mobile Menu Icon */}
                     <button
                         onClick={() => setIsMobileMenuOpen(true)}
-                        className={`md:hidden p-2.5 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/20 text-text-navy'}`}
+                        className={`lg:hidden p-2.5 rounded-full transition-all duration-500 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/20 text-text-navy'}`}
                     >
                         <Menu className="w-6 h-6" />
                     </button>

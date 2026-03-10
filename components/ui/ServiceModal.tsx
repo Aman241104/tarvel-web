@@ -48,46 +48,46 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header Pattern */}
-                <div className="h-24 bg-[#4ECDC4] relative overflow-hidden">
+                <div className="h-24 bg-brand-teal relative overflow-hidden">
                     <div className="absolute inset-0 opacity-20"
                         style={{ backgroundImage: 'radial-gradient(circle, #fff 2px, transparent 2.5px)', backgroundSize: '10px 10px' }}
                     />
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors"
+                        className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors z-50"
                     >
                         <X className="w-6 h-6 text-white" />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="px-8 pb-8 -mt-12 relative z-10">
-                    <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 mb-6">
-                        <h3 className="text-3xl font-heading font-bold text-[#2D2D2D] mb-2">
+                <div className="px-6 md:px-8 pb-8 -mt-12 relative z-10">
+                    <div className="bg-white rounded-2xl p-5 md:p-6 shadow-md border border-gray-100 mb-6">
+                        <h3 className="text-2xl md:text-3xl font-heading font-black text-text-navy mb-2">
                             {service.title}
                         </h3>
-                        <p className="text-gray-500 font-medium leading-relaxed">
+                        <p className="text-gray-500 font-medium leading-relaxed text-sm md:text-base">
                             {service.desc}
                         </p>
                     </div>
 
-                    <div className="space-y-3">
-                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest px-2">What We Offer</h4>
+                    <div className="space-y-2 md:space-y-3">
+                        <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">What We Offer</h4>
                         {service.details?.map((detail, i) => (
                             <div key={i} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
-                                <div className="bg-[#4ECDC4]/10 p-2 rounded-full">
-                                    <Check className="w-4 h-4 text-[#4ECDC4]" />
+                                <div className="bg-brand-teal/10 p-2 rounded-full">
+                                    <Check className="w-3.5 h-3.5 text-brand-teal" />
                                 </div>
-                                <span className="text-[#2D2D2D] font-medium">{detail}</span>
+                                <span className="text-text-navy font-black text-xs md:text-sm uppercase tracking-wide">{detail}</span>
                             </div>
                         ))}
                     </div>
 
                     <button
                         onClick={onClose}
-                        className="w-full mt-8 bg-[#2D2D2D] text-white font-bold py-4 rounded-xl hover:scale-[1.02] active:scale-95 transition-transform"
+                        className="w-full mt-8 bg-brand-teal text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all"
                     >
-                        Got it, thanks!
+                        Explore More
                     </button>
                 </div>
             </div>

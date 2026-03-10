@@ -63,22 +63,24 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection }: Mo
         >
             {/* Backdrop */}
             <div
-                className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-500 pointer-events-auto ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+                className={`absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500 pointer-events-auto ${isOpen ? 'opacity-100' : 'opacity-0'}`}
                 onClick={onClose}
             />
 
             {/* Luggage Tag Panel */}
             <div
                 ref={tagRef}
-                className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-brand-teal text-white rounded-b-[40px] pt-24 pb-12 px-8 shadow-2xl -translate-y-full pointer-events-auto border-x-4 border-b-4 border-white/20"
+                className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-brand-teal text-white rounded-b-[40px] pt-24 pb-12 px-8 shadow-[0_30px_60px_rgba(0,0,0,0.3)] -translate-y-full pointer-events-auto border-x-[6px] border-b-[6px] border-white/20"
             >
                 {/* Hole Punch Visual */}
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black/20 shadow-inner" />
+                <div className="absolute top-8 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-black/30 shadow-inner flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-white/10" />
+                </div>
 
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 p-2 bg-white/20 rounded-full hover:bg-white/40 hover:rotate-90 transition-all text-white"
+                    className="absolute top-6 right-6 p-3 bg-white/10 rounded-full hover:bg-white/20 active:scale-90 transition-all text-white z-50"
                 >
                     <X className="w-6 h-6" />
                 </button>
@@ -91,15 +93,15 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection }: Mo
                             href={link.href}
                             onClick={onClose}
                             ref={(el) => { linksRef.current[i] = el; }}
-                            className={`group flex items-center justify-between text-3xl font-bold font-heading transition-all border-b border-white/20 pb-2 ${
-                                activeSection === link.id ? 'text-white translate-x-2' : 'text-white/60 hover:text-white'
+                            className={`group flex items-center justify-between text-3xl font-black font-heading transition-all border-b border-white/10 pb-3 ${
+                                activeSection === link.id ? 'text-white translate-x-2' : 'text-white/50 hover:text-white'
                             }`}
                         >
-                            <span className="flex items-center gap-3">
-                                {activeSection === link.id && <div className="w-2 h-2 rounded-full bg-brand-yellow" />}
+                            <span className="flex items-center gap-4">
+                                {activeSection === link.id && <div className="w-2.5 h-2.5 rounded-full bg-brand-yellow shadow-[0_0_15px_rgba(255,191,0,0.5)]" />}
                                 {link.name}
                             </span>
-                            <ArrowRight className={`w-6 h-6 transition-all duration-300 ${activeSection === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                            <ArrowRight className={`w-6 h-6 transition-all duration-300 ${activeSection === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
                         </Link>
                     ))}
                 </nav>

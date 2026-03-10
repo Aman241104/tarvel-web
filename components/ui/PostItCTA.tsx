@@ -44,7 +44,7 @@ export default function PostItCTA() {
                     animate={{ x: 0, y: 0, rotate: -5, scale: 1, opacity: 1 }}
                     exit={{ x: 100, y: 100, rotate: 15, scale: 0.5, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="fixed bottom-24 right-6 md:bottom-32 md:right-10 z-[100] cursor-pointer group"
+                    className="fixed bottom-24 right-6 md:bottom-32 md:right-10 z-[100] cursor-pointer group hidden md:block"
                     onClick={() => openWhatsApp('Post-it Note')}
                 >
                     {/* The Post-it Note */}

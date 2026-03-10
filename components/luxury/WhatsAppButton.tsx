@@ -17,7 +17,7 @@ export default function WhatsAppButton() {
     const waLink = "https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!";
 
     return (
-        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] flex items-center gap-4">
+        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] hidden md:flex items-center gap-4">
             <AnimatePresence>
                 {showTooltip && (
                     <motion.div

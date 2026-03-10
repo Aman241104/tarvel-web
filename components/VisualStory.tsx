@@ -172,10 +172,10 @@ export default function VisualStory() {
                         <div
                             key={story.id}
                             ref={(el) => { storyRefs.current[index] = el; }}
-                            className={`flex flex-col md:flex-row items-center justify-between gap-16 md:gap-24 mb-32 md:mb-56 last:mb-0 w-full ${isReversed ? 'md:flex-row-reverse' : ''}`}
+                            className={`flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 mb-32 lg:mb-56 last:mb-0 w-full ${isReversed ? 'lg:flex-row-reverse' : ''}`}
                         >
                             {/* Text Side */}
-                            <div className="story-text w-full md:w-[45%] text-left relative">
+                            <div className="story-text w-full lg:w-[45%] text-left relative">
                                 <span className="text-5xl md:text-8xl font-black text-black/[0.03] absolute -top-12 md:-top-20 -left-4 md:-left-8 select-none">0{index + 1}</span>
                                 
                                 <h2 className="text-4xl md:text-6xl font-black font-heading text-text-navy mb-8 leading-[1.1] tracking-tight relative z-10">
@@ -214,7 +214,7 @@ export default function VisualStory() {
                             </div>
 
                             {/* Image Side */}
-                            <div className="story-image-container w-full md:w-[50%] relative aspect-[4/5] md:aspect-[4/5] perspective-1000">
+                            <div className="story-image-container w-full lg:w-[50%] relative aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/5] perspective-1000">
                                 <div
                                     className={`relative w-full h-full overflow-hidden border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
                                 >
@@ -223,7 +223,7 @@ export default function VisualStory() {
                                         alt={story.title}
                                         fill
                                         className="story-image object-cover filter-printed transition-transform duration-1000"
-                                        sizes="(max-width: 768px) 100vw, 800px"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 800px"
                                     />
                                     {/* Overlay Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

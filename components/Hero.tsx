@@ -202,7 +202,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full h-screen overflow-hidden bg-[#FFFBF5] paper-warm flex flex-col items-center justify-center"
+            className="relative w-full min-h-[100dvh] overflow-hidden bg-[#FFFBF5] paper-warm flex flex-col items-center justify-center"
         >
             {/* Visuals: Floating Stickers */}
             {stickers.map((sticker, i) => (
@@ -224,6 +224,7 @@ export default function Hero() {
                             src={sticker.src}
                             alt={sticker.alt}
                             fill
+                            priority={i < 2}
                             className="object-cover p-[10px] pb-[36px] filter-printed"
                             sizes="(max-width: 768px) 150px, 350px"
                         />
@@ -262,19 +263,19 @@ export default function Hero() {
                         {greeting}
                     </span>
 
-                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[90vw]">
+                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[90vw]">
                         {'DESTINATION'.split('').map((char, i) => (
                             <span key={i} className="dest-char inline-block" aria-hidden={i > 0}>
                                 {char}
                             </span>
                         ))}
                         {/* Doodle: Arrow */}
-                        <svg className="absolute -left-12 md:-left-20 top-1/2 w-12 h-6 md:w-20 md:h-10 text-brand-teal -rotate-12 hidden sm:block" viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3">
+                        <svg className="absolute -left-12 md:-left-20 top-1/2 w-12 h-6 md:w-20 md:h-10 text-brand-teal -rotate-12 hidden lg:block" viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3">
                             <path d="M0 25C20 25 40 10 60 40M60 40L40 35M60 40L50 50" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </span>
 
-                    <span className="font-handwriting text-[12vw] sm:text-6xl md:text-9xl leading-none text-brand-yellow relative mt-2 md:mt-4 drop-shadow-sm transform -rotate-2">
+                    <span className="font-handwriting text-[12vw] sm:text-6xl md:text-7xl lg:text-9xl leading-none text-brand-yellow relative mt-2 md:mt-4 drop-shadow-sm transform -rotate-2">
                         Anywhere
                         {/* Underline */}
                         <svg className="absolute -bottom-2 left-0 w-full h-4 md:h-6 text-brand-teal opacity-60" viewBox="0 0 200 20" preserveAspectRatio="none">
