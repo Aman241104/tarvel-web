@@ -49,13 +49,17 @@ export default function Navbar() {
 
     useGSAP(
         () => {
-            gsap.from(containerRef.current, {
-                y: -100,
-                opacity: 0,
-                duration: 1.5,
-                ease: 'expo.out',
-                delay: 0.2,
-            });
+            gsap.fromTo(containerRef.current, 
+                { y: -100, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    ease: 'power4.out',
+                    delay: 0.2,
+                    clearProps: 'all'
+                }
+            );
         },
         { scope: containerRef }
     );
@@ -70,8 +74,8 @@ export default function Navbar() {
             gsap.to(indicator, {
                 x: offsetLeft,
                 width: offsetWidth,
-                duration: 0.6,
-                ease: 'elastic.out(1, 0.8)',
+                duration: 0.5,
+                ease: 'power3.out',
             });
         }
     }, [activeSection]);
@@ -88,10 +92,10 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl transition-all duration-500 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[94%] max-w-5xl transition-all duration-500 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
                     scrolled 
-                    ? 'bg-white/90 backdrop-blur-2xl py-2 scale-[0.98] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/50' 
-                    : 'bg-white/40 backdrop-blur-md shadow-xl border-white/20'
+                    ? 'bg-white/95 backdrop-blur-2xl py-2 scale-[0.98] shadow-ambient-lg border-white/50' 
+                    : 'bg-white/80 backdrop-blur-xl shadow-xl border-white/30'
                 }`}
             >
                 {/* Left: Logo */}
