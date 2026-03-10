@@ -150,7 +150,7 @@ export default function VisualStory() {
     );
 
     return (
-        <section ref={containerRef} className="py-24 md:py-40 bg-white paper-cool overflow-hidden relative">
+        <section ref={containerRef} className="py-20 md:py-40 bg-white paper-cool overflow-hidden relative">
             {/* Progress Tracker (Side) */}
             <div className="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4">
                 {stories.map((s, i) => (
@@ -159,8 +159,8 @@ export default function VisualStory() {
             </div>
 
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="text-center mb-32 max-w-2xl mx-auto">
-                    <span className="text-brand-coral font-black text-xs uppercase tracking-[0.3em] mb-4 block">Visual Stories</span>
+                <div className="text-center mb-20 md:mb-32 max-w-2xl mx-auto">
+                    <span className="text-brand-coral font-black text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 block">Visual Stories</span>
                     <h2 className="text-4xl md:text-7xl font-heading font-black text-text-navy leading-none">The Art of <br/><span className="italic text-brand-teal">Exploration</span></h2>
                 </div>
 
@@ -172,13 +172,13 @@ export default function VisualStory() {
                         <div
                             key={story.id}
                             ref={(el) => { storyRefs.current[index] = el; }}
-                            className={`flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 mb-32 lg:mb-56 last:mb-0 w-full ${isReversed ? 'lg:flex-row-reverse' : ''}`}
+                            className={`flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-24 mb-24 md:mb-40 lg:mb-56 last:mb-0 w-full ${isReversed ? 'lg:flex-row-reverse' : ''}`}
                         >
                             {/* Text Side */}
                             <div className="story-text w-full lg:w-[45%] text-left relative">
-                                <span className="text-5xl md:text-8xl font-black text-black/[0.03] absolute -top-12 md:-top-20 -left-4 md:-left-8 select-none">0{index + 1}</span>
+                                <span className="text-6xl md:text-8xl font-black text-black/[0.03] absolute -top-12 md:-top-20 -left-2 md:-left-8 select-none">0{index + 1}</span>
                                 
-                                <h2 className="text-4xl md:text-6xl font-black font-heading text-text-navy mb-8 leading-[1.1] tracking-tight relative z-10">
+                                <h2 className="text-3xl md:text-6xl font-black font-heading text-text-navy mb-6 md:mb-8 leading-[1.1] tracking-tight relative z-10">
                                     {story.title.split(' ').map((word, wIndex) => (
                                         <span
                                             key={wIndex}
@@ -203,20 +203,20 @@ export default function VisualStory() {
                                         </span>
                                     ))}
                                 </h2>
-                                <p className="text-lg md:text-xl text-gray-500 font-body leading-relaxed max-w-md opacity-80">
+                                <p className="text-base md:text-xl text-gray-500 font-body leading-relaxed max-w-md opacity-80">
                                     {story.description}
                                 </p>
                                 
-                                <button className="mt-10 group flex items-center gap-3 text-sm font-black uppercase tracking-widest text-text-navy hover:text-brand-coral transition-colors">
+                                <button className="mt-8 md:mt-10 group flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-widest text-text-navy hover:text-brand-coral transition-colors">
                                     Read Full Story
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                                 </button>
                             </div>
 
                             {/* Image Side */}
-                            <div className="story-image-container w-full lg:w-[50%] relative aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/5] perspective-1000">
+                            <div className="story-image-container w-full lg:w-[50%] relative aspect-[4/5] md:aspect-[3/2] lg:aspect-[4/5] perspective-1000">
                                 <div
-                                    className={`relative w-full h-full overflow-hidden border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
+                                    className={`relative w-full h-full overflow-hidden border-[8px] md:border-[12px] border-white ${story.shapeClass} ${rotation} shadow-2xl group`}
                                 >
                                     <Image
                                         src={story.image}

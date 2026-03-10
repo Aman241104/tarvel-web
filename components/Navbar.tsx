@@ -88,7 +88,7 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl transition-all duration-1000 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl transition-all duration-500 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
                     scrolled 
                     ? 'bg-white/90 backdrop-blur-2xl py-2 scale-[0.98] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/50' 
                     : 'bg-white/40 backdrop-blur-md shadow-xl border-white/20'

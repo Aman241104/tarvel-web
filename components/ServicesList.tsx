@@ -104,7 +104,7 @@ export default function ServicesList() {
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="relative group perspective-1000 cursor-pointer pt-0 md:pt-24"
+                            className="relative group perspective-1000 cursor-pointer pt-4 md:pt-24"
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}

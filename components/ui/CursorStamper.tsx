@@ -32,7 +32,7 @@ export default function CursorStamper() {
     }, []);
 
     return (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[9999] overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[9999] overflow-hidden hidden md:block">
             <AnimatePresence>
                 {stamps.map(stamp => (
                     <motion.div
