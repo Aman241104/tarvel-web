@@ -70,7 +70,7 @@ export default function Hero() {
             tl.fromTo(
                 textRef.current,
                 { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }
+                { y: 0, opacity: 1, duration: 0.8, ease: 'expo.out' }
             );
 
             // Character-by-character reveal for DESTINATION
@@ -84,11 +84,11 @@ export default function Hero() {
                         opacity: 1,
                         rotateZ: 0,
                         scale: 1,
-                        duration: 0.6,
-                        stagger: 0.04,
-                        ease: 'back.out(2)',
+                        duration: 0.4,
+                        stagger: 0.03,
+                        ease: 'back.out(1.7)',
                     },
-                    '-=0.8'
+                    '-=0.6'
                 );
             }
 
@@ -100,9 +100,9 @@ export default function Hero() {
                     { strokeDashoffset: 200 },
                     {
                         strokeDashoffset: 0,
-                        duration: 1.2,
-                        ease: 'power2.out',
-                        delay: 1.5,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        delay: 1,
                     }
                 );
             }
@@ -117,10 +117,10 @@ export default function Hero() {
                         scale: 1,
                         opacity: 1,
                         rotation: -15,
-                        duration: 1,
-                        ease: 'elastic.out(1, 0.4)',
+                        duration: 0.8,
+                        ease: 'elastic.out(1, 0.5)',
                     },
-                    '-=0.5'
+                    '-=0.4'
                 );
             }
 
@@ -138,10 +138,10 @@ export default function Hero() {
                         scale: 1,
                         rotation: isNaN(originalRotation) ? 0 : originalRotation,
                         opacity: 1,
-                        duration: 1.5,
-                        delay: i * 0.1, // Stagger
+                        duration: 0.8,
+                        delay: i * 0.08, // Snappier stagger
                     },
-                    '<0.2' // Start slightly after text
+                    '<0.1' // Start slightly after text
                 );
 
                 // Setup QuickTo for performant mouse movement
@@ -202,7 +202,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-[100dvh] overflow-hidden bg-[#FFFBF5] paper-warm flex flex-col items-center justify-center"
+            className="relative w-full min-h-[100dvh] overflow-hidden bg-bg-light flex flex-col items-center justify-center"
         >
             {/* Visuals: Floating Stickers */}
             {stickers.map((sticker, i) => (
@@ -211,8 +211,11 @@ export default function Hero() {
                     ref={(el) => { stickerRefs.current[i] = el; }}
                     onMouseEnter={() => handleStickerHover(i, true)}
                     onMouseLeave={() => handleStickerHover(i, false)}
-                    className={`absolute p-2 bg-white shadow-ambient-lg rounded-sm z-10 ${sticker.className} transition-transform will-change-transform hidden md:block cursor-pointer`}
-                    style={{ transform: `rotate(${Math.random() * 4 - 2}deg)` }}
+                    className={`absolute p-2 bg-white shadow-2xl rounded-sm z-10 ${sticker.className} will-change-transform hidden md:block cursor-pointer`}
+                    style={{ 
+                        transform: `rotate(${Math.random() * 4 - 2}deg) translate3d(0,0,0)`,
+                        backfaceVisibility: 'hidden'
+                    }}
                 >
                     {/* Washi Tape Decoration */}
                     <div className={`washi-tape -top-3 left-1/2 -translate-x-1/2 -rotate-2 ${i % 2 === 0 ? 'washi-tape-yellow' : 'washi-tape-coral'}`} />
@@ -300,7 +303,7 @@ export default function Hero() {
                     </Magnetic>
 
                     {/* High-end Social Proof */}
-                    <div className="flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/50 shadow-ambient-sm animate-float">
+                    <div className="flex items-center gap-4 bg-bg-paper px-6 py-3 rounded-2xl border border-black/5 shadow-ambient-sm animate-float">
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map((i) => (
                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
@@ -331,8 +334,8 @@ export default function Hero() {
 
             {/* Scroll Indicator */}
             <div className="absolute bottom-8 animate-bounce opacity-50 hidden md:block z-20">
-                <div className="w-6 h-10 border-2 border-[#2D2D2D] rounded-full flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-[#2D2D2D] rounded-full" />
+                <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
+                    <div className="w-1 h-2 bg-white/20 rounded-full" />
                 </div>
             </div>
 

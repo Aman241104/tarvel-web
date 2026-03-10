@@ -17,14 +17,14 @@ export default function WhatsAppButton() {
     const waLink = "https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!";
 
     return (
-        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] hidden md:flex items-center gap-4">
+        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] flex items-center gap-4">
             <AnimatePresence>
                 {showTooltip && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: 20 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.8, x: 20 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }} // Zappier spring
                         className="bg-white/80 backdrop-blur-md text-text-navy px-5 py-3 rounded-2xl shadow-ambient-lg font-black text-[10px] uppercase tracking-widest hidden md:block border border-white/50"
                     >
                         Chat with us

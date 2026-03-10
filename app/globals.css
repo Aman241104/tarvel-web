@@ -29,25 +29,24 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFFBF5;
+  background: #0b0b0b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #F59E0B;
-  /* Accent Gold */
+  background-color: #FF6B6B;
+  /* Brand Coral */
   border-radius: 7px;
-  border: 4px solid #FFFBF5;
+  border: 4px solid #0b0b0b;
   /* Creates padding effect */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #0EA5E9;
-  /* Sky Blue on hover */
+  background-color: #FF5A5F;
 }
 
 body {
-  color: var(--foreground);
-  background-color: theme('colors.bg-light');
+  color: #1a1a1a;
+  background-color: #F9F8F6;
   min-height: 100vh;
 }
 
@@ -57,20 +56,20 @@ body {
 
 /* Paper Texture Backgrounds */
 .paper-warm {
-  background-color: #FFFBF5;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23FFFBF5' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-color: #121212;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23121212' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   background-blend-mode: soft-light;
 }
 
 .paper-cool {
-  background-color: #F8FAFB;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F8FAFB' surfaceScale='1'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-color: #0b0b0b;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%230b0b0b' surfaceScale='1'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   background-blend-mode: soft-light;
 }
 
 .paper-aged {
-  background-color: #F5F0E8;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='6' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F5F0E8' surfaceScale='2'%3E%3CfeDistantLight azimuth='30' elevation='45'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-color: #1a1a1a;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='6' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%231a1a1a' surfaceScale='2'%3E%3CfeDistantLight azimuth='30' elevation='45'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   background-blend-mode: soft-light;
 }
 

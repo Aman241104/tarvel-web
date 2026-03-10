@@ -16,16 +16,16 @@ export default function TravelerSection() {
     useGSAP(() => {
         // Image Swing & Reveal
         gsap.fromTo(imageRef.current,
-            { rotate: 10, opacity: 0, scale: 0.8 },
+            { rotate: 10, opacity: 0, scale: 0.85 },
             {
                 rotate: -3,
                 opacity: 1,
                 scale: 1,
-                duration: 1.2,
-                ease: 'back.out(1.2)',
+                duration: 0.8,
+                ease: 'back.out(1.5)',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 70%',
+                    start: 'top 75%',
                     toggleActions: 'play none none reverse',
                 }
             }
@@ -33,14 +33,14 @@ export default function TravelerSection() {
 
         // Text Stagger
         gsap.from(textRef.current?.children || [], {
-            y: 50,
+            y: 30,
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out',
+            duration: 0.6,
+            stagger: 0.08,
+            ease: 'expo.out',
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: 'top 60%',
+                start: 'top 70%',
             }
         });
 
@@ -53,12 +53,12 @@ export default function TravelerSection() {
                 { innerText: 0 },
                 {
                     innerText: target,
-                    duration: 2,
-                    ease: 'power1.out',
+                    duration: 1.2,
+                    ease: 'power2.out',
                     snap: { innerText: 1 },
                     scrollTrigger: {
                         trigger: el,
-                        start: 'top 85%',
+                        start: 'top 90%',
                         once: true,
                     }
                 }
@@ -73,11 +73,11 @@ export default function TravelerSection() {
                 { strokeDashoffset: 500 },
                 {
                     strokeDashoffset: 0,
-                    duration: 2,
-                    ease: 'power2.out',
+                    duration: 1.2,
+                    ease: 'power3.out',
                     scrollTrigger: {
                         trigger: sigPath,
-                        start: 'top 85%',
+                        start: 'top 90%',
                     }
                 }
             );
@@ -116,7 +116,7 @@ export default function TravelerSection() {
     }, { scope: containerRef });
 
     return (
-        <section id="about" ref={containerRef} className="bg-white text-[#2D2D2D] py-16 md:py-24 relative overflow-hidden">
+        <section id="about" ref={containerRef} className="bg-bg-light text-text-light py-16 md:py-32 relative overflow-hidden">
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
@@ -124,15 +124,15 @@ export default function TravelerSection() {
 
                     {/* Left: Typography */}
                     <div ref={textRef} className="w-full md:w-1/2 relative z-10">
-                        <div className="inline-block px-4 py-1 bg-black text-white rounded-full text-sm font-bold tracking-wider mb-6">
+                        <div className="inline-block px-5 py-2 bg-brand-coral/10 border border-brand-coral/20 text-brand-coral rounded-full text-xs font-black tracking-[0.3em] mb-8">
                             MEET THE CAPTAIN
                         </div>
 
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-10 leading-[0.85] tracking-tighter">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-10 leading-[0.85] tracking-tighter text-text-navy">
                             Sujal<br />
                             <span className="relative inline-block px-4 mt-4 py-1">
                                 <span className="absolute inset-0 bg-brand-yellow -rotate-1 rounded-sm mix-blend-multiply opacity-90" />
-                                <span className="relative z-10 text-black">Soni</span>
+                                <span className="relative z-10 text-white">Soni</span>
                             </span>
                         </h2>
 
@@ -142,12 +142,12 @@ export default function TravelerSection() {
 
                         <div className="flex flex-col gap-5 text-gray-500 font-medium">
                             <div className="flex items-center gap-4">
-                                <div className="w-2.5 h-2.5 bg-brand-teal rounded-full shadow-[0_0_10px_rgba(46,196,182,0.4)]" />
-                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-text-navy/40">Founder</span>
+                                <div className="w-2.5 h-2.5 bg-brand-teal rounded-full shadow-[0_0_15px_rgba(46,196,182,0.6)]" />
+                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-black/40">Founder</span>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_10px_rgba(255,107,107,0.4)]" />
-                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-text-navy/40">Travel Boutique & Co.</span>
+                                <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_15px_rgba(255,107,107,0.6)]" />
+                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-black/40">Travel Boutique & Co.</span>
                             </div>
                         </div>
 
@@ -203,9 +203,9 @@ export default function TravelerSection() {
                             {/* Polaroid Frame */}
                             <div className="bg-white p-4 pb-20 shadow-ambient-lg rotate-1 md:rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105 relative rounded-sm">
                                 {/* Film Strip Sprocket Holes */}
-                                <div className="absolute left-1 top-4 bottom-20 w-3 flex flex-col justify-between items-center py-2 z-30 opacity-20">
+                                <div className="absolute left-1 top-4 bottom-20 w-3 flex flex-col justify-between items-center py-2 z-30 opacity-10">
                                     {[...Array(6)].map((_, i) => (
-                                        <div key={i} className="w-2 h-4 bg-black rounded-full" />
+                                        <div key={i} className="w-2 h-4 bg-gray-900 rounded-full" />
                                     ))}
                                 </div>
                                 <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[380px] md:h-[440px] bg-gray-100 shadow-inner">

@@ -2,7 +2,9 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import VisualStory from "@/components/VisualStory";
+import USP from "@/components/sections/USP";
+import PopularDestinations from "@/components/sections/PopularDestinations";
+import TravelGallery from "@/components/sections/TravelGallery";
 import ServicesGrid from "@/components/ServicesGrid";
 import TravelerSection from "@/components/luxury/TravelerSection";
 import Testimonials from "@/components/luxury/Testimonials";
@@ -13,36 +15,68 @@ import ServicesList from "@/components/ServicesList";
 import CTASection from "@/components/CTASection";
 import TapeMarquee from "@/components/TapeMarquee";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
+import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
     return (
-        <main className="bg-bg-light dark:bg-bg-dark min-h-screen relative transition-colors duration-500 overflow-x-hidden">
+        <main className="bg-bg-light min-h-screen relative overflow-x-hidden">
 
             <Navbar />
             <WhatsAppButton />
 
-            <div className="relative z-30 bg-bg-light dark:bg-bg-dark shadow-2xl rounded-b-[10px] transition-colors duration-500">
+            <div className="relative z-30 bg-bg-light shadow-2xl">
                 <section id="home">
                     <Hero />
                 </section>
-                <section id="stories">
-                    <VisualStory />
-                </section>
+
+                <USP />
+
+                {/* Micro CTA */}
+                <div className="py-12 bg-bg-light text-center">
+                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
+                        <span>Book Your Journey</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                </div>
+
                 <TravelerSection />
+
+                <section id="services">
+                    <ServicesGrid />
+                    
+                    {/* Micro CTA */}
+                    <div className="py-12 bg-bg-light text-center">
+                        <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
+                            <span>Plan Your Luxury Escape</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                    </div>
+
+                    <ServicesList />
+                </section>
+
+                <PopularDestinations />
+
                 <Testimonials />
+
+                {/* Micro CTA After Testimonials */}
+                <div className="py-12 bg-bg-light text-center">
+                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
+                        <span>Start Planning Your Trip</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                </div>
+
+                <TravelGallery />
+
                 <section id="marquee" className="relative z-20 py-12 -my-12">
                     <TapeMarquee />
                 </section>
-                <section id="services">
-                    <ServicesGrid />
-                    <ServicesList />
-                </section>
             </div>
 
-            {/* Smooth gradient transition from paper-warm to CTA coral */}
-            <div className="h-32 md:h-64 bg-gradient-to-b from-bg-paper to-brand-coral relative z-20" />
-
-            <CTASection />
+            <section id="contact">
+                <CTASection />
+            </section>
 
             {/* Final Footer Section */}
             <Footer />

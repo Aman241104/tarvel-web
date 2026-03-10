@@ -21,17 +21,17 @@ export default function ServicesList() {
                 if (!card) return;
                 gsap.fromTo(
                     card,
-                    { rotateZ: -15, y: 60, opacity: 0 },
+                    { rotateZ: -10, y: 40, opacity: 0 },
                     {
                         rotateZ: 0,
                         y: 0,
                         opacity: 1,
-                        duration: 1.5,
-                        delay: i * 0.1,
-                        ease: 'elastic.out(1, 0.4)',
+                        duration: 0.8,
+                        delay: i * 0.05,
+                        ease: 'elastic.out(1, 0.6)',
                         scrollTrigger: {
                             trigger: containerRef.current,
-                            start: 'top 80%',
+                            start: 'top 85%',
                         },
                     }
                 );
@@ -92,7 +92,7 @@ export default function ServicesList() {
     ];
 
     return (
-        <section ref={containerRef} className="pt-0 md:pt-12 pb-24 mb-0 md:-mb-16 bg-[#FFFBF5] paper-warm relative z-30 overflow-visible">
+        <section ref={containerRef} className="pt-0 md:pt-12 pb-24 mb-0 md:-mb-16 bg-bg-light relative z-30 overflow-visible">
             <ServiceModal
                 isOpen={!!selectedService}
                 onClose={() => setSelectedService(null)}
@@ -108,19 +108,19 @@ export default function ServicesList() {
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}
-                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-gray-400/60 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
+                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-white/20 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
 
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-white border border-gray-100 p-5 pt-8 md:p-8 md:pt-12 text-center shadow-ambient-lg transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-2xl rounded-xl"
+                                className="relative bg-white border border-black/5 p-5 pt-8 md:p-8 md:pt-12 text-center shadow-2xl transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-brand-coral/10 rounded-xl"
                                 style={{
                                     clipPath: 'polygon(25% 0%, 75% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%)',
                                 }}
                             >
                                 {/* Hole Punch with Metal Eyelet Effect */}
-                                <div className="absolute top-3 md:top-5 left-1/2 -translate-x-1/2 w-4 h-4 md:w-6 md:h-6 bg-gradient-to-br from-gray-200 via-white to-gray-300 rounded-full border-[1.5px] border-gray-400/30 shadow-inner z-20 flex items-center justify-center">
-                                    <div className="w-1.5 h-1.5 md:w-3 md:h-3 bg-bg-paper rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]" />
+                                <div className="absolute top-3 md:top-5 left-1/2 -translate-x-1/2 w-4 h-4 md:w-6 md:h-6 bg-gradient-to-br from-black/10 via-black/5 to-black/20 rounded-full border-[1.5px] border-black/10 shadow-inner z-20 flex items-center justify-center">
+                                    <div className="w-1.5 h-1.5 md:w-3 md:h-3 bg-bg-light rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]" />
                                 </div>
 
 
@@ -137,7 +137,7 @@ export default function ServicesList() {
                                 <h3 className="text-base md:text-xl font-black font-heading text-text-navy mb-2 md:mb-4 tracking-tight leading-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-400 font-body text-[10px] md:text-sm leading-relaxed max-w-[180px] mx-auto">
+                                <p className="text-gray-500 font-body text-[10px] md:text-sm leading-relaxed max-w-[180px] mx-auto">
                                     {service.desc}
                                 </p>
                             </div>

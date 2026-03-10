@@ -12,10 +12,10 @@ const config: Config = {
                 'brand-teal': '#2EC4B6',
                 'brand-yellow': '#FFBF00',
                 'bg-dark': '#050505',
-                'bg-light': '#F2F0E9', // Warm Beige
-                'bg-paper': '#FFFBF5', // Premium Paper
-                'text-dark': '#ffffff',
-                'text-light': '#1a1a1a',
+                'bg-light': '#F9F8F6', // Light theme background
+                'bg-paper': '#FFFFFF', // Light theme paper
+                'text-dark': '#0F172A', // Dark text for light theme
+                'text-light': '#1A1A1A', // Dark text for light theme
                 'sky-primary': '#0EA5E9', // Vivid Sky Blue
                 'sky-light': '#E0F2FE', // Soft Cloud White
                 'glass-white': 'rgba(255, 255, 255, 0.7)', // Glassmorphism

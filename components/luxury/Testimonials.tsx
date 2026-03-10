@@ -51,12 +51,12 @@ export default function Testimonials() {
                 opacity: 1,
                 scale: 1,
                 rotation: (i) => i % 2 === 0 ? -2 : 2,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: 'power3.out',
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'expo.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 85%', // Trigger when section is 85% from top
+                    start: 'top 90%', // Earlier trigger
                     toggleActions: 'play none none reverse',
                 }
             });
@@ -69,11 +69,11 @@ export default function Testimonials() {
                 { strokeDashoffset: 400 },
                 {
                     strokeDashoffset: 0,
-                    duration: 1.5,
-                    ease: 'power2.out',
+                    duration: 1.2,
+                    ease: 'power3.out',
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: 'top 85%',
+                        start: 'top 90%',
                     }
                 }
             );
@@ -81,7 +81,7 @@ export default function Testimonials() {
     }, { scope: containerRef });
 
     return (
-        <section id="testimonials" ref={containerRef} className="py-20 md:py-32 bg-[#F8F9FA] paper-warm relative overflow-hidden">
+        <section id="testimonials" ref={containerRef} className="py-20 md:py-32 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 <div className="text-center mb-16 relative inline-block mx-auto w-full">
                     <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy relative z-10 inline-block">
@@ -90,7 +90,7 @@ export default function Testimonials() {
                             <path 
                                 className="wavy-line" 
                                 d="M5 20 Q 50 0 100 20 T 195 20" 
-                                stroke="#F59E0B" 
+                                stroke="#FFBF00" 
                                 strokeWidth="4" 
                                 strokeLinecap="round" 
                                 style={{ strokeDasharray: 400, strokeDashoffset: 400 }}
@@ -102,20 +102,20 @@ export default function Testimonials() {
                     </p>
 
                     {/* Trust Block (2026 Trend) */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-8">
-                        <div className="flex items-center gap-2 text-gray-400">
+                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-10">
+                        <div className="flex items-center gap-2 text-gray-400 hover:text-text-navy transition-colors">
                             <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>
                             <span className="text-[10px] font-black uppercase tracking-widest">Verified Reviews</span>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-400">
+                        <div className="flex items-center gap-2 text-gray-400 hover:text-text-navy transition-colors">
                             <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>
                             <span className="text-[10px] font-black uppercase tracking-widest">Zero Hidden Fees</span>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-400">
+                        <div className="flex items-center gap-2 text-gray-400 hover:text-text-navy transition-colors">
                             <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>
@@ -128,10 +128,10 @@ export default function Testimonials() {
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}
-                            className={`testimonial-card bg-white p-8 md:p-10 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+                            className={`testimonial-card bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
                         >
                             {/* Tape Piece */}
-                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-80 group-hover:opacity-100 transition-opacity`} />
+                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-40 group-hover:opacity-100 transition-opacity`} />
                             
                             <div className="flex gap-1 text-brand-yellow mb-8 relative z-10 scale-90 origin-left">
                                 {[...Array(5)].map((_, j) => (
@@ -143,7 +143,7 @@ export default function Testimonials() {
                                 "{t.quote}"
                             </p>
                             
-                            <div className="mt-auto border-t border-black/[0.03] pt-6">
+                            <div className="mt-auto border-t border-black/5 pt-6">
                                 <div className="font-handwriting text-3xl md:text-4xl text-brand-teal rotate-[-1deg] mb-2 font-black">
                                     {t.highlight}
                                 </div>

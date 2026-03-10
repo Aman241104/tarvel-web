@@ -19,14 +19,14 @@ export default function CTASection() {
     useGSAP(
         () => {
             gsap.from(postcardRef.current, {
-                y: 150,
-                rotateX: -25,
+                y: 100,
+                rotateX: -15,
                 opacity: 0,
-                duration: 2,
-                ease: 'back.out(1.2)',
+                duration: 1.2,
+                ease: 'expo.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 75%',
+                    start: 'top 80%',
                     toggleActions: 'play none none reverse',
                 },
             });

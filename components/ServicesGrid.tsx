@@ -17,14 +17,14 @@ export default function ServicesGrid() {
         () => {
             // Staggered Entrance Animation
             gsap.from(cardsRef.current, {
-                y: 100,
+                y: 80,
                 opacity: 0,
-                duration: 1.2,
-                stagger: 0.2,
-                ease: 'power4.out',
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'expo.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 80%',
+                    start: 'top 85%',
                     toggleActions: 'play none none reverse',
                 },
             });
@@ -32,11 +32,11 @@ export default function ServicesGrid() {
             // Scribble Animation
             gsap.to('.scribble-path', {
                 strokeDashoffset: 0,
-                duration: 1.5,
-                ease: 'power2.out',
+                duration: 1,
+                ease: 'power3.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 70%',
+                    start: 'top 80%',
                 },
             });
 
@@ -100,14 +100,14 @@ export default function ServicesGrid() {
     };
 
     return (
-        <section ref={containerRef} className="pt-24 pb-12 md:pb-20 bg-[#FDFBF7] paper-warm relative z-20">
+        <section ref={containerRef} className="pt-24 pb-12 md:pb-20 bg-bg-light relative z-20">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="text-center mb-20 md:mb-32">
                     <span className="text-brand-coral font-black text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 block">The Collection</span>
                     <h2 className="text-4xl md:text-6xl font-black font-heading text-text-navy relative inline-block tracking-tight">
                         Curated Experiences
                         <svg
-                            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-48 md:w-64 h-8 z-0 pointer-events-none opacity-60"
+                            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-48 md:w-64 h-8 z-0 pointer-events-none opacity-40"
                             viewBox="0 0 200 60"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -136,9 +136,9 @@ export default function ServicesGrid() {
                             ref={(el) => { cardsRef.current[0] = el; }}
                             onMouseMove={(e) => handleMouseMove(e, 0)}
                             onMouseLeave={() => handleMouseLeave(0)}
-                            className="group relative w-full md:w-[60%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white"
+                            className="group relative w-full md:w-[60%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white/5"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-t from-text-navy/80 via-text-navy/10 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                             <Image
                                 src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
                                 alt="Flight Bookings"
@@ -169,19 +169,19 @@ export default function ServicesGrid() {
                             ref={(el) => { cardsRef.current[1] = el; }}
                             onMouseMove={(e) => handleMouseMove(e, 1)}
                             onMouseLeave={() => handleMouseLeave(1)}
-                            className="group relative w-full md:w-[40%] h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient-lg bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[8px] border-white"
+                            className="group relative w-full md:w-[40%] h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient-lg bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[8px] border-white/5"
                         >
                             {/* Graphic Pattern */}
                             <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h-2zm0 0' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
 
                             <div className="relative z-10 flex-1 flex flex-col justify-start transform transition-transform duration-700 group-hover:-translate-y-2">
-                                <div className="bg-text-navy p-3 rounded-full w-fit mb-6 shadow-xl">
+                                <div className="bg-bg-dark p-3 rounded-full w-fit mb-6 shadow-xl">
                                     <User className="text-brand-yellow w-5 h-5" strokeWidth={2.5} />
                                 </div>
-                                <h3 className="text-4xl md:text-5xl font-black text-text-navy font-heading leading-[1] tracking-tighter mb-4">
+                                <h3 className="text-4xl md:text-5xl font-black text-bg-dark font-heading leading-[1] tracking-tighter mb-4">
                                     Solo<br />Journeys
                                 </h3>
-                                <p className="text-text-navy/70 font-body text-sm font-medium leading-relaxed max-w-[200px]">
+                                <p className="text-bg-dark/70 font-body text-sm font-medium leading-relaxed max-w-[200px]">
                                     Curated independence. Safe, deeply personal itineraries for the intrepid traveler.
                                 </p>
                             </div>
@@ -204,9 +204,9 @@ export default function ServicesGrid() {
                         ref={(el) => { cardsRef.current[2] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 2)}
                         onMouseLeave={() => handleMouseLeave(2)}
-                        className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white"
+                        className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white/5"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-t from-text-navy/90 via-text-navy/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
                         
                         <Image
                             src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80"

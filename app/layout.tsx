@@ -2,10 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Mulish, Caveat } from "next/font/google"; // Luxury Fonts & Handwriting
 import "./globals.css";
 import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
-import CustomCursor from "@/components/ui/CustomCursor";
-import CursorStamper from "@/components/ui/CursorStamper";
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
-import ScrollProgress from "@/components/ui/ScrollProgress";
 import RightSideNav from "@/components/ui/RightSideNav";
 import PostItCTA from "@/components/ui/PostItCTA";
 import { Providers } from "./providers";
@@ -52,13 +49,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${playfair.variable} ${mulish.variable} ${caveat.variable}`}>
-            <body className={`${playfair.variable} ${mulish.variable} ${caveat.variable} font-body bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition-colors duration-500 overflow-x-hidden antialiased selection:bg-sky-primary selection:text-white`}>
+            <body className={`${playfair.variable} ${mulish.variable} ${caveat.variable} font-body bg-bg-light text-text-light overflow-x-hidden antialiased selection:bg-brand-coral selection:text-white`}>
                 <NoiseOverlay />
-                <ScrollProgress />
                 <RightSideNav />
                 <SmoothScroll>
-                    <CustomCursor />
-                    <CursorStamper />
                     <Providers>
                         {children}
                         <PostItCTA />

@@ -7,10 +7,11 @@ import gsap from 'gsap';
 
 const sections = [
     { id: 'home', label: 'Home' },
-    { id: 'stories', label: 'Story' },
-    { id: 'about', label: 'Trips' },
-    { id: 'testimonials', label: 'Reviews' },
+    { id: 'usp', label: 'Why Us' },
+    { id: 'about', label: 'Captain' },
     { id: 'services', label: 'Services' },
+    { id: 'testimonials', label: 'Reviews' },
+    { id: 'contact', label: 'Contact' },
 ];
 
 export default function RightSideNav() {
@@ -64,7 +65,7 @@ export default function RightSideNav() {
                                 className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full backdrop-blur-md border ${
                                     activeSection === section.id 
                                     ? 'bg-brand-coral text-white border-brand-coral' 
-                                    : 'bg-white/40 text-text-navy border-white/20'
+                                    : 'bg-white/10 text-white/60 border-white/10'
                                 } shadow-sm`}
                             >
                                 {section.label}
@@ -77,7 +78,7 @@ export default function RightSideNav() {
                         <motion.div
                             animate={{
                                 scale: activeSection === section.id ? 1.2 : 1,
-                                backgroundColor: activeSection === section.id ? '#FF6B6B' : 'rgba(15, 23, 42, 0.2)'
+                                backgroundColor: activeSection === section.id ? '#FF6B6B' : 'rgba(255, 255, 255, 0.2)'
                             }}
                             className="w-2 h-2 rounded-full transition-colors duration-300"
                         />

@@ -33,14 +33,14 @@ export default function Footer() {
 
             // Floating contact items stagger
             gsap.from('.footer-contact-item', {
-                y: 30,
+                y: 20,
                 opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out',
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'expo.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 80%',
+                    start: 'top 85%',
                 }
             });
         },
@@ -64,7 +64,7 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-brand-teal pt-56 pb-12 overflow-hidden z-10 text-white">
+        <footer ref={containerRef} className="relative bg-[#0b0b0b] pt-56 pb-12 overflow-hidden z-10 text-white">
             {/* Organic Wave Divider (Double Layered) */}
             <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-0">
                 <svg className="relative block w-full h-[120px] md:h-[180px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -117,7 +117,7 @@ export default function Footer() {
                                     <a 
                                         href={social.href} 
                                         aria-label={`Visit our ${social.label} page`}
-                                        className="bg-white/10 border border-white/10 p-4 rounded-2xl hover:bg-white hover:text-brand-teal transition-all duration-500 flex items-center justify-center group shadow-xl"
+                                        className="bg-white/10 border border-white/10 p-4 rounded-2xl hover:bg-white hover:text-brand-teal transition-all duration-300 flex items-center justify-center group shadow-xl"
                                     >
                                         <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                     </a>
