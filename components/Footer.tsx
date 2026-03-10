@@ -230,8 +230,8 @@ export default function Footer() {
             </div>
 
             {/* MEGA TYPE SIGNATURE */}
-            <div className="absolute bottom-[-2vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.02]">
-                <h1 className="mega-type text-[12vw] md:text-[18vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.5] tracking-tighter uppercase">
+            <div className="absolute bottom-[-1vw] left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.02]">
+                <h1 className="mega-type text-[12vw] md:text-[18vw] font-black font-heading text-white whitespace-nowrap text-center leading-[0.7] tracking-tighter uppercase">
                     Destination Anywhere
                 </h1>
             </div>

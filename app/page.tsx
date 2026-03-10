@@ -30,7 +30,7 @@ export default function Home() {
                 </section>
                 <TravelerSection />
                 <Testimonials />
-                <section id="marquee" className="relative z-20 -my-8 overflow-hidden">
+                <section id="marquee" className="relative z-20 py-12 -my-12">
                     <TapeMarquee />
                 </section>
                 <section id="services">

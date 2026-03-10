@@ -129,7 +129,6 @@ export default function Testimonials() {
                         <div 
                             key={t.id}
                             className={`testimonial-card bg-white p-8 md:p-10 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
-                            style={{ transform: `rotate(${i % 2 === 0 ? '-1deg' : '1deg'})` }}
                         >
                             {/* Tape Piece */}
                             <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-80 group-hover:opacity-100 transition-opacity`} />

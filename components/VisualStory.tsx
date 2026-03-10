@@ -169,7 +169,7 @@ export default function VisualStory() {
                         >
                             {/* Text Side */}
                             <div className="story-text w-full lg:w-[45%] text-left relative">
-                                <span className="text-7xl md:text-8xl font-black text-black/[0.03] absolute -top-10 md:-top-20 -left-2 md:-left-8 select-none">0{index + 1}</span>
+                                <span className="text-7xl md:text-8xl font-black text-black/[0.03] absolute -top-8 md:-top-20 left-0 md:-left-8 select-none">0{index + 1}</span>
                                 
                                 <h2 className="text-3xl md:text-6xl font-black font-heading text-text-navy mb-6 md:mb-8 leading-[1.1] tracking-tight relative z-10">
                                     {story.title.split(' ').map((word, wIndex) => (

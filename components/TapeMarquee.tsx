@@ -11,33 +11,32 @@ export default function TapeMarquee() {
     const marqueeRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        const marqueeContent = marqueeRef.current?.children;
-        if (marqueeContent) {
-            // Base animation
-            const tween = gsap.to(marqueeContent, {
-                xPercent: -50,
+        if (marqueeRef.current) {
+            // Base animation for the whole track
+            const tween = gsap.to(marqueeRef.current, {
+                x: "-50%",
                 ease: 'none',
-                duration: 20,
+                duration: 25,
                 repeat: -1,
             });
 
-            // Velocity listener
+            // Velocity listener for scroll speed interaction
             ScrollTrigger.create({
                 onUpdate: (self) => {
                     const velocity = Math.abs(self.getVelocity());
-                    const targetTimeScale = 1 + (velocity / 2000); // More conservative scaling
+                    const targetTimeScale = 1 + (velocity / 1500);
 
                     gsap.to(tween, {
                         timeScale: targetTimeScale,
-                        duration: 0.8, // Slower smoothing
+                        duration: 0.5,
                         ease: 'power2.out',
                         overwrite: true
                     });
 
                     gsap.to(tween, {
                         timeScale: 1,
-                        duration: 1.5,
-                        delay: 0.2,
+                        duration: 1.2,
+                        delay: 0.1,
                         ease: 'power1.inOut',
                         overwrite: 'auto'
                     });
@@ -46,11 +45,13 @@ export default function TapeMarquee() {
         }
     }, { scope: marqueeRef });
 
+    const marqueeText = "YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 • ";
+
     return (
-        <div className="relative z-20 w-[120%] -ml-[10%] md:w-[105%] md:-ml-[2.5%] -rotate-1 transform transition-transform hover:rotate-0 hover:scale-105 duration-300">
+        <div className="relative z-20 w-[110%] -ml-[5%] -rotate-1 transform transition-transform hover:rotate-0 hover:scale-[1.02] duration-500 py-4">
             {/* Top ripped edge */}
             <div
-                className="absolute -top-2 left-0 right-0 h-3 z-10"
+                className="absolute top-2 left-0 right-0 h-3 z-10"
                 style={{
                     clipPath: 'polygon(0% 100%, 2% 40%, 5% 80%, 8% 30%, 12% 70%, 15% 20%, 19% 60%, 22% 10%, 26% 50%, 30% 0%, 34% 60%, 38% 20%, 42% 70%, 46% 30%, 50% 80%, 54% 10%, 58% 60%, 62% 0%, 66% 50%, 70% 20%, 74% 70%, 78% 30%, 82% 60%, 86% 0%, 90% 50%, 94% 20%, 97% 70%, 100% 100%)',
                     background: '#FACC15',
@@ -59,29 +60,33 @@ export default function TapeMarquee() {
 
             {/* Tape body with washi pattern */}
             <div
-                className="relative py-3 md:py-4 border-y-2 border-black/30 overflow-hidden"
+                className="relative py-4 md:py-6 border-y-2 border-black/20 overflow-hidden shadow-2xl"
                 style={{
-                    backgroundColor: 'rgba(250, 204, 21, 0.85)',
+                    backgroundColor: 'rgba(250, 204, 21, 0.95)',
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L20 20M20 0L0 20' stroke='%23F59E0B' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
                     backgroundSize: '12px 12px',
-                    boxShadow: '0 4px 0px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.3)',
                 }}
             >
                 <div
                     ref={marqueeRef}
-                    className="flex items-center whitespace-nowrap will-change-transform"
+                    className="flex items-center whitespace-nowrap will-change-transform w-fit"
                 >
-                    {[...Array(6)].map((_, i) => (
-                        <span key={i} className="text-black/80 font-black font-heading text-lg md:text-2xl mx-6 md:mx-8 uppercase tracking-widest flex items-center gap-3 md:gap-4">
-                            YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 •
-                        </span>
+                    {/* Render twice for seamless loop */}
+                    {[...Array(2)].map((_, groupIndex) => (
+                        <div key={groupIndex} className="flex items-center">
+                            {[...Array(4)].map((_, i) => (
+                                <span key={i} className="text-black font-black font-heading text-xl md:text-3xl uppercase tracking-tighter flex items-center gap-4 px-4 md:px-8">
+                                    {marqueeText}
+                                </span>
+                            ))}
+                        </div>
                     ))}
                 </div>
             </div>
 
             {/* Bottom ripped edge */}
             <div
-                className="absolute -bottom-2 left-0 right-0 h-3 z-10"
+                className="absolute bottom-2 left-0 right-0 h-3 z-10"
                 style={{
                     clipPath: 'polygon(0% 0%, 3% 60%, 7% 20%, 11% 70%, 15% 30%, 19% 80%, 23% 40%, 27% 90%, 31% 50%, 35% 100%, 39% 40%, 43% 80%, 47% 30%, 51% 70%, 55% 10%, 59% 60%, 63% 100%, 67% 40%, 71% 80%, 75% 20%, 79% 60%, 83% 30%, 87% 70%, 91% 100%, 95% 50%, 98% 80%, 100% 0%)',
                     background: '#FACC15',

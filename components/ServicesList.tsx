@@ -100,11 +100,11 @@ export default function ServicesList() {
             />
 
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="relative group perspective-1000 cursor-pointer pt-4 md:pt-24"
+                            className="relative group perspective-1000 cursor-pointer pt-8 md:pt-24"
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}
