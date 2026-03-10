@@ -155,24 +155,24 @@ export default function TravelerSection() {
                         <div className="flex justify-between md:justify-start gap-4 md:gap-16 mt-12 mb-10">
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
+                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
                                     <span className="text-2xl font-black text-brand-teal ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-teal transition-colors">Years XP</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-teal transition-colors">Years XP</p>
                             </div>
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="15">15</span>
+                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="15">15</span>
                                     <span className="text-2xl font-black text-brand-coral ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-coral transition-colors">Countries</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-coral transition-colors">Countries</p>
                             </div>
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-4xl sm:text-5xl md:text-6xl font-heading font-black text-text-navy tabular-nums" data-target="500">500</span>
+                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="500">500</span>
                                     <span className="text-2xl font-black text-brand-yellow ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-yellow transition-colors">Clients</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-yellow transition-colors">Clients</p>
                             </div>
                         </div>
 

@@ -136,7 +136,7 @@ export default function ServicesGrid() {
                             ref={(el) => { cardsRef.current[0] = el; }}
                             onMouseMove={(e) => handleMouseMove(e, 0)}
                             onMouseLeave={() => handleMouseLeave(0)}
-                            className="group relative w-full md:w-[60%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white/5"
+                            className="group relative w-full md:w-[60%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
                         >
                             <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                             <Image
@@ -169,7 +169,7 @@ export default function ServicesGrid() {
                             ref={(el) => { cardsRef.current[1] = el; }}
                             onMouseMove={(e) => handleMouseMove(e, 1)}
                             onMouseLeave={() => handleMouseLeave(1)}
-                            className="group relative w-full md:w-[40%] h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient-lg bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[8px] border-white/5"
+                            className="group relative w-full md:w-[40%] h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl bg-[#FFBF00] flex flex-col p-8 md:p-10 -mt-0 md:-mt-24 border-[12px] border-white"
                         >
                             {/* Graphic Pattern */}
                             <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h-2zm0 0' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
@@ -204,7 +204,7 @@ export default function ServicesGrid() {
                         ref={(el) => { cardsRef.current[2] = el; }}
                         onMouseMove={(e) => handleMouseMove(e, 2)}
                         onMouseLeave={() => handleMouseLeave(2)}
-                        className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-ambient border-[8px] border-white/5"
+                        className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border-[12px] border-white"
                     >
                         <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-bg-dark/20 to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
                         

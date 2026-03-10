@@ -26,7 +26,7 @@ const destinations = [
     },
     {
         name: 'Thailand',
-        image: 'https://images.unsplash.com/photo-1528181304800-2f140819898f?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80',
         tag: 'Exotic Beaches',
         price: '₹28,000'
     }

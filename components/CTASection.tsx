@@ -198,8 +198,8 @@ export default function CTASection() {
                     </div>
 
                     {/* Faint Text Mark (Rubber Stamp Effect) */}
-                    <div className="absolute bottom-4 left-4 opacity-[0.03] select-none pointer-events-none rotate-[-15deg]">
-                         <p className="text-8xl font-black font-heading uppercase">Approved</p>
+                    <div className="absolute bottom-4 left-4 opacity-[0.08] select-none pointer-events-none rotate-[-15deg]">
+                         <p className="text-8xl font-black font-heading uppercase text-brand-teal">Approved</p>
                     </div>
                 </div>
             </div>
