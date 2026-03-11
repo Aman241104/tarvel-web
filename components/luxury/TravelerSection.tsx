@@ -229,6 +229,7 @@ export default function TravelerSection() {
                                         src="/assets/owner-image.png"
                                         alt="Sujal Soni"
                                         className="w-full h-full object-cover filter contrast-[1.05] saturate-[1.1] transition-transform duration-700 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, 400px"
                                     />
                                     {/* Film Grain/Dust Overlay */}
                                     <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none" />

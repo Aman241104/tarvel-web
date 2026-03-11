@@ -1,18 +1,20 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
-import PopularDestinations from "@/components/sections/PopularDestinations";
-import ServicesGrid from "@/components/ServicesGrid";
-import TravelerSection from "@/components/luxury/TravelerSection";
-import Testimonials from "@/components/luxury/Testimonials";
-import Footer from "@/components/Footer";
+
+const PopularDestinations = dynamic(() => import("@/components/sections/PopularDestinations"));
+const ServicesGrid = dynamic(() => import("@/components/ServicesGrid"));
+const TravelerSection = dynamic(() => import("@/components/luxury/TravelerSection"));
+const Testimonials = dynamic(() => import("@/components/luxury/Testimonials"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 import WhatsAppButton from "@/components/luxury/WhatsAppButton";
 import ServicesList from "@/components/ServicesList";
-import CTASection from "@/components/CTASection";
-import TapeMarquee from "@/components/TapeMarquee";
+const CTASection = dynamic(() => import("@/components/CTASection"));
+const TapeMarquee = dynamic(() => import("@/components/TapeMarquee"));
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ArrowRight } from 'lucide-react';
 

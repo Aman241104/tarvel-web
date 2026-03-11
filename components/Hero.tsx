@@ -229,7 +229,7 @@ export default function Hero() {
                             fill
                             priority={i < 2}
                             className="object-cover p-[10px] pb-[36px] filter-printed"
-                            sizes="(max-width: 768px) 150px, 350px"
+                            sizes="(max-width: 768px) 20vw, (max-width: 1200px) 15vw, 250px"
                         />
                         <div className="absolute bottom-1 left-0 w-full text-center">
                             <span className="font-handwriting text-gray-400 text-[10px] tracking-widest uppercase">
@@ -312,6 +312,7 @@ export default function Hero() {
                                         alt="Traveler" 
                                         fill 
                                         className="object-cover"
+                                        sizes="40px"
                                     />
                                 </div>
                             ))}

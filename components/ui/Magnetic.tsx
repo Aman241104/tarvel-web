@@ -26,6 +26,9 @@ export default function Magnetic({ children, strength = 0.5 }: MagneticProps) {
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!ref.current) return;
+        
+        // Skip on touch devices for better UX
+        if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) return;
 
         const { clientX, clientY } = e;
         const { height, width, left, top } = ref.current.getBoundingClientRect();

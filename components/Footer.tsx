@@ -104,7 +104,13 @@ export default function Footer() {
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
                             <div className="relative w-16 h-16 rounded-3xl overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
-                                <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover p-2" />
+                                <Image 
+                                    src="/assets/logo.png" 
+                                    alt="Destination Anywhere Logo" 
+                                    fill 
+                                    className="object-cover p-2" 
+                                    sizes="64px"
+                                />
                             </div>
                             <div>
                                 <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">

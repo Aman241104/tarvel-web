@@ -73,7 +73,13 @@ export default function CTASection() {
                 <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/20 text-white shadow-2xl animate-float">
                     <div className="flex -space-x-2">
                         <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative">
-                            <Image src="https://i.pravatar.cc/100?img=32" alt="Reviewer" fill className="object-cover" />
+                            <Image 
+                                src="https://i.pravatar.cc/100?img=32" 
+                                alt="Reviewer" 
+                                fill 
+                                className="object-cover" 
+                                sizes="40px"
+                            />
                         </div>
                     </div>
                     <div className="text-left">
@@ -166,6 +172,7 @@ export default function CTASection() {
                                         alt="Stamp" 
                                         fill 
                                         className="object-contain p-3 md:p-4 grayscale group-hover/stamp:grayscale-0 transition-all duration-700 scale-90 group-hover/stamp:scale-105" 
+                                        sizes="(max-width: 768px) 100px, 150px"
                                       />
                                  </div>
                             </div>

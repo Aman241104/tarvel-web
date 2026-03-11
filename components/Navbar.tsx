@@ -128,7 +128,13 @@ export default function Navbar() {
                 {/* Left: Logo */}
                 <Link href="#home" onClick={() => handleLinkClick('home')} className="flex items-center gap-3 md:gap-4 group">
                     <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                         <Image src="/assets/logo.png" alt="Destination Anywhere Logo" fill className="object-cover" />
+                         <Image 
+                            src="/assets/logo.png" 
+                            alt="Destination Anywhere Logo" 
+                            fill 
+                            className="object-cover" 
+                            sizes="(max-width: 768px) 40px, 48px"
+                        />
                     </div>
                     <div className="flex flex-col">
                         <span className="text-sm md:text-base font-black tracking-tight text-text-navy transition-colors duration-300">
