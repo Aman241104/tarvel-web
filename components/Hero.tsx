@@ -266,7 +266,7 @@ export default function Hero() {
                         {greeting}
                     </span>
 
-                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[90vw]">
+                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex justify-center max-w-[90vw] whitespace-nowrap">
                         {'DESTINATION'.split('').map((char, i) => (
                             <span key={i} className="dest-char inline-block" aria-hidden={i > 0}>
                                 {char}

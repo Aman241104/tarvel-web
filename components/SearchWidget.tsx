@@ -79,7 +79,7 @@ Can you help me with the itinerary?`;
                 <div className="hidden md:block w-px h-8 bg-black/5 mx-2" />
 
                 {/* Mobile Row for Date and Guests */}
-                <div className="flex md:contents gap-1">
+                <div className="flex flex-row w-full md:w-auto md:flex-1 gap-1 md:gap-0">
                     {/* Date Input */}
                     <div className={`relative flex-1 p-3 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'date' ? 'bg-black/5 shadow-lg scale-[1.01] z-10' : 'hover:bg-black/5'}`}>
                         <div className="flex items-center gap-2 md:gap-4">

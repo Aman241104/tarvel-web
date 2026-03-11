@@ -66,7 +66,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <section id="marquee" className="relative z-20 py-12 -my-12">
+                <section id="marquee" className="relative z-20 py-12 -my-12 overflow-hidden">
                     <TapeMarquee />
                 </section>
             </div>
