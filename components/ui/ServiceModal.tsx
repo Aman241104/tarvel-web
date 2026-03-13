@@ -58,6 +58,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     <button
                         onClick={onClose}
                         aria-label="Close service details"
+                        data-cursor="close"
                         className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors z-50 focus:outline-none focus:ring-2 focus:ring-white"
                     >
                         <X className="w-6 h-6 text-white" aria-hidden="true" />

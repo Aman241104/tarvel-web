@@ -54,44 +54,47 @@ body {
    TACTILE ELEGANCE — Design System Utilities
    ======================================== */
 
-/* Paper Texture Backgrounds */
+/* Paper Texture Backgrounds - Light Mode Defaults */
 .paper-warm {
-  background-color: #121212;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23121212' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-color: #FFFFFF;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23FFFFFF' surfaceScale='1.2'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   background-blend-mode: soft-light;
 }
 
 .paper-cool {
-  background-color: #0b0b0b;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%230b0b0b' surfaceScale='1'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-color: #F9F8F6;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F9F8F6' surfaceScale='1'%3E%3CfeDistantLight azimuth='60' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
   background-blend-mode: soft-light;
 }
 
-.paper-aged {
-  background-color: #1a1a1a;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='6' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%231a1a1a' surfaceScale='2'%3E%3CfeDistantLight azimuth='30' elevation='45'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
-  background-blend-mode: soft-light;
+/* Dark Mode Overrides for Paper Texture (Implementation 4.D) */
+@media (prefers-color-scheme: dark) {
+  .paper-warm, .paper-cool, .paper-aged {
+    background-color: #121212 !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper-dark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='5' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23121212' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='40'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper-dark)'/%3E%3C/svg%3E") !important;
+    background-blend-mode: overlay !important;
+  }
 }
 
-/* Ambient Shadow — Floating 2mm off the page */
+/* Enhanced Ambient Shadow System (Improvement 8 - Spacing/Order) */
 .shadow-ambient {
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.02),
-    0 8px 24px rgba(0, 0, 0, 0.06),
-    0 16px 48px rgba(0, 0, 0, 0.04);
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    0 12px 32px rgba(0, 0, 0, 0.05),
+    0 24px 64px rgba(0, 0, 0, 0.03);
 }
 
 .shadow-ambient-lg {
   box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.03),
-    0 12px 32px rgba(0, 0, 0, 0.08),
-    0 24px 64px rgba(0, 0, 0, 0.06);
+    0 10px 15px rgba(0, 0, 0, 0.03),
+    0 25px 50px rgba(0, 0, 0, 0.08),
+    0 40px 100px rgba(0, 0, 0, 0.06);
 }
 
 .shadow-ambient-sm {
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.02),
-    0 4px 12px rgba(0, 0, 0, 0.05);
+    0 2px 4px rgba(0, 0, 0, 0.01),
+    0 8px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Washi Tape Effect */

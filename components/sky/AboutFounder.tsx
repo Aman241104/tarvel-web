@@ -29,22 +29,23 @@ export default function AboutFounder() {
                         {/* Left Side: Image */}
                         <div className="w-full md:w-1/3 flex justify-center relative">
                             <motion.div
-                                className="relative w-72 h-80 bg-gray-200 rotate-2 border-8 border-white shadow-xl"
+                                className="relative w-72 h-80 bg-gray-200 rotate-2 border-8 border-white shadow-xl overflow-hidden"
                                 whileHover={{ scale: 1.02, rotate: 0 }}
                                 transition={{ duration: 0.4, ease: "backOut" }}
                             >
-                                <div
-                                    className="w-full h-full bg-cover bg-center"
-                                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1526772662000-3f88f107f500?q=80&w=1335&auto=format&fit=crop')" }}
+                                <img 
+                                    src="/assets/owner-image.png" 
+                                    alt="Sujal Soni - Your Captain"
+                                    className="w-full h-full object-cover"
                                 />
                                 {/* Caption */}
                                 <div className="absolute -bottom-10 left-0 w-full text-center">
-                                    <span className="font-handwriting text-2xl text-gray-400 -rotate-2 inline-block">Sujal in Kyoto</span>
+                                    <span className="font-handwriting text-2xl text-gray-400 -rotate-2 inline-block">Sujal Soni</span>
                                 </div>
                             </motion.div>
 
                             {/* Doodle Arrow pointing to image */}
-                            <svg className="absolute -right-8 top-10 w-24 h-24 text-sky-primary rotate-12 hidden md:block" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+                            <svg className="absolute -right-8 top-10 w-24 h-24 text-brand-coral rotate-12 hidden md:block" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M10,50 Q40,10 90,50" strokeDasharray="5,5" />
                                 <path d="M80,45 L90,50 L85,60" />
                             </svg>
@@ -53,12 +54,12 @@ export default function AboutFounder() {
                         {/* Right Side: Story */}
                         <div className="w-full md:w-2/3">
                             <div className="flex items-start gap-4 mb-6">
-                                <Quote className="text-sky-primary w-10 h-10 opacity-80" />
+                                <Quote className="text-brand-coral w-10 h-10 opacity-80" />
                                 <div>
                                     <h2 className="text-3xl md:text-5xl font-black font-heading text-text-navy mb-4 leading-tight">
-                                        Meet The Traveler <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-primary to-accent-gold">
-                                            Behind The Brand
+                                        Meet Your Captain <br />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-coral to-accent-gold">
+                                            Curating Your Story
                                         </span>
                                     </h2>
                                 </div>
@@ -66,15 +67,24 @@ export default function AboutFounder() {
 
                             <div className="space-y-6 text-lg text-slate-600 font-body leading-relaxed pl-14">
                                 <p>
-                                    <strong className="text-sky-primary">Sujal Soni</strong> is deeply passionate about travelling and exploring new destinations.
-                                    His love for travel inspired him to start Destination Anywhere & Co., with the vision of helping people
-                                    explore the world seamlessly and stress-free.
+                                    <strong className="text-brand-coral">Sujal Soni</strong> isn't just a travel agent; he's a curator of experiences. His deep-rooted passion for global exploration led to the birth of Destination Anywhere & Co.
                                 </p>
                                 <p>
-                                    Believing that every journey tells a story, Sujal curated a team of experts dedicated to crafting
-                                    unforgettable experiences. From the mountains of the north to the beaches of the south,
-                                    his mission is to make the world accessible to everyone.
+                                    He believes that travel is the ultimate investment in oneself. With a focus on seamless, stress-free journeys, Sujal personally ensures that every itinerary he crafts tells a unique story—your story.
                                 </p>
+
+                                {/* Captain's Top Picks Addition */}
+                                <div className="pt-6 mt-6 border-t border-black/5 flex flex-wrap items-center gap-6">
+                                     <span className="text-[10px] font-black uppercase tracking-widest text-gray-300">Captain's Favorites:</span>
+                                     <div className="flex gap-4">
+                                          {['Kyoto', 'Maldives', 'Swiss Alps'].map((place) => (
+                                               <div key={place} className="flex items-center gap-1.5 px-3 py-1 bg-brand-teal/5 rounded-full border border-brand-teal/10">
+                                                    <div className="w-1 h-1 rounded-full bg-brand-teal" />
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal">{place}</span>
+                                               </div>
+                                          ))}
+                                     </div>
+                                </div>
                             </div>
 
                             {/* Signature */}
@@ -85,9 +95,9 @@ export default function AboutFounder() {
                                 transition={{ delay: 0.5, duration: 0.5 }}
                             >
                                 <div>
-                                    <p className="font-handwriting text-4xl text-sky-primary rotate-[-2deg]">Sujal Soni</p>
+                                    <p className="font-handwriting text-4xl text-brand-coral rotate-[-2deg]">Sujal Soni</p>
                                     <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">
-                                        Founder & Explorer
+                                        Chief Curator & Your Captain
                                     </p>
                                 </div>
                             </motion.div>

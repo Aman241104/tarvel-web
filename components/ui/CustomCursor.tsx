@@ -55,21 +55,29 @@ export default function CustomCursor() {
             // Check for interactive elements
             const isLink = target.closest('a, button, .cursor-pointer, input');
             const isCard = target.closest('.group'); // Cards usually have 'group'
+            const isCloseBtn = target.closest('[data-cursor="close"]');
+            const isViewBtn = target.closest('[data-cursor="view"]');
             const isCTA = target.closest('button');
             const isImage = target.closest('img, .story-image, [class*="aspect-"]');
 
-            if (isCTA) {
+            if (isCloseBtn) {
                 setIsHovering(true);
-                setCursorText('✈️');
+                setCursorText('Close Window ✕');
+            } else if (isViewBtn) {
+                setIsHovering(true);
+                setCursorText('Unlock Experience');
+            } else if (isCTA) {
+                setIsHovering(true);
+                setCursorText('Plan Your Journey ✈️');
             } else if (isImage && isCard) {
                 setIsHovering(true);
-                setCursorText('Explore →');
+                setCursorText('Glimpse the Escape');
             } else if (isCard && !isLink) {
                 setIsHovering(true);
-                setCursorText('View');
+                setCursorText('Explore Details');
             } else if (isLink) {
                 setIsHovering(true);
-                setCursorText(''); // Just expand
+                setCursorText('Continue →');
             } else {
                 setIsHovering(false);
                 setCursorText('');
@@ -90,20 +98,21 @@ export default function CustomCursor() {
             {/* Main Dot - The Anchor */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-2.5 h-2.5 bg-[#FF6B6B] rounded-full pointer-events-none z-[9999] mix-blend-difference"
+                className="fixed top-0 left-0 w-1.5 h-1.5 bg-brand-coral rounded-full pointer-events-none z-[9999] shadow-sm"
             />
 
-            {/* Follower - The Magnetic Field */}
+            {/* Follower - The "Luggage Tag" / Concierge Label */}
             <div
                 ref={followerRef}
-                className={`fixed top-0 left-0 rounded-full border border-[#FF6B6B] pointer-events-none z-[9998] flex items-center justify-center transition-all duration-300 ease-out mix-blend-difference
+                className={`fixed top-0 left-0 pointer-events-none z-[9998] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
             ${isHovering
-                        ? 'w-20 h-20 bg-[#FF6B6B] border-transparent opacity-30 text-white'
-                        : 'w-6 h-6 opacity-40 bg-transparent'
+                        ? 'w-auto h-auto px-4 py-2 bg-white rounded-full shadow-xl border border-brand-coral/20'
+                        : 'w-8 h-8 rounded-full border border-brand-coral/30 bg-brand-coral/5'
                     }
         `}
             >
-                <span className={`font-bold text-[10px] uppercase tracking-widest transition-opacity duration-200 ${cursorText ? 'opacity-100' : 'opacity-0'}`}>
+                <span className={`font-handwriting text-brand-coral whitespace-nowrap transition-all duration-300 ${cursorText ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                    } ${isHovering ? 'text-base font-bold' : 'text-[0px]'}`}>
                     {cursorText}
                 </span>
             </div>

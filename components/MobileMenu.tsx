@@ -61,7 +61,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection, onSe
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[100] invisible pointer-events-none"
+            className="fixed inset-0 z-[110] invisible pointer-events-none"
         >
             {/* Backdrop */}
             <div

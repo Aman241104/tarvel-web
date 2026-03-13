@@ -3,6 +3,7 @@ import { Playfair_Display, Mulish, Caveat } from "next/font/google"; // Luxury F
 import "./globals.css";
 import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
+import CustomCursor from "@/components/ui/CustomCursor";
 import RightSideNav from "@/components/ui/RightSideNav";
 import PostItCTA from "@/components/ui/PostItCTA";
 import { Providers } from "./providers";
@@ -50,6 +51,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${playfair.variable} ${mulish.variable} ${caveat.variable}`}>
             <body className={`${playfair.variable} ${mulish.variable} ${caveat.variable} font-body bg-bg-light text-text-light overflow-x-hidden antialiased selection:bg-brand-coral selection:text-white`}>
+                <CustomCursor />
                 <NoiseOverlay />
                 <RightSideNav />
                 <SmoothScroll>

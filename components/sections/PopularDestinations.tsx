@@ -1,50 +1,95 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, X, Clock, CheckCircle2, MessageCircle } from 'lucide-react';
+import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 const destinations = [
     {
-        name: 'Dubai',
-        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80',
-        tag: 'Luxury Shopping',
-        price: '₹45,000'
+        name: 'Maldives',
+        image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80',
+        tag: 'Overwater Luxury',
+        price: '₹1,99,900',
+        duration: '4 Nights / 5 Days',
+        badge: 'Honeymoon Special',
+        details: [
+            "Luxury Overwater Villa Stay",
+            "Speedboat/Seaplane Transfers",
+            "All-Inclusive Meal Plans",
+            "Snorkeling & Water Sports",
+            "Romantic Candlelight Dinner"
+        ]
     },
     {
         name: 'Bali',
         image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80',
-        tag: 'Tropical Escape',
-        price: '₹35,000'
+        tag: 'Tropical Paradise',
+        price: '₹39,900',
+        duration: '6 Nights / 7 Days',
+        badge: 'Best Value',
+        details: [
+            "Private Pool Villa Stay",
+            "Ubud & Kuta Tour",
+            "Tegalalang Rice Terrace Visit",
+            "Daily Breakfast & Selected Meals",
+            "Traditional Balinese Massage"
+        ]
     },
     {
-        name: 'Switzerland',
-        image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80',
-        tag: 'Alpine Luxury',
-        price: '₹1,20,000'
+        name: 'Dubai',
+        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80',
+        tag: 'Modern Elegance',
+        price: '₹59,900',
+        duration: '6 Nights / 7 Days',
+        badge: 'Selling Fast',
+        details: [
+            "Premium Hotel Stay",
+            "Burj Khalifa At The Top Access",
+            "Desert Safari with BBQ Dinner",
+            "Dhow Cruise with Dinner",
+            "Dubai City Guided Tour"
+        ]
     },
     {
-        name: 'Thailand',
-        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80',
-        tag: 'Exotic Beaches',
-        price: '₹28,000'
+        name: 'Europe',
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80',
+        tag: 'Grand Tour',
+        price: '₹2,10,000',
+        duration: '12 Nights / 13 Days',
+        badge: 'Ultimate Experience',
+        details: [
+            "Multi-City Guided Tour (Paris, Swiss, Rome)",
+            "High-Speed Inter-city Trains",
+            "Breakfast & Selected Dinners",
+            "Eiffel Tower & Mt. Titlis Access",
+            "All Visa Documentation Support"
+        ]
     }
 ];
 
 export default function PopularDestinations() {
+    const [selectedPackage, setSelectedPackage] = useState<typeof destinations[0] | null>(null);
+    const { openWhatsApp } = useWhatsApp();
+
+    const handleWhatsAppClick = (pkg: typeof destinations[0]) => {
+        const message = `Hi Sujal, I'm interested in the ${pkg.name} package (${pkg.duration}) starting from ${pkg.price}. Can you provide more details?`;
+        openWhatsApp('Package Inquiry', message);
+    };
+
     return (
-        <section id="destinations" className="py-24 bg-bg-light relative overflow-hidden">
+        <section id="packages" className="py-24 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="text-left">
-                        <span className="text-brand-coral font-black text-xs uppercase tracking-[0.3em] mb-4 block">Trending Now</span>
+                        <span className="text-brand-coral font-black text-xs uppercase tracking-[0.3em] mb-4 block">Handpicked for you</span>
                         <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy">
-                            Popular Destinations
+                            Exclusive Packages
                         </h2>
                     </div>
                     <a href="#contact" className="group flex items-center gap-2 text-gray-400 hover:text-brand-coral transition-colors font-black uppercase tracking-widest text-xs">
-                        View All Packages <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        View More Deals <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </a>
                 </div>
 
@@ -52,15 +97,16 @@ export default function PopularDestinations() {
                     {destinations.map((dest, i) => (
                         <motion.div
                             key={dest.name}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ y: 40 }}
+                            whileInView={{ y: 0 }}
                             viewport={{ once: true }}
                             transition={{ 
                                 duration: 0.6,
                                 delay: i * 0.08,
                                 ease: [0.25, 1, 0.5, 1] 
                             }}
-                            className="group relative h-[400px] rounded-[2rem] overflow-hidden cursor-pointer"
+                            className="group relative h-[450px] rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all"
+                            onClick={() => setSelectedPackage(dest)}
                         >
                             <Image
                                 src={dest.image}
@@ -69,22 +115,29 @@ export default function PopularDestinations() {
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                            <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity z-10" />
                             
-                            <div className="absolute top-6 left-6">
+                            <div className="absolute top-6 left-6 flex flex-col gap-2 items-start z-20">
                                 <span className="px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-black uppercase tracking-widest text-white">
                                     {dest.tag}
                                 </span>
+                                <span className="px-3 py-1 bg-brand-coral text-white text-[8px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg">
+                                    {dest.badge}
+                                </span>
                             </div>
 
-                            <div className="absolute bottom-8 left-8 right-8">
+                            <div className="absolute bottom-8 left-8 right-8 z-20">
                                 <div className="flex items-center gap-2 text-brand-teal mb-2">
                                     <MapPin className="w-4 h-4" />
                                     <span className="text-xs font-black uppercase tracking-widest">{dest.name}</span>
                                 </div>
-                                <h3 className="text-2xl font-heading font-bold text-white mb-4">
-                                    {dest.name} Expedition
+                                <h3 className="text-2xl font-heading font-bold text-white mb-1">
+                                    {dest.name} Escape
                                 </h3>
+                                <div className="flex items-center gap-2 text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">
+                                    <Clock className="w-3 h-3" />
+                                    {dest.duration}
+                                </div>
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col">
                                         <span className="text-[10px] text-white/40 uppercase font-black tracking-widest">Starting from</span>
@@ -99,6 +152,86 @@ export default function PopularDestinations() {
                     ))}
                 </div>
             </div>
+
+            {/* Detailed Package Modal */}
+            <AnimatePresence>
+                {selectedPackage && (
+                    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-6">
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedPackage(null)}
+                            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                        />
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="relative w-full max-w-2xl bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[85vh]"
+                        >
+                            {/* Close Button */}
+                            <button 
+                                onClick={() => setSelectedPackage(null)}
+                                data-cursor="close"
+                                className="absolute top-4 right-4 z-50 p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all active:scale-90 md:text-text-navy md:bg-black/5"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+
+                            {/* Left: Visual */}
+                            <div className="relative w-full md:w-[40%] h-48 md:h-auto overflow-hidden">
+                                <Image 
+                                    src={selectedPackage.image} 
+                                    alt={selectedPackage.name} 
+                                    fill 
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                <div className="absolute bottom-6 left-6">
+                                    <span className="px-2.5 py-1 bg-brand-coral text-white text-[8px] font-black uppercase tracking-widest rounded-full mb-2 inline-block">
+                                        {selectedPackage.badge}
+                                    </span>
+                                    <h3 className="text-2xl font-heading font-black text-white">{selectedPackage.name}</h3>
+                                </div>
+                            </div>
+
+                            {/* Right: Info */}
+                            <div className="flex-1 p-6 md:p-10 overflow-y-auto">
+                                <div className="flex items-center gap-3 text-brand-coral mb-4">
+                                    <Clock className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">{selectedPackage.duration}</span>
+                                </div>
+
+                                <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Inclusions</h4>
+                                
+                                <ul className="space-y-3 mb-8">
+                                    {selectedPackage.details.map((item, idx) => (
+                                        <li key={idx} className="flex items-start gap-3 group">
+                                            <CheckCircle2 className="w-4 h-4 text-brand-teal mt-0.5" />
+                                            <span className="text-gray-600 font-body text-sm leading-tight">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="pt-6 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                    <div>
+                                        <p className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-0.5">Starting At</p>
+                                        <p className="text-2xl font-black text-text-navy">{selectedPackage.price}</p>
+                                    </div>
+                                    <button 
+                                        onClick={() => handleWhatsAppClick(selectedPackage)}
+                                        className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-teal text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-lg"
+                                    >
+                                        <MessageCircle className="w-4 h-4 fill-current" />
+                                        WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

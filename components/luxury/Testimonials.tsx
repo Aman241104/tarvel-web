@@ -15,7 +15,8 @@ const testimonials = [
         author: "Family Traveler",
         highlight: "0 Stress",
         rotation: "-rotate-2",
-        bgColor: "bg-[#FFFBF5]"
+        bgColor: "bg-[#FFFBF5]",
+        tripType: "Family Trip"
     },
     {
         id: 2,
@@ -23,7 +24,8 @@ const testimonials = [
         author: "Milestone Celebration",
         highlight: "100% Trust",
         rotation: "rotate-2",
-        bgColor: "bg-white"
+        bgColor: "bg-white",
+        tripType: "Anniversary"
     },
     {
         id: 3,
@@ -31,7 +33,8 @@ const testimonials = [
         author: "Business Professional",
         highlight: "Exceptional",
         rotation: "-rotate-1",
-        bgColor: "bg-[#F8FAFB]"
+        bgColor: "bg-[#F8FAFB]",
+        tripType: "Solo Exploration"
     }
 ];
 
@@ -43,22 +46,36 @@ export default function Testimonials() {
         
         if (cards.length > 0) {
             // Initial state check (prevent flashes)
-            gsap.set(cards, { opacity: 0, y: 60, scale: 0.9 });
+            gsap.set(cards, { y: 60, scale: 0.9, opacity: 0 });
 
             // Staggered reveal for cards
             gsap.to(cards, {
                 y: 0,
-                opacity: 1,
                 scale: 1,
+                opacity: 1,
                 rotation: (i) => i % 2 === 0 ? -2 : 2,
-                duration: 0.8,
-                stagger: 0.1,
+                duration: 1,
+                stagger: 0.15,
                 ease: 'expo.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 90%', // Earlier trigger
+                    start: 'top 85%',
                     toggleActions: 'play none none reverse',
                 }
+            });
+
+            // Tactile Float Animation
+            cards.forEach((card, i) => {
+                gsap.to(card, {
+                    y: '+=10',
+                    x: i % 2 === 0 ? '+=5' : '-=5',
+                    rotation: (i % 2 === 0 ? '-=1' : '+=1'),
+                    duration: 3 + i,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    delay: i * 0.5
+                });
             });
         }
 
@@ -78,6 +95,8 @@ export default function Testimonials() {
                 }
             );
         }
+
+        setTimeout(() => ScrollTrigger.refresh(), 500);
     }, { scope: containerRef });
 
     return (
@@ -124,30 +143,35 @@ export default function Testimonials() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-16 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mt-16 items-stretch px-4 md:px-0">
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}
-                            className={`testimonial-card bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+                            className={`testimonial-card bg-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
                         >
                             {/* Tape Piece */}
-                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-24 h-10 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-40 group-hover:opacity-100 transition-opacity`} />
+                            <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-28 h-12 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-40 group-hover:opacity-100 transition-opacity z-20`} />
                             
-                            <div className="flex gap-1 text-brand-yellow mb-8 relative z-10 scale-90 origin-left">
-                                {[...Array(5)].map((_, j) => (
-                                    <Star key={j} className="w-5 h-5 fill-current" />
-                                ))}
+                            <div className="flex flex-col gap-3 mb-10 relative z-10">
+                                <div className="flex gap-1 text-brand-yellow scale-100 origin-left">
+                                    {[...Array(5)].map((_, j) => (
+                                        <Star key={j} className="w-5 h-5 fill-current" />
+                                    ))}
+                                </div>
+                                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-teal/60">
+                                    {t.tripType}
+                                </div>
                             </div>
                             
-                            <p className="font-heading text-xl md:text-2xl text-text-navy leading-snug mb-10 relative z-10 flex-grow italic opacity-90">
+                            <p className="font-heading text-xl md:text-2xl text-text-navy leading-snug mb-12 relative z-10 flex-grow italic opacity-95">
                                 "{t.quote}"
                             </p>
                             
-                            <div className="mt-auto border-t border-black/5 pt-6">
-                                <div className="font-handwriting text-3xl md:text-4xl text-brand-teal rotate-[-1deg] mb-2 font-black">
+                            <div className="mt-auto border-t border-black/5 pt-8 flex flex-col gap-1">
+                                <div className="font-handwriting text-3xl md:text-5xl text-brand-teal rotate-[-1deg] mb-2 font-black leading-none">
                                     {t.highlight}
                                 </div>
-                                <div className="font-body font-black text-gray-400 text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">
+                                <div className="font-body font-black text-gray-400 text-[11px] md:text-xs uppercase tracking-[0.3em] opacity-80">
                                     {t.author}
                                 </div>
                             </div>

@@ -4,19 +4,19 @@ import dynamic from 'next/dynamic';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
+import WhatsAppButton from "@/components/luxury/WhatsAppButton";
+import ServicesList from "@/components/ServicesList";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
+import PostItCTA from "@/components/ui/PostItCTA";
+import { ArrowRight } from 'lucide-react';
 
 const PopularDestinations = dynamic(() => import("@/components/sections/PopularDestinations"));
 const ServicesGrid = dynamic(() => import("@/components/ServicesGrid"));
 const TravelerSection = dynamic(() => import("@/components/luxury/TravelerSection"));
 const Testimonials = dynamic(() => import("@/components/luxury/Testimonials"));
 const Footer = dynamic(() => import("@/components/Footer"));
-
-import WhatsAppButton from "@/components/luxury/WhatsAppButton";
-import ServicesList from "@/components/ServicesList";
 const CTASection = dynamic(() => import("@/components/CTASection"));
 const TapeMarquee = dynamic(() => import("@/components/TapeMarquee"));
-import MobileStickyCTA from "@/components/MobileStickyCTA";
-import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
     return (
@@ -24,13 +24,17 @@ export default function Home() {
 
             <Navbar />
             <WhatsAppButton />
+            <PostItCTA />
 
             <div className="relative z-30 bg-bg-light shadow-2xl">
                 <section id="home">
                     <Hero />
                 </section>
 
-                <USP />
+                {/* 1. USP Section */}
+                <section id="usp">
+                    <USP />
+                </section>
 
                 {/* Micro CTA */}
                 <div className="py-12 bg-bg-light text-center">
@@ -40,39 +44,33 @@ export default function Home() {
                     </a>
                 </div>
 
-                <TravelerSection />
-
-                <section id="services">
+                {/* 2. Services Section */}
+                <section id="services" className="overflow-visible">
                     <ServicesGrid />
-                    
-                    {/* Micro CTA */}
-                    <div className="py-12 bg-bg-light text-center">
-                        <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
-                            <span>Plan Your Luxury Escape</span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </a>
+                    <div className="relative z-30">
+                        <ServicesList />
                     </div>
-
-                    <ServicesList />
                 </section>
 
-                <PopularDestinations />
+                {/* 3. About the Captain */}
+                <TravelerSection />
 
-                <Testimonials />
+                {/* 4. Packages Section (Popular Destinations) */}
+                <section id="packages">
+                    <PopularDestinations />
+                </section>
 
-                {/* Micro CTA After Testimonials */}
-                <div className="py-12 bg-bg-light text-center">
-                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
-                        <span>Start Planning Your Trip</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                </div>
+                {/* 5. Testimonials Section */}
+                <section id="testimonials">
+                    <Testimonials />
+                </section>
 
                 <section id="marquee" className="relative z-20 py-12 -my-12 overflow-hidden">
                     <TapeMarquee />
                 </section>
             </div>
 
+            {/* 6. Contact Us Section */}
             <section id="contact">
                 <CTASection />
             </section>

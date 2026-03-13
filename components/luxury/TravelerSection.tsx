@@ -16,10 +16,9 @@ export default function TravelerSection() {
     useGSAP(() => {
         // Image Swing & Reveal
         gsap.fromTo(imageRef.current,
-            { rotate: 10, opacity: 0, scale: 0.85 },
+            { rotate: 10, scale: 0.85 },
             {
                 rotate: -3,
-                opacity: 1,
                 scale: 1,
                 duration: 0.8,
                 ease: 'back.out(1.5)',
@@ -32,17 +31,19 @@ export default function TravelerSection() {
         );
 
         // Text Stagger
-        gsap.from(textRef.current?.children || [], {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: 'expo.out',
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: 'top 70%',
+        gsap.fromTo(textRef.current?.children || [], 
+            { y: 30 },
+            {
+                y: 0,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'expo.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 70%',
+                }
             }
-        });
+        );
 
         // Stat Counters
         const statNumbers = containerRef.current?.querySelectorAll('.stat-number');
@@ -113,10 +114,13 @@ export default function TravelerSection() {
             });
         }
 
+        // Refresh triggers after a short delay to account for dynamic imports and fonts
+        setTimeout(() => ScrollTrigger.refresh(), 500);
+
     }, { scope: containerRef });
 
     return (
-        <section id="about" ref={containerRef} className="bg-bg-light text-text-light py-16 md:py-32 relative overflow-hidden">
+        <section id="about-captain" ref={containerRef} className="bg-bg-light text-text-light py-16 md:py-32 relative overflow-hidden">
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
@@ -128,15 +132,15 @@ export default function TravelerSection() {
                             MEET THE CAPTAIN
                         </div>
 
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-10 leading-[0.85] tracking-tighter text-text-navy">
+                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-heading font-black mb-12 leading-[0.8] tracking-tighter text-text-navy">
                             Sujal<br />
-                            <span className="relative inline-block px-4 mt-4 py-1">
-                                <span className="absolute inset-0 bg-brand-yellow -rotate-1 rounded-sm opacity-90" />
-                                <span className="relative z-10 text-text-navy">Soni</span>
+                            <span className="relative inline-block mt-4">
+                                <span className="absolute inset-0 bg-brand-yellow -rotate-2 -skew-x-6 scale-110 z-0"></span>
+                                <span className="relative z-10 px-2">Soni</span>
                             </span>
                         </h2>
 
-                        <p className="text-xl md:text-2xl text-gray-600 font-body leading-relaxed mb-10 max-w-md italic opacity-90 border-l-4 border-brand-teal pl-6">
+                        <p className="text-xl md:text-2xl text-gray-600 font-body leading-relaxed mb-12 max-w-md italic opacity-90 border-l-4 border-brand-teal pl-6">
                             "I don't just book tickets; I curate memories. Every journey is a story waiting to be written."
                         </p>
 
@@ -177,26 +181,33 @@ export default function TravelerSection() {
                         </div>
 
                         {/* 9-Year Journey: Film Strip Timeline */}
-                        <div className="mt-16 md:mt-24 relative">
-                            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 mb-10 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
+                        <div className="mt-20 md:mt-24 relative">
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-black/30 mb-12 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
                             
-                            <div className="flex flex-col sm:flex-row gap-8 md:gap-12 items-start relative">
+                            <div className="flex flex-col sm:flex-row gap-12 sm:gap-8 md:gap-12 items-start relative pl-10 sm:pl-0">
                                 {/* Connector Line (Desktop) */}
-                                <div className="absolute top-10 left-0 w-full h-px bg-black/5 hidden sm:block z-0" />
+                                <div className="absolute top-12 left-10 right-10 h-0.5 bg-black/[0.08] hidden sm:block z-0" />
+                                {/* Connector Line (Mobile) */}
+                                <div className="absolute top-0 bottom-0 left-5 w-0.5 bg-black/[0.08] sm:hidden z-0" />
                                 
                                 {[
                                     { year: '2015', label: 'Passion Project', desc: 'Started with a single flight booking.' },
                                     { year: '2019', label: '100+ Families', desc: 'Curating global summer escapes.' },
                                     { year: '2024', label: '500+ Clients', desc: 'A boutique luxury standard.' }
                                 ].map((milestone, i) => (
-                                    <div key={milestone.year} className="relative z-10 flex-1 group">
-                                        <div className="bg-white p-2 shadow-ambient-sm group-hover:shadow-ambient-lg transition-all duration-500 rounded-sm mb-4 inline-block transform rotate-[-2deg] group-hover:rotate-0">
-                                             <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-50 flex items-center justify-center font-heading font-black text-xl md:text-2xl text-brand-teal/40 group-hover:text-brand-teal transition-colors">
+                                    <div key={milestone.year} className="relative z-10 flex-1 group w-full">
+                                        <div className="bg-white p-2.5 shadow-2xl group-hover:shadow-brand-teal/20 transition-all duration-500 rounded-sm mb-6 inline-block transform rotate-[-3deg] group-hover:rotate-0 relative">
+                                             {/* Mobile Line Connector dot */}
+                                             <div className="absolute top-1/2 -left-[30px] w-3 h-3 rounded-full bg-brand-teal sm:hidden transform -translate-y-1/2 shadow-[0_0_10px_rgba(46,196,182,0.5)] z-20" />
+                                             {/* Desktop Line Connector dot */}
+                                             <div className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-brand-teal shadow-[0_0_10px_rgba(46,196,182,0.5)] z-20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                             
+                                             <div className="w-20 h-20 md:w-24 md:h-24 bg-bg-light flex items-center justify-center font-heading font-black text-2xl md:text-3xl text-brand-teal/30 group-hover:text-brand-teal transition-colors border border-black/5">
                                                  {milestone.year}
                                              </div>
                                         </div>
-                                        <h5 className="font-heading font-bold text-text-navy text-lg mb-1">{milestone.label}</h5>
-                                        <p className="text-xs text-gray-500 font-body leading-relaxed max-w-[150px]">{milestone.desc}</p>
+                                        <h5 className="font-heading font-bold text-text-navy text-xl mb-2">{milestone.label}</h5>
+                                        <p className="text-sm text-gray-500 font-body leading-relaxed max-w-[180px]">{milestone.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -212,36 +223,41 @@ export default function TravelerSection() {
 
                     {/* Right: The Polaroid */}
                     <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
-                        <div ref={imageRef} className="relative z-10 group w-[85%] md:w-auto">
+                        <div ref={imageRef} className="relative z-10 group w-full sm:w-[90%] md:w-auto mt-12 md:mt-0 max-w-[480px]">
                             {/* Tape Sticker */}
-                            <div className="washi-tape washi-tape-teal -top-4 left-1/2 -translate-x-1/2 w-40 h-14 -rotate-2 opacity-70" />
+                            <div className="washi-tape washi-tape-teal -top-5 left-1/2 -translate-x-1/2 w-44 h-16 -rotate-2 opacity-80 shadow-sm" />
 
                             {/* Polaroid Frame */}
-                            <div className="bg-white p-4 pb-20 shadow-ambient-lg rotate-1 md:rotate-3 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-105 relative rounded-sm">
-                                {/* Film Strip Sprocket Holes */}
-                                <div className="absolute left-1 top-4 bottom-20 w-3 flex flex-col justify-between items-center py-2 z-30 opacity-10">
-                                    {[...Array(6)].map((_, i) => (
-                                        <div key={i} className="w-2 h-4 bg-gray-900 rounded-full" />
+                            <div className="bg-white p-4 md:p-5 pb-16 md:pb-24 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
+                                
+                                {/* Film Strip Holes */}
+                                <div className="absolute left-3 md:left-4 top-10 bottom-20 md:bottom-32 w-3 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">
+                                    {[...Array(8)].map((_, i) => (
+                                        <div key={i} className="w-2 md:w-2.5 h-2 md:h-2.5 bg-black/80 rounded-sm shadow-[0_1px_1px_rgba(255,255,255,0.1)]" />
                                     ))}
                                 </div>
-                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[380px] md:h-[440px] bg-gray-100 shadow-inner">
+
+                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[420px] md:h-[480px] bg-gray-100 shadow-inner">
                                     <img
                                         src="/assets/owner-image.png"
                                         alt="Sujal Soni"
-                                        className="w-full h-full object-cover filter contrast-[1.05] saturate-[1.1] transition-transform duration-700 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 100vw, 400px"
+                                        className="w-full h-full object-cover filter contrast-[1.02] saturate-[1.1] transition-transform duration-1000 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, 500px"
                                     />
+                                    {/* Subtle Gradient Overlay for holes visibility */}
+                                    <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-20" />
+                                    
                                     {/* Film Grain/Dust Overlay */}
-                                    <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none z-10" />
                                 </div>
-                                <div className="mt-6 font-handwriting text-2xl text-center text-gray-400 rotate-[-1deg] font-bold">
+                                <div className="mt-6 md:mt-8 font-handwriting text-2xl md:text-3xl text-center text-gray-400 rotate-[-1deg] font-bold tracking-tight px-4">
                                     Founder, Destination Anywhere
                                 </div>
                             </div>
 
                             {/* Backdrop Shape (Coral/Teal) — parallax targets */}
-                            <div className="backdrop-teal absolute inset-0 bg-brand-teal -z-10 rotate-[-6deg] translate-y-4 rounded-3xl scale-95 opacity-20" />
-                            <div className="backdrop-coral absolute inset-0 bg-brand-coral -z-20 rotate-[5deg] translate-x-4 rounded-3xl scale-95 opacity-10" />
+                            <div className="backdrop-teal absolute inset-0 bg-brand-teal -z-10 rotate-[-8deg] translate-y-6 rounded-[3rem] scale-95 opacity-[0.15] blur-2xl" />
+                            <div className="backdrop-coral absolute inset-0 bg-brand-coral -z-20 rotate-[6deg] translate-x-6 rounded-[3rem] scale-95 opacity-[0.1] blur-2xl" />
                         </div>
                     </div>
 

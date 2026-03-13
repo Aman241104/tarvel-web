@@ -21,11 +21,10 @@ export default function ServicesList() {
                 if (!card) return;
                 gsap.fromTo(
                     card,
-                    { rotateZ: -10, y: 40, opacity: 0 },
+                    { rotateZ: -10, y: 40 },
                     {
                         rotateZ: 0,
                         y: 0,
-                        opacity: 1,
                         duration: 0.8,
                         delay: i * 0.05,
                         ease: 'elastic.out(1, 0.6)',
@@ -36,6 +35,7 @@ export default function ServicesList() {
                     }
                 );
             });
+            setTimeout(() => ScrollTrigger.refresh(), 500);
         },
         { scope: containerRef }
     );
@@ -99,23 +99,32 @@ export default function ServicesList() {
                 service={selectedService}
             />
 
-            <div className="container mx-auto px-6 max-w-6xl">
+            <div className="container mx-auto px-6 max-w-6xl relative">
+                {/* Visual Rod/Horizontal Line for Strings to hang from */}
+                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="relative group perspective-1000 cursor-pointer pt-8 md:pt-24"
+                            className="relative group perspective-1000 cursor-pointer pt-16 md:pt-24"
                             onClick={() => setSelectedService(service)}
                         >
                             {/* String/Cord - wobbles on hover */}
-                            <div className="hidden md:block absolute top-0 left-1/2 -ml-[1px] w-[2px] h-24 border-l-2 border-dashed border-black/20 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" />
+                            <div 
+                                className="absolute top-0 left-1/2 -ml-[1px] w-[2px] h-16 md:h-24 border-l-2 border-dashed border-black/30 z-0 origin-top transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-[5deg] group-hover:scale-y-[1.02]" 
+                            />
+
+                            {/* Mobile Rod Segment (Small dot at top of each string on mobile) */}
+                            <div className="md:hidden absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-black/10 z-10" />
 
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-white border border-black/5 p-5 pt-8 md:p-8 md:pt-12 text-center shadow-2xl transition-all duration-500 transform origin-top group-hover:rotate-1 group-hover:shadow-brand-coral/10 rounded-xl"
+                                className="relative bg-white border border-black/5 p-5 pt-8 md:p-8 md:pt-12 text-center shadow-2xl transition-all duration-700 transform origin-top group-hover:rotate-x-12 group-hover:rotate-y-12 group-hover:scale-[1.02] group-hover:shadow-brand-coral/20 rounded-xl"
                                 style={{
                                     clipPath: 'polygon(25% 0%, 75% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%)',
+                                    transformStyle: 'preserve-3d'
                                 }}
                             >
                                 {/* Hole Punch with Metal Eyelet Effect */}
@@ -137,9 +146,18 @@ export default function ServicesList() {
                                 <h3 className="text-base md:text-xl font-black font-heading text-text-navy mb-2 md:mb-4 tracking-tight leading-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-500 font-body text-[10px] md:text-sm leading-relaxed max-w-[180px] mx-auto">
+                                <p className="text-gray-500 font-body text-[10px] md:text-sm leading-relaxed max-w-[180px] mx-auto mb-4">
                                     {service.desc}
                                 </p>
+
+                                {/* Preview Details */}
+                                <div className="flex flex-wrap justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                    {service.details.slice(0, 2).map((detail, idx) => (
+                                        <span key={idx} className="text-[8px] font-black uppercase tracking-widest px-2 py-0.5 bg-gray-50 text-gray-400 rounded-full border border-black/5 whitespace-nowrap">
+                                            • {detail}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     ))}

@@ -9,17 +9,19 @@ import { Instagram, Twitter, Send, Linkedin, Mail, Phone, MapPin, Award, Star } 
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 import Magnetic from '@/components/ui/Magnetic';
 import Image from 'next/image';
+import Postmark from '@/components/ui/Postmark';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
     const containerRef = useRef<HTMLElement>(null);
     const planeRef = useRef<HTMLDivElement>(null);
+    const spotlightRef = useRef<HTMLDivElement>(null);
     const { openWhatsApp } = useWhatsApp();
 
     useGSAP(
         () => {
-            // Mega Type Parallax - slower and deeper
+            // Mega Type Parallax
             gsap.to('.mega-type', {
                 yPercent: -15,
                 ease: 'none',
@@ -31,18 +33,25 @@ export default function Footer() {
                 },
             });
 
-            // Floating contact items stagger
-            gsap.from('.footer-contact-item', {
-                y: 20,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: 'expo.out',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 85%',
-                }
-            });
+            // Spotlight mouse move
+            const spotlight = spotlightRef.current;
+            if (spotlight) {
+                const xTo = gsap.quickTo(spotlight, '--x', { duration: 0.8, ease: 'power3' });
+                const yTo = gsap.quickTo(spotlight, '--y', { duration: 0.8, ease: 'power3' });
+
+                const handleMouseMove = (e: MouseEvent) => {
+                    const rect = containerRef.current?.getBoundingClientRect();
+                    if (rect) {
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        xTo(x);
+                        yTo(y);
+                    }
+                };
+
+                window.addEventListener('mousemove', handleMouseMove);
+                return () => window.removeEventListener('mousemove', handleMouseMove);
+            }
         },
         { scope: containerRef }
     );
@@ -65,16 +74,21 @@ export default function Footer() {
 
     return (
         <footer ref={containerRef} className="relative bg-[#070b14] pt-56 pb-12 overflow-hidden z-10 text-white">
-            {/* Dotted Background Pattern (Subtle) */}
+            {/* Glassmorphism Map Silhouette with Spotlight */}
             <div 
-                className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] blur-[1px]" 
+                ref={spotlightRef}
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.07]"
                 style={{
-                    backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                    maskImage: 'radial-gradient(circle at center, black, transparent 80%)',
-                    WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 80%)'
-                }}
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 500'%3E%3Cpath fill='white' d='M150 100c-10 0-20 5-25 15-5 10-5 20 0 30s15 15 25 15h100c10 0 20-5 25-15s5-20 0-30-15-15-25-15H150zm300 50c-10 0-20 5-25 15s-5 20 0 30 15 15 25 15h150c10 0 20-5 25-15s5-20 0-30-15-15-25-15H450zm250 100c-10 0-20 5-25 15s-5 20 0 30 15 15 25 15h200c10 0 20-5 25-15s5-20 0-30-15-15-25-15H700zM200 300c-10 0-20 5-25 15s-5 20 0 30 15 15 25 15h120c10 0 20-5 25-15s5-20 0-30-15-15-25-15H200zm400 50c-10 0-20 5-25 15s-5 20 0 30 15 15 25 15h180c10 0 20-5 25-15s5-20 0-30-15-15-25-15H600z'/%3E%3C/svg%3E")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    maskImage: 'radial-gradient(circle 300px at var(--x, 50%) var(--y, 50%), black, transparent)',
+                    WebkitMaskImage: 'radial-gradient(circle 300px at var(--x, 50%) var(--y, 50%), black, transparent)',
+                } as any}
             />
+
+            {/* Postmark Scroll-to-Top */}
+            <Postmark />
 
             {/* Organic Wave Divider (Double Layered) */}
             <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-10">
@@ -116,12 +130,12 @@ export default function Footer() {
                                 <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
                                     Destination<br />Anywhere & Co.
                                 </h3>
-                                <p className="text-[#9ca3af] font-body text-xs uppercase tracking-[0.4em] mt-2 font-black">Luxury Travel Boutique</p>
+                                <p className="text-[#9ca3af] font-body text-[10px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Boutique</p>
                             </div>
                         </div>
                         
-                        <p className="text-[#d1d5db] font-body text-lg leading-[1.6] italic max-w-sm">
-                            "We don't just book trips; we protect your most precious asset—your time. Every stamp in your passport is a story we help you write."
+                        <p className="text-[#d1d5db] font-body text-base md:text-lg leading-relaxed max-w-sm font-medium">
+                            We don't just book trips; we protect your most precious asset—your time. Every stamp in your passport is a story we help you write.
                         </p>
 
                         <div className="flex gap-4">
@@ -147,11 +161,17 @@ export default function Footer() {
                     <div className="lg:col-span-2 pt-4">
                         <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">The Journey</h4>
                         <ul className="space-y-6 font-black text-sm uppercase tracking-widest">
-                            {['About Us', 'Bespoke Services', 'Private Stories', 'Contact Sujal'].map((item) => (
-                                <li key={item}>
-                                    <Link href="#" className="text-[#d1d5db] hover:text-[#ffffff] transition-all duration-200 ease-in-out flex items-center gap-2 group">
+                            {[
+                                { name: 'Why Us', href: '#usp' },
+                                { name: 'Services', href: '#services' },
+                                { name: 'Captain', href: '#about-captain' },
+                                { name: 'Packages', href: '#packages' },
+                                { name: 'Reviews', href: '#testimonials' },
+                            ].map((item) => (
+                                <li key={item.name}>
+                                    <Link href={item.href} className="text-[#d1d5db] hover:text-[#ffffff] transition-all duration-200 ease-in-out flex items-center gap-2 group">
                                         <span className="w-0 group-hover:w-4 h-px bg-brand-yellow transition-all overflow-hidden" />
-                                        {item}
+                                        {item.name}
                                     </Link>
                                 </li>
                             ))}
@@ -162,8 +182,8 @@ export default function Footer() {
                     <div className="lg:col-span-3 pt-4">
                         <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">Boutique HQ</h4>
                         <div className="space-y-8">
-                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
-                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer" onClick={() => window.open('mailto:concierge@destanywhere.com')}>
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors mt-1">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -172,8 +192,8 @@ export default function Footer() {
                                 </div>
                             </div>
                             
-                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
-                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                            <div className="footer-contact-item flex items-start gap-4 group cursor-pointer" onClick={() => window.open('tel:+918511071506')}>
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors mt-1">
                                     <Phone className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -183,7 +203,7 @@ export default function Footer() {
                             </div>
 
                             <div className="footer-contact-item flex items-start gap-4 group cursor-pointer">
-                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors">
+                                <div className="bg-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors mt-1">
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -194,25 +214,24 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Col 4: Newsletter & Accolades (3 cols) */}
+                    {/* Col 4: Call to Action & Accolades (3 cols) */}
                     <div className="lg:col-span-3 pt-4">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">Stay Inspired</h4>
-                        <p className="text-[#d1d5db] font-body text-sm mb-8 leading-[1.6] italic">
-                            Join our inner circle for secret destinations and curated travel insights delivered to your inbox.
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/30 pl-4">Start Your Story</h4>
+                        <p className="text-[#d1d5db] font-body text-sm mb-8 leading-[1.6]">
+                            Ready to transform your travel dreams into a curated reality? Let's design your next escape today.
                         </p>
-                        <form className="relative group mb-12">
-                            <label htmlFor="footer-newsletter" className="sr-only">Email Address</label>
-                            <input
-                                id="footer-newsletter"
-                                type="email"
-                                placeholder="Your Email Address"
-                                required
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:bg-white/10 focus:border-white/30 transition-all text-[#ffffff] placeholder:text-white/30 font-bold text-sm"
-                            />
-                            <button type="submit" aria-label="Subscribe" className="absolute right-3 top-3 bg-brand-yellow text-text-navy p-3 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-2xl">
-                                <Send className="w-5 h-5" aria-hidden="true" />
-                            </button>
-                        </form>
+                        
+                        <div className="mb-12">
+                            <a 
+                                href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center w-full py-4 px-8 bg-brand-yellow text-text-navy rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-brand-yellow/10 group"
+                            >
+                                <Send className="w-4 h-4 mr-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                Plan Your Journey
+                            </a>
+                        </div>
 
                         {/* Brand Accolades */}
                         <div className="flex items-center gap-6 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -235,9 +254,9 @@ export default function Footer() {
                         <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co.</p>
                         <p className="hidden md:block opacity-20">|</p>
                         <div className="flex gap-8">
-                            <Link href="/privacy" className="hover:text-[#ffffff] transition-colors duration-200">Privacy</Link>
-                            <Link href="/terms" className="hover:text-[#ffffff] transition-colors duration-200">Terms</Link>
-                            <Link href="/cookies" className="hover:text-[#ffffff] transition-colors duration-200">Cookies</Link>
+                            <Link href="#" className="hover:text-[#ffffff] transition-colors duration-200">Privacy</Link>
+                            <Link href="#" className="hover:text-[#ffffff] transition-colors duration-200">Terms</Link>
+                            <Link href="#" className="hover:text-[#ffffff] transition-colors duration-200">Cookies</Link>
                         </div>
                     </div>
                     <div className="flex items-center gap-3 italic font-handwriting text-lg text-[#9ca3af]/40">

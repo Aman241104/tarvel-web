@@ -8,8 +8,9 @@ import gsap from 'gsap';
 const sections = [
     { id: 'home', label: 'Home' },
     { id: 'usp', label: 'Why Us' },
-    { id: 'about', label: 'Captain' },
     { id: 'services', label: 'Services' },
+    { id: 'about-captain', label: 'Captain' },
+    { id: 'packages', label: 'Packages' },
     { id: 'testimonials', label: 'Reviews' },
     { id: 'contact', label: 'Contact' },
 ];

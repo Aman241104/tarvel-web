@@ -20,7 +20,7 @@ export default function PostItCTA() {
 
         const handleScroll = () => {
             const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            if (scrollPercent > 40 && !isClosed) {
+            if (scrollPercent > 65 && !isClosed) {
                 setIsVisible(true);
             }
         };
@@ -55,6 +55,7 @@ export default function PostItCTA() {
                         {/* Close Button */}
                         <button 
                             onClick={handleClose}
+                            data-cursor="close"
                             className="absolute top-2 right-2 p-1 text-black/30 hover:text-black/60 transition-colors"
                         >
                             <X size={16} />

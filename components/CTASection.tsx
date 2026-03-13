@@ -110,42 +110,42 @@ export default function CTASection() {
                                 Postcard from your dreams
                             </h2>
                             
-                            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
-                                    <label htmlFor="traveler-name" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Dear,</label>
+                            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10 mt-12">
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-4">
+                                    <label htmlFor="traveler-name" className="block font-body text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-2 cursor-pointer">Traveler's Name</label>
                                     <input 
                                         id="traveler-name"
                                         type="text" 
-                                        placeholder="Traveler's Name"
+                                        placeholder="Dear Sujal, this is..."
                                         required
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-400"
+                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                                     />
                                 </div>
                                 
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
-                                    <label htmlFor="destination" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">I'm dreaming of</label>
-                                    <div className="flex items-center gap-2">
-                                        <MapPin className="text-gray-300 w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-4">
+                                    <label htmlFor="destination" className="block font-body text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-2 cursor-pointer">Dream Destination</label>
+                                    <div className="flex items-center gap-3">
+                                        <MapPin className="text-gray-300 w-5 h-5" aria-hidden="true" />
                                         <input 
                                             id="destination"
                                             type="text" 
-                                            placeholder="Where to?"
-                                            className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none placeholder:text-gray-400"
+                                            placeholder="I'm dreaming of Bali, Japan..."
+                                            className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium"
                                             value={formData.destination}
                                             onChange={(e) => setFormData({...formData, destination: e.target.value})}
                                         />
                                     </div>
                                 </div>
 
-                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-[#2EC4B6] transition-all pb-2">
-                                    <label htmlFor="special-notes" className="block font-handwriting text-xl md:text-2xl text-gray-400 mb-1 opacity-60 cursor-pointer">Any special notes?</label>
+                                <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-4">
+                                    <label htmlFor="special-notes" className="block font-body text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-2 cursor-pointer">Special Requests</label>
                                     <textarea 
                                         id="special-notes"
-                                        placeholder="Beach club, restaurants, hidden gems..."
-                                        rows={2}
-                                        className="w-full bg-transparent py-1 font-handwriting text-2xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-400"
+                                        placeholder="Beach club access, private villas, etc."
+                                        rows={3}
+                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-300 font-medium"
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
@@ -154,9 +154,9 @@ export default function CTASection() {
                                 <button 
                                     type="submit"
                                     aria-label="Send message to Sujal"
-                                    className="md:hidden w-full bg-[#FF5A5F] text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg"
+                                    className="md:hidden w-full bg-[#FF5A5F] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl shadow-brand-coral/20 active:scale-95 transition-all mt-8"
                                 >
-                                    Send Message <Send className="w-4 h-4" aria-hidden="true" />
+                                    Send Postcard <Send className="w-4 h-4" aria-hidden="true" />
                                 </button>
                             </form>
                         </div>
@@ -189,14 +189,20 @@ export default function CTASection() {
                                 </div>
                             </div>
 
-                            <button 
-                                onClick={handleSubmit}
-                                className="hidden md:flex group relative bg-[#FF5A5F] text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 mt-12 md:mt-16 self-end overflow-hidden"
-                            >
-                                <span className="relative z-10">Send the Postcard</span>
-                                <Send className="relative z-10 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                <div className="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                            </button>
+                            <div className="mt-12 md:mt-16 flex flex-col items-end gap-3 self-end">
+                                <button 
+                                    onClick={handleSubmit}
+                                    className="hidden md:flex group relative bg-[#FF5A5F] text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 overflow-hidden"
+                                >
+                                    <span className="relative z-10">Send the Postcard</span>
+                                    <Send className="relative z-10 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    <div className="absolute inset-0 bg-black/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                                </button>
+                                <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-white/50 backdrop-blur-sm rounded-full border border-black/5">
+                                     <div className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse" />
+                                     <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Response time: &lt; 2 Hours</span>
+                                </div>
+                            </div>
 
                             <div className="mt-8 md:mt-10 flex items-center gap-3 text-gray-400 font-handwriting text-xl md:text-2xl self-end italic opacity-80">
                                 With Love, Sujal <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#FF5A5F] fill-[#FF5A5F] animate-pulse" />
@@ -205,8 +211,8 @@ export default function CTASection() {
                     </div>
 
                     {/* Faint Text Mark (Rubber Stamp Effect) */}
-                    <div className="absolute bottom-4 left-4 opacity-[0.08] select-none pointer-events-none rotate-[-15deg]">
-                         <p className="text-8xl font-black font-heading uppercase text-brand-teal">Approved</p>
+                    <div className="absolute bottom-8 left-8 opacity-[0.05] select-none pointer-events-none rotate-[-15deg] z-0">
+                         <p className="text-8xl md:text-9xl font-black font-heading uppercase text-brand-teal">Approved</p>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        const sections = ['home', 'usp', 'about', 'services', 'testimonials'];
+        const sections = ['home', 'usp', 'about-captain', 'packages', 'services', 'testimonials', 'contact'];
         const observers = sections.map((id) => {
             const section = document.getElementById(id);
             if (!section) return null;
@@ -67,28 +67,40 @@ export default function Navbar() {
 
     // Sliding indicator animation
     const updateIndicator = () => {
-        const activeLink = linksRef.current?.querySelector(`[data-nav-id="${activeSection}"]`) as HTMLElement;
+        const activeLink = containerRef.current?.querySelector(`[data-nav-id="${activeSection}"]`) as HTMLElement;
         const indicator = indicatorRef.current;
-        const container = linksRef.current;
+        const linksContainer = linksRef.current;
         
-        if (activeLink && indicator && container) {
-            // Calculate offset relative to the container more reliably
-            let offsetLeft = 0;
-            let curr = activeLink;
-            while (curr && curr !== container) {
-                offsetLeft += curr.offsetLeft;
-                curr = curr.offsetParent as HTMLElement;
-            }
+        if (activeLink && indicator && linksContainer) {
+            // Check if the active link is actually inside the links container
+            // If it's the logo (home), we might want to hide the indicator or highlight logo
+            // Given the design, the indicator usually lives in the center links.
+            
+            const isInsideContainer = linksContainer.contains(activeLink);
 
-            gsap.to(indicator, {
-                x: offsetLeft,
-                width: activeLink.offsetWidth,
-                duration: 0.5,
-                ease: 'power3.out',
-                opacity: 1
-            });
+            if (isInsideContainer) {
+                let offsetLeft = 0;
+                let curr = activeLink;
+                while (curr && curr !== linksContainer) {
+                    offsetLeft += curr.offsetLeft;
+                    // @ts-ignore
+                    curr = curr.offsetParent;
+                }
+
+                gsap.to(indicator, {
+                    x: offsetLeft,
+                    width: activeLink.offsetWidth,
+                    duration: 0.6,
+                    ease: 'expo.out',
+                    opacity: 1,
+                    overwrite: true
+                });
+            } else {
+                // If it's 'home' or something else, hide the sliding pill
+                gsap.to(indicator, { opacity: 0, duration: 0.4, ease: 'power2.inOut' });
+            }
         } else if (indicator) {
-            gsap.to(indicator, { opacity: 0, duration: 0.3 });
+            gsap.to(indicator, { opacity: 0, duration: 0.4, ease: 'power2.inOut' });
         }
     };
 
@@ -104,10 +116,10 @@ export default function Navbar() {
     }, [activeSection, scrolled]);
 
     const navLinks = [
-        { name: 'Home', href: '#home', id: 'home' },
         { name: 'Why Us', href: '#usp', id: 'usp' },
-        { name: 'Captain', href: '#about', id: 'about' },
         { name: 'Services', href: '#services', id: 'services' },
+        { name: 'Captain', href: '#about-captain', id: 'about-captain' },
+        { name: 'Packages', href: '#packages', id: 'packages' },
         { name: 'Reviews', href: '#testimonials', id: 'testimonials' },
     ];
 
@@ -119,51 +131,56 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[94%] max-w-5xl transition-all duration-300 rounded-3xl md:rounded-full border flex items-center justify-between px-4 md:px-6 py-2 md:py-3 ${
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-5xl transition-all duration-500 rounded-full border flex items-center justify-between px-5 md:px-8 py-2 md:py-2.5 ${
                     scrolled 
-                    ? 'bg-white/90 backdrop-blur-2xl py-2 scale-[0.98] shadow-xl border-black/10' 
-                    : 'bg-white/70 backdrop-blur-xl shadow-lg border-black/5'
+                    ? 'bg-white/95 backdrop-blur-2xl scale-[0.98] shadow-2xl border-black/5' 
+                    : 'bg-white/60 backdrop-blur-xl shadow-lg border-black/5'
                 }`}
             >
                 {/* Left: Logo */}
-                <Link href="#home" onClick={() => handleLinkClick('home')} className="flex items-center gap-3 md:gap-4 group">
-                    <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <Link 
+                    href="#home" 
+                    onClick={() => handleLinkClick('home')} 
+                    data-nav-id="home"
+                    className="flex items-center gap-3 group shrink-0"
+                >
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-sm group-hover:scale-105 transition-transform duration-500">
                          <Image 
                             src="/assets/logo.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-cover" 
-                            sizes="(max-width: 768px) 40px, 48px"
+                            sizes="40px"
                         />
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-sm md:text-base font-black tracking-tight text-text-navy transition-colors duration-300">
+                    <div className="flex flex-col justify-center">
+                        <span className="text-xs md:text-sm font-bold tracking-tight text-text-navy leading-none">
                             Destination Anywhere
                         </span>
-                        <span className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] font-black text-black/30 hidden sm:block transition-colors duration-300">
+                        <span className="text-[7px] md:text-[9px] uppercase tracking-[0.2em] font-medium text-black/40 hidden sm:block mt-0.5">
                             Travel Boutique
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-0 relative bg-black/[0.03] p-1.5 rounded-full border border-black/5" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-1 relative bg-black/[0.02] p-1 rounded-full border border-black/[0.03]" ref={linksRef}>
                     {/* Sliding Indicator Background */}
                     <div 
                         ref={indicatorRef}
-                        className="nav-indicator absolute h-[calc(100%-12px)] top-1.5 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
+                        className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
                     />
                     
                     {navLinks.map((link) => (
-                        <Magnetic key={link.name} strength={0.2}>
+                        <Magnetic key={link.name} strength={0.15}>
                             <Link
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
+                                className={`group relative px-6 py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
-                                    : 'text-text-navy/50 hover:text-text-navy'
+                                    : 'text-text-navy/60 hover:text-text-navy'
                                 }`}
                             >
                                 {link.name}
@@ -172,16 +189,15 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                {/* Right: CTA Button (Desktop) & Mobile Menu */}
-                <div className="flex items-center gap-2 md:gap-4">
-                    {/* Desktop CTA */}
+                {/* Right: CTA Button */}
+                <div className="flex items-center gap-3">
                     <Magnetic>
                         <a
                             ref={ctaRef}
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3.5 bg-brand-coral text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg relative overflow-hidden group"
+                            className="hidden md:inline-flex items-center justify-center px-7 py-3 bg-text-navy text-white text-[9px] font-bold uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-xl shadow-lg group relative overflow-hidden"
                         >
                             <span className="relative z-10">Plan My Journey</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
@@ -194,9 +210,9 @@ export default function Navbar() {
                         aria-label="Open mobile menu"
                         aria-expanded={isMobileMenuOpen}
                         aria-controls="mobile-menu"
-                        className={`lg:hidden p-3 rounded-full transition-all duration-300 ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/80 text-text-navy shadow-md border border-black/5'}`}
+                        className={`lg:hidden w-11 h-11 rounded-full transition-all duration-300 flex items-center justify-center ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/80 text-text-navy shadow-md border border-black/5'}`}
                     >
-                        <Menu className="w-6 h-6 md:w-7 md:h-7" aria-hidden="true" />
+                        <Menu className="w-5 h-5" aria-hidden="true" />
                     </button>
                 </div>
             </nav>
