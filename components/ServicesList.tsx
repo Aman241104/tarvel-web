@@ -17,56 +17,56 @@ const services = [
         title: 'Tour Packages',
         desc: "End-to-end curated domestic and international packages.",
         details: ["Custom Itineraries", "Local Guides", "24/7 Support", "Zero Stress"],
-        stamp: 'AUTHENTIC'
+        stamp: 'GLOBAL\nTOUR'
     },
     {
         icon: CrownIcon,
         title: 'Concierge Booking',
         desc: "Exclusive restaurant and beach club reservations.",
         details: ["Fine Dining", "Beach Clubs", "VIP Access", "Event Tickets"],
-        stamp: 'EXCLUSIVE'
+        stamp: 'VIP\nACCESS'
     },
     {
         icon: Plane,
         title: 'Flight Tickets',
         desc: "Seamless booking for domestic and international flights.",
         details: ["Best Price Guarantee", "Seat Selection", "Web Check-in", "Corporate Fares"],
-        stamp: 'PRIORITY'
+        stamp: 'SKY\nHIGH'
     },
     {
         icon: Hotel,
         title: 'Hotel Bookings',
         desc: "Luxury stays and handpicked accommodations worldwide.",
         details: ["Luxury Resorts", "Boutique Stays", "Villas", "Verified Properties"],
-        stamp: 'RESERVED'
+        stamp: 'RESERVED\nSTAY'
     },
     {
         icon: Camera,
         title: 'Sightseeings',
         desc: "Immersive local experiences and guided tours.",
         details: ["Private Tours", "Hidden Gems", "Group Excursions", "Cultural Immersions"],
-        stamp: 'CURATED'
+        stamp: 'LOCAL\nGUIDE'
     },
     {
         icon: FileText,
         title: 'Visa Services',
         desc: "Hassle-free visa processing and documentation support.",
         details: ["Tourist Visas", "Business Visas", "Document Review", "Interview Prep"],
-        stamp: 'VERIFIED'
+        stamp: 'VISA\nREADY'
     },
     {
         icon: Banknote,
         title: 'Currency Exchange',
         desc: "Secure and competitive forex services for your trip.",
         details: ["Best Rates", "Multi-Currency Cards", "Cash Delivery", "Secure Transactions"],
-        stamp: 'SECURE'
+        stamp: 'SECURE\nCASH'
     },
     {
         icon: Map,
         title: 'Custom Holidays',
         desc: "100% personalized itineraries crafted for your unique style.",
         details: ["Honeymoons", "Anniversaries", "Solo Travel", "Family Trips"],
-        stamp: 'BESPOKE'
+        stamp: 'YOUR\nSTORY'
     }
 ];
 
@@ -126,7 +126,7 @@ export default function ServicesList() {
     );
 
     return (
-        <section ref={containerRef} className="py-16 md:py-20 bg-bg-light relative z-30 overflow-visible">
+        <section ref={containerRef} className="py-12 md:py-16 bg-bg-light relative z-30 overflow-visible">
             <ServiceModal
                 isOpen={!!selectedService}
                 onClose={() => setSelectedService(null)}
@@ -135,7 +135,7 @@ export default function ServicesList() {
 
             <div className="container mx-auto px-6 max-w-7xl relative">
                 {/* Section Header */}
-                <div className="flex flex-col items-center mb-16 text-center">
+                <div className="flex flex-col items-center mb-12 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-teal/5 rounded-full border border-brand-teal/15 mb-4 hover:bg-brand-teal/10 transition-colors">
                         <span className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-teal">What We Offer</span>
                     </div>
@@ -162,23 +162,23 @@ export default function ServicesList() {
                         </span>
                     </h2>
 
-                    <p className="text-gray-500 text-base md:text-lg max-w-xl mt-4 font-body leading-relaxed">
+                    <p className="text-gray-500 text-sm md:text-base max-w-xl mt-4 font-body leading-relaxed">
                         From private sky-high transfers to silent retreats, we curate every detail of your perfect escape.
                     </p>
                 </div>
 
                 {/* Visual "Hanging Rod" (Editorial Line) */}
-                <div className="absolute top-[300px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
+                <div className="absolute top-[260px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="relative group pt-20 md:pt-24"
+                            className="relative group pt-12 md:pt-16"
                             onClick={() => setSelectedService(service)}
                         >
                             {/* Realistic "Twine" Cord (SVG Path for natural curve) */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-24 md:h-32 pointer-events-none overflow-visible z-10 origin-top">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-16 md:h-20 pointer-events-none overflow-visible z-10 origin-top">
                                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                                     <path 
                                         d="M50,0 Q50,50 50,100" 
@@ -196,7 +196,7 @@ export default function ServicesList() {
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-[#fafafa] p-6 pt-12 text-center shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] rounded-sm border border-black/5"
+                                className="relative bg-[#FDFDFD] p-5 pt-10 text-center shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] rounded-sm border border-black/10"
                                 style={{
                                     clipPath: 'polygon(35% 0%, 65% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%)',
                                 }}
@@ -209,28 +209,30 @@ export default function ServicesList() {
                                     <div className="w-3.5 h-3.5 bg-bg-light rounded-full shadow-inner" />
                                 </div>
 
-                                {/* Stamp Accent (Appears on hover) */}
-                                <div className="absolute top-20 right-4 w-16 h-16 border-2 border-brand-teal/20 rounded-full flex items-center justify-center -rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-150 group-hover:scale-100">
-                                    <span className="text-brand-teal font-black text-[7px] uppercase tracking-widest text-center">{service.stamp}<br/>STAY</span>
+                                {/* Stamp Accent (Partially visible by default, pops on hover) */}
+                                <div className="absolute top-16 right-3 w-16 h-16 border-2 border-brand-teal/10 rounded-full flex items-center justify-center -rotate-12 opacity-20 group-hover:opacity-100 group-hover:border-brand-teal/30 transition-all duration-700 transform scale-110 group-hover:scale-100">
+                                    <span className="text-brand-teal font-black text-[7px] uppercase tracking-widest text-center whitespace-pre-line">
+                                        {service.stamp}
+                                    </span>
                                 </div>
 
-                                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:scale-110 ${
+                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:scale-110 ${
                                     i % 3 === 0 ? 'bg-brand-yellow/10 text-brand-yellow' : 
                                     i % 3 === 1 ? 'bg-brand-teal/10 text-brand-teal' : 
                                     'bg-brand-coral/10 text-brand-coral'
                                 }`}>
-                                    <service.icon className="w-8 h-8" strokeWidth={1.5} />
+                                    <service.icon className="w-7 h-7" strokeWidth={1.5} />
                                 </div>
 
                                 <h3 className="text-lg md:text-xl font-heading font-black text-text-navy mb-2 tracking-tighter leading-none group-hover:text-brand-teal transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-500 font-body text-[11px] leading-relaxed max-w-[180px] mx-auto mb-6">
+                                <p className="text-gray-500 font-body text-[11px] leading-relaxed max-w-[170px] mx-auto mb-4">
                                     {service.desc}
                                 </p>
 
                                 {/* Bottom Detail Strip (CTA Button) */}
-                                <div className="pt-6 mt-auto flex flex-col items-center gap-3">
+                                <div className="pt-4 mt-auto flex flex-col items-center gap-3">
                                     <div className="flex gap-1.5 opacity-20 group-hover:opacity-40 transition-opacity">
                                         {[...Array(12)].map((_, i) => (
                                             <div key={i} className={`w-[1px] h-3 bg-black ${i % 3 === 0 ? 'h-5' : ''}`} />

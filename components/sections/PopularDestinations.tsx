@@ -79,7 +79,7 @@ export default function PopularDestinations() {
     };
 
     return (
-        <section id="packages" className="py-16 md:py-20 bg-bg-light relative overflow-hidden">
+        <section id="packages" className="py-8 md:py-12 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                     <div className="text-left">

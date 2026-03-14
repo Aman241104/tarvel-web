@@ -53,15 +53,18 @@ export default function CustomCursor() {
             const target = e.target as HTMLElement;
 
             // Check for interactive elements
-            const isLink = target.closest('a, button, .cursor-pointer, input');
             const isNav = target.closest('nav, .navbar');
+            const isLink = target.closest('a, button, .cursor-pointer, input');
             const isCard = target.closest('.group'); // Cards usually have 'group'
             const isCloseBtn = target.closest('[data-cursor="close"]');
             const isViewBtn = target.closest('[data-cursor="view"]');
             const isCTA = target.closest('button');
             const isImage = target.closest('img, .story-image, [class*="aspect-"]');
 
-            if (isCloseBtn) {
+            if (isNav) {
+                setIsHovering(false);
+                setCursorText('');
+            } else if (isCloseBtn) {
                 setIsHovering(true);
                 setCursorText('Close Window ✕');
             } else if (isViewBtn) {
@@ -78,8 +81,7 @@ export default function CustomCursor() {
                 setCursorText('Explore Details');
             } else if (isLink) {
                 setIsHovering(true);
-                // Don't show "Continue" on navbar links
-                setCursorText(isNav ? '' : 'Continue →');
+                setCursorText('Continue →');
             } else {
                 setIsHovering(false);
                 setCursorText('');

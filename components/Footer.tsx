@@ -73,7 +73,7 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-[#070b14] pt-56 pb-12 overflow-hidden z-10 text-white">
+        <footer ref={containerRef} className="relative bg-[#070b14] pt-32 md:pt-48 pb-12 overflow-hidden z-10 text-white">
             {/* Glassmorphism Map Silhouette with Spotlight */}
             <div 
                 ref={spotlightRef}
@@ -118,14 +118,13 @@ export default function Footer() {
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
                             <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-[2rem] overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
-                                <Image 
-                                    src="/assets/logo.png" 
-                                    alt="Destination Anywhere Logo" 
-                                    fill 
-                                    className="object-cover p-3" 
-                                    sizes="(max-width: 768px) 80px, 96px"
-                                />
-                            </div>
+                                <Image
+                                   src="/assets/image.png"
+                                   alt="Destination Anywhere Logo"
+                                   fill
+                                   className="object-cover p-3"
+                                   sizes="(max-width: 768px) 80px, 96px"
+                                />                            </div>
                             <div>
                                 <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
                                     Destination<br />Anywhere & Co.
@@ -140,7 +139,7 @@ export default function Footer() {
 
                         <div className="flex gap-4">
                             {[
-                                { icon: Instagram, label: "Instagram", href: "#" },
+                                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/destnation_anywhere/" },
                                 { icon: Linkedin, label: "LinkedIn", href: "#" },
                                 { icon: Twitter, label: "Twitter", href: "#" }
                             ].map((social) => (

@@ -100,9 +100,9 @@ export default function Testimonials() {
     }, { scope: containerRef });
 
     return (
-        <section id="testimonials" ref={containerRef} className="py-20 md:py-32 bg-bg-light relative overflow-hidden">
+        <section id="testimonials" ref={containerRef} className="py-12 md:py-16 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="text-center mb-16 relative inline-block mx-auto w-full">
+                <div className="text-center mb-8 relative inline-block mx-auto w-full">
                     <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy relative z-10 inline-block">
                         Voices of Journey
                         <svg className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-64 h-8 z-0" viewBox="0 0 200 40" fill="none">
@@ -116,12 +116,12 @@ export default function Testimonials() {
                             />
                         </svg>
                     </h2>
-                    <p className="mt-8 text-gray-500 font-body text-lg max-w-xl mx-auto opacity-80">
+                    <p className="mt-6 text-gray-500 font-body text-lg max-w-xl mx-auto opacity-80">
                         We don't just book trips, we protect your precious time. Here's what our travelers say.
                     </p>
 
                     {/* Trust Block (2026 Trend) */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-10">
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-6">
                         <div className="flex items-center gap-2 text-gray-400 hover:text-text-navy transition-colors">
                             <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -143,7 +143,7 @@ export default function Testimonials() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mt-16 items-stretch px-4 md:px-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mt-8 items-stretch px-4 md:px-0">
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}

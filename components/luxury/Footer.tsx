@@ -14,7 +14,7 @@ export default function Footer() {
                             <a href="#about" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>Our Story</a>
                         </li>
                         <li className="hover:text-accent-gold cursor-pointer transition-colors">
-                            <a href="https://www.instagram.com/destinationanywhere_co/" target="_blank">Journal</a>
+                            <a href="https://www.instagram.com/destnation_anywhere/" target="_blank">Journal</a>
                         </li>
                         <li className="hover:text-accent-gold cursor-pointer transition-colors">
                             <a href="#contact" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact</a>

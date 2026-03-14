@@ -146,7 +146,7 @@ export default function Navbar() {
                 >
                     <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-sm group-hover:scale-105 transition-transform duration-500">
                          <Image 
-                            src="/assets/logo.png" 
+                            src="/assets/image.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-cover" 

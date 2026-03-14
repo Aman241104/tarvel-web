@@ -30,7 +30,8 @@ export default function FooterContact() {
                         <div className="mt-12">
                             <p className="font-primary font-bold mb-4">Follow Us</p>
                             <div className="flex gap-4">
-                                <a href="https://www.instagram.com/destinationanywhere_co/" target="_blank" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-arctic-orange transition-all">
+                                <a href="https://www.instagram.com/destnation_anywhere/" target="_blank" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-arctic-orange transition-all">
+
                                     <FaInstagram className="text-2xl" />
                                 </a>
                                 <a href="https://wa.me/918511071506" target="_blank" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-arctic-orange transition-all">

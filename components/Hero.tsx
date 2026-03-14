@@ -231,7 +231,7 @@ export default function Hero() {
             ))}
 
             {/* Typography: Central Heading */}
-            <div ref={textRef} className="relative z-20 text-center flex flex-col items-center max-w-4xl mx-auto -mt-20 md:-mt-10 px-4">
+            <div ref={textRef} className="relative z-20 text-center flex flex-col items-center max-w-4xl mx-auto -mt-10 md:mt-0 px-4">
                 {/* Doodle: Star */}
                 <svg className="absolute -top-16 -right-12 w-14 h-14 text-brand-yellow opacity-80 animate-spin-slow hidden md:block" viewBox="0 0 100 100" fill="currentColor">
                     <path d="M50 0L61 35L98 35L68 57L79 91L50 70L21 91L32 57L2 35L39 35L50 0Z" />
@@ -273,7 +273,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtext Pill & Social Proof */}
-                <div className="mt-12 md:mt-16 flex flex-col items-center gap-8">
+                <div className="mt-8 md:mt-16 flex flex-col items-center gap-8">
                     <div className="hidden md:flex">
                         <Magnetic strength={0.2}>
                             <button

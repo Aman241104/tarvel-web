@@ -1,0 +1,21 @@
+{
+  "name": "Destination Anywhere & Co.",
+  "short_name": "D/A & Co.",
+  "description": "Luxury Travel Boutique & Bespoke Itineraries",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F8F6",
+  "theme_color": "#FF6B6B",
+  "icons": [
+    {
+      "src": "/assets/image.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

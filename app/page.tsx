@@ -17,6 +17,7 @@ const Testimonials = dynamic(() => import("@/components/luxury/Testimonials"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const CTASection = dynamic(() => import("@/components/CTASection"));
 const TapeMarquee = dynamic(() => import("@/components/TapeMarquee"));
+const InstagramFeed = dynamic(() => import("@/components/sections/InstagramFeed"));
 
 export default function Home() {
     return (
@@ -37,8 +38,8 @@ export default function Home() {
                 </section>
 
                 {/* Micro CTA */}
-                <div className="py-12 bg-bg-light text-center">
-                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-xs hover:text-brand-coral transition-colors group">
+                <div className="py-6 md:py-8 bg-bg-light text-center">
+                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-coral transition-colors group">
                         <span>Book Your Journey</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </a>
@@ -68,6 +69,8 @@ export default function Home() {
                 <section id="marquee" className="relative z-20 py-12 -my-12 overflow-hidden">
                     <TapeMarquee />
                 </section>
+
+                <InstagramFeed />
             </div>
 
             {/* 6. Contact Us Section */}

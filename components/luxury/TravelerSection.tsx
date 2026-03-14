@@ -120,7 +120,7 @@ export default function TravelerSection() {
     }, { scope: containerRef });
 
     return (
-        <section id="about-captain" ref={containerRef} className="bg-bg-light text-text-light py-16 md:py-32 relative overflow-hidden">
+        <section id="about-captain" ref={containerRef} className="bg-bg-light text-text-light py-10 md:py-16 relative overflow-hidden">
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
@@ -214,7 +214,7 @@ export default function TravelerSection() {
                         </div>
 
                         {/* Signature: SVG handwriting path draw */}
-                        <div className="mt-16 md:mt-24 opacity-100 rotate-[-2deg]">
+                        <div className="mt-8 md:mt-12 opacity-100 rotate-[-2deg]">
                             <span className="font-handwriting text-3xl md:text-4xl text-gray-500 block mt-2 opacity-80">
                                 Let's get lost together.
                             </span>
@@ -228,16 +228,16 @@ export default function TravelerSection() {
                             <div className="washi-tape washi-tape-teal -top-5 left-1/2 -translate-x-1/2 w-44 h-16 -rotate-2 opacity-80 shadow-sm" />
 
                             {/* Polaroid Frame */}
-                            <div className="bg-white p-4 md:p-5 pb-16 md:pb-24 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
+                            <div className="bg-white p-4 md:p-5 pb-[5px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
                                 
                                 {/* Film Strip Holes */}
-                                <div className="absolute left-3 md:left-4 top-10 bottom-20 md:bottom-32 w-3 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">
+                                <div className="absolute left-3 md:left-4 top-10 bottom-12 md:bottom-16 w-3 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">
                                     {[...Array(8)].map((_, i) => (
                                         <div key={i} className="w-2 md:w-2.5 h-2 md:h-2.5 bg-black/80 rounded-sm shadow-[0_1px_1px_rgba(255,255,255,0.1)]" />
                                     ))}
                                 </div>
 
-                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[420px] md:h-[480px] bg-gray-100 shadow-inner">
+                                <div className="relative overflow-hidden w-full aspect-[2/3.5] md:w-[420px] md:h-[560px] bg-gray-100 shadow-inner">
                                     <img
                                         src="/assets/owner-image.png"
                                         alt="Sujal Soni"
@@ -250,7 +250,7 @@ export default function TravelerSection() {
                                     {/* Film Grain/Dust Overlay */}
                                     <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none z-10" />
                                 </div>
-                                <div className="mt-6 md:mt-8 font-handwriting text-2xl md:text-3xl text-center text-gray-400 rotate-[-1deg] font-bold tracking-tight px-4">
+                                <div className="mt-6 md:mt-8 font-handwriting text-2xl md:text-3xl text-center text-gray-400 rotate-[-1deg] font-bold tracking-tight px-4 leading-none pb-[5px]">
                                     Founder, Destination Anywhere
                                 </div>
                             </div>

@@ -12,12 +12,12 @@ const instaImages = [
 export default function InstagramMarquee() {
     return (
         <section className="bg-bg-light dark:bg-bg-dark pt-8 md:pt-12 text-center transition-colors duration-500">
-            <a href="https://www.instagram.com/destinationanywhere_co/" target="_blank" className="inline-block mb-8 font-mono text-xs text-accent-gold uppercase tracking-widest hover:underline">
-                @destinationanywhere_co
+            <a href="https://www.instagram.com/destnation_anywhere/" target="_blank" className="inline-block mb-8 font-mono text-xs text-accent-gold uppercase tracking-widest hover:underline">
+                @destnation_anywhere
             </a>
 
             {/* Infinite Scroll Strip */}
-            <a href="https://www.instagram.com/destinationanywhere_co/" target="_blank" rel="noopener noreferrer" className="block">
+            <a href="https://www.instagram.com/destnation_anywhere/" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="overflow-hidden whitespace-nowrap pb-12 md:pb-24 group">
                     <div className="flex animate-marquee-slower group-hover:[animation-play-state:paused]">
                         {[...instaImages, ...instaImages, ...instaImages, ...instaImages].map((src, i) => (
