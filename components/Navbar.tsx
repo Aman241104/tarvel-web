@@ -20,32 +20,34 @@ export default function Navbar() {
     const [activeSection, setActiveSection] = useState('home');
 
     useEffect(() => {
+        const sections = ['home', 'usp', 'services', 'about-captain', 'packages', 'testimonials', 'contact'];
+        
         const handleScroll = () => {
             setScrolled(window.scrollY > 30);
-        };
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+            
+            // Robust active section detection
+            let current = 'home';
+            const offset = 150; // Scroll offset to trigger change
 
-    useEffect(() => {
-        const sections = ['home', 'usp', 'about-captain', 'packages', 'services', 'testimonials', 'contact'];
-        const observers = sections.map((id) => {
-            const section = document.getElementById(id);
-            if (!section) return null;
-
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(id);
+            for (const id of sections) {
+                const element = document.getElementById(id);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    // If top of section is near the top of viewport
+                    if (rect.top <= offset && rect.bottom >= offset) {
+                        current = id;
+                        break;
                     }
-                },
-                { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
-            );
-            observer.observe(section);
-            return observer;
-        });
+                }
+            }
+            setActiveSection(current);
+        };
 
-        return () => observers.forEach((o) => o?.disconnect());
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        // Initial check
+        handleScroll();
+        
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     useGSAP(

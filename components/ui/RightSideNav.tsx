@@ -20,23 +20,26 @@ export default function RightSideNav() {
     const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
 
     useEffect(() => {
-        const observers = sections.map(({ id }) => {
-            const el = document.getElementById(id);
-            if (!el) return null;
+        const handleScroll = () => {
+            let current = 'home';
+            const offset = 150;
 
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(id);
+            for (const { id } of sections) {
+                const element = document.getElementById(id);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= offset && rect.bottom >= offset) {
+                        current = id;
+                        break;
                     }
-                },
-                { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
-            );
-            observer.observe(el);
-            return observer;
-        });
+                }
+            }
+            setActiveSection(current);
+        };
 
-        return () => observers.forEach(o => o?.disconnect());
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const scrollToSection = (id: string) => {

@@ -166,20 +166,39 @@ export default function Hero() {
         if (!el) return;
         const img = el.querySelector('img');
 
-        if (img) {
-            gsap.to(img, {
-                scale: enter ? 1.15 : 1,
-                duration: 0.7,
-                ease: 'power2.out'
+        if (enter) {
+            if (img) {
+                gsap.to(img, {
+                    scale: 1.15,
+                    duration: 0.7,
+                    ease: 'power2.out'
+                });
+            }
+
+            gsap.to(el, {
+                scale: 1.1,
+                zIndex: 50,
+                duration: 0.4,
+                ease: 'back.out(1.7)',
+                overwrite: true
+            });
+        } else {
+            if (img) {
+                gsap.to(img, {
+                    scale: 1,
+                    duration: 0.5,
+                    ease: 'power2.inOut'
+                });
+            }
+
+            gsap.to(el, {
+                scale: 1,
+                duration: 0.4,
+                ease: 'power2.inOut',
+                clearProps: 'zIndex',
+                overwrite: true
             });
         }
-
-        gsap.to(el, {
-            scale: enter ? 1.1 : 1,
-            zIndex: enter ? 50 : 0,
-            duration: 0.4,
-            ease: 'back.out(1.7)'
-        });
     };
 
     return (
