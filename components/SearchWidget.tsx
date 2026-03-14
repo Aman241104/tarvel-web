@@ -46,7 +46,7 @@ Can you help me with the itinerary?`;
             ref={containerRef}
             className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 z-30 w-[94%] md:w-[90%] max-w-4xl"
         >
-            <div className="bg-white/95 backdrop-blur-2xl border border-black/5 rounded-[2.5rem] md:rounded-full p-6 md:p-3 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch md:items-center gap-6 md:gap-0 relative">
+            <div className="bg-white/95 backdrop-blur-2xl border border-black/5 rounded-[2.5rem] md:rounded-full p-4 md:p-3 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-0 relative">
                 
                 {/* Concierge Badge */}
                 <div className="absolute -top-10 left-8 md:left-12 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full border border-black/5 text-[10px] font-black uppercase tracking-[0.2em] text-text-navy/50 flex items-center gap-2.5 shadow-sm">
@@ -79,7 +79,7 @@ Can you help me with the itinerary?`;
                 <div className="hidden md:block w-px h-10 bg-black/10 mx-2" />
 
                 {/* Mobile: Vertical Stack for Date and Guests */}
-                <div className="flex flex-col md:flex-row w-full md:w-auto md:flex-2 gap-6 md:gap-0">
+                <div className="flex flex-col md:flex-row w-full md:w-auto md:flex-2 gap-3 md:gap-0">
                     {/* Date Input */}
                     <div className={`relative flex-1 p-3 md:p-4 rounded-3xl md:rounded-full transition-all duration-500 ${activeInput === 'date' ? 'bg-brand-coral/5 shadow-[inset_0_0_0_2px_rgba(255,107,107,0.2)] scale-[1.01] z-10' : 'hover:bg-black/5'}`}>
                         <div className="flex items-center gap-4">

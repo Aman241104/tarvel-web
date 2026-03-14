@@ -135,19 +135,19 @@ export default function Navbar() {
                     href="#home" 
                     onClick={() => handleLinkClick('home')} 
                     data-nav-id="home"
-                    className="flex items-center gap-3 group shrink-0"
+                    className="flex items-center gap-2 md:gap-3 group shrink-0"
                 >
-                    <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-sm group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-sm group-hover:scale-105 transition-transform duration-500">
                          <Image 
                             src="/assets/image.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-cover" 
-                            sizes="(max-width: 768px) 48px, 56px"
+                            sizes="(max-width: 768px) 40px, 56px"
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span className="text-sm md:text-base font-black tracking-tighter text-text-navy leading-none">
+                        <span className="text-xs md:text-base font-black tracking-tighter text-text-navy leading-none whitespace-nowrap">
                             Destination Anywhere
                         </span>
                         <span className="text-[8px] md:text-[10px] uppercase tracking-[0.25em] font-black text-black/30 hidden sm:block mt-1">

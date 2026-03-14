@@ -116,11 +116,15 @@ export default function ServicesList() {
                         ease: 'elastic.out(1, 0.75)',
                         scrollTrigger: {
                             trigger: containerRef.current,
-                            start: 'top 80%',
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse',
                         },
                     }
                 );
             });
+
+            // Added refresh for better ScrollTrigger calculation
+            ScrollTrigger.refresh();
         },
         { scope: containerRef }
     );

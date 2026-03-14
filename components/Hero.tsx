@@ -217,9 +217,9 @@ export default function Hero() {
                     onMouseEnter={() => handleStickerHover(i, true)}
                     onMouseLeave={() => handleStickerHover(i, false)}
                     ref={(el) => { stickerRefs.current[i] = el as HTMLDivElement; }}
-                    className={`absolute p-1.5 md:p-2 pb-6 md:pb-10 bg-white shadow-2xl rounded-sm will-change-transform cursor-grab active:cursor-grabbing
+                    className={`absolute p-1 md:p-2 pb-4 md:pb-10 bg-white shadow-xl md:shadow-2xl rounded-sm will-change-transform cursor-grab active:cursor-grabbing
                         ${sticker.mobileClassName} md:${sticker.className}
-                        z-0 md:z-10 opacity-40 md:opacity-100 flex flex-col
+                        z-0 md:z-10 opacity-20 md:opacity-100 flex flex-col
                     `}
                     style={{
                         backfaceVisibility: 'hidden'
@@ -269,10 +269,9 @@ export default function Hero() {
                 </div>
 
                 <h1 className="flex flex-col items-center justify-center w-full mb-4 md:mb-0">
-
-                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex justify-center max-w-[90vw] whitespace-nowrap">
+                    <span className="font-heading font-black text-[11vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[95vw] md:whitespace-nowrap">
                         {'DESTINATION'.split('').map((char, i) => (
-                            <span key={i} className="dest-char inline-block" aria-hidden={i > 0}>
+                            <span key={i} className="dest-char inline-block">
                                 {char}
                             </span>
                         ))}
@@ -282,7 +281,7 @@ export default function Hero() {
                         </svg>
                     </span>
 
-                    <span className="font-handwriting text-[12vw] sm:text-6xl md:text-7xl lg:text-9xl leading-none text-brand-yellow relative mt-2 md:mt-4 drop-shadow-sm transform -rotate-2">
+                    <span className="font-handwriting text-[10vw] sm:text-6xl md:text-7xl lg:text-9xl leading-none text-brand-yellow relative mt-1 md:mt-4 drop-shadow-sm transform -rotate-2">
                         Anywhere
                         {/* Underline */}
                         <svg className="absolute -bottom-2 left-0 w-full h-4 md:h-6 text-brand-teal opacity-60" viewBox="0 0 200 20" preserveAspectRatio="none">

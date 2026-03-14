@@ -133,7 +133,7 @@ export default function TravelerSection() {
                         </div>
 
                         <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8 mb-6">
-                            <h2 className="text-7xl md:text-8xl lg:text-9xl font-heading font-black leading-[0.75] tracking-tighter text-text-navy">
+                            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black leading-[0.75] tracking-tighter text-text-navy">
                                 Sujal<br />
                                 <span className="relative inline-block mt-4">
                                     <span className="absolute inset-0 bg-brand-yellow -rotate-2 -skew-x-6 scale-110 z-0 shadow-lg"></span>

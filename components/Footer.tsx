@@ -73,7 +73,7 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-[#070b14] pt-24 md:pt-32 pb-12 overflow-hidden z-10 text-white">
+        <footer ref={containerRef} className="relative bg-[#070b14] pt-24 md:pt-32 pb-12 overflow-hidden z-30 text-white">
             {/* Glassmorphism Map Silhouette with Spotlight */}
             <div 
                 ref={spotlightRef}

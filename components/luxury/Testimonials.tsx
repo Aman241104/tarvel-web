@@ -79,24 +79,25 @@ export default function Testimonials() {
             });
         }
 
-        // Wavy line draw
-        const wavyLine = containerRef.current?.querySelector('.wavy-line');
-        if (wavyLine) {
-            gsap.fromTo(wavyLine,
-                { strokeDashoffset: 400 },
-                {
-                    strokeDashoffset: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top 90%',
+            // Wavy line draw
+            const wavyLine = containerRef.current?.querySelector('.wavy-line');
+            if (wavyLine) {
+                gsap.fromTo(wavyLine,
+                    { strokeDashoffset: 400 },
+                    {
+                        strokeDashoffset: 0,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 90%',
+                        }
                     }
-                }
-            );
-        }
+                );
+            }
 
-        setTimeout(() => ScrollTrigger.refresh(), 500);
+            // Ensure ScrollTrigger updates after initialization
+            setTimeout(() => ScrollTrigger.refresh(), 500);
     }, { scope: containerRef });
 
     return (
