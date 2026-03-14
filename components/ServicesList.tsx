@@ -126,7 +126,7 @@ export default function ServicesList() {
     );
 
     return (
-        <section ref={containerRef} className="py-12 md:py-16 bg-bg-light relative z-30 overflow-visible">
+        <section ref={containerRef} className="py-6 md:py-10 bg-bg-light relative z-30 overflow-visible">
             <ServiceModal
                 isOpen={!!selectedService}
                 onClose={() => setSelectedService(null)}
@@ -170,15 +170,15 @@ export default function ServicesList() {
                 {/* Visual "Hanging Rod" (Editorial Line) */}
                 <div className="absolute top-[260px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="relative group pt-12 md:pt-16"
+                            className="relative group pt-8 md:pt-10"
                             onClick={() => setSelectedService(service)}
                         >
                             {/* Realistic "Twine" Cord (SVG Path for natural curve) */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-16 md:h-20 pointer-events-none overflow-visible z-10 origin-top">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-10 md:h-12 pointer-events-none overflow-visible z-10 origin-top">
                                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                                     <path 
                                         d="M50,0 Q50,50 50,100" 
@@ -196,7 +196,7 @@ export default function ServicesList() {
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-[#FDFDFD] p-5 pt-10 text-center shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] rounded-sm border border-black/10"
+                                className="relative bg-[#FDFDFD] p-4 pt-8 text-center shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] rounded-sm border border-black/10"
                                 style={{
                                     clipPath: 'polygon(35% 0%, 65% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%)',
                                 }}
@@ -205,54 +205,48 @@ export default function ServicesList() {
                                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cardboard-flat.png')]" />
 
                                 {/* Metal Eyelet / Hole Punch */}
-                                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 border-[2px] border-white shadow-lg flex items-center justify-center z-20">
-                                    <div className="w-3.5 h-3.5 bg-bg-light rounded-full shadow-inner" />
+                                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 border-[2px] border-white shadow-lg flex items-center justify-center z-20">
+                                    <div className="w-3 h-3 bg-bg-light rounded-full shadow-inner" />
                                 </div>
 
                                 {/* Stamp Accent (Partially visible by default, pops on hover) */}
-                                <div className="absolute top-16 right-3 w-16 h-16 border-2 border-brand-teal/10 rounded-full flex items-center justify-center -rotate-12 opacity-20 group-hover:opacity-100 group-hover:border-brand-teal/30 transition-all duration-700 transform scale-110 group-hover:scale-100">
-                                    <span className="text-brand-teal font-black text-[7px] uppercase tracking-widest text-center whitespace-pre-line">
+                                <div className="absolute top-12 right-2 w-14 h-14 border-2 border-brand-teal/10 rounded-full flex items-center justify-center -rotate-12 opacity-20 group-hover:opacity-100 group-hover:border-brand-teal/30 transition-all duration-700 transform scale-110 group-hover:scale-100">
+                                    <span className="text-brand-teal font-black text-[6px] uppercase tracking-widest text-center whitespace-pre-line">
                                         {service.stamp}
                                     </span>
                                 </div>
 
-                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:scale-110 ${
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:scale-110 ${
                                     i % 3 === 0 ? 'bg-brand-yellow/10 text-brand-yellow' : 
                                     i % 3 === 1 ? 'bg-brand-teal/10 text-brand-teal' : 
                                     'bg-brand-coral/10 text-brand-coral'
                                 }`}>
-                                    <service.icon className="w-7 h-7" strokeWidth={1.5} />
+                                    <service.icon className="w-6 h-6" strokeWidth={1.5} />
                                 </div>
 
-                                <h3 className="text-lg md:text-xl font-heading font-black text-text-navy mb-2 tracking-tighter leading-none group-hover:text-brand-teal transition-colors">
+                                <h3 className="text-base md:text-lg font-heading font-black text-text-navy mb-1.5 tracking-tighter leading-none group-hover:text-brand-teal transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-500 font-body text-[11px] leading-relaxed max-w-[170px] mx-auto mb-4">
+                                <p className="text-gray-500 font-body text-[10px] leading-relaxed max-w-[150px] mx-auto mb-3">
                                     {service.desc}
                                 </p>
 
                                 {/* Bottom Detail Strip (CTA Button) */}
-                                <div className="pt-4 mt-auto flex flex-col items-center gap-3">
-                                    <div className="flex gap-1.5 opacity-20 group-hover:opacity-40 transition-opacity">
-                                        {[...Array(12)].map((_, i) => (
-                                            <div key={i} className={`w-[1px] h-3 bg-black ${i % 3 === 0 ? 'h-5' : ''}`} />
-                                        ))}
-                                    </div>
+                                <div className="pt-2 mt-auto flex flex-col items-center gap-2">
                                     <div 
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             handleWhatsAppClick(service);
                                         }}
-                                        className={`px-6 py-2.5 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30 ${
+                                        className={`px-5 py-2 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30 ${
                                             i % 3 === 0 ? 'bg-brand-yellow shadow-brand-yellow/30' : 
                                             i % 3 === 1 ? 'bg-brand-teal shadow-brand-teal/30' : 
                                             'bg-brand-coral shadow-brand-coral/30'
                                         }`}
                                     >
                                         <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                                        WhatsApp Enquiry
+                                        WhatsApp
                                     </div>
-                                    <span className="text-[7px] font-black uppercase tracking-[0.4em] text-black/10 group-hover:opacity-0 transition-opacity">Verified Service</span>
                                 </div>
 
                                 {/* Dynamic Lighting Glare */}

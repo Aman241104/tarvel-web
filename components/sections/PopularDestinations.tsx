@@ -79,9 +79,9 @@ export default function PopularDestinations() {
     };
 
     return (
-        <section id="packages" className="py-8 md:py-12 bg-bg-light relative overflow-hidden">
+        <section id="packages" className="pt-0 pb-4 md:pb-6 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                     <div className="text-left">
                         <span className="text-brand-coral font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Handpicked for you</span>
                         <h2 className="text-3xl md:text-5xl font-heading font-black text-text-navy tracking-tight">

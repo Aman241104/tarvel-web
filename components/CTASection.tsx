@@ -54,18 +54,18 @@ export default function CTASection() {
     };
 
     return (
-        <section ref={containerRef} className="py-24 md:py-48 bg-[#FF5A5F] relative overflow-hidden">
+        <section ref={containerRef} className="pt-12 md:pt-16 pb-0 bg-[#FF5A5F] relative overflow-hidden z-20">
             {/* Decorative background elements */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                  <div className="cta-parallax absolute top-20 left-20 w-80 h-80 border-4 border-white rounded-full animate-spin-slow" />
                  <div className="cta-parallax absolute bottom-40 right-20 w-[600px] h-[600px] border-2 border-white rounded-full" />
             </div>
 
-            <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center mb-16">
+            <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center mb-8">
                 <h2 className="text-white font-heading font-black text-4xl md:text-7xl mb-4 leading-none tracking-tighter opacity-100">
                     Your Journey Starts with a <span className="italic text-brand-yellow drop-shadow-lg">Note</span>
                 </h2>
-                <p className="text-white/90 font-body text-lg md:text-xl max-w-2xl mx-auto italic mb-10">
+                <p className="text-white/90 font-body text-lg md:text-xl max-w-2xl mx-auto italic mb-6">
                     Drop us a line and let's craft an itinerary that's uniquely yours.
                 </p>
 
@@ -106,7 +106,7 @@ export default function CTASection() {
                     <div className="flex flex-col md:flex-row gap-8 md:gap-20">
                         {/* Left Side: Message Area */}
                         <div className="flex-1 text-left">
-                            <h2 className="font-handwriting text-4xl md:text-5xl text-[#2EC4B6] mb-8 md:mb-10 rotate-[-1deg] md:rotate-[-2deg]">
+                            <h2 className="font-handwriting text-4xl md:text-5xl text-[#2EC4B6] mb-8 md:mb-6 rotate-[-1deg] md:rotate-[-2deg]">
                                 Postcard from your dreams
                             </h2>
                             
@@ -187,7 +187,7 @@ export default function CTASection() {
                                 </div>
                             </div>
 
-                            <div className="mt-12 md:mt-16 flex flex-col items-end gap-3 self-end">
+                            <div className="mt-8 md:mt-10 flex flex-col items-end gap-3 self-end">
                                 <button 
                                     onClick={handleSubmit}
                                     className="hidden md:flex group relative bg-[#FF5A5F] text-white px-10 md:px-12 py-5 md:py-6 rounded-sm font-black text-[10px] md:text-xs uppercase tracking-widest shadow-2xl hover:rotate-1 hover:scale-105 transition-all duration-500 items-center gap-4 overflow-hidden"

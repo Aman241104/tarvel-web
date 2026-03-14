@@ -8,40 +8,45 @@ import Magnetic from '../ui/Magnetic';
 const INSTA_POSTS = [
     {
         id: 1,
-        url: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=800&auto=format&fit=crop",
-        caption: "Azure horizons in Maldives",
+        url: "/assets/insta-post-1.jpg",
+        postUrl: "https://www.instagram.com/p/DVTTgeqj2h4/",
+        caption: "Where to next?",
         rotation: -3,
         delay: 0.1,
         tapeColor: 'bg-brand-teal/40'
     },
     {
         id: 2,
-        url: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800&auto=format&fit=crop",
-        caption: "Venetian canals at dawn",
+        url: "/assets/insta-post-2.webp",
+        postUrl: "https://www.instagram.com/p/DUfzsppjzL7/",
+        caption: "Escape the ordinary.",
         rotation: 2,
         delay: 0.2,
         tapeColor: 'bg-brand-coral/40'
     },
     {
         id: 3,
-        url: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?q=80&w=800&auto=format&fit=crop",
-        caption: "Cliffside serenity",
+        url: "/assets/insta-post-3.jpg",
+        postUrl: "https://www.instagram.com/p/DVGiZbjj3Gl/",
+        caption: "Curated horizons.",
         rotation: -1,
         delay: 0.3,
         tapeColor: 'bg-brand-yellow/40'
     },
     {
         id: 4,
-        url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop",
-        caption: "Santorini sunsets",
+        url: "/assets/insta-post-4.jpg",
+        postUrl: "https://www.instagram.com/p/DVOJ-4NDyxk/",
+        caption: "Bespoke adventures.",
         rotation: 4,
         delay: 0.4,
         tapeColor: 'bg-brand-teal/40'
     },
     {
         id: 5,
-        url: "https://images.unsplash.com/photo-1512100356956-c1b47ef49410?q=80&w=800&auto=format&fit=crop",
-        caption: "Swiss Alp adventures",
+        url: "/assets/insta-post-5.jpg",
+        postUrl: "https://www.instagram.com/p/DTu_ZVNDwMR/",
+        caption: "Luxury redefined.",
         rotation: -2,
         delay: 0.5,
         tapeColor: 'bg-brand-coral/40'
@@ -56,7 +61,7 @@ export default function InstagramFeed() {
         <section 
             id="instagram" 
             ref={containerRef}
-            className="py-24 md:py-32 bg-bg-light relative overflow-hidden"
+            className="py-12 md:py-16 bg-bg-light relative overflow-hidden"
         >
             {/* Background Text Decor */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-black/[0.02] uppercase tracking-tighter select-none pointer-events-none whitespace-nowrap">
@@ -65,7 +70,7 @@ export default function InstagramFeed() {
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* Header Section */}
-                <div className="text-center mb-16 md:mb-24">
+                <div className="text-center mb-8 md:mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -113,7 +118,7 @@ export default function InstagramFeed() {
                     {INSTA_POSTS.map((post, index) => (
                         <motion.a
                             key={post.id}
-                            href="https://www.instagram.com/destnation_anywhere/"
+                            href={post.postUrl || "https://www.instagram.com/destnation_anywhere/"}
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 40, rotate: post.rotation * 2 }}
@@ -126,32 +131,32 @@ export default function InstagramFeed() {
                                 zIndex: 50,
                                 transition: { duration: 0.3 }
                             }}
-                            className={`group relative bg-white p-3 pb-10 md:pb-12 shadow-xl shadow-black/5 border border-black/[0.03] transition-all duration-500 flex flex-col ${
-                                index % 2 !== 0 ? 'mt-8 md:mt-16' : ''
+                            className={`group relative bg-white p-2 pb-6 md:pb-8 shadow-xl shadow-black/5 border border-black/[0.03] transition-all duration-500 flex flex-col ${
+                                index % 2 !== 0 ? 'mt-8 md:mt-12' : ''
                             } ${index === 2 ? 'md:-mt-8' : ''}`}
                         >
                             {/* Tape Decor */}
-                            <div className={`absolute -top-4 left-1/2 -translate-x-1/2 w-20 h-8 ${post.tapeColor} backdrop-blur-sm -rotate-2 z-20 group-hover:scale-110 transition-transform duration-500`} 
+                            <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${post.tapeColor} backdrop-blur-sm -rotate-2 z-20 group-hover:scale-110 transition-transform duration-500`} 
                                  style={{ clipPath: 'polygon(0% 10%, 100% 0%, 95% 90%, 5% 100%)' }} />
 
                             {/* Image Container */}
-                            <div className="relative aspect-[4/5] overflow-hidden bg-gray-50 mb-4">
+                            <div className="relative aspect-square overflow-hidden bg-gray-50 mb-3">
                                 <img 
                                     src={post.url} 
                                     alt={post.caption}
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full transform translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-text-navy flex items-center gap-2">
-                                            View on IG <ArrowUpRight className="w-3 h-3" />
+                                    <div className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full transform translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
+                                        <span className="text-[8px] font-black uppercase tracking-widest text-text-navy flex items-center gap-2">
+                                            View <ArrowUpRight className="w-3 h-3" />
                                         </span>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Caption */}
-                            <p className="font-handwriting text-lg md:text-xl text-gray-500 text-center line-clamp-1 px-1">
+                            <p className="font-handwriting text-base md:text-lg text-gray-500 text-center line-clamp-1 px-1">
                                 {post.caption}
                             </p>
 
@@ -166,7 +171,7 @@ export default function InstagramFeed() {
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ delay: 1 }}
-                    className="mt-24 text-center"
+                    className="mt-12 text-center"
                 >
                     <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.5em]">
                         Your Journey • Your Memories • Destination Anywhere

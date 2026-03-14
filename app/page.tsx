@@ -38,7 +38,7 @@ export default function Home() {
                 </section>
 
                 {/* Micro CTA */}
-                <div className="py-6 md:py-8 bg-bg-light text-center">
+                <div className="py-4 bg-bg-light text-center">
                     <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-coral transition-colors group">
                         <span>Book Your Journey</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -61,13 +61,13 @@ export default function Home() {
                     <PopularDestinations />
                 </section>
 
+                <section id="marquee" className="relative z-20 py-4 -my-4 overflow-hidden">
+                    <TapeMarquee />
+                </section>
+
                 {/* 5. Testimonials Section */}
                 <section id="testimonials">
                     <Testimonials />
-                </section>
-
-                <section id="marquee" className="relative z-20 py-12 -my-12 overflow-hidden">
-                    <TapeMarquee />
                 </section>
 
                 <InstagramFeed />

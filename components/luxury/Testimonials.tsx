@@ -100,9 +100,9 @@ export default function Testimonials() {
     }, { scope: containerRef });
 
     return (
-        <section id="testimonials" ref={containerRef} className="py-12 md:py-16 bg-bg-light relative overflow-hidden">
+        <section id="testimonials" ref={containerRef} className="pt-0 pb-6 md:pb-10 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="text-center mb-8 relative inline-block mx-auto w-full">
+                <div className="text-center mb-4 relative inline-block mx-auto w-full">
                     <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy relative z-10 inline-block">
                         Voices of Journey
                         <svg className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 md:w-64 h-8 z-0" viewBox="0 0 200 40" fill="none">
@@ -143,7 +143,7 @@ export default function Testimonials() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mt-8 items-stretch px-4 md:px-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mt-4 items-stretch px-4 md:px-0">
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}

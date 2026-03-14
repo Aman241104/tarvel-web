@@ -120,7 +120,7 @@ export default function TravelerSection() {
     }, { scope: containerRef });
 
     return (
-        <section id="about-captain" ref={containerRef} className="bg-bg-light text-text-light py-10 md:py-16 relative overflow-hidden">
+        <section id="about-captain" ref={containerRef} className="bg-bg-light text-text-light pt-6 md:pt-10 pb-0 relative overflow-hidden">
             {/* Background Decor - Subtle Grid or organic shape could go here */}
 
             <div className="container mx-auto px-6 max-w-6xl">
@@ -128,35 +128,36 @@ export default function TravelerSection() {
 
                     {/* Left: Typography */}
                     <div ref={textRef} className="w-full md:w-1/2 relative z-10">
-                        <div className="inline-block px-5 py-2 bg-brand-coral/10 border border-brand-coral/20 text-brand-coral rounded-full text-xs font-black tracking-[0.3em] mb-8">
+                        <div className="inline-block px-5 py-2 bg-brand-coral/10 border border-brand-coral/20 text-brand-coral rounded-full text-xs font-black tracking-[0.3em] mb-6 transform -rotate-1">
                             MEET THE CAPTAIN
                         </div>
 
-                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-heading font-black mb-12 leading-[0.8] tracking-tighter text-text-navy">
-                            Sujal<br />
-                            <span className="relative inline-block mt-4">
-                                <span className="absolute inset-0 bg-brand-yellow -rotate-2 -skew-x-6 scale-110 z-0"></span>
-                                <span className="relative z-10 px-2">Soni</span>
-                            </span>
-                        </h2>
-
-                        <p className="text-xl md:text-2xl text-gray-600 font-body leading-relaxed mb-12 max-w-md italic opacity-90 border-l-4 border-brand-teal pl-6">
-                            "I don't just book tickets; I curate memories. Every journey is a story waiting to be written."
-                        </p>
-
-                        <div className="flex flex-col gap-5 text-gray-500 font-medium">
-                            <div className="flex items-center gap-4">
-                                <div className="w-2.5 h-2.5 bg-brand-teal rounded-full shadow-[0_0_15px_rgba(46,196,182,0.6)]" />
-                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-black/40">Founder</span>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_15px_rgba(255,107,107,0.6)]" />
-                                <span className="text-xs md:text-sm tracking-[0.2em] uppercase font-black text-black/40">Travel Boutique & Co.</span>
+                        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8 mb-6">
+                            <h2 className="text-7xl md:text-8xl lg:text-9xl font-heading font-black leading-[0.75] tracking-tighter text-text-navy">
+                                Sujal<br />
+                                <span className="relative inline-block mt-4">
+                                    <span className="absolute inset-0 bg-brand-yellow -rotate-2 -skew-x-6 scale-110 z-0 shadow-lg"></span>
+                                    <span className="relative z-10 px-2">Soni</span>
+                                </span>
+                            </h2>
+                            <div className="flex flex-col gap-4 pb-2 ml-2">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-2.5 h-2.5 bg-brand-teal rounded-full shadow-[0_0_15px_rgba(46,196,182,0.6)]" />
+                                    <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase font-black text-black/40">Founder</span>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_15px_rgba(255,107,107,0.6)]" />
+                                    <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase font-black text-black/40">Travel Boutique & Co.</span>
+                                </div>
                             </div>
                         </div>
 
+                        <p className="text-xl md:text-2xl text-gray-600 font-body leading-relaxed mb-6 max-w-md italic opacity-90 border-l-4 border-brand-teal pl-6">
+                            "I don't just book tickets; I curate memories. Every journey is a story waiting to be written."
+                        </p>
+
                         {/* Stat Counters */}
-                        <div className="flex justify-between md:justify-start gap-4 md:gap-16 mt-12 mb-10">
+                        <div className="flex justify-between md:justify-start gap-4 md:gap-16 mt-12 mb-6">
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
                                     <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
@@ -181,8 +182,8 @@ export default function TravelerSection() {
                         </div>
 
                         {/* 9-Year Journey: Film Strip Timeline */}
-                        <div className="mt-20 md:mt-24 relative">
-                            <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-black/30 mb-12 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
+                        <div className="mt-10 md:mt-12 relative">
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-black/30 mb-6 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
                             
                             <div className="flex flex-col sm:flex-row gap-12 sm:gap-8 md:gap-12 items-start relative pl-10 sm:pl-0">
                                 {/* Connector Line (Desktop) */}
@@ -216,7 +217,7 @@ export default function TravelerSection() {
                         {/* Signature: SVG handwriting path draw */}
                         <div className="mt-8 md:mt-12 opacity-100 rotate-[-2deg]">
                             <span className="font-handwriting text-3xl md:text-4xl text-gray-500 block mt-2 opacity-80">
-                                Let's get lost together.
+                                Curating your next great story.
                             </span>
                         </div>
                     </div>

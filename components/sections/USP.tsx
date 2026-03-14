@@ -75,7 +75,7 @@ export default function USP() {
     };
 
     return (
-        <section id="usp" className="py-12 md:py-16 bg-bg-light relative overflow-hidden">
+        <section id="usp" className="py-6 md:py-10 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
                 {/* Section Header */}
@@ -135,18 +135,18 @@ export default function USP() {
 
                                 {/* Body */}
                                 <div className="flex flex-col flex-1 p-5">
-                                    <h3 className="text-base font-heading font-black text-text-navy tracking-tight mb-1.5 group-hover:text-brand-teal transition-colors duration-300">
+                                    <h3 className="text-lg md:text-xl font-heading font-black text-text-navy tracking-tight mb-2 group-hover:text-brand-teal transition-colors duration-300">
                                         {usp.title}
                                     </h3>
-                                    <p className="text-gray-400 text-[11px] leading-relaxed mb-4">
+                                    <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6 font-medium">
                                         {usp.desc}
                                     </p>
 
-                                    <ul className="flex flex-col gap-1.5 mb-5 mt-auto">
+                                    <ul className="flex flex-col gap-2.5 mb-6 mt-auto">
                                         {usp.details.map((detail) => (
-                                            <li key={detail} className="flex items-center gap-2 text-[10px] text-gray-600 font-bold">
+                                            <li key={detail} className="flex items-center gap-2.5 text-xs md:text-sm text-gray-700 font-bold">
                                                 <CheckCircle2
-                                                    className="w-3 h-3 shrink-0"
+                                                    className="w-4 h-4 shrink-0"
                                                     style={{ color: usp.accentHex }}
                                                 />
                                                 {detail}
@@ -154,24 +154,19 @@ export default function USP() {
                                         ))}
                                     </ul>
 
-                                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-black/5">
-                                        <div className="flex flex-col">
-                                            <span className="text-[7px] font-black uppercase tracking-widest text-black/20 mb-0.5">Service Tier</span>
-                                            <span className="text-[9px] font-black uppercase tracking-widest" style={{ color: usp.accentHex }}>Boutique</span>
-                                        </div>
-                                        <div 
+                                    <div className="flex items-center justify-end mt-auto pt-6 border-t border-black/5">
+                                        <div
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleWhatsAppClick(usp);
                                             }}
-                                            className="px-4 py-2 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30"
-                                            style={{ backgroundColor: usp.accentHex, boxShadow: `0 8px 16px -4px ${usp.accentHex}66` }}
+                                            className="px-6 py-3 rounded-2xl text-white text-[10px] md:text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2.5 group/btn cursor-pointer z-30"
+                                            style={{ backgroundColor: usp.accentHex, boxShadow: `0 12px 24px -6px ${usp.accentHex}66` }}
                                         >
-                                            <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                                            <MessageCircle className="w-4 h-4 fill-current" />
                                             Chat on WhatsApp
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>                                </div>
 
                                 <div
                                     className="h-[3px] w-0 group-hover:w-full transition-all duration-500 ease-out"
