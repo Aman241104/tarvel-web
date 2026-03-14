@@ -79,21 +79,21 @@ export default function PopularDestinations() {
     };
 
     return (
-        <section id="packages" className="py-24 bg-bg-light relative overflow-hidden">
+        <section id="packages" className="py-16 md:py-20 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                     <div className="text-left">
-                        <span className="text-brand-coral font-black text-xs uppercase tracking-[0.3em] mb-4 block">Handpicked for you</span>
-                        <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy">
+                        <span className="text-brand-coral font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Handpicked for you</span>
+                        <h2 className="text-3xl md:text-5xl font-heading font-black text-text-navy tracking-tight">
                             Exclusive Packages
                         </h2>
                     </div>
-                    <a href="#contact" className="group flex items-center gap-2 text-gray-400 hover:text-brand-coral transition-colors font-black uppercase tracking-widest text-xs">
-                        View More Deals <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <a href="#contact" className="group flex items-center gap-2 text-gray-400 hover:text-brand-coral transition-colors font-black uppercase tracking-widest text-[9px]">
+                        View More Deals <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </a>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {destinations.map((dest, i) => (
                         <motion.div
                             key={dest.name}
@@ -105,7 +105,7 @@ export default function PopularDestinations() {
                                 delay: i * 0.08,
                                 ease: [0.25, 1, 0.5, 1] 
                             }}
-                            className="group relative h-[450px] rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all"
+                            className="group relative h-[420px] rounded-[1.75rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all border border-black/5 hover:border-black/0"
                             onClick={() => setSelectedPackage(dest)}
                         >
                             <Image
@@ -117,34 +117,41 @@ export default function PopularDestinations() {
                             />
                             <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity z-10" />
                             
-                            <div className="absolute top-6 left-6 flex flex-col gap-2 items-start z-20">
-                                <span className="px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-black uppercase tracking-widest text-white">
+                            <div className="absolute top-5 left-5 flex flex-col gap-1.5 items-start z-20">
+                                <span className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[9px] font-black uppercase tracking-widest text-white">
                                     {dest.tag}
                                 </span>
-                                <span className="px-3 py-1 bg-brand-coral text-white text-[8px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg">
+                                <span className="px-2.5 py-0.5 bg-brand-coral text-white text-[7px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg">
                                     {dest.badge}
                                 </span>
                             </div>
 
-                            <div className="absolute bottom-8 left-8 right-8 z-20">
-                                <div className="flex items-center gap-2 text-brand-teal mb-2">
-                                    <MapPin className="w-4 h-4" />
-                                    <span className="text-xs font-black uppercase tracking-widest">{dest.name}</span>
+                            <div className="absolute bottom-6 left-6 right-6 z-20">
+                                <div className="flex items-center gap-2 text-brand-teal mb-1.5">
+                                    <MapPin className="w-3.5 h-3.5" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">{dest.name}</span>
                                 </div>
-                                <h3 className="text-2xl font-heading font-bold text-white mb-1">
+                                <h3 className="text-xl font-heading font-bold text-white mb-1">
                                     {dest.name} Escape
                                 </h3>
-                                <div className="flex items-center gap-2 text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">
-                                    <Clock className="w-3 h-3" />
+                                <div className="flex items-center gap-2 text-white/60 text-[9px] font-black uppercase tracking-widest mb-4">
+                                    <Clock className="w-2.5 h-2.5" />
                                     {dest.duration}
                                 </div>
-                                <div className="flex justify-between items-center">
+                                <div className="flex justify-between items-end">
                                     <div className="flex flex-col">
-                                        <span className="text-[10px] text-white/40 uppercase font-black tracking-widest">Starting from</span>
-                                        <span className="text-xl font-black text-white">{dest.price}</span>
+                                        <span className="text-[9px] text-white/40 uppercase font-black tracking-widest">Starting from</span>
+                                        <span className="text-lg font-black text-white">{dest.price}</span>
                                     </div>
-                                    <div className="w-10 h-10 rounded-full bg-brand-coral flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                                        <ArrowRight className="w-5 h-5" />
+                                    <div 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleWhatsAppClick(dest);
+                                        }}
+                                        className="px-4 py-2 rounded-xl bg-brand-teal text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg shadow-brand-teal/20 flex items-center gap-2 group/btn cursor-pointer z-30"
+                                    >
+                                        <MessageCircle className="w-3 h-3 fill-current" />
+                                        WhatsApp Enquiry
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +163,7 @@ export default function PopularDestinations() {
             {/* Detailed Package Modal */}
             <AnimatePresence>
                 {selectedPackage && (
-                    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-6">
+                    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
                         <motion.div 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -180,7 +187,7 @@ export default function PopularDestinations() {
                             </button>
 
                             {/* Left: Visual */}
-                            <div className="relative w-full md:w-[40%] h-48 md:h-auto overflow-hidden">
+                            <div className="relative w-full md:w-[40%] h-40 md:h-auto overflow-hidden">
                                 <Image 
                                     src={selectedPackage.image} 
                                     alt={selectedPackage.name} 
@@ -188,24 +195,33 @@ export default function PopularDestinations() {
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                <div className="absolute bottom-6 left-6">
-                                    <span className="px-2.5 py-1 bg-brand-coral text-white text-[8px] font-black uppercase tracking-widest rounded-full mb-2 inline-block">
+                                <div className="absolute bottom-5 left-5">
+                                    <span className="px-2 py-0.5 bg-brand-coral text-white text-[7px] font-black uppercase tracking-widest rounded-full mb-1.5 inline-block">
                                         {selectedPackage.badge}
                                     </span>
-                                    <h3 className="text-2xl font-heading font-black text-white">{selectedPackage.name}</h3>
+                                    <h3 className="text-2xl font-heading font-black text-white leading-tight">
+                                        Let's go to<br />
+                                        <span className="text-brand-coral">{selectedPackage.name}</span>
+                                    </h3>
                                 </div>
                             </div>
 
                             {/* Right: Info */}
-                            <div className="flex-1 p-6 md:p-10 overflow-y-auto">
-                                <div className="flex items-center gap-3 text-brand-coral mb-4">
-                                    <Clock className="w-4 h-4" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest">{selectedPackage.duration}</span>
+                            <div className="flex-1 p-6 md:p-8 overflow-y-auto">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-3 text-brand-coral">
+                                        <Clock className="w-4 h-4" />
+                                        <span className="text-[10px] font-black uppercase tracking-widest">{selectedPackage.duration}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-brand-teal/10 rounded-full">
+                                        <CheckCircle2 className="w-3 h-3 text-brand-teal" />
+                                        <span className="text-[8px] font-black text-brand-teal uppercase tracking-widest">Available Now</span>
+                                    </div>
                                 </div>
 
-                                <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Inclusions</h4>
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4 border-b border-black/5 pb-2">Your Curated Experience</h4>
                                 
-                                <ul className="space-y-3 mb-8">
+                                <ul className="space-y-2 mb-6">
                                     {selectedPackage.details.map((item, idx) => (
                                         <li key={idx} className="flex items-start gap-3 group">
                                             <CheckCircle2 className="w-4 h-4 text-brand-teal mt-0.5" />
@@ -214,17 +230,17 @@ export default function PopularDestinations() {
                                     ))}
                                 </ul>
 
-                                <div className="pt-6 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div className="pt-4 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                                     <div>
                                         <p className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-0.5">Starting At</p>
-                                        <p className="text-2xl font-black text-text-navy">{selectedPackage.price}</p>
+                                        <p className="text-xl font-black text-text-navy">{selectedPackage.price}</p>
                                     </div>
                                     <button 
                                         onClick={() => handleWhatsAppClick(selectedPackage)}
-                                        className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-teal text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-lg"
+                                        className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-teal text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-brand-teal/20"
                                     >
                                         <MessageCircle className="w-4 h-4 fill-current" />
-                                        WhatsApp
+                                        WhatsApp Enquiry
                                     </button>
                                 </div>
                             </div>

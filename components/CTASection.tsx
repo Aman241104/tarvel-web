@@ -164,19 +164,18 @@ export default function CTASection() {
                         {/* Right Side: Stamp & Address */}
                         <div className="flex-1 flex flex-col justify-between items-end relative">
                             {/* Postage Stamp */}
-                            <div className="stamp-parallax w-28 h-36 md:w-36 md:h-44 bg-white border-[4px] md:border-[6px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block">
+                            <div className="stamp-parallax w-32 h-44 md:w-44 md:h-56 bg-white border-[6px] md:border-[8px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block">
                                  <div className="absolute inset-0 bg-brand-yellow/10 opacity-0 group-hover/stamp:opacity-100 transition-opacity z-10" />
                                  <div className="relative w-full h-full bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden">
                                       <Image 
                                         src="/assets/logo.png" 
                                         alt="Stamp" 
                                         fill 
-                                        className="object-contain p-3 md:p-4 grayscale group-hover/stamp:grayscale-0 transition-all duration-700 scale-90 group-hover/stamp:scale-105" 
-                                        sizes="(max-width: 768px) 100px, 150px"
+                                        className="object-contain p-4 md:p-6 grayscale group-hover/stamp:grayscale-0 transition-all duration-700 scale-95 group-hover/stamp:scale-105" 
+                                        sizes="(max-width: 768px) 150px, 200px"
                                       />
                                  </div>
                             </div>
-
                             <div className="w-full mt-8 md:mt-16 space-y-6 md:space-y-10 text-left">
                                 <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
                                      <p className="font-handwriting text-2xl md:text-3xl text-gray-400 tracking-wide">Destination Anywhere & Co.</p>

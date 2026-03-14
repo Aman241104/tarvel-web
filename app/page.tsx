@@ -45,8 +45,8 @@ export default function Home() {
                 </div>
 
                 {/* 2. Services Section */}
+                {/* Updated Services Section: Boutique Luggage Tag Focus */}
                 <section id="services" className="overflow-visible">
-                    <ServicesGrid />
                     <div className="relative z-30">
                         <ServicesList />
                     </div>

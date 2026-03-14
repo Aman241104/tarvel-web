@@ -52,19 +52,12 @@ export default function Hero() {
     const textRef = useRef<HTMLDivElement>(null);
     const stickerRefs = useRef<(HTMLDivElement | null)[]>([]);
     const { openWhatsApp } = useWhatsApp();
-    const [greeting, setGreeting] = useState('Global Concierge');
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
         setIsDesktop(window.innerWidth >= 768);
         const handleResize = () => setIsDesktop(window.innerWidth >= 768);
         window.addEventListener('resize', handleResize);
-        
-        const hour = new Date().getHours();
-        if (hour < 12) setGreeting('Good Morning, Traveler');
-        else if (hour < 18) setGreeting('Good Afternoon, Traveler');
-        else setGreeting('Good Evening, Traveler');
-
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -209,7 +202,7 @@ export default function Hero() {
                         ${sticker.mobileClassName} md:${sticker.className}
                         z-0 md:z-10 opacity-40 md:opacity-100 flex flex-col
                     `}
-                    style={{ 
+                    style={{
                         backfaceVisibility: 'hidden'
                     }}
                 >
@@ -227,7 +220,7 @@ export default function Hero() {
                             sizes="(max-width: 768px) 30vw, (max-width: 1200px) 15vw, 250px"
                         />
                     </div>
-                    
+
                     {/* Caption area */}
                     <div className="mt-auto pt-1 md:pt-2 text-center">
                         <span className="font-handwriting text-gray-500 text-[8px] md:text-[10px] tracking-widest uppercase block">
@@ -257,9 +250,6 @@ export default function Hero() {
                 </div>
 
                 <h1 className="flex flex-col items-center justify-center w-full mb-4 md:mb-0">
-                    <span className="font-body font-bold text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.4em] text-brand-teal uppercase mb-4 md:mb-6 min-h-[1.5em] px-4 text-center">
-                        {greeting}
-                    </span>
 
                     <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex justify-center max-w-[90vw] whitespace-nowrap">
                         {'DESTINATION'.split('').map((char, i) => (
@@ -304,10 +294,10 @@ export default function Hero() {
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map((i) => (
                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
-                                    <Image 
-                                        src={`https://i.pravatar.cc/100?img=${i + 10}`} 
-                                        alt="Traveler" 
-                                        fill 
+                                    <Image
+                                        src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                                        alt="Traveler"
+                                        fill
                                         className="object-cover"
                                         sizes="40px"
                                     />

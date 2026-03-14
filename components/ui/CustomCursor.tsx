@@ -54,6 +54,7 @@ export default function CustomCursor() {
 
             // Check for interactive elements
             const isLink = target.closest('a, button, .cursor-pointer, input');
+            const isNav = target.closest('nav, .navbar');
             const isCard = target.closest('.group'); // Cards usually have 'group'
             const isCloseBtn = target.closest('[data-cursor="close"]');
             const isViewBtn = target.closest('[data-cursor="view"]');
@@ -77,7 +78,8 @@ export default function CustomCursor() {
                 setCursorText('Explore Details');
             } else if (isLink) {
                 setIsHovering(true);
-                setCursorText('Continue →');
+                // Don't show "Continue" on navbar links
+                setCursorText(isNav ? '' : 'Continue →');
             } else {
                 setIsHovering(false);
                 setCursorText('');

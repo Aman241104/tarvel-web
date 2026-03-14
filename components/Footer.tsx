@@ -117,13 +117,13 @@ export default function Footer() {
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
-                            <div className="relative w-16 h-16 rounded-3xl overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
+                            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-[2rem] overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
                                 <Image 
                                     src="/assets/logo.png" 
                                     alt="Destination Anywhere Logo" 
                                     fill 
-                                    className="object-cover p-2" 
-                                    sizes="64px"
+                                    className="object-cover p-3" 
+                                    sizes="(max-width: 768px) 80px, 96px"
                                 />
                             </div>
                             <div>

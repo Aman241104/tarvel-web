@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { X, Check } from 'lucide-react';
+import { X, Check, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 interface ServiceModalProps {
     isOpen: boolean;
@@ -19,6 +20,13 @@ interface ServiceModalProps {
 export default function ServiceModal({ isOpen, onClose, service }: ServiceModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const { openWhatsApp } = useWhatsApp();
+
+    const handleWhatsAppClick = () => {
+        if (!service) return;
+        const message = `Hi Sujal, I'm interested in the ${service.title} service. Can you provide more details?`;
+        openWhatsApp('Service Inquiry', message);
+    };
 
     useGSAP(() => {
         if (isOpen) {
@@ -89,10 +97,11 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                     </div>
 
                     <button
-                        onClick={onClose}
-                        className="w-full mt-8 bg-brand-teal text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all"
+                        onClick={handleWhatsAppClick}
+                        className="w-full mt-8 bg-brand-teal text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
                     >
-                        Explore More
+                        <MessageCircle className="w-4 h-4 fill-current" />
+                        Book on WhatsApp
                     </button>
                 </div>
             </div>
