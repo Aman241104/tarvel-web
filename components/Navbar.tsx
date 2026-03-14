@@ -19,24 +19,31 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
 
+    const navLinks = [
+        { name: 'Why Us', href: '#usp', id: 'usp' },
+        { name: 'Services', href: '#services', id: 'services' },
+        { name: 'Captain', href: '#about-captain', id: 'about-captain' },
+        { name: 'Packages', href: '#packages', id: 'packages' },
+        { name: 'Reviews', href: '#testimonials', id: 'testimonials' },
+        { name: 'Journal', href: '#instagram', id: 'instagram' },
+    ];
+
     useEffect(() => {
-        const sections = ['home', 'usp', 'services', 'about-captain', 'packages', 'testimonials', 'contact'];
+        const sections = ['home', 'usp', 'services', 'about-captain', 'packages', 'testimonials', 'instagram', 'contact'];
         
         const handleScroll = () => {
             setScrolled(window.scrollY > 30);
             
             // Robust active section detection
             let current = 'home';
-            const offset = 150; // Scroll offset to trigger change
+            const threshold = 200;
 
             for (const id of sections) {
                 const element = document.getElementById(id);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    // If top of section is near the top of viewport
-                    if (rect.top <= offset && rect.bottom >= offset) {
+                    if (rect.top <= threshold) {
                         current = id;
-                        break;
                     }
                 }
             }
@@ -44,7 +51,6 @@ export default function Navbar() {
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        // Initial check
         handleScroll();
         
         return () => window.removeEventListener('scroll', handleScroll);
@@ -74,10 +80,6 @@ export default function Navbar() {
         const linksContainer = linksRef.current;
         
         if (activeLink && indicator && linksContainer) {
-            // Check if the active link is actually inside the links container
-            // If it's the logo (home), we might want to hide the indicator or highlight logo
-            // Given the design, the indicator usually lives in the center links.
-            
             const isInsideContainer = linksContainer.contains(activeLink);
 
             if (isInsideContainer) {
@@ -98,7 +100,6 @@ export default function Navbar() {
                     overwrite: true
                 });
             } else {
-                // If it's 'home' or something else, hide the sliding pill
                 gsap.to(indicator, { opacity: 0, duration: 0.4, ease: 'power2.inOut' });
             }
         } else if (indicator) {
@@ -107,23 +108,13 @@ export default function Navbar() {
     };
 
     useGSAP(() => {
-        // Delay slightly to ensure layout is settled
         const timer = setTimeout(updateIndicator, 50);
-        
         window.addEventListener('resize', updateIndicator);
         return () => {
             clearTimeout(timer);
             window.removeEventListener('resize', updateIndicator);
         };
     }, [activeSection, scrolled]);
-
-    const navLinks = [
-        { name: 'Why Us', href: '#usp', id: 'usp' },
-        { name: 'Services', href: '#services', id: 'services' },
-        { name: 'Captain', href: '#about-captain', id: 'about-captain' },
-        { name: 'Packages', href: '#packages', id: 'packages' },
-        { name: 'Reviews', href: '#testimonials', id: 'testimonials' },
-    ];
 
     const handleLinkClick = (id: string) => {
         setActiveSection(id);
@@ -133,7 +124,7 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-5xl transition-all duration-500 rounded-full border flex items-center justify-between px-5 md:px-8 py-2 md:py-2.5 ${
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-6xl transition-all duration-500 rounded-full border flex items-center justify-between px-5 md:px-8 py-2 md:py-2.5 ${
                     scrolled 
                     ? 'bg-white/95 backdrop-blur-2xl scale-[0.98] shadow-2xl border-black/5' 
                     : 'bg-white/60 backdrop-blur-xl shadow-lg border-black/5'
@@ -167,7 +158,6 @@ export default function Navbar() {
 
                 {/* Center: Navigation Links (Desktop) */}
                 <div className="hidden lg:flex items-center gap-1 relative bg-black/[0.02] p-1 rounded-full border border-black/[0.03]" ref={linksRef}>
-                    {/* Sliding Indicator Background */}
                     <div 
                         ref={indicatorRef}
                         className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
@@ -179,7 +169,7 @@ export default function Navbar() {
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-6 py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
+                                className={`group relative px-5 py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
                                     : 'text-text-navy/60 hover:text-text-navy'
@@ -219,7 +209,6 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Menu Overlay */}
             <MobileMenu 
                 isOpen={isMobileMenuOpen} 
                 onClose={() => setIsMobileMenuOpen(false)} 

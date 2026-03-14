@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 const sections = [
     { id: 'home', label: 'Home' },
@@ -12,6 +10,7 @@ const sections = [
     { id: 'about-captain', label: 'Captain' },
     { id: 'packages', label: 'Packages' },
     { id: 'testimonials', label: 'Reviews' },
+    { id: 'instagram', label: 'Journal' },
     { id: 'contact', label: 'Contact' },
 ];
 
@@ -22,15 +21,14 @@ export default function RightSideNav() {
     useEffect(() => {
         const handleScroll = () => {
             let current = 'home';
-            const offset = 150;
+            const threshold = 200;
 
             for (const { id } of sections) {
                 const element = document.getElementById(id);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    if (rect.top <= offset && rect.bottom >= offset) {
+                    if (rect.top <= threshold) {
                         current = id;
-                        break;
                     }
                 }
             }
