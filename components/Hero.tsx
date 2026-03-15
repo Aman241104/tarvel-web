@@ -33,7 +33,7 @@ const stickers = [
     },
     {
         src: 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=400&q=80',
-        alt: 'Jungle',
+        alt: 'Aviation',
         className: 'bottom-20 right-10 md:right-32 -rotate-6 w-44 h-56',
         mobileClassName: 'bottom-32 right-4 rotate-[-4deg] w-22 h-28',
         speed: -0.08,
@@ -291,7 +291,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtext Pill & Social Proof */}
-                <div className="mt-8 md:mt-16 flex flex-col items-center gap-8">
+                <div className="mt-8 md:mt-20 flex flex-col items-center gap-8">
                     <div className="hidden md:flex">
                         <Magnetic strength={0.2}>
                             <button

@@ -139,7 +139,7 @@ export default function ServicesList() {
 
             <div className="container mx-auto px-6 max-w-7xl relative">
                 {/* Section Header */}
-                <div className="flex flex-col items-center mb-12 text-center">
+                <div className="flex flex-col items-center mb-16 md:mb-24 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-teal/5 rounded-full border border-brand-teal/15 mb-4 hover:bg-brand-teal/10 transition-colors">
                         <span className="text-[10px] font-black uppercase tracking-[0.25em] text-brand-teal">What We Offer</span>
                     </div>
@@ -149,7 +149,7 @@ export default function ServicesList() {
                         <span className="relative inline-block">
                             Services
                             <svg
-                                className="absolute -bottom-3 left-0 w-full h-5 pointer-events-none opacity-50"
+                                className="absolute -bottom-3 left-0 w-full h-5 pointer-events-none opacity-50 md:-bottom-4"
                                 viewBox="0 0 200 20"
                                 fill="none"
                             >
@@ -172,9 +172,9 @@ export default function ServicesList() {
                 </div>
 
                 {/* Visual "Hanging Rod" (Editorial Line) */}
-                <div className="absolute top-[260px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
+                <div className="absolute top-[320px] md:top-[380px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0 hidden md:block" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
                     {services.map((service, i) => (
                         <div
                             key={i}
@@ -182,7 +182,7 @@ export default function ServicesList() {
                             onClick={() => setSelectedService(service)}
                         >
                             {/* Realistic "Twine" Cord (SVG Path for natural curve) */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-10 md:h-12 pointer-events-none overflow-visible z-10 origin-top">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-6 md:h-12 pointer-events-none overflow-visible z-10 origin-top">
                                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                                     <path 
                                         d="M50,0 Q50,50 50,100" 
@@ -200,7 +200,7 @@ export default function ServicesList() {
                             {/* Luggage Tag Card */}
                             <div
                                 ref={(el) => { cardsRef.current[i] = el; }}
-                                className="relative bg-[#FDFDFD] p-4 pt-8 text-center shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] rounded-sm border border-black/10"
+                                className="relative bg-[#FDFDFD] p-4 pt-6 md:pt-8 text-center shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-all duration-700 origin-top group-hover:rotate-0 group-hover:scale-[1.03] group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] rounded-sm border border-black/10"
                                 style={{
                                     clipPath: 'polygon(35% 0%, 65% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%)',
                                 }}
@@ -242,7 +242,7 @@ export default function ServicesList() {
                                             e.stopPropagation();
                                             handleWhatsAppClick(service);
                                         }}
-                                        className={`px-5 py-2 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30 ${
+                                        className={`px-5 py-2 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30 ${
                                             i % 3 === 0 ? 'bg-brand-yellow shadow-brand-yellow/30' : 
                                             i % 3 === 1 ? 'bg-brand-teal shadow-brand-teal/30' : 
                                             'bg-brand-coral shadow-brand-coral/30'

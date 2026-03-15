@@ -101,7 +101,7 @@ export default function Testimonials() {
     }, { scope: containerRef });
 
     return (
-        <section id="testimonials" ref={containerRef} className="pt-0 pb-6 md:pb-10 bg-bg-light relative overflow-hidden">
+        <section id="testimonials" ref={containerRef} className="pt-12 md:pt-20 pb-6 md:pb-10 bg-bg-light relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 <div className="text-center mb-4 relative inline-block mx-auto w-full">
                     <h2 className="text-4xl md:text-6xl font-heading font-black text-text-navy relative z-10 inline-block">

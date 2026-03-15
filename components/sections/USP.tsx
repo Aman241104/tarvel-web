@@ -75,8 +75,8 @@ export default function USP() {
     };
 
     return (
-        <section id="usp" className="py-6 md:py-10 bg-bg-light relative overflow-hidden">
-            <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <section id="usp" className="py-12 md:py-20 lg:py-24 bg-bg-light relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-6xl lg:max-w-7xl relative z-10">
 
                 {/* Section Header */}
                 <div className="text-center mb-12">
@@ -160,7 +160,7 @@ export default function USP() {
                                                 e.stopPropagation();
                                                 handleWhatsAppClick(usp);
                                             }}
-                                            className="px-6 py-3 rounded-2xl text-white text-[10px] md:text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg flex items-center gap-2.5 group/btn cursor-pointer z-30"
+                                            className="px-6 py-3 rounded-2xl text-white text-[10px] md:text-xs font-black uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg flex items-center gap-2.5 group/btn cursor-pointer z-30"
                                             style={{ backgroundColor: usp.accentHex, boxShadow: `0 12px 24px -6px ${usp.accentHex}66` }}
                                         >
                                             <MessageCircle className="w-4 h-4 fill-current" />

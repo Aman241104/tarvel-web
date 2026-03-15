@@ -61,7 +61,7 @@ export default function InstagramFeed() {
         <section 
             id="instagram" 
             ref={containerRef}
-            className="py-12 md:py-16 bg-bg-light relative overflow-hidden"
+            className="py-12 md:py-24 lg:py-32 bg-bg-light relative overflow-hidden"
         >
             {/* Background Text Decor */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-black/[0.02] uppercase tracking-tighter select-none pointer-events-none whitespace-nowrap">
@@ -131,6 +131,7 @@ export default function InstagramFeed() {
                                 zIndex: 50,
                                 transition: { duration: 0.3 }
                             }}
+                            whileTap={{ scale: 0.95 }}
                             className={`group relative bg-white p-2 pb-6 md:pb-8 shadow-xl shadow-black/5 border border-black/[0.03] transition-all duration-500 flex flex-col ${
                                 index % 2 !== 0 ? 'mt-8 md:mt-12' : ''
                             } ${index === 2 ? 'md:-mt-8' : ''}`}

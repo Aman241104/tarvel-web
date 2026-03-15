@@ -61,7 +61,7 @@ export default function Home() {
                     <PopularDestinations />
                 </section>
 
-                <section id="marquee" className="relative z-20 py-4 -my-4 overflow-hidden">
+                <section id="marquee" className="relative z-20 py-8 md:py-12 overflow-hidden">
                     <TapeMarquee />
                 </section>
 

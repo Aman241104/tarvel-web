@@ -79,8 +79,8 @@ export default function PopularDestinations() {
     };
 
     return (
-        <section id="packages" className="pt-0 pb-4 md:pb-6 bg-bg-light relative overflow-hidden">
-            <div className="container mx-auto px-6 max-w-6xl">
+        <section id="packages" className="pt-10 md:pt-16 lg:pt-24 pb-4 md:pb-12 bg-bg-light relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-6xl lg:max-w-7xl">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                     <div className="text-left">
                         <span className="text-brand-coral font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Handpicked for you</span>
@@ -148,7 +148,7 @@ export default function PopularDestinations() {
                                             e.stopPropagation();
                                             handleWhatsAppClick(dest);
                                         }}
-                                        className="px-4 py-2 rounded-xl bg-brand-teal text-white text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 shadow-lg shadow-brand-teal/20 flex items-center gap-2 group/btn cursor-pointer z-30"
+                                        className="px-4 py-2 rounded-xl bg-brand-teal text-white text-[9px] font-black uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg shadow-brand-teal/20 flex items-center gap-2 group/btn cursor-pointer z-30"
                                     >
                                         <MessageCircle className="w-3 h-3 fill-current" />
                                         WhatsApp Enquiry

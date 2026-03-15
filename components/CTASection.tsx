@@ -98,7 +98,7 @@ export default function CTASection() {
             <div className="container mx-auto px-6 max-w-5xl">
                 <div 
                     ref={postcardRef}
-                    className="relative bg-white shadow-2xl p-6 md:p-12 rounded-sm transform md:rotate-[-1deg] overflow-hidden group border-[6px] md:border-[12px] border-white outline outline-1 outline-black/5"
+                    className="relative bg-white shadow-2xl p-5 md:p-12 rounded-sm transform md:rotate-[-1deg] overflow-hidden group border-[6px] md:border-[12px] border-white outline outline-1 outline-black/5"
                 >
                     {/* The Center Vertical Line */}
                     <div className="absolute top-12 bottom-12 left-1/2 w-[2px] bg-gray-100 hidden md:block" />
@@ -106,11 +106,11 @@ export default function CTASection() {
                     <div className="flex flex-col md:flex-row gap-8 md:gap-20">
                         {/* Left Side: Message Area */}
                         <div className="flex-1 text-left">
-                            <h2 className="font-handwriting text-4xl md:text-5xl text-[#2EC4B6] mb-8 md:mb-6 rotate-[-1deg] md:rotate-[-2deg]">
+                            <h2 className="font-handwriting text-4xl md:text-5xl text-[#2EC4B6] mb-4 md:mb-6 rotate-[-1deg] md:rotate-[-2deg]">
                                 Postcard from your dreams
                             </h2>
                             
-                            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10 mt-12">
+                            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10 mt-6 md:mt-12">
                                 <div className="relative group/field border-b-2 border-gray-100 focus-within:border-brand-teal transition-all pb-4">
                                     <label htmlFor="traveler-name" className="block font-body text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-2 cursor-pointer">Traveler's Name</label>
                                     <input 

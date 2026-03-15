@@ -48,7 +48,7 @@ export default function TapeMarquee() {
     const marqueeText = "YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 • ";
 
     return (
-        <div className="relative z-20 w-[110%] -ml-[5%] -rotate-1 transform transition-transform hover:rotate-0 hover:scale-[1.02] duration-500 py-4">
+        <div className="relative z-20 w-[110%] -ml-[5%] -rotate-1 transform transition-transform md:hover:rotate-0 md:hover:scale-[1.02] duration-500 py-4">
             {/* Top ripped edge */}
             <div
                 className="absolute top-2 left-0 right-0 h-3 z-10"

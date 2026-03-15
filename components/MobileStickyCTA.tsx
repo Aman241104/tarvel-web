@@ -4,7 +4,8 @@ import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MessageCircle, ArrowRight } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +40,7 @@ export default function MobileStickyCTA() {
             <button
                 onClick={() => openWhatsApp('Sticky Mobile CTA')}
                 aria-label="Contact us via WhatsApp"
-                className="w-full bg-[#25D366] text-white py-4 rounded-2xl shadow-[0_20px_50px_rgba(37,211,102,0.4)] flex items-center justify-between px-6 border border-white/20 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full bg-[#25D366] text-white py-3.5 rounded-2xl shadow-[0_20px_50px_rgba(37,211,102,0.4)] flex items-center justify-between px-6 border border-white/20 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-white/50"
             >
                 <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md">
@@ -51,7 +52,7 @@ export default function MobileStickyCTA() {
                     </div>
                 </div>
                 <div className="bg-white/10 p-2 rounded-lg">
-                    <ArrowRight className="w-5 h-5 text-white" />
+                    <FaWhatsapp className="w-5 h-5 text-white" />
                 </div>
             </button>
         </div>

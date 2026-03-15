@@ -157,7 +157,7 @@ export default function TravelerSection() {
                         </p>
 
                         {/* Stat Counters */}
-                        <div className="flex justify-between md:justify-start gap-4 md:gap-16 mt-12 mb-6">
+                        <div className="flex justify-between md:justify-start gap-4 md:gap-8 lg:gap-16 mt-12 mb-6">
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
                                     <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
@@ -215,7 +215,7 @@ export default function TravelerSection() {
                         </div>
 
                         {/* Signature: SVG handwriting path draw */}
-                        <div className="mt-8 md:mt-12 opacity-100 rotate-[-2deg]">
+                        <div className="mt-8 md:mt-24 lg:mt-12 opacity-100 rotate-[-2deg]">
                             <span className="font-handwriting text-3xl md:text-4xl text-gray-500 block mt-2 opacity-80">
                                 Curating your next great story.
                             </span>
