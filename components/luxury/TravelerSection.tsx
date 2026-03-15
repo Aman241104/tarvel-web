@@ -224,21 +224,21 @@ export default function TravelerSection() {
 
                     {/* Right: The Polaroid */}
                     <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
-                        <div ref={imageRef} className="relative z-10 group w-full sm:w-[90%] md:w-auto mt-12 md:mt-0 max-w-[480px]">
+                        <div ref={imageRef} className="relative z-10 group w-[85%] sm:w-[90%] md:w-auto mt-12 md:mt-0 max-w-[480px]">
                             {/* Tape Sticker */}
-                            <div className="washi-tape washi-tape-teal -top-5 left-1/2 -translate-x-1/2 w-44 h-16 -rotate-2 opacity-80 shadow-sm" />
+                            <div className="washi-tape washi-tape-teal -top-4 md:-top-5 left-1/2 -translate-x-1/2 w-32 md:w-44 h-12 md:h-16 -rotate-2 opacity-80 shadow-sm" />
 
                             {/* Polaroid Frame */}
-                            <div className="bg-white p-4 md:p-5 pb-[5px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
+                            <div className="bg-white p-3 md:p-5 pb-[4px] md:pb-[5px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
                                 
                                 {/* Film Strip Holes */}
-                                <div className="absolute left-3 md:left-4 top-10 bottom-12 md:bottom-16 w-3 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">
+                                <div className="absolute left-2.5 md:left-4 top-8 md:top-10 bottom-10 md:bottom-16 w-2.5 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">
                                     {[...Array(8)].map((_, i) => (
-                                        <div key={i} className="w-2 md:w-2.5 h-2 md:h-2.5 bg-black/80 rounded-sm shadow-[0_1px_1px_rgba(255,255,255,0.1)]" />
+                                        <div key={i} className="w-1.5 md:w-2.5 h-1.5 md:h-2.5 bg-black/80 rounded-sm shadow-[0_1px_1px_rgba(255,255,255,0.1)]" />
                                     ))}
                                 </div>
 
-                                <div className="relative overflow-hidden w-full aspect-[2/3.5] md:w-[420px] md:h-[560px] bg-gray-100 shadow-inner">
+                                <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[420px] md:h-[560px] bg-gray-100 shadow-inner">
                                     <img
                                         src="/assets/owner-image.png"
                                         alt="Sujal Soni"
@@ -246,12 +246,12 @@ export default function TravelerSection() {
                                         sizes="(max-width: 768px) 100vw, 500px"
                                     />
                                     {/* Subtle Gradient Overlay for holes visibility */}
-                                    <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-20" />
+                                    <div className="absolute inset-y-0 left-0 w-8 md:w-12 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-20" />
                                     
                                     {/* Film Grain/Dust Overlay */}
                                     <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none z-10" />
                                 </div>
-                                <div className="mt-6 md:mt-8 font-handwriting text-2xl md:text-3xl text-center text-gray-400 rotate-[-1deg] font-bold tracking-tight px-4 leading-none pb-[5px]">
+                                <div className="mt-4 md:mt-8 font-handwriting text-xl md:text-3xl text-center text-gray-400 rotate-[-1deg] font-bold tracking-tight px-4 leading-none pb-[4px]">
                                     Founder, Destination Anywhere
                                 </div>
                             </div>

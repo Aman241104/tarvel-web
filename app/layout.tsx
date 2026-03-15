@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import CustomCursor from "@/components/ui/CustomCursor";
 import RightSideNav from "@/components/ui/RightSideNav";
-import PostItCTA from "@/components/ui/PostItCTA";
 import { Providers } from "./providers";
 
 
@@ -78,7 +77,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${playfair.variable} ${mulish.variable} ${caveat.variable}`}>
+        <html lang="en" className={`${playfair.variable} ${mulish.variable} ${caveat.variable}`} suppressHydrationWarning>
             <body className={`${playfair.variable} ${mulish.variable} ${caveat.variable} font-body bg-bg-light text-text-light overflow-x-hidden antialiased selection:bg-brand-coral selection:text-white`}>
                 <CustomCursor />
                 <NoiseOverlay />
@@ -86,7 +85,6 @@ export default function RootLayout({
                 <SmoothScroll>
                     <Providers>
                         {children}
-                        <PostItCTA />
                     </Providers>
                 </SmoothScroll>
             </body>

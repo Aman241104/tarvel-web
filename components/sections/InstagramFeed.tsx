@@ -132,8 +132,8 @@ export default function InstagramFeed() {
                                 transition: { duration: 0.3 }
                             }}
                             whileTap={{ scale: 0.95 }}
-                            className={`group relative bg-white p-2 pb-6 md:pb-8 shadow-xl shadow-black/5 border border-black/[0.03] transition-all duration-500 flex flex-col ${
-                                index % 2 !== 0 ? 'mt-8 md:mt-12' : ''
+                            className={`group relative bg-white p-1.5 pb-4 md:p-2 md:pb-8 shadow-xl shadow-black/5 border border-black/[0.03] transition-all duration-500 flex flex-col ${
+                                index % 2 !== 0 ? 'mt-4 md:mt-12' : ''
                             } ${index === 2 ? 'md:-mt-8' : ''}`}
                         >
                             {/* Tape Decor */}

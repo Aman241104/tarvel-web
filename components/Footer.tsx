@@ -117,19 +117,19 @@ export default function Footer() {
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
-                            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-[2rem] overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
+                            <div className="relative w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
                                 <Image
                                    src="/assets/image.png"
                                    alt="Destination Anywhere Logo"
                                    fill
                                    className="object-cover p-3"
-                                   sizes="(max-width: 768px) 80px, 96px"
+                                   sizes="(max-width: 768px) 112px, 160px"
                                 />                            </div>
                             <div>
-                                <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
+                                <h3 className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
                                     Destination<br />Anywhere & Co.
                                 </h3>
-                                <p className="text-[#9ca3af] font-body text-[10px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Boutique</p>
+                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Boutique</p>
                             </div>
                         </div>
                         

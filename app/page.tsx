@@ -6,8 +6,6 @@ import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
 import WhatsAppButton from "@/components/luxury/WhatsAppButton";
 import ServicesList from "@/components/ServicesList";
-import MobileStickyCTA from "@/components/MobileStickyCTA";
-import PostItCTA from "@/components/ui/PostItCTA";
 import { ArrowRight } from 'lucide-react';
 
 const PopularDestinations = dynamic(() => import("@/components/sections/PopularDestinations"));
@@ -25,7 +23,6 @@ export default function Home() {
 
             <Navbar />
             <WhatsAppButton />
-            <PostItCTA />
 
             <div className="relative z-30 bg-bg-light shadow-2xl">
                 <section id="home">
@@ -80,7 +77,6 @@ export default function Home() {
 
             {/* Final Footer Section */}
             <Footer />
-            <MobileStickyCTA />
         </main>
     );
 }
