@@ -73,7 +73,7 @@ export default function Hero() {
                             href="#contact"
                             className="px-10 py-4 bg-white text-sky-600 font-bold rounded-full shadow-xl hover:bg-sky-50 transition-all transform hover:scale-105 hover:shadow-2xl"
                         >
-                            Plan Your Trip
+                            Plan Your Journey
                         </a>
                         <a
                             href="#services"

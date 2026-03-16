@@ -55,7 +55,7 @@ export default function HeroSection() {
 
                 <div ref={buttonRef} className="flex flex-col md:flex-row gap-4 items-start">
                     <button className="bg-arctic-orange text-white font-primary font-semibold text-sm uppercase px-10 py-5 rounded-stadium hover:scale-105 hover:bg-orange-600 transition-all duration-300 shadow-lg">
-                        Plan Your Trip
+                        Plan Your Journey
                     </button>
                     <button className="bg-white/20 backdrop-blur-md border border-white/50 text-white font-primary font-semibold text-sm uppercase px-10 py-5 rounded-stadium hover:bg-white/30 transition-all duration-300 shadow-lg">
                         View Services

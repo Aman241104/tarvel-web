@@ -128,7 +128,7 @@ Can you help me with the itinerary?`;
                     aria-label="Submit trip details"
                     className="bg-text-navy text-white p-4 md:p-6 rounded-2xl md:rounded-full shadow-2xl transition-all duration-700 hover:scale-[1.02] active:scale-95 mt-2 md:mt-0 w-full md:w-auto flex justify-center items-center gap-3 md:gap-4 md:min-w-[220px] group relative overflow-hidden"
                 >
-                    <span className="relative z-10 font-black text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap">Plan Journey</span>
+                    <span className="relative z-10 font-black text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap">Plan Your Journey</span>
                     <Plane className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </button>

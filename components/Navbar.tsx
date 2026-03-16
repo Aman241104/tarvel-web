@@ -169,7 +169,7 @@ export default function Navbar() {
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-6 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 whitespace-nowrap ${
+                                className={`group relative px-4 md:px-5 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] transition-all duration-300 rounded-full inline-block z-10 whitespace-nowrap ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
                                     : 'text-text-navy/50 hover:text-text-navy'
@@ -189,9 +189,9 @@ export default function Navbar() {
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-8 py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden"
+                            className="hidden md:inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden whitespace-nowrap"
                         >
-                            <span className="relative z-10">Plan My Journey</span>
+                            <span className="relative z-10">Plan Your Journey</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
                         </a>
                     </Magnetic>

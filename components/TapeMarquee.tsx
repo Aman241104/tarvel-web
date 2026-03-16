@@ -21,16 +21,29 @@ export default function TapeMarquee({
     rotate = -1
 }: TapeMarqueeProps) {
     const marqueeRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         if (marqueeRef.current) {
             // Base animation for the whole track
-            const tween = gsap.to(marqueeRef.current, {
-                x: reverse ? "0%" : "-50%",
-                from: reverse ? "-50%" : "0%",
-                ease: 'none',
-                duration: speed,
+            const tween = gsap.fromTo(marqueeRef.current, 
+                { x: reverse ? "-50%" : "0%" },
+                {
+                    x: reverse ? "0%" : "-50%",
+                    ease: 'none',
+                    duration: speed,
+                    repeat: -1,
+                }
+            );
+
+            // Vertical Floating Animation
+            gsap.to(containerRef.current, {
+                y: '+=8',
+                duration: 2.5 + (Math.random() * 2),
                 repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: Math.random()
             });
 
             // Velocity listener for scroll speed interaction
@@ -59,7 +72,11 @@ export default function TapeMarquee({
     }, { scope: marqueeRef });
 
     return (
-        <div className={`relative z-20 w-[110%] -ml-[5%] transform transition-transform md:hover:rotate-0 md:hover:scale-[1.02] duration-500 py-4`} style={{ transform: `rotate(${rotate}deg)` }}>
+        <div 
+            ref={containerRef}
+            className={`relative z-20 w-[110%] -ml-[5%] py-4`} 
+            style={{ transform: `rotate(${rotate}deg)` }}
+        >
             {/* Top ripped edge */}
             <div
                 className="absolute top-2 left-0 right-0 h-3 z-10"

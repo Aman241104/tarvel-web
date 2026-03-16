@@ -69,10 +69,10 @@ export default function CustomCursor() {
             } else if (target.closest('button')) {
                 newText = 'Plan Your Journey ✈️';
                 hovering = true;
-            } else if (target.closest('a, .cursor-pointer, input')) {
+            } else if (target.closest('a, .cursor-pointer, input, select, textarea')) {
                 newText = 'Continue →';
                 hovering = true;
-            } else if (target.closest('.group')) {
+            } else if (target.closest('.group') && !target.closest('.customer-card')) {
                 const isImage = target.closest('img, .story-image, [class*="aspect-"]');
                 newText = isImage ? 'Glimpse the Escape' : 'Explore Details';
                 hovering = true;

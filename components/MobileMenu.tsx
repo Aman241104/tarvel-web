@@ -140,7 +140,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection, onSe
                         className="w-full bg-brand-coral text-white font-black py-4 rounded-2xl shadow-xl hover:shadow-brand-coral/20 hover:translate-y-[-2px] transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-xs"
                     >
                         <Phone className="w-4 h-4 fill-current" />
-                        <span>Plan My Trip</span>
+                        <span>Plan Your Journey</span>
                     </button>
                 </div>
             </div>

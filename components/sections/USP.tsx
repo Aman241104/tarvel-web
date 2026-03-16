@@ -188,7 +188,7 @@ export default function USP() {
                         href="#contact"
                         className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-coral text-white font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-xl shadow-brand-coral/20 group"
                     >
-                        <span>Plan Your Trip</span>
+                        <span>Plan Your Journey</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
                 </div>

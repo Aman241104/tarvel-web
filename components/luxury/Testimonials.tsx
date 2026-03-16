@@ -77,7 +77,16 @@ export default function Testimonials() {
                     repeat: -1,
                     yoyo: true,
                     ease: 'sine.inOut',
-                    delay: i * 0.5
+                    delay: i * 0.5,
+                    overwrite: 'auto'
+                });
+
+                // GSAP Hover Scale (more reliable than CSS transition-all with GSAP transforms)
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, { scale: 1.02, duration: 0.4, ease: 'power2.out' });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, { scale: 1, duration: 0.4, ease: 'power2.inOut' });
                 });
             });
         }
@@ -151,7 +160,7 @@ export default function Testimonials() {
                     {testimonials.map((t, i) => (
                         <div 
                             key={t.id}
-                            className={`testimonial-card bg-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-black/5 relative group hover:scale-[1.02] transition-all duration-700 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+                            className={`testimonial-card bg-white p-8 md:p-12 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-black/5 relative group transition-shadow duration-500 flex flex-col h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
                         >
                             {/* Tape Piece */}
                             <div className={`washi-tape -top-4 left-1/2 -translate-x-1/2 w-28 h-12 -rotate-2 ${i % 3 === 0 ? 'washi-tape-yellow' : i % 3 === 1 ? 'washi-tape-coral' : 'washi-tape-teal'} opacity-40 group-hover:opacity-100 transition-opacity z-20`} />

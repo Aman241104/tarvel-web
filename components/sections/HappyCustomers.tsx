@@ -197,7 +197,7 @@ export default function HappyCustomers() {
                     {customers.map((c, i) => (
                         <div
                             key={i}
-                            className={`customer-card break-inside-avoid inline-block w-full group ${c.rotate} hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-pointer`}
+                            className={`customer-card break-inside-avoid inline-block w-full group ${c.rotate} transition-all duration-500`}
                             style={{ transformOrigin: "center top" }}
                         >
                             {/* Polaroid */}

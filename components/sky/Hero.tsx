@@ -128,7 +128,7 @@ export default function Hero() {
                         whileTap={{ scale: 0.95 }}
                         className="px-10 py-5 bg-sky-primary text-white font-bold rounded-full shadow-lg flex items-center gap-3 transition-colors hover:bg-sky-600"
                     >
-                        Plan Your Trip <Plane className="w-5 h-5" />
+                        Plan Your Journey <Plane className="w-5 h-5" />
                     </motion.button>
 
                     {/* Secondary Button - Glassmorphism */}
