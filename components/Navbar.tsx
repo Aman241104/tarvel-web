@@ -124,43 +124,43 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-6xl transition-all duration-500 rounded-full border flex items-center justify-between px-5 md:px-8 py-2 md:py-2.5 ${
+                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 rounded-full border flex items-center justify-between lg:justify-center gap-4 lg:gap-12 px-4 md:px-6 lg:px-10 py-2 md:py-2.5 ${
                     scrolled 
                     ? 'bg-white/95 backdrop-blur-2xl scale-[0.98] shadow-2xl border-black/5' 
                     : 'bg-white/60 backdrop-blur-xl shadow-lg border-black/5'
-                }`}
+                } w-[92%] lg:w-auto min-w-fit max-w-6xl`}
             >
                 {/* Left: Logo */}
                 <Link 
                     href="#home" 
                     onClick={() => handleLinkClick('home')} 
                     data-nav-id="home"
-                    className="flex items-center gap-2 md:gap-4 group shrink-0"
+                    className="flex items-center gap-2 md:gap-3 lg:gap-4 group shrink-0"
                 >
-                    <div className="relative w-12 h-12 md:w-16 md:h-16 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 group-hover:scale-105 transition-transform duration-500">
                          <Image 
                             src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-contain" 
-                            sizes="(max-width: 768px) 48px, 64px"
+                            sizes="(max-width: 768px) 40px, 64px"
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span className="text-sm md:text-xl font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
+                        <span className="text-xs md:text-lg lg:text-xl font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
                             Destination Anywhere
                         </span>
-                        <span className="text-[8px] md:text-[10px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80 whitespace-nowrap">
+                        <span className="text-[7px] md:text-[9px] lg:text-[10px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80 whitespace-nowrap">
                             Luxury Travel Planning
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-2 relative bg-black/[0.03] p-1.5 rounded-full border border-black/[0.05] whitespace-nowrap" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-1 relative bg-black/[0.03] p-1 rounded-full border border-black/[0.05] whitespace-nowrap" ref={linksRef}>
                     <div 
                         ref={indicatorRef}
-                        className="nav-indicator absolute h-[calc(100%-12px)] top-1.5 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
+                        className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
                     />
                     
                     {navLinks.map((link) => (
@@ -169,7 +169,7 @@ export default function Navbar() {
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-4 md:px-5 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] transition-all duration-300 rounded-full inline-block z-10 whitespace-nowrap ${
+                                className={`group relative px-4 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] transition-all duration-300 rounded-full inline-block z-10 whitespace-nowrap ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
                                     : 'text-text-navy/50 hover:text-text-navy'
@@ -182,14 +182,14 @@ export default function Navbar() {
                 </div>
 
                 {/* Right: CTA Button */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 shrink-0">
                     <Magnetic>
                         <a
                             ref={ctaRef}
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden whitespace-nowrap"
+                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden whitespace-nowrap"
                         >
                             <span className="relative z-10">Plan Your Journey</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
