@@ -9,14 +9,16 @@ import { Star, Heart } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const customers = [
-    { src: "/customer/image.png", name: "Priya & Rohan", trip: "Bali Honeymoon", rotate: "-rotate-3", delay: 0 },
-    { src: "/customer/image copy.png", name: "The Sharma Family", trip: "Thailand Adventure", rotate: "rotate-2", delay: 0.1 },
-    { src: "/customer/image copy 2.png", name: "Ananya S.", trip: "Europe Solo", rotate: "-rotate-1", delay: 0.2 },
-    { src: "/customer/image copy 3.png", name: "Mehta Family", trip: "Swiss Alps", rotate: "rotate-3", delay: 0.3 },
-    { src: "/customer/image copy 4.png", name: "Kavya & Dev", trip: "Maldives Escape", rotate: "-rotate-2", delay: 0.4 },
-    { src: "/customer/image copy 5.png", name: "Arjun K.", trip: "Japan Discovery", rotate: "rotate-1", delay: 0.5 },
-    { src: "/customer/image copy 6.png", name: "The Verma Clan", trip: "Rajasthan Royal", rotate: "-rotate-3", delay: 0.6 },
-    { src: "/customer/image copy 7.png", name: "Sneha & Vikram", trip: "Dubai Luxe", rotate: "rotate-2", delay: 0.7 },
+    { src: "/customer/image.png", review: "Life-changing trip!", stars: 5, rotate: "-rotate-3" },
+    { src: "/customer/image copy.png", review: "Perfection in every detail.", stars: 5, rotate: "rotate-2" },
+    { src: "/customer/image copy 2.png", review: "Bespoke & Beautiful.", stars: 5, rotate: "-rotate-1" },
+    { src: "/customer/image copy 3.png", review: "Highly recommended!", stars: 5, rotate: "rotate-3" },
+    { src: "/customer/image copy 4.png", review: "Dream come true.", stars: 5, rotate: "-rotate-2" },
+    { src: "/customer/image copy 5.png", review: "Unforgettable memories.", stars: 5, rotate: "rotate-1" },
+    { src: "/customer/image copy 6.png", review: "Beyond expectations.", stars: 5, rotate: "-rotate-3" },
+    { src: "/customer/image copy 7.png", review: "Pure luxury.", stars: 5, rotate: "rotate-2" },
+    { src: "/customer/image copy 8.png", review: "Simply the best.", stars: 5, rotate: "-rotate-2" },
+    { src: "/customer/image copy 9.png", review: "Exquisite experience.", stars: 5, rotate: "rotate-1" },
 ];
 
 const washiColors = [
@@ -28,6 +30,8 @@ const washiColors = [
     "washi-tape-teal",
     "washi-tape-yellow",
     "washi-tape-coral",
+    "washi-tape-teal",
+    "washi-tape-yellow",
 ];
 
 export default function HappyCustomers() {
@@ -210,7 +214,7 @@ export default function HappyCustomers() {
                                 >
                                     <img
                                         src={c.src}
-                                        alt={`${c.name} - ${c.trip}`}
+                                        alt={`Customer Review ${i + 1}`}
                                         className="w-full h-full object-cover filter saturate-[1.05] contrast-[1.02] transition-transform duration-700 group-hover:scale-110"
                                         loading="lazy"
                                     />
@@ -218,12 +222,12 @@ export default function HappyCustomers() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
                                         <div className="text-white">
                                             <div className="flex gap-0.5 mb-1">
-                                                {[...Array(5)].map((_, j) => (
+                                                {[...Array(c.stars)].map((_, j) => (
                                                     <Star key={j} className="w-2.5 h-2.5 fill-white text-white" />
                                                 ))}
                                             </div>
                                             <p className="font-body text-[10px] font-black uppercase tracking-wider opacity-90">
-                                                {c.trip}
+                                                Traveler Experience
                                             </p>
                                         </div>
                                     </div>
@@ -231,11 +235,13 @@ export default function HappyCustomers() {
 
                                 {/* Caption */}
                                 <div className="p-2 pb-3 text-center">
+                                    <div className="flex justify-center gap-0.5 mb-1 opacity-60">
+                                        {[...Array(c.stars)].map((_, j) => (
+                                            <Star key={j} className="w-2 h-2 fill-brand-yellow text-brand-yellow" />
+                                        ))}
+                                    </div>
                                     <p className="font-handwriting text-base text-gray-500 font-bold leading-tight">
-                                        {c.name}
-                                    </p>
-                                    <p className="font-body text-[8px] text-brand-teal font-black uppercase tracking-widest mt-0.5 opacity-80">
-                                        {c.trip}
+                                        &ldquo;{c.review}&rdquo;
                                     </p>
                                 </div>
                             </div>
