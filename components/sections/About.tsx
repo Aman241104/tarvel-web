@@ -49,7 +49,7 @@ export default function About() {
                             Crafting <span className="text-sky-500">Memories,</span> <br /> Not Just Trips.
                         </h3>
                         <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                            Sujal Soni founded <strong>Destination Anywhere & Co.</strong> with a simple belief:
+                            Sujal Soni founded <strong>Destination Anywhere</strong> with a simple belief:
                             travel should be about the destination, not the stress of planning. With a deep passion
                             for exploration, we curate journeys that are seamless, personalized, and unforgettable.
                         </p>

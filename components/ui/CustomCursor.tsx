@@ -16,7 +16,7 @@ export default function CustomCursor() {
     const xToFollower = useRef<gsap.QuickToFunc | null>(null);
     const yToFollower = useRef<gsap.QuickToFunc | null>(null);
 
-    useGSAP(() => {
+    useGSAP((context) => {
         if (!cursorRef.current || !followerRef.current) return;
 
         // 1. Main Dot: Almost instant response (High performance)
@@ -24,25 +24,19 @@ export default function CustomCursor() {
         yTo.current = gsap.quickTo(cursorRef.current, "y", { duration: 0.01, ease: "power3.out" });
 
         // 2. Follower: "Magnetic" feel (snappy but fluid)
-        // Decreased duration from 0.6 to 0.25 for less "drag"
-        xToFollower.current = gsap.quickTo(followerRef.current, "x", { duration: 0.25, ease: "power3.out" });
-        yToFollower.current = gsap.quickTo(followerRef.current, "y", { duration: 0.25, ease: "power3.out" });
+        xToFollower.current = gsap.quickTo(followerRef.current, "x", { duration: 0.15, ease: "power2.out" });
+        yToFollower.current = gsap.quickTo(followerRef.current, "y", { duration: 0.15, ease: "power2.out" });
 
         // Initial Hide
         gsap.set([cursorRef.current, followerRef.current], { xPercent: -50, yPercent: -50, opacity: 0 });
 
-        // Reveal on first move
         const showCursor = () => {
             gsap.to([cursorRef.current, followerRef.current], { opacity: 1, duration: 0.5 });
             window.removeEventListener('mousemove', showCursor);
         };
         window.addEventListener('mousemove', showCursor);
 
-    }, { scope: cursorRef, dependencies: [] });
-
-    useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            // Direct GSAP update - NO state changes here
             if (xTo.current) xTo.current(e.clientX);
             if (yTo.current) yTo.current(e.clientY);
             if (xToFollower.current) xToFollower.current(e.clientX);
@@ -51,72 +45,67 @@ export default function CustomCursor() {
 
         const handleMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
+            if (!target) return;
 
-            // Check for interactive elements
-            const isNav = target.closest('nav, .navbar');
-            const isLink = target.closest('a, button, .cursor-pointer, input');
-            const isCard = target.closest('.group'); // Cards usually have 'group'
-            const isCloseBtn = target.closest('[data-cursor="close"]');
-            const isViewBtn = target.closest('[data-cursor="view"]');
-            const isCTA = target.closest('button');
-            const isImage = target.closest('img, .story-image, [class*="aspect-"]');
+            // Cache attributes or use specific data-attributes for faster lookup
+            const cursorType = target.closest('[data-cursor]')?.getAttribute('data-cursor');
+            
+            let newText = '';
+            let hovering = false;
 
-            if (isNav) {
-                setIsHovering(false);
-                setCursorText('');
-            } else if (isCloseBtn) {
-                setIsHovering(true);
-                setCursorText('Close Window ✕');
-            } else if (isViewBtn) {
-                setIsHovering(true);
-                setCursorText('Unlock Experience');
-            } else if (isCTA) {
-                setIsHovering(true);
-                setCursorText('Plan Your Journey ✈️');
-            } else if (isImage && isCard) {
-                setIsHovering(true);
-                setCursorText('Glimpse the Escape');
-            } else if (isCard && !isLink) {
-                setIsHovering(true);
-                setCursorText('Explore Details');
-            } else if (isLink) {
-                setIsHovering(true);
-                setCursorText('Continue →');
-            } else {
-                setIsHovering(false);
-                setCursorText('');
+            if (cursorType === 'close') {
+                newText = 'Close Window ✕';
+                hovering = true;
+            } else if (cursorType === 'view') {
+                newText = 'Unlock Experience';
+                hovering = true;
+            } else if (target.closest('button')) {
+                newText = 'Plan Your Journey ✈️';
+                hovering = true;
+            } else if (target.closest('a, .cursor-pointer, input')) {
+                newText = 'Continue →';
+                hovering = true;
+            } else if (target.closest('.group')) {
+                const isImage = target.closest('img, .story-image, [class*="aspect-"]');
+                newText = isImage ? 'Glimpse the Escape' : 'Explore Details';
+                hovering = true;
             }
+
+            // Only update state if it actually changed to avoid re-renders
+            setCursorText(prev => prev !== newText ? newText : prev);
+            setIsHovering(prev => prev !== hovering ? hovering : prev);
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseover', handleMouseOver);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        window.addEventListener('mouseover', handleMouseOver, { passive: true });
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('mousemove', showCursor);
         };
-    }, []);
+    }, { scope: cursorRef, dependencies: [] });
 
     return (
-        <div className="hidden md:block">
+        <div className="hidden md:block pointer-events-none">
             {/* Main Dot - The Anchor */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-1.5 h-1.5 bg-brand-coral rounded-full pointer-events-none z-[9999] shadow-sm"
+                className="fixed top-0 left-0 w-1.5 h-1.5 bg-brand-coral rounded-full z-[9999] shadow-sm"
             />
 
             {/* Follower - The "Luggage Tag" / Concierge Label */}
             <div
                 ref={followerRef}
-                className={`fixed top-0 left-0 pointer-events-none z-[9998] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
+                className={`fixed top-0 left-0 z-[9998] flex items-center justify-center transition-[width,height,padding,background-color,border-color,border-radius,opacity] duration-300 ease-out
             ${isHovering
-                        ? 'w-auto h-auto px-4 py-2 bg-white rounded-full shadow-xl border border-brand-coral/20'
+                        ? 'w-auto h-auto px-4 py-2 bg-white rounded-full shadow-2xl border border-brand-coral/20'
                         : 'w-8 h-8 rounded-full border border-brand-coral/30 bg-brand-coral/5'
                     }
         `}
             >
                 <span className={`font-handwriting text-brand-coral whitespace-nowrap transition-all duration-300 ${cursorText ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-                    } ${isHovering ? 'text-base font-bold' : 'text-[0px]'}`}>
+                    } ${isHovering ? 'text-sm font-bold' : 'text-[0px]'}`}>
                     {cursorText}
                 </span>
             </div>

@@ -184,7 +184,7 @@ export default function CTASection() {
                             </div>
                             <div className="w-full mt-8 md:mt-16 space-y-6 md:space-y-10 text-left">
                                 <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
-                                     <p className="font-handwriting text-2xl md:text-3xl text-gray-400 tracking-wide">Destination Anywhere & Co.</p>
+                                     <p className="font-handwriting text-2xl md:text-3xl text-gray-400 tracking-wide">Destination Anywhere</p>
                                 </div>
                                 <div className="border-b-2 border-gray-100 pb-2 md:pb-3">
                                      <p className="font-body font-black text-gray-400 text-[10px] md:text-xs tracking-[0.3em] uppercase opacity-60">Global Luxury Concierge</p>

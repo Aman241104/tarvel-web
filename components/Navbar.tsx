@@ -137,27 +137,27 @@ export default function Navbar() {
                     data-nav-id="home"
                     className="flex items-center gap-2 md:gap-4 group shrink-0"
                 >
-                    <div className="relative w-10 h-10 md:w-14 md:h-14 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-12 h-12 md:w-16 md:h-16 group-hover:scale-105 transition-transform duration-500">
                          <Image 
                             src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-contain" 
-                            sizes="(max-width: 768px) 40px, 56px"
+                            sizes="(max-width: 768px) 48px, 64px"
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span className="text-xs md:text-lg font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
+                        <span className="text-sm md:text-xl font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
                             Destination Anywhere
                         </span>
-                        <span className="text-[7px] md:text-[9px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80">
-                            Luxury Travel & Co.
+                        <span className="text-[8px] md:text-[10px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80 whitespace-nowrap">
+                            Luxury Travel Planning
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-2 relative bg-black/[0.03] p-1.5 rounded-full border border-black/[0.05]" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-2 relative bg-black/[0.03] p-1.5 rounded-full border border-black/[0.05] whitespace-nowrap" ref={linksRef}>
                     <div 
                         ref={indicatorRef}
                         className="nav-indicator absolute h-[calc(100%-12px)] top-1.5 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
@@ -169,7 +169,7 @@ export default function Navbar() {
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-6 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
+                                className={`group relative px-6 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 whitespace-nowrap ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
                                     : 'text-text-navy/50 hover:text-text-navy'

@@ -117,19 +117,19 @@ export default function Footer() {
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
-                            <div className="relative w-28 h-28 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-500">
+                            <div className="relative w-32 h-32 md:w-44 md:h-44 group-hover:scale-105 transition-transform duration-500">
                                 <Image
                                    src="/logo-removebg-preview.png"
                                    alt="Destination Anywhere Logo"
                                    fill
                                    className="object-contain"
-                                   sizes="(max-width: 768px) 112px, 160px"
+                                   sizes="(max-width: 768px) 128px, 176px"
                                 />                            </div>
                             <div>
-                                <h3 className="text-4xl md:text-5xl font-black font-heading text-[#ffffff] leading-tight">
-                                    Destination<br />Anywhere & Co.
+                                <h3 className="text-4xl md:text-5xl font-black font-heading text-[#ffffff] leading-tight tracking-tighter">
+                                    Destination<br />Anywhere
                                 </h3>
-                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel & Co.</p>
+                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Planning</p>
                             </div>
                         </div>
                         
@@ -249,7 +249,7 @@ export default function Footer() {
                 {/* Bottom Legal bar */}
                 <div className="border-t border-white/5 mt-20 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center text-[#9ca3af] text-[9px] uppercase font-black tracking-[0.3em] text-center md:text-left">
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 mb-6 md:mb-0">
-                        <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co.</p>
+                        <p>&copy; {new Date().getFullYear()} Destination Anywhere</p>
                         <p className="hidden md:block opacity-20">|</p>
                         <p>Developed by Gravity Media Marketing</p>
                         <p className="hidden md:block opacity-20">|</p>

@@ -1,7 +1,7 @@
 {
-  "name": "Destination Anywhere & Co.",
-  "short_name": "D/A & Co.",
-  "description": "Luxury Travel & Co. & Bespoke Itineraries",
+  "name": "Destination Anywhere",
+  "short_name": "Dest Anywhere",
+  "description": "Luxury Travel Planning & Bespoke Itineraries",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F9F8F6",

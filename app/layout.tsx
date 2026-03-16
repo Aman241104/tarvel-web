@@ -28,7 +28,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://destinationanywhere.co'),
-    title: "Destination Anywhere & Co. | Luxury Travel Co.",
+    title: "Destination Anywhere | Luxury Travel Planning",
     description: "Curating extraordinary, personalized travel experiences and bespoke itineraries for the discerning global traveler. Discover the world with Sujal Soni.",
     keywords: ["luxury travel", "bespoke travel", "concierge booking", "private tours", "premium holidays", "Sujal Soni", "Destination Anywhere"],
     icons: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
     manifest: '/manifest.json',
     openGraph: {
-        title: "Destination Anywhere & Co. | Luxury Travel Co.",
+        title: "Destination Anywhere | Luxury Travel Planning",
         description: "Curating extraordinary, personalized travel experiences and bespoke itineraries.",
         type: "website",
         url: 'https://destinationanywhere.co',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Destination Anywhere & Co. | Luxury Travel Co.",
+        title: "Destination Anywhere | Luxury Travel Planning",
         description: "Curating extraordinary, personalized travel experiences and bespoke itineraries.",
         images: ['/assets/logo.png'],
     },
