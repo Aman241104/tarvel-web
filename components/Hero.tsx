@@ -136,6 +136,27 @@ export default function Hero() {
                 yTo.current[i] = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
             });
 
+            // 1.5. Animate Passport Stamp & Social Proof
+            const passportStamp = containerRef.current?.querySelector('.passport-stamp');
+            if (passportStamp) {
+                tl.fromTo(
+                    passportStamp,
+                    { scale: 2, opacity: 0, rotation: -45 },
+                    { scale: 1, opacity: 1, rotation: -15, duration: 1.2, ease: 'elastic.out(1, 0.3)' },
+                    '-=0.5'
+                );
+            }
+
+            const socialProof = containerRef.current?.querySelector('.social-proof-pill');
+            if (socialProof) {
+                tl.fromTo(
+                    socialProof,
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, ease: 'expo.out' },
+                    '-=0.8'
+                );
+            }
+
             // 2. Mouse Parallax
             const handleMouseMove = (e: MouseEvent) => {
                 if (!containerRef.current || window.innerWidth < 768) return;
@@ -269,7 +290,7 @@ export default function Hero() {
                 </div>
 
                 <h1 className="flex flex-col items-center justify-center w-full mb-4 md:mb-0">
-                    <span className="font-heading font-black text-[11vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[95vw] md:whitespace-nowrap">
+                    <span className="font-heading font-black text-[13vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] text-text-navy tracking-tighter relative flex flex-wrap justify-center max-w-[95vw] md:whitespace-nowrap">
                         {'DESTINATION'.split('').map((char, i) => (
                             <span key={i} className="dest-char inline-block">
                                 {char}
@@ -281,7 +302,7 @@ export default function Hero() {
                         </svg>
                     </span>
 
-                    <span className="font-handwriting text-[10vw] sm:text-6xl md:text-7xl lg:text-9xl leading-none text-brand-yellow relative mt-1 md:mt-4 drop-shadow-sm transform -rotate-2">
+                    <span className="font-handwriting text-[12vw] sm:text-6xl md:text-7xl lg:text-9xl leading-none text-brand-yellow relative mt-1 md:mt-4 drop-shadow-sm transform -rotate-2">
                         Anywhere
                         {/* Underline */}
                         <svg className="absolute -bottom-2 left-0 w-full h-4 md:h-6 text-brand-teal opacity-60" viewBox="0 0 200 20" preserveAspectRatio="none">
@@ -291,24 +312,24 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtext Pill & Social Proof */}
-                <div className="mt-8 md:mt-20 flex flex-col items-center gap-8">
-                    <div className="hidden md:flex">
+                <div className="mt-4 md:mt-20 flex flex-col items-center gap-6 md:gap-8">
+                    <div className="md:flex">
                         <Magnetic strength={0.2}>
                             <button
                                 onClick={() => openWhatsApp('Hero Section - "PLAN YOUR TRIP"')}
-                                className="px-8 py-4 bg-text-navy text-white rounded-full shadow-[0_20px_40px_rgba(15,23,42,0.3)] flex items-center gap-4 transform hover:scale-105 transition-all group overflow-hidden relative"
+                                className="px-7 py-3.5 bg-text-navy text-white rounded-full shadow-[0_20px_40px_rgba(15,23,42,0.3)] flex items-center gap-4 transform hover:scale-105 transition-all group overflow-hidden relative"
                             >
-                                <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.2em]">
+                                <span className="relative z-10 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em]">
                                     Start Your Story
                                 </span>
-                                <span className="relative z-10 text-xl group-hover:translate-x-1 transition-transform">✈️</span>
+                                <span className="relative z-10 text-lg md:text-xl group-hover:translate-x-1 transition-transform">✈️</span>
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                             </button>
                         </Magnetic>
                     </div>
 
                     {/* High-end Social Proof */}
-                    <div className="flex items-center gap-4 bg-bg-paper px-6 py-3 rounded-2xl border border-black/5 shadow-ambient-sm animate-float">
+                    <div className="social-proof-pill flex items-center gap-3 md:gap-4 bg-bg-paper px-5 py-2.5 md:px-6 md:py-3 rounded-2xl border border-black/5 shadow-ambient-sm animate-float">
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map((i) => (
                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-sm">

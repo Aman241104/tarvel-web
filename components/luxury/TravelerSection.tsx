@@ -12,6 +12,7 @@ export default function TravelerSection() {
     const containerRef = useRef<HTMLElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
+    const polaroidRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         // Image Swing & Reveal
@@ -29,6 +30,25 @@ export default function TravelerSection() {
                 }
             }
         );
+
+        // Mouse Parallax for Polaroid
+        const xTo = gsap.quickTo(polaroidRef.current, 'x', { duration: 0.6, ease: 'power3' });
+        const yTo = gsap.quickTo(polaroidRef.current, 'y', { duration: 0.6, ease: 'power3' });
+        const rTo = gsap.quickTo(polaroidRef.current, 'rotation', { duration: 0.6, ease: 'power3' });
+
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!containerRef.current || window.innerWidth < 1024) return;
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            const xPos = (clientX - innerWidth / 2) / innerWidth;
+            const yPos = (clientY - innerHeight / 2) / innerHeight;
+
+            xTo(xPos * 30);
+            yTo(yPos * 30);
+            rTo(xPos * 5);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
 
         // Text Stagger
         gsap.fromTo(textRef.current?.children || [], 
@@ -117,6 +137,10 @@ export default function TravelerSection() {
         // Refresh triggers after a short delay to account for dynamic imports and fonts
         setTimeout(() => ScrollTrigger.refresh(), 500);
 
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+
     }, { scope: containerRef });
 
     return (
@@ -157,35 +181,35 @@ export default function TravelerSection() {
                         </p>
 
                         {/* Stat Counters */}
-                        <div className="flex justify-between md:justify-start gap-4 md:gap-8 lg:gap-16 mt-12 mb-6">
+                        <div className="grid grid-cols-2 sm:flex sm:justify-between md:justify-start gap-6 md:gap-8 lg:gap-16 mt-10 md:mt-12 mb-6">
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
+                                    <span className="stat-number text-5xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="9">9</span>
                                     <span className="text-2xl font-black text-brand-teal ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-teal transition-colors">Years XP</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-1 group-hover/stat:text-brand-teal transition-colors">Years XP</p>
                             </div>
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="15">15</span>
+                                    <span className="stat-number text-5xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="15">15</span>
                                     <span className="text-2xl font-black text-brand-coral ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-coral transition-colors">Countries</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-1 group-hover/stat:text-brand-coral transition-colors">Countries</p>
                             </div>
                             <div className="text-left group/stat">
                                 <div className="flex items-baseline">
-                                    <span className="stat-number text-5xl sm:text-6xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="500">500</span>
+                                    <span className="stat-number text-5xl md:text-7xl font-heading font-black text-text-navy tabular-nums" data-target="500">500</span>
                                     <span className="text-2xl font-black text-brand-yellow ml-1">+</span>
                                 </div>
-                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-2 group-hover/stat:text-brand-yellow transition-colors">Clients</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-1 group-hover/stat:text-brand-yellow transition-colors">Clients</p>
                             </div>
                         </div>
 
                         {/* 9-Year Journey: Film Strip Timeline */}
-                        <div className="mt-10 md:mt-12 relative">
-                            <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-black/30 mb-6 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
+                        <div className="mt-12 md:mt-16 relative">
+                            <h4 className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-black/30 mb-8 border-l-2 border-brand-teal pl-4">The 9-Year Journey</h4>
                             
-                            <div className="flex flex-col sm:flex-row gap-12 sm:gap-8 md:gap-12 items-start relative pl-10 sm:pl-0">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 md:gap-12 items-start relative pl-10 sm:pl-0">
                                 {/* Connector Line (Desktop) */}
                                 <div className="absolute top-12 left-10 right-10 h-0.5 bg-black/[0.08] hidden sm:block z-0" />
                                 {/* Connector Line (Mobile) */}
@@ -229,7 +253,7 @@ export default function TravelerSection() {
                             <div className="washi-tape washi-tape-teal -top-4 md:-top-5 left-1/2 -translate-x-1/2 w-32 md:w-44 h-12 md:h-16 -rotate-2 opacity-80 shadow-sm" />
 
                             {/* Polaroid Frame */}
-                            <div className="bg-white p-3 md:p-5 pb-[4px] md:pb-[5px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
+                            <div ref={polaroidRef} className="bg-white p-3 md:p-5 pb-[4px] md:pb-[5px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] rotate-1 md:rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02] relative rounded-sm border border-black/5">
                                 
                                 {/* Film Strip Holes */}
                                 <div className="absolute left-2.5 md:left-4 top-8 md:top-10 bottom-10 md:bottom-16 w-2.5 md:w-4 flex flex-col justify-between items-center z-30 opacity-40 pointer-events-none">

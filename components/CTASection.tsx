@@ -118,7 +118,7 @@ export default function CTASection() {
                                         type="text" 
                                         placeholder="Dear Sujal, this is..."
                                         required
-                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium"
+                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium focus:font-handwriting focus:text-2xl transition-all"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                                     />
@@ -132,7 +132,7 @@ export default function CTASection() {
                                             id="destination"
                                             type="text" 
                                             placeholder="I'm dreaming of Bali, Japan..."
-                                            className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium"
+                                            className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none placeholder:text-gray-300 font-medium focus:font-handwriting focus:text-2xl transition-all"
                                             value={formData.destination}
                                             onChange={(e) => setFormData({...formData, destination: e.target.value})}
                                         />
@@ -145,7 +145,7 @@ export default function CTASection() {
                                         id="special-notes"
                                         placeholder="Beach club access, private villas, etc."
                                         rows={3}
-                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none transition-colors resize-none placeholder:text-gray-300 font-medium"
+                                        className="w-full bg-transparent py-1 font-body text-lg md:text-xl text-text-navy outline-none transition-all resize-none placeholder:text-gray-300 font-medium focus:font-handwriting focus:text-2xl"
                                         value={formData.message}
                                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                                     />
@@ -166,6 +166,12 @@ export default function CTASection() {
                             {/* Postage Stamp */}
                             <div className="stamp-parallax w-32 h-44 md:w-44 md:h-56 bg-white border-[6px] md:border-[8px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block">
                                  <div className="absolute inset-0 bg-brand-yellow/10 opacity-0 group-hover/stamp:opacity-100 transition-opacity z-10" />
+                                 {/* Decorative Postmark Overlay */}
+                                 <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-brand-coral/30 rounded-full flex items-center justify-center rotate-12 pointer-events-none z-20">
+                                     <div className="w-20 h-20 border border-brand-coral/20 rounded-full flex items-center justify-center">
+                                         <span className="text-[8px] font-black text-brand-coral/40 uppercase tracking-widest">AIR MAIL</span>
+                                     </div>
+                                 </div>
                                  <div className="relative w-full h-full bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden">
                                       <Image
                                         src="/assets/image.png"
@@ -173,7 +179,8 @@ export default function CTASection() {
                                         fill
                                         className="object-contain p-4 md:p-6 grayscale group-hover/stamp:grayscale-0 transition-all duration-700 scale-95 group-hover/stamp:scale-105"
                                         sizes="(max-width: 768px) 150px, 200px"
-                                      />                                 </div>
+                                      />
+                                 </div>
                             </div>
                             <div className="w-full mt-8 md:mt-16 space-y-6 md:space-y-10 text-left">
                                 <div className="border-b-2 border-gray-100 pb-2 md:pb-3">

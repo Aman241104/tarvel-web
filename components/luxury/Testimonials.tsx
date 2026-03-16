@@ -13,6 +13,7 @@ const testimonials = [
         id: 1,
         quote: "Completely seamless experience from start to finish. We didn't have to worry about a single detail.",
         author: "Family Traveler",
+        avatar: "https://i.pravatar.cc/100?img=11",
         highlight: "0 Stress",
         rotation: "-rotate-2",
         bgColor: "bg-[#FFFBF5]",
@@ -22,6 +23,7 @@ const testimonials = [
         id: 2,
         quote: "The personalized touch and handpicked stays were incredible. We've already booked our next journey!",
         author: "Milestone Celebration",
+        avatar: "https://i.pravatar.cc/100?img=12",
         highlight: "100% Trust",
         rotation: "rotate-2",
         bgColor: "bg-white",
@@ -31,6 +33,7 @@ const testimonials = [
         id: 3,
         quote: "Sujal protects your time. If you want stress-free travel that exceeds expectations, this is it.",
         author: "Business Professional",
+        avatar: "https://i.pravatar.cc/100?img=13",
         highlight: "Exceptional",
         rotation: "-rotate-1",
         bgColor: "bg-[#F8FAFB]",
@@ -168,12 +171,17 @@ export default function Testimonials() {
                                 "{t.quote}"
                             </p>
                             
-                            <div className="mt-auto border-t border-black/5 pt-8 flex flex-col gap-1">
-                                <div className="font-handwriting text-3xl md:text-5xl text-brand-teal rotate-[-1deg] mb-2 font-black leading-none">
-                                    {t.highlight}
+                            <div className="mt-auto border-t border-black/5 pt-8 flex items-end justify-between gap-4">
+                                <div className="flex flex-col gap-1">
+                                    <div className="font-handwriting text-3xl md:text-5xl text-brand-teal rotate-[-1deg] mb-2 font-black leading-none">
+                                        {t.highlight}
+                                    </div>
+                                    <div className="font-body font-black text-gray-400 text-[11px] md:text-xs uppercase tracking-[0.3em] opacity-80">
+                                        {t.author}
+                                    </div>
                                 </div>
-                                <div className="font-body font-black text-gray-400 text-[11px] md:text-xs uppercase tracking-[0.3em] opacity-80">
-                                    {t.author}
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-white shadow-lg overflow-hidden shrink-0 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                                    <img src={t.avatar} alt={t.author} className="w-full h-full object-cover" />
                                 </div>
                             </div>
                         </div>

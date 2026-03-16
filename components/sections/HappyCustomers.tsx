@@ -187,7 +187,7 @@ export default function HappyCustomers() {
                 </div>
 
                 {/* Masonry / polaroid grid */}
-                <div className="columns-2 sm:columns-3 lg:columns-4 gap-6 md:gap-8 space-y-6 md:space-y-8">
+                <div className="grid grid-cols-2 sm:columns-3 lg:columns-4 gap-3 md:gap-8 space-y-0 md:space-y-8">
                     {customers.map((c, i) => (
                         <div
                             key={i}

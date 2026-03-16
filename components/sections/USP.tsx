@@ -12,7 +12,7 @@ const usps = [
         desc: 'Verified worldwide partners providing exclusive access and unmatched reliability.',
         icon: ShieldCheck,
         accentHex: '#2EC4B6',
-        accentClass: 'brand-teal',
+        color: 'brand-teal',
         image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=800&q=80',
         details: [
             'Verified Worldwide Partners',
@@ -26,7 +26,7 @@ const usps = [
         desc: 'Handpicked stays and exclusive experiences designed for the discerning traveler.',
         icon: Sparkles,
         accentHex: '#FFBF00',
-        accentClass: 'brand-yellow',
+        color: 'brand-yellow',
         image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
         details: [
             'Bespoke Hotel Partnerships',
@@ -40,7 +40,7 @@ const usps = [
         desc: 'Every trip is unique. We craft journeys that match your soul, not a template.',
         icon: Map,
         accentHex: '#FF6B6B',
-        accentClass: 'brand-coral',
+        color: 'brand-coral',
         image: 'https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?auto=format&fit=crop&w=800&q=80',
         details: [
             'Tailored Daily Adventures',
@@ -54,7 +54,7 @@ const usps = [
         desc: 'From visas to local secrets, we handle everything. You just pack.',
         icon: ClipboardCheck,
         accentHex: '#2EC4B6',
-        accentClass: 'brand-teal',
+        color: 'brand-teal',
         image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80',
         details: [
             'Visa & Documentation Support',

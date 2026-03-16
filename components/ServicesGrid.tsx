@@ -25,7 +25,7 @@ const gridServices = [
             'Corporate & Group Travel',
         ],
         image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80',
-        accentColor: 'brand-teal',
+        color: 'brand-teal',
         accentHex: '#2EC4B6',
     },
     {
@@ -42,7 +42,7 @@ const gridServices = [
             '24/7 Solo Support Sync',
         ],
         image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80',
-        accentColor: 'brand-coral',
+        color: 'brand-coral',
         accentHex: '#FF6B6B',
     },
     {
@@ -59,7 +59,7 @@ const gridServices = [
             'Absolute Discretion Assured',
         ],
         image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-        accentColor: 'brand-yellow',
+        color: 'brand-yellow',
         accentHex: '#FFBF00',
     },
 ];

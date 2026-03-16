@@ -135,29 +135,32 @@ export default function Navbar() {
                     href="#home" 
                     onClick={() => handleLinkClick('home')} 
                     data-nav-id="home"
-                    className="flex items-center gap-2 md:gap-3 group shrink-0"
+                    className="flex items-center gap-2 md:gap-4 group shrink-0"
                 >
-                    <div className="relative w-16 h-16 md:w-24 md:h-24 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-10 h-10 md:w-14 md:h-14 group-hover:scale-105 transition-transform duration-500">
                          <Image 
                             src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-contain" 
-                            sizes="(max-width: 768px) 64px, 96px"
+                            sizes="(max-width: 768px) 40px, 56px"
                         />
                     </div>
-                    <div className="flex flex-col justify-center mt-1.5 md:mt-2">
-                        <span className="text-sm md:text-xl font-black text-text-navy leading-none whitespace-nowrap">
+                    <div className="flex flex-col justify-center">
+                        <span className="text-xs md:text-lg font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
                             Destination Anywhere
+                        </span>
+                        <span className="text-[7px] md:text-[9px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80">
+                            Luxury Travel & Co.
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-1 relative bg-black/[0.02] p-1 rounded-full border border-black/[0.03]" ref={linksRef}>
+                <div className="hidden lg:flex items-center gap-2 relative bg-black/[0.03] p-1.5 rounded-full border border-black/[0.05]" ref={linksRef}>
                     <div 
                         ref={indicatorRef}
-                        className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
+                        className="nav-indicator absolute h-[calc(100%-12px)] top-1.5 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
                     />
                     
                     {navLinks.map((link) => (
@@ -166,10 +169,10 @@ export default function Navbar() {
                                 href={link.href}
                                 data-nav-id={link.id}
                                 onClick={() => handleLinkClick(link.id)}
-                                className={`group relative px-5 py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
+                                className={`group relative px-6 py-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 rounded-full inline-block z-10 ${
                                     activeSection === link.id 
                                     ? 'text-brand-coral' 
-                                    : 'text-text-navy/60 hover:text-text-navy'
+                                    : 'text-text-navy/50 hover:text-text-navy'
                                 }`}
                             >
                                 {link.name}
@@ -179,14 +182,14 @@ export default function Navbar() {
                 </div>
 
                 {/* Right: CTA Button */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                     <Magnetic>
                         <a
                             ref={ctaRef}
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-7 py-3 bg-text-navy text-white text-[9px] font-bold uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 hover:shadow-xl shadow-lg group relative overflow-hidden"
+                            className="hidden md:inline-flex items-center justify-center px-8 py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden"
                         >
                             <span className="relative z-10">Plan My Journey</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />

@@ -111,6 +111,22 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection, onSe
                             <ArrowRight className={`w-6 h-6 transition-all duration-300 ${activeSection === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
                         </Link>
                     ))}
+                    <Link
+                        href="#instagram"
+                        onClick={() => {
+                            onSectionChange?.('instagram');
+                            onClose();
+                        }}
+                        className={`group flex items-center justify-between text-3xl font-black font-heading transition-all border-b border-black/5 pb-3 ${
+                            activeSection === 'instagram' ? 'text-brand-coral translate-x-2' : 'text-text-navy/40 hover:text-text-navy'
+                        }`}
+                    >
+                        <span className="flex items-center gap-4">
+                            {activeSection === 'instagram' && <div className="w-2.5 h-2.5 rounded-full bg-brand-coral shadow-[0_0_15px_rgba(255,107,107,0.5)]" />}
+                            Journal
+                        </span>
+                        <ArrowRight className={`w-6 h-6 transition-all duration-300 ${activeSection === 'instagram' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                    </Link>
                 </nav>
 
                 {/* Quick Contact CTA */}
