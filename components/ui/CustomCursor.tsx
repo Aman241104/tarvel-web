@@ -47,6 +47,13 @@ export default function CustomCursor() {
             const target = e.target as HTMLElement;
             if (!target) return;
 
+            // NEW: Ignore Navbar and specific elements
+            if (target.closest('nav') || target.closest('[data-no-cursor]')) {
+                setCursorText('');
+                setIsHovering(false);
+                return;
+            }
+
             // Cache attributes or use specific data-attributes for faster lookup
             const cursorType = target.closest('[data-cursor]')?.getAttribute('data-cursor');
             
