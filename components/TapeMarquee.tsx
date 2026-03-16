@@ -7,16 +7,29 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TapeMarquee() {
+interface TapeMarqueeProps {
+    reverse?: boolean;
+    speed?: number;
+    text?: string;
+    rotate?: number;
+}
+
+export default function TapeMarquee({ 
+    reverse = false, 
+    speed = 25, 
+    text = "YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 • ",
+    rotate = -1
+}: TapeMarqueeProps) {
     const marqueeRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         if (marqueeRef.current) {
             // Base animation for the whole track
             const tween = gsap.to(marqueeRef.current, {
-                x: "-50%",
+                x: reverse ? "0%" : "-50%",
+                from: reverse ? "-50%" : "0%",
                 ease: 'none',
-                duration: 25,
+                duration: speed,
                 repeat: -1,
             });
 
@@ -45,10 +58,8 @@ export default function TapeMarquee() {
         }
     }, { scope: marqueeRef });
 
-    const marqueeText = "YOUR JOURNEY ✈️ YOUR RULES 🌴 NO TOURIST TRAPS 📸 LOCAL VIBES 🗺 • ";
-
     return (
-        <div className="relative z-20 w-[110%] -ml-[5%] -rotate-1 transform transition-transform md:hover:rotate-0 md:hover:scale-[1.02] duration-500 py-4">
+        <div className={`relative z-20 w-[110%] -ml-[5%] transform transition-transform md:hover:rotate-0 md:hover:scale-[1.02] duration-500 py-4`} style={{ transform: `rotate(${rotate}deg)` }}>
             {/* Top ripped edge */}
             <div
                 className="absolute top-2 left-0 right-0 h-3 z-10"
@@ -76,7 +87,7 @@ export default function TapeMarquee() {
                         <div key={groupIndex} className="flex items-center">
                             {[...Array(4)].map((_, i) => (
                                 <span key={i} className="text-black font-black font-heading text-xl md:text-3xl uppercase tracking-tighter flex items-center gap-4 px-4 md:px-8">
-                                    {marqueeText}
+                                    {text}
                                 </span>
                             ))}
                         </div>
@@ -95,4 +106,3 @@ export default function TapeMarquee() {
         </div>
     );
 }
-

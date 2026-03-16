@@ -28,24 +28,24 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://destinationanywhere.co'),
-    title: "Destination Anywhere & Co. | Luxury Travel Boutique",
+    title: "Destination Anywhere & Co. | Luxury Travel Co.",
     description: "Curating extraordinary, personalized travel experiences and bespoke itineraries for the discerning global traveler. Discover the world with Sujal Soni.",
     keywords: ["luxury travel", "bespoke travel", "concierge booking", "private tours", "premium holidays", "Sujal Soni", "Destination Anywhere"],
     icons: {
-        icon: "/assets/image.png",
-        shortcut: "/assets/image.png",
-        apple: "/assets/image.png",
+        icon: "/assets/logo.png",
+        shortcut: "/assets/logo.png",
+        apple: "/assets/logo.png",
     },
     manifest: '/manifest.json',
     openGraph: {
-        title: "Destination Anywhere & Co. | Luxury Travel Boutique",
+        title: "Destination Anywhere & Co. | Luxury Travel Co.",
         description: "Curating extraordinary, personalized travel experiences and bespoke itineraries.",
         type: "website",
         url: 'https://destinationanywhere.co',
         siteName: 'Destination Anywhere',
         images: [
             {
-                url: '/assets/image.png',
+                url: '/assets/logo.png',
                 width: 1200,
                 height: 630,
                 alt: 'Destination Anywhere Logo',
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Destination Anywhere & Co. | Luxury Travel Boutique",
+        title: "Destination Anywhere & Co. | Luxury Travel Co.",
         description: "Curating extraordinary, personalized travel experiences and bespoke itineraries.",
-        images: ['/assets/image.png'],
+        images: ['/assets/logo.png'],
     },
     robots: {
         index: true,

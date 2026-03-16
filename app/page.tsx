@@ -34,13 +34,9 @@ export default function Home() {
                     <USP />
                 </section>
 
-                {/* Micro CTA */}
-                <div className="py-4 bg-bg-light text-center">
-                    <a href="#contact" className="inline-flex items-center gap-3 text-text-navy font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-coral transition-colors group">
-                        <span>Book Your Journey</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                </div>
+                <section id="marquee-top" className="relative z-20 py-8 md:py-12 overflow-hidden">
+                    <TapeMarquee />
+                </section>
 
                 {/* 2. Services Section */}
                 {/* Updated Services Section: Boutique Luggage Tag Focus */}
@@ -58,13 +54,13 @@ export default function Home() {
                     <PopularDestinations />
                 </section>
 
-                <section id="marquee" className="relative z-20 py-8 md:py-12 overflow-hidden">
-                    <TapeMarquee />
-                </section>
-
                 {/* 5. Testimonials Section */}
                 <section id="testimonials">
                     <Testimonials />
+                </section>
+
+                <section id="marquee-bottom" className="relative z-20 py-8 md:py-12 overflow-hidden">
+                    <TapeMarquee reverse rotate={1} speed={30} text="Bespoke Itineraries 🗺 Luxury Travel & Co. 🌴 Hidden Gems 💎 Curated Memories ✨ • " />
                 </section>
 
                 <InstagramFeed />

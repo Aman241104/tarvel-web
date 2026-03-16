@@ -17,56 +17,64 @@ const services = [
         title: 'Tour Packages',
         desc: "End-to-end curated domestic and international packages.",
         details: ["Custom Itineraries", "Local Guides", "24/7 Support", "Zero Stress"],
-        stamp: 'GLOBAL\nTOUR'
+        stamp: 'GLOBAL\nTOUR',
+        color: 'brand-coral'
     },
     {
         icon: CrownIcon,
         title: 'Concierge Booking',
         desc: "Exclusive restaurant and beach club reservations.",
         details: ["Fine Dining", "Beach Clubs", "VIP Access", "Event Tickets"],
-        stamp: 'VIP\nACCESS'
+        stamp: 'VIP\nACCESS',
+        color: 'brand-teal'
     },
     {
         icon: Plane,
         title: 'Flight Tickets',
         desc: "Seamless booking for domestic and international flights.",
         details: ["Best Price Guarantee", "Seat Selection", "Web Check-in", "Corporate Fares"],
-        stamp: 'SKY\nHIGH'
+        stamp: 'SKY\nHIGH',
+        color: 'brand-yellow'
     },
     {
         icon: Hotel,
         title: 'Hotel Bookings',
         desc: "Luxury stays and handpicked accommodations worldwide.",
         details: ["Luxury Resorts", "Boutique Stays", "Villas", "Verified Properties"],
-        stamp: 'RESERVED\nSTAY'
+        stamp: 'RESERVED\nSTAY',
+        color: 'brand-teal'
     },
     {
         icon: Camera,
         title: 'Sightseeings',
         desc: "Immersive local experiences and guided tours.",
         details: ["Private Tours", "Hidden Gems", "Group Excursions", "Cultural Immersions"],
-        stamp: 'LOCAL\nGUIDE'
+        stamp: 'LOCAL\nGUIDE',
+        color: 'brand-coral'
     },
     {
         icon: FileText,
         title: 'Visa Services',
         desc: "Hassle-free visa processing and documentation support.",
         details: ["Tourist Visas", "Business Visas", "Document Review", "Interview Prep"],
-        stamp: 'VISA\nREADY'
+        stamp: 'VISA\nREADY',
+        color: 'brand-teal'
     },
     {
         icon: Banknote,
         title: 'Currency Exchange',
         desc: "Secure and competitive forex services for your trip.",
         details: ["Best Rates", "Multi-Currency Cards", "Cash Delivery", "Secure Transactions"],
-        stamp: 'SECURE\nCASH'
+        stamp: 'SECURE\nCASH',
+        color: 'brand-yellow'
     },
     {
         icon: Map,
         title: 'Custom Holidays',
         desc: "100% personalized itineraries crafted for your unique style.",
         details: ["Honeymoons", "Anniversaries", "Solo Travel", "Family Trips"],
-        stamp: 'YOUR\nSTORY'
+        stamp: 'YOUR\nSTORY',
+        color: 'brand-coral'
     }
 ];
 
@@ -214,15 +222,23 @@ export default function ServicesList() {
                                 </div>
 
                                 {/* Stamp Accent (Partially visible by default, pops on hover) */}
-                                <div className="absolute top-12 right-2 w-14 h-14 border-2 border-brand-teal/10 rounded-full flex items-center justify-center -rotate-12 opacity-20 group-hover:opacity-100 group-hover:border-brand-teal/30 transition-all duration-700 transform scale-110 group-hover:scale-100">
-                                    <span className="text-brand-teal font-black text-[6px] uppercase tracking-widest text-center whitespace-pre-line">
+                                <div className={`absolute top-12 right-2 w-14 h-14 border-2 rounded-full flex items-center justify-center -rotate-12 opacity-20 group-hover:opacity-100 transition-all duration-700 transform scale-110 group-hover:scale-100 ${
+                                    service.color === 'brand-yellow' ? 'border-brand-yellow/10 group-hover:border-brand-yellow/30' : 
+                                    service.color === 'brand-teal' ? 'border-brand-teal/10 group-hover:border-brand-teal/30' : 
+                                    'border-brand-coral/10 group-hover:border-brand-coral/30'
+                                }`}>
+                                    <span className={`font-black text-[6px] uppercase tracking-widest text-center whitespace-pre-line ${
+                                        service.color === 'brand-yellow' ? 'text-brand-yellow' : 
+                                        service.color === 'brand-teal' ? 'text-brand-teal' : 
+                                        'text-brand-coral'
+                                    }`}>
                                         {service.stamp}
                                     </span>
                                 </div>
 
                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:scale-110 ${
-                                    i % 3 === 0 ? 'bg-brand-yellow/10 text-brand-yellow' : 
-                                    i % 3 === 1 ? 'bg-brand-teal/10 text-brand-teal' : 
+                                    service.color === 'brand-yellow' ? 'bg-brand-yellow/10 text-brand-yellow' : 
+                                    service.color === 'brand-teal' ? 'bg-brand-teal/10 text-brand-teal' : 
                                     'bg-brand-coral/10 text-brand-coral'
                                 }`}>
                                     <service.icon className="w-6 h-6" strokeWidth={1.5} />
@@ -243,8 +259,8 @@ export default function ServicesList() {
                                             handleWhatsAppClick(service);
                                         }}
                                         className={`px-5 py-2 rounded-xl text-white text-[9px] font-black uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg flex items-center gap-2 group/btn cursor-pointer z-30 ${
-                                            i % 3 === 0 ? 'bg-brand-yellow shadow-brand-yellow/30' : 
-                                            i % 3 === 1 ? 'bg-brand-teal shadow-brand-teal/30' : 
+                                            service.color === 'brand-yellow' ? 'bg-brand-yellow shadow-brand-yellow/30' : 
+                                            service.color === 'brand-teal' ? 'bg-brand-teal shadow-brand-teal/30' : 
                                             'bg-brand-coral shadow-brand-coral/30'
                                         }`}
                                     >

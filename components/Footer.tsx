@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { Instagram, Twitter, Send, Linkedin, Mail, Phone, MapPin, Award, Star } from 'lucide-react';
+import { Instagram, Facebook, Send, Linkedin, Mail, Phone, MapPin, Award, Star } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 import Magnetic from '@/components/ui/Magnetic';
 import Image from 'next/image';
@@ -91,7 +91,7 @@ export default function Footer() {
             <Postmark />
 
             {/* Organic Wave Divider (Double Layered) */}
-            <div className="absolute -top-1 left-0 w-full overflow-hidden leading-none z-10">
+            <div className="absolute -top-10 left-0 w-full overflow-hidden leading-none z-10">
                 <svg className="relative block w-full h-[140px] md:h-[200px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FF5A5F" opacity="0.3"></path>
                     <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.51,22.43-10.89,44.78-22.1,66.66-33.33V0Z" fill="#FF5A5F"></path>
@@ -117,19 +117,19 @@ export default function Footer() {
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
                         <div className="flex flex-col gap-6">
-                            <div className="relative w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/20 bg-white shadow-2xl">
+                            <div className="relative w-28 h-28 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-500">
                                 <Image
-                                   src="/assets/image.png"
+                                   src="/logo-removebg-preview.png"
                                    alt="Destination Anywhere Logo"
                                    fill
-                                   className="object-cover p-3"
+                                   className="object-contain"
                                    sizes="(max-width: 768px) 112px, 160px"
                                 />                            </div>
                             <div>
-                                <h3 className="text-4xl md:text-5xl font-black font-heading tracking-tighter text-[#ffffff] leading-tight">
+                                <h3 className="text-4xl md:text-5xl font-black font-heading text-[#ffffff] leading-tight">
                                     Destination<br />Anywhere & Co.
                                 </h3>
-                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Boutique</p>
+                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel & Co.</p>
                             </div>
                         </div>
                         
@@ -140,8 +140,8 @@ export default function Footer() {
                         <div className="flex gap-4">
                             {[
                                 { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/destnation_anywhere/" },
-                                { icon: Linkedin, label: "LinkedIn", href: "#" },
-                                { icon: Twitter, label: "Twitter", href: "#" }
+                                { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sujal-soni-335038b2?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
+                                { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/share/p/1DWvi1QgaR/?mibextid=wwXIfr" }
                             ].map((social) => (
                                 <a 
                                     key={social.label}
@@ -250,6 +250,8 @@ export default function Footer() {
                 <div className="border-t border-white/5 mt-20 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center text-[#9ca3af] text-[9px] uppercase font-black tracking-[0.3em] text-center md:text-left">
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 mb-6 md:mb-0">
                         <p>&copy; {new Date().getFullYear()} Destination Anywhere & Co.</p>
+                        <p className="hidden md:block opacity-20">|</p>
+                        <p>Developed by Gravity Media Marketing</p>
                         <p className="hidden md:block opacity-20">|</p>
                         <div className="flex gap-8">
                             <Link href="#" className="hover:text-brand-yellow transition-colors duration-200">Privacy</Link>

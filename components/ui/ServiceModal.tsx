@@ -14,6 +14,7 @@ interface ServiceModalProps {
         desc: string;
         details?: string[];
         image?: string;
+        color?: string;
     } | null;
 }
 
@@ -21,6 +22,16 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
     const modalRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const { openWhatsApp } = useWhatsApp();
+
+    const activeColor = service?.color || 'brand-teal';
+    const colorClass = activeColor === 'brand-yellow' ? 'bg-brand-yellow' : 
+                      activeColor === 'brand-coral' ? 'bg-brand-coral' : 'bg-brand-teal';
+    
+    const textColorClass = activeColor === 'brand-yellow' ? 'text-brand-yellow' : 
+                          activeColor === 'brand-coral' ? 'text-brand-coral' : 'text-brand-teal';
+
+    const bgColorClass = activeColor === 'brand-yellow' ? 'bg-brand-yellow/10' : 
+                        activeColor === 'brand-coral' ? 'bg-brand-coral/10' : 'bg-brand-teal/10';
 
     const handleWhatsAppClick = () => {
         if (!service) return;
@@ -50,7 +61,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
             onClick={onClose}
         >
             <div
@@ -59,7 +70,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header Pattern */}
-                <div className="h-24 bg-brand-teal relative overflow-hidden">
+                <div className={`h-24 ${colorClass} relative overflow-hidden`}>
                     <div className="absolute inset-0 opacity-20"
                         style={{ backgroundImage: 'radial-gradient(circle, #fff 2px, transparent 2.5px)', backgroundSize: '10px 10px' }}
                     />
@@ -88,8 +99,8 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                         <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">What We Offer</h4>
                         {service.details?.map((detail, i) => (
                             <div key={i} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
-                                <div className="bg-brand-teal/10 p-2 rounded-full">
-                                    <Check className="w-3.5 h-3.5 text-brand-teal" />
+                                <div className={`${bgColorClass} p-2 rounded-full`}>
+                                    <Check className={`w-3.5 h-3.5 ${textColorClass}`} />
                                 </div>
                                 <span className="text-text-navy font-black text-xs md:text-sm uppercase tracking-wide">{detail}</span>
                             </div>
@@ -98,7 +109,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
 
                     <button
                         onClick={handleWhatsAppClick}
-                        className="w-full mt-8 bg-brand-teal text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                        className={`w-full mt-8 ${colorClass} text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3`}
                     >
                         <MessageCircle className="w-4 h-4 fill-current" />
                         Book on WhatsApp

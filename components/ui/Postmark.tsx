@@ -100,7 +100,7 @@ export default function Postmark() {
                     </defs>
                     <text className="text-[7.5px] font-black uppercase tracking-[0.2em] fill-brand-yellow/80">
                         <textPath xlinkHref="#circlePath">
-                            Destination Anywhere • Luxury Travel Boutique • 
+                            Destination Anywhere • Luxury Travel & Co. • 
                         </textPath>
                     </text>
                 </svg>

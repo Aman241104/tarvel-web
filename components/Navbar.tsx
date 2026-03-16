@@ -137,21 +137,18 @@ export default function Navbar() {
                     data-nav-id="home"
                     className="flex items-center gap-2 md:gap-3 group shrink-0"
                 >
-                    <div className="relative w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/80 bg-white shadow-sm group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-16 h-16 md:w-24 md:h-24 group-hover:scale-105 transition-transform duration-500">
                          <Image 
-                            src="/assets/image.png" 
+                            src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
-                            className="object-cover p-1.5" 
-                            sizes="(max-width: 768px) 48px, 80px"
+                            className="object-contain" 
+                            sizes="(max-width: 768px) 64px, 96px"
                         />
                     </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-sm md:text-xl font-black tracking-tighter text-text-navy leading-none whitespace-nowrap">
+                    <div className="flex flex-col justify-center mt-1.5 md:mt-2">
+                        <span className="text-sm md:text-xl font-black text-text-navy leading-none whitespace-nowrap">
                             Destination Anywhere
-                        </span>
-                        <span className="text-[10px] md:text-[12px] uppercase tracking-[0.25em] font-black text-black/30 hidden sm:block mt-1">
-                            Travel Boutique
                         </span>
                     </div>
                 </Link>
