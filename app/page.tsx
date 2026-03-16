@@ -16,6 +16,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const CTASection = dynamic(() => import("@/components/CTASection"));
 const TapeMarquee = dynamic(() => import("@/components/TapeMarquee"));
 const InstagramFeed = dynamic(() => import("@/components/sections/InstagramFeed"));
+const HappyCustomers = dynamic(() => import("@/components/sections/HappyCustomers"));
 
 export default function Home() {
     return (
@@ -57,6 +58,11 @@ export default function Home() {
                 {/* 5. Testimonials Section */}
                 <section id="testimonials">
                     <Testimonials />
+                </section>
+
+                {/* 6. Happy Customers Section */}
+                <section id="happy-customers">
+                    <HappyCustomers />
                 </section>
 
                 <section id="marquee-bottom" className="relative z-20 py-8 md:py-12 overflow-hidden">
