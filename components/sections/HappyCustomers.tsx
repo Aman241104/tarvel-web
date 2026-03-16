@@ -128,58 +128,60 @@ export default function HappyCustomers() {
                 {/* Header */}
                 <div ref={headingRef} className="text-center mb-16 md:mb-20">
                     {/* Pill */}
-                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-brand-coral/10 border border-brand-coral/20 text-brand-coral rounded-full text-xs font-black tracking-[0.3em] mb-6 -rotate-1">
-                        <Heart className="w-3 h-3 fill-current" />
-                        HAPPY CUSTOMERS
+                    <div className="w-full flex justify-center mb-6">
+                        <div className="inline-flex items-center gap-2 px-5 py-2 bg-brand-coral/10 border border-brand-coral/20 text-brand-coral rounded-full text-xs font-black tracking-[0.3em] -rotate-1">
+                            <Heart className="w-3 h-3 fill-current" />
+                            HAPPY CUSTOMERS
+                        </div>
                     </div>
 
                     {/* Heading */}
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading font-black text-text-navy leading-[0.9] tracking-tighter relative inline-block">
-                        Smiles We&apos;ve
-                        <br />
-                        <span className="relative inline-block mt-2">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black text-text-navy leading-[1.1] tracking-tighter relative inline-flex flex-wrap justify-center items-center gap-x-4">
+                        <span>Smiles We&apos;ve</span>
+                        <span className="relative inline-block">
                             <span className="absolute inset-0 bg-brand-yellow -rotate-1 -skew-x-3 scale-105 z-0 shadow-md" />
                             <span className="relative z-10 px-3">Crafted</span>
                         </span>
-                        <span className="ml-3">✈️</span>
+                        <span>✈️</span>
                     </h2>
 
                     {/* Sub */}
-                    <p className="mt-8 text-gray-500 font-body text-lg max-w-xl mx-auto leading-relaxed">
-                        Real travelers. Real moments. Every photo tells a story curated
-                        just for them — and soon, for you.
+                    <p className="mt-8 text-gray-500 font-body text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+                        Real travelers. Real moments. Every photo tells a story curated just for them — and soon, for you.
                     </p>
 
                     {/* Stats strip */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-8">
-                        <div className="text-center">
-                            <div className="flex items-baseline justify-center gap-1">
+                    <div className="flex flex-wrap justify-center items-stretch gap-6 md:gap-12 mt-12">
+                        <div className="text-center flex flex-col">
+                            <div className="flex items-baseline justify-center gap-1 mb-2">
                                 <span className="happy-counter text-4xl md:text-5xl font-heading font-black text-text-navy tabular-nums">
                                     500
                                 </span>
                                 <span className="text-xl font-black text-brand-teal">+</span>
                             </div>
-                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-auto">
                                 Happy Travelers
                             </p>
                         </div>
                         <div className="w-px bg-black/10 hidden md:block" />
-                        <div className="text-center">
-                            <div className="flex items-center justify-center gap-0.5 mb-1">
+                        <div className="text-center flex flex-col">
+                            <div className="flex items-center justify-center gap-0.5 mb-4 h-full min-h-[40px]">
                                 {[...Array(5)].map((_, i) => (
                                     <Star key={i} className="w-5 h-5 fill-brand-yellow text-brand-yellow" />
                                 ))}
                             </div>
-                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-auto">
                                 5-Star Rated
                             </p>
                         </div>
                         <div className="w-px bg-black/10 hidden md:block" />
-                        <div className="text-center">
-                            <div className="text-4xl md:text-5xl font-heading font-black text-text-navy">
-                                100%
+                        <div className="text-center flex flex-col">
+                            <div className="mb-2">
+                                <span className="text-4xl md:text-5xl font-heading font-black text-text-navy">
+                                    100%
+                                </span>
                             </div>
-                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-1">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mt-auto">
                                 Recommend Us
                             </p>
                         </div>
@@ -187,7 +189,7 @@ export default function HappyCustomers() {
                 </div>
 
                 {/* Masonry / polaroid grid */}
-                <div className="grid grid-cols-2 sm:columns-3 lg:columns-4 gap-3 md:gap-8 space-y-0 md:space-y-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-12 md:gap-x-6 md:gap-y-16 items-start">
                     {customers.map((c, i) => (
                         <div
                             key={i}
@@ -195,10 +197,10 @@ export default function HappyCustomers() {
                             style={{ transformOrigin: "center top" }}
                         >
                             {/* Polaroid */}
-                            <div className="bg-white shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] rounded-sm border border-black/5 relative hover:shadow-[0_30px_70px_-15px_rgba(0,0,0,0.2)] transition-shadow duration-500">
+                            <div className="bg-white shadow-[0_15px_40px_-10px_rgba(0,0,0,0.12)] rounded-sm border border-black/5 relative hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.18)] transition-shadow duration-500">
                                 {/* Washi tape top */}
                                 <div
-                                    className={`washi-tape ${washiColors[i % washiColors.length]} -top-4 left-1/2 -translate-x-1/2 w-20 h-10 opacity-60 group-hover:opacity-100 transition-opacity z-20`}
+                                    className={`washi-tape ${washiColors[i % washiColors.length]} -top-3 left-1/2 -translate-x-1/2 w-16 h-8 opacity-60 group-hover:opacity-100 transition-opacity z-20`}
                                 />
 
                                 {/* Photo */}
@@ -213,14 +215,14 @@ export default function HappyCustomers() {
                                         loading="lazy"
                                     />
                                     {/* Overlay on hover */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3">
                                         <div className="text-white">
                                             <div className="flex gap-0.5 mb-1">
                                                 {[...Array(5)].map((_, j) => (
-                                                    <Star key={j} className="w-3 h-3 fill-white text-white" />
+                                                    <Star key={j} className="w-2.5 h-2.5 fill-white text-white" />
                                                 ))}
                                             </div>
-                                            <p className="font-body text-xs font-black uppercase tracking-wider opacity-90">
+                                            <p className="font-body text-[10px] font-black uppercase tracking-wider opacity-90">
                                                 {c.trip}
                                             </p>
                                         </div>
@@ -228,11 +230,11 @@ export default function HappyCustomers() {
                                 </div>
 
                                 {/* Caption */}
-                                <div className="p-3 pb-4 text-center">
-                                    <p className="font-handwriting text-lg text-gray-500 font-bold leading-tight">
+                                <div className="p-2 pb-3 text-center">
+                                    <p className="font-handwriting text-base text-gray-500 font-bold leading-tight">
                                         {c.name}
                                     </p>
-                                    <p className="font-body text-[10px] text-brand-teal font-black uppercase tracking-widest mt-0.5 opacity-80">
+                                    <p className="font-body text-[8px] text-brand-teal font-black uppercase tracking-widest mt-0.5 opacity-80">
                                         {c.trip}
                                     </p>
                                 </div>

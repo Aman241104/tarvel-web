@@ -180,7 +180,7 @@ export default function Testimonials() {
                                         {t.author}
                                     </div>
                                 </div>
-                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-white shadow-lg overflow-hidden shrink-0 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-28 rounded-full md:rounded-2xl border-4 border-white shadow-lg overflow-hidden shrink-0 rotate-3 group-hover:rotate-0 transition-transform duration-500">
                                     <img src={t.avatar} alt={t.author} className="w-full h-full object-cover" />
                                 </div>
                             </div>

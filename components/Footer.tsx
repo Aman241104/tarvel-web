@@ -73,7 +73,7 @@ export default function Footer() {
     };
 
     return (
-        <footer ref={containerRef} className="relative bg-[#070b14] pt-24 md:pt-32 pb-12 overflow-hidden z-30 text-white">
+        <footer ref={containerRef} className="relative bg-[#070b14] pt-32 md:pt-48 pb-12 overflow-hidden z-30 text-white">
             {/* Glassmorphism Map Silhouette with Spotlight */}
             <div 
                 ref={spotlightRef}
@@ -116,18 +116,18 @@ export default function Footer() {
 
                     {/* Col 1: The Boutique Identity (4 cols) */}
                     <div className="lg:col-span-4 space-y-10">
-                        <div className="flex flex-col gap-6">
-                            <div className="relative w-32 h-32 md:w-44 md:h-44 group-hover:scale-105 transition-transform duration-500">
+                        <div className="flex flex-col gap-8">
+                            <div className="relative w-40 h-40 md:w-56 md:h-56 group-hover:scale-105 transition-transform duration-500">
                                 <Image
                                    src="/logo-removebg-preview.png"
                                    alt="Destination Anywhere Logo"
                                    fill
                                    className="object-contain"
-                                   sizes="(max-width: 768px) 128px, 176px"
+                                   sizes="(max-width: 768px) 160px, 224px"
                                 />                            </div>
-                            <div>
-                                <h3 className="text-4xl md:text-5xl font-black font-heading text-[#ffffff] leading-tight tracking-tighter">
-                                    Destination<br />Anywhere
+                            <div className="mt-2">
+                                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading text-[#ffffff] leading-none tracking-tighter">
+                                    Destination<br />Anywhere & Co.
                                 </h3>
                                 <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Planning</p>
                             </div>
@@ -156,7 +156,7 @@ export default function Footer() {
                     </div>
 
                     {/* Col 2: The Journey Links (2 cols) */}
-                    <div className="lg:col-span-2 pt-4">
+                    <div className="lg:col-span-2 pt-16 md:pt-20">
                         <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/50 pl-4">The Journey</h4>
                         <ul className="space-y-6 font-black text-sm uppercase tracking-widest">
                             {[
@@ -177,11 +177,11 @@ export default function Footer() {
                     </div>
 
                     {/* Col 3: Contact & HQ (3 cols) */}
-                    <div className="lg:col-span-3 pt-4">
-                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/50 pl-4">Boutique HQ</h4>
+                    <div className="lg:col-span-3 pt-16 md:pt-20">
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/50 pl-4">Contact Us</h4>
                         <div className="space-y-8">
                             <div className="footer-contact-item flex items-center gap-4 group cursor-pointer" onClick={() => window.open('mailto:concierge@destanywhere.com')}>
-                                <div className="bg-white/5 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
+                                <div className="border border-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <div className="min-w-0">
@@ -189,9 +189,9 @@ export default function Footer() {
                                     <p className="text-sm font-bold tracking-tight text-[#ffffff] truncate">concierge@destanywhere.com</p>
                                 </div>
                             </div>
-                            
+
                             <div className="footer-contact-item flex items-center gap-4 group cursor-pointer" onClick={() => window.open('tel:+918511071506')}>
-                                <div className="bg-white/5 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
+                                <div className="border border-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
                                     <Phone className="w-4 h-4" />
                                 </div>
                                 <div className="min-w-0">
@@ -201,7 +201,7 @@ export default function Footer() {
                             </div>
 
                             <div className="footer-contact-item flex items-center gap-4 group cursor-pointer">
-                                <div className="bg-white/5 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
+                                <div className="border border-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <div className="min-w-0">
@@ -213,7 +213,7 @@ export default function Footer() {
                     </div>
 
                     {/* Col 4: Call to Action & Accolades (3 cols) */}
-                    <div className="lg:col-span-3 pt-4">
+                    <div className="lg:col-span-3 pt-16 md:pt-20">
                         <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/50 pl-4">Start Your Story</h4>
                         <p className="text-[#d1d5db] font-body text-sm mb-8 leading-[1.6]">
                             Ready to transform your travel dreams into a curated reality? Let's design your next escape today.

@@ -98,7 +98,7 @@ export default function CTASection() {
             <div className="container mx-auto px-6 max-w-5xl">
                 <div 
                     ref={postcardRef}
-                    className="relative bg-white shadow-2xl p-5 md:p-12 rounded-sm transform md:rotate-[-1deg] overflow-hidden group border-[6px] md:border-[12px] border-white outline outline-1 outline-black/5"
+                    className="relative bg-white shadow-2xl p-5 md:p-12 rounded-sm transform md:rotate-[-1deg] overflow-hidden border-[6px] md:border-[12px] border-white outline outline-1 outline-black/5"
                 >
                     {/* The Center Vertical Line */}
                     <div className="absolute top-12 bottom-12 left-1/2 w-[2px] bg-gray-100 hidden md:block" />
@@ -164,7 +164,7 @@ export default function CTASection() {
                         {/* Right Side: Stamp & Address */}
                         <div className="flex-1 flex flex-col justify-between items-end relative">
                             {/* Postage Stamp */}
-                            <div className="stamp-parallax w-32 h-44 md:w-44 md:h-56 bg-white border-[6px] md:border-[8px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block">
+                            <div className="stamp-parallax w-32 h-44 md:w-44 md:h-56 bg-white border-[6px] md:border-[8px] border-white shadow-ambient-lg rotate-[5deg] md:group-hover:rotate-0 transition-all duration-700 cursor-pointer overflow-hidden group/stamp p-1 hidden sm:block" data-cursor="view">
                                  <div className="absolute inset-0 bg-brand-yellow/10 opacity-0 group-hover/stamp:opacity-100 transition-opacity z-10" />
                                  {/* Decorative Postmark Overlay */}
                                  <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-brand-coral/30 rounded-full flex items-center justify-center rotate-12 pointer-events-none z-20">
