@@ -44,12 +44,18 @@
   background-color: #FF5A5F;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #1a1a1a;
   background-color: #F9F8F6;
   min-height: 100vh;
+  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Luxury Image Loading */

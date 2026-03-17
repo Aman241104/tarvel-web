@@ -46,7 +46,7 @@ Can you help me with the itinerary?`;
             ref={containerRef}
             className="absolute bottom-6 md:bottom-16 lg:bottom-24 left-1/2 -translate-x-1/2 z-30 w-[92%] md:w-[90%] max-w-4xl lg:max-w-5xl"
         >
-            <div className="bg-white/95 backdrop-blur-2xl border border-black/5 rounded-[2rem] md:rounded-full p-3 md:p-3 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-0 relative">
+            <div className="bg-white/95 backdrop-blur-md md:backdrop-blur-2xl border border-black/5 rounded-[2rem] md:rounded-full p-3 md:p-3 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-0 relative">
                 
                 {/* Location Input - Full width on mobile */}
                 <div className={`relative flex-[1.5] p-2.5 md:p-4 rounded-2xl md:rounded-full transition-all duration-500 ${activeInput === 'location' ? 'bg-brand-teal/5 shadow-[inset_0_0_0_2px_rgba(46,196,182,0.2)] scale-[1.01] z-10' : 'hover:bg-black/5'}`}>

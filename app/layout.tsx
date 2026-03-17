@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Mulish, Caveat } from "next/font/google"; // Luxury Fonts & Handwriting
 import "./globals.css";
 import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
@@ -6,7 +6,17 @@ import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import CustomCursor from "@/components/ui/CustomCursor";
 import RightSideNav from "@/components/ui/RightSideNav";
 import Navbar from "@/components/Navbar";
+import WhatsAppButton from "@/components/luxury/WhatsAppButton";
 import { Providers } from "./providers";
+
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: 'cover',
+};
 
 
 const playfair = Playfair_Display({
@@ -82,6 +92,7 @@ export default function RootLayout({
             <body className={`${playfair.variable} ${mulish.variable} ${caveat.variable} font-body bg-bg-light text-text-light overflow-x-hidden antialiased selection:bg-brand-coral selection:text-white`}>
                 <CustomCursor />
                 <NoiseOverlay />
+                <WhatsAppButton />
                 <RightSideNav />
                 <Navbar />
                 <SmoothScroll>

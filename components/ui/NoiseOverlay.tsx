@@ -1,6 +1,6 @@
 export default function NoiseOverlay() {
     return (
-        <>
+        <div className="hidden md:block">
             {/* Primary fine grain */}
             <div
                 className="pointer-events-none fixed inset-0 z-[9999] opacity-[0.025] mix-blend-overlay"
@@ -17,6 +17,6 @@ export default function NoiseOverlay() {
                     transform: 'translateZ(0)',
                 }}
             />
-        </>
+        </div>
     );
 }

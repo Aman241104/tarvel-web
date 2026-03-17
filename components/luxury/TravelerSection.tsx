@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion } from "framer-motion";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -15,52 +16,59 @@ export default function TravelerSection() {
     const polaroidRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        // Image Swing & Reveal
+        const isMobile = window.innerWidth < 1024;
+
+        // Image Swing & Reveal - Simplified for mobile
         gsap.fromTo(imageRef.current,
-            { rotate: 10, scale: 0.85 },
+            { rotate: isMobile ? 5 : 10, scale: isMobile ? 0.95 : 0.85 },
             {
-                rotate: -3,
+                rotate: isMobile ? 0 : -3,
                 scale: 1,
-                duration: 0.8,
+                duration: isMobile ? 0.6 : 0.8,
                 ease: 'back.out(1.5)',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 75%',
+                    start: 'top 85%',
                     toggleActions: 'play none none reverse',
                 }
             }
         );
 
-        // Mouse Parallax for Polaroid
-        const xTo = gsap.quickTo(polaroidRef.current, 'x', { duration: 0.6, ease: 'power3' });
-        const yTo = gsap.quickTo(polaroidRef.current, 'y', { duration: 0.6, ease: 'power3' });
-        const rTo = gsap.quickTo(polaroidRef.current, 'rotation', { duration: 0.6, ease: 'power3' });
+        // Mouse Parallax for Polaroid - DISABLED ON MOBILE
+        let xTo: any, yTo: any, rTo: any;
+        let handleMouseMove: any;
 
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!containerRef.current || window.innerWidth < 1024) return;
-            const { clientX, clientY } = e;
-            const { innerWidth, innerHeight } = window;
-            const xPos = (clientX - innerWidth / 2) / innerWidth;
-            const yPos = (clientY - innerHeight / 2) / innerHeight;
+        if (!isMobile) {
+            xTo = gsap.quickTo(polaroidRef.current, 'x', { duration: 0.6, ease: 'power3' });
+            yTo = gsap.quickTo(polaroidRef.current, 'y', { duration: 0.6, ease: 'power3' });
+            rTo = gsap.quickTo(polaroidRef.current, 'rotation', { duration: 0.6, ease: 'power3' });
 
-            xTo(xPos * 30);
-            yTo(yPos * 30);
-            rTo(xPos * 5);
-        };
+            handleMouseMove = (e: MouseEvent) => {
+                const { clientX, clientY } = e;
+                const { innerWidth, innerHeight } = window;
+                const xPos = (clientX - innerWidth / 2) / innerWidth;
+                const yPos = (clientY - innerHeight / 2) / innerHeight;
 
-        window.addEventListener('mousemove', handleMouseMove);
+                xTo(xPos * 30);
+                yTo(yPos * 30);
+                rTo(xPos * 5);
+            };
+
+            window.addEventListener('mousemove', handleMouseMove);
+        }
 
         // Text Stagger
         gsap.fromTo(textRef.current?.children || [], 
-            { y: 30 },
+            { y: 20, opacity: 0 },
             {
                 y: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: 'expo.out',
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.05,
+                ease: 'power2.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 70%',
+                    start: 'top 80%',
                 }
             }
         );
@@ -74,71 +82,76 @@ export default function TravelerSection() {
                 { innerText: 0 },
                 {
                     innerText: target,
-                    duration: 1.2,
+                    duration: 1.0,
                     ease: 'power2.out',
                     snap: { innerText: 1 },
                     scrollTrigger: {
                         trigger: el,
-                        start: 'top 90%',
+                        start: 'top 95%',
                         once: true,
                     }
                 }
             );
         });
 
-        // Signature path draw
-        const sigPath = containerRef.current?.querySelector('.signature-path');
-        if (sigPath) {
-            gsap.fromTo(
-                sigPath,
-                { strokeDashoffset: 500 },
-                {
-                    strokeDashoffset: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: sigPath,
-                        start: 'top 90%',
+        // Signature path draw - Only on desktop for performance
+        if (!isMobile) {
+            const sigPath = containerRef.current?.querySelector('.signature-path');
+            if (sigPath) {
+                gsap.fromTo(
+                    sigPath,
+                    { strokeDashoffset: 500 },
+                    {
+                        strokeDashoffset: 0,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: sigPath,
+                            start: 'top 90%',
+                        }
                     }
-                }
-            );
+                );
+            }
         }
 
-        // Backdrop shapes parallax
-        const tealShape = containerRef.current?.querySelector('.backdrop-teal');
-        const coralShape = containerRef.current?.querySelector('.backdrop-coral');
-        if (tealShape) {
-            gsap.to(tealShape, {
-                y: -20,
-                rotation: -8,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true,
-                },
-            });
-        }
-        if (coralShape) {
-            gsap.to(coralShape, {
-                y: 15,
-                rotation: 7,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true,
-                },
-            });
+        // Backdrop shapes parallax - DISABLED OR SIMPLIFIED ON MOBILE
+        if (!isMobile) {
+            const tealShape = containerRef.current?.querySelector('.backdrop-teal');
+            const coralShape = containerRef.current?.querySelector('.backdrop-coral');
+            if (tealShape) {
+                gsap.to(tealShape, {
+                    y: -20,
+                    rotation: -8,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true,
+                    },
+                });
+            }
+            if (coralShape) {
+                gsap.to(coralShape, {
+                    y: 15,
+                    rotation: 7,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true,
+                    },
+                });
+            }
         }
 
-        // Refresh triggers after a short delay to account for dynamic imports and fonts
-        setTimeout(() => ScrollTrigger.refresh(), 500);
+        // Refresh triggers after a short delay
+        const refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 1000);
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
+            if (handleMouseMove) window.removeEventListener('mousemove', handleMouseMove);
+            clearTimeout(refreshTimeout);
         };
 
     }, { scope: containerRef });
@@ -263,11 +276,13 @@ export default function TravelerSection() {
                                 </div>
 
                                 <div className="relative overflow-hidden w-full aspect-[3/4] md:w-[420px] md:h-[560px] bg-gray-100 shadow-inner">
-                                    <img
+                                    <Image
                                         src="/assets/owner-image.png"
                                         alt="Sujal Soni"
                                         className="w-full h-full object-cover filter contrast-[1.02] saturate-[1.1] transition-transform duration-1000 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 100vw, 500px"
+                                        width={420}
+                                        height={560}
+                                        priority
                                     />
                                     {/* Subtle Gradient Overlay for holes visibility */}
                                     <div className="absolute inset-y-0 left-0 w-8 md:w-12 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-20" />
@@ -281,8 +296,8 @@ export default function TravelerSection() {
                             </div>
 
                             {/* Backdrop Shape (Coral/Teal) — parallax targets */}
-                            <div className="backdrop-teal absolute inset-0 bg-brand-teal -z-10 rotate-[-8deg] translate-y-6 rounded-[3rem] scale-95 opacity-[0.15] blur-2xl" />
-                            <div className="backdrop-coral absolute inset-0 bg-brand-coral -z-20 rotate-[6deg] translate-x-6 rounded-[3rem] scale-95 opacity-[0.1] blur-2xl" />
+                            <div className="backdrop-teal absolute inset-0 bg-brand-teal -z-10 rotate-[-8deg] translate-y-6 rounded-[3rem] scale-95 opacity-[0.1] md:opacity-[0.15] blur-xl md:blur-2xl" />
+                            <div className="backdrop-coral absolute inset-0 bg-brand-coral -z-20 rotate-[6deg] translate-x-6 rounded-[3rem] scale-95 opacity-[0.05] md:opacity-[0.1] blur-xl md:blur-2xl" />
                         </div>
                     </div>
 

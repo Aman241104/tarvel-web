@@ -16,26 +16,26 @@ export default function MobileStickyCTA() {
 
     useGSAP(() => {
         // Show after scrolling past 100vh (Hero)
-        gsap.fromTo(containerRef.current,
-            { y: 100, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: 'body',
-                    start: '120vh top',
-                    toggleActions: 'play none none reverse',
-                }
+        gsap.set(containerRef.current, { y: 100, opacity: 0, visibility: 'hidden' });
+
+        gsap.to(containerRef.current, {
+            y: 0,
+            opacity: 1,
+            visibility: 'visible',
+            duration: 0.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: 'body',
+                start: '120vh top',
+                toggleActions: 'play none none reverse',
             }
-        );
+        });
     }, { scope: containerRef });
 
     return (
         <div
             ref={containerRef}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] w-[92%] md:hidden translate-y-full opacity-0"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[99998] md:hidden"
         >
             <button
                 onClick={() => openWhatsApp('Sticky Mobile CTA')}

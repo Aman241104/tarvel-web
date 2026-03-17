@@ -25,6 +25,8 @@ export default function TapeMarquee({
 
     useGSAP(() => {
         if (marqueeRef.current) {
+            const isMobile = window.innerWidth < 768;
+
             // Base animation for the whole track
             const tween = gsap.fromTo(marqueeRef.current, 
                 { x: reverse ? "-50%" : "0%" },
@@ -36,38 +38,42 @@ export default function TapeMarquee({
                 }
             );
 
-            // Vertical Floating Animation
-            gsap.to(containerRef.current, {
-                y: '+=8',
-                duration: 2.5 + (Math.random() * 2),
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut',
-                delay: Math.random()
-            });
+            // Vertical Floating Animation - Simplified for mobile
+            if (!isMobile) {
+                gsap.to(containerRef.current, {
+                    y: '+=8',
+                    duration: 2.5 + (Math.random() * 2),
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    delay: Math.random()
+                });
+            }
 
-            // Velocity listener for scroll speed interaction
-            ScrollTrigger.create({
-                onUpdate: (self) => {
-                    const velocity = Math.abs(self.getVelocity());
-                    const targetTimeScale = 1 + (velocity / 1500);
+            // Velocity listener for scroll speed interaction - DISABLED ON MOBILE
+            if (!isMobile) {
+                ScrollTrigger.create({
+                    onUpdate: (self) => {
+                        const velocity = Math.abs(self.getVelocity());
+                        const targetTimeScale = 1 + (velocity / 1500);
 
-                    gsap.to(tween, {
-                        timeScale: targetTimeScale,
-                        duration: 0.5,
-                        ease: 'power2.out',
-                        overwrite: true
-                    });
+                        gsap.to(tween, {
+                            timeScale: targetTimeScale,
+                            duration: 0.5,
+                            ease: 'power2.out',
+                            overwrite: true
+                        });
 
-                    gsap.to(tween, {
-                        timeScale: 1,
-                        duration: 1.2,
-                        delay: 0.1,
-                        ease: 'power1.inOut',
-                        overwrite: 'auto'
-                    });
-                }
-            });
+                        gsap.to(tween, {
+                            timeScale: 1,
+                            duration: 1.2,
+                            delay: 0.1,
+                            ease: 'power1.inOut',
+                            overwrite: 'auto'
+                        });
+                    }
+                });
+            }
         }
     }, { scope: marqueeRef });
 

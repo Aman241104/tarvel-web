@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { ShieldCheck, Sparkles, Map, ClipboardCheck, ArrowRight, CheckCircle2, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ServiceModal from '../ui/ServiceModal';
@@ -102,32 +103,31 @@ export default function USP() {
                         return (
                             <motion.div
                                 key={usp.title}
-                                initial={{ y: 40, opacity: 0 }}
+                                initial={{ y: 20, opacity: 0 }}
                                 whileInView={{ y: 0, opacity: 1 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{
-                                    duration: 0.6,
-                                    delay: i * 0.1,
+                                    duration: 0.5,
+                                    delay: i * 0.05,
                                     ease: [0.16, 1, 0.3, 1],
                                 }}
                                 onClick={() => setSelectedUSP(usp)}
                                 data-cursor="view"
-                                className="group relative bg-white rounded-[1.5rem] overflow-hidden cursor-pointer flex flex-col shadow-md hover:shadow-2xl transition-all duration-500 active:scale-[0.98] border border-black/5 hover:border-black/0"
-                                style={{
-                                    boxShadow: `0 4px 24px -8px ${usp.accentHex}22`,
-                                }}
+                                className="group relative bg-white rounded-[1.5rem] overflow-hidden cursor-pointer flex flex-col shadow-sm md:shadow-md hover:shadow-xl transition-all duration-300 active:scale-[0.98] border border-black/5"
                             >
                                 {/* Image area */}
                                 <div className="relative h-40 w-full overflow-hidden">
-                                    <img
+                                    <Image
                                         src={usp.image}
                                         alt={usp.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                                     <div
-                                        className="absolute bottom-3 left-3 w-10 h-10 rounded-2xl flex items-center justify-center shadow-xl backdrop-blur-sm border border-white/20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-                                        style={{ backgroundColor: `${usp.accentHex}dd` }}
+                                        className="absolute bottom-3 left-3 w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg border border-white/20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 bg-opacity-90 backdrop-blur-[2px] md:backdrop-blur-sm"
+                                        style={{ backgroundColor: `${usp.accentHex}` }}
                                     >
                                         <Icon className="w-4 h-4 text-white" strokeWidth={2.5} />
                                     </div>

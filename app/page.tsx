@@ -3,9 +3,7 @@
 import dynamic from 'next/dynamic';
 import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
-import WhatsAppButton from "@/components/luxury/WhatsAppButton";
 import ServicesList from "@/components/ServicesList";
-import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ArrowRight } from 'lucide-react';
 
 const PopularDestinations = dynamic(() => import("@/components/sections/PopularDestinations"));
@@ -21,9 +19,6 @@ const HappyCustomers = dynamic(() => import("@/components/sections/HappyCustomer
 export default function Home() {
     return (
         <main className="bg-bg-light min-h-screen relative overflow-x-hidden">
-
-            <WhatsAppButton />
-            <MobileStickyCTA />
 
             <div className="relative z-30 bg-bg-light shadow-2xl">
                 <section id="home">

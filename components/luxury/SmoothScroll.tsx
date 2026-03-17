@@ -9,19 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
     useEffect(() => {
+        // Only initialize Lenis if not on a touch device or if width is desktop-level
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice && window.innerWidth < 1024) return;
+
         const lenis = new Lenis({
-            duration: 1.8,
+            duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1.1,
-            touchMultiplier: 1.8,
+            wheelMultiplier: 1.0,
+            touchMultiplier: 1.5,
             infinite: false,
         });
-
-        // Sync scroll to top on refresh
-        window.scrollTo(0, 0);
 
         // Integrate Lenis with ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);

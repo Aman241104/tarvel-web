@@ -120,10 +120,10 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed z-[9999] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between rounded-full border left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-6xl ${
+                className={`fixed z-[9999] transition-[top,background-color,padding,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between rounded-full border left-1/2 -translate-x-1/2 w-[92%] max-w-6xl ${
                     scrolled 
-                    ? 'top-4 bg-white/90 backdrop-blur-2xl shadow-2xl px-5 md:px-10 py-2.5 md:py-3 border-black/5 opacity-100 scale-100' 
-                    : 'top-6 md:w-auto md:min-w-fit bg-white/70 backdrop-blur-xl shadow-lg px-5 md:px-10 lg:px-12 py-2.5 opacity-100 border-transparent md:border-black/5'
+                    ? 'top-4 bg-white/90 backdrop-blur-2xl shadow-2xl px-5 md:px-10 py-2.5 md:py-3 border-black/5 opacity-100' 
+                    : 'top-6 bg-white/70 backdrop-blur-xl shadow-lg px-5 md:px-10 lg:px-12 py-2.5 md:py-4 border-transparent md:border-black/5'
                 } ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
             >
                 {/* Left: Logo */}

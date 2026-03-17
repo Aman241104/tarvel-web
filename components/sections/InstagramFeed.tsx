@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { Instagram, ArrowUpRight, Camera } from 'lucide-react';
 import Magnetic from '../ui/Magnetic';
@@ -142,10 +143,12 @@ export default function InstagramFeed() {
 
                             {/* Image Container */}
                             <div className="relative aspect-square overflow-hidden bg-gray-50 mb-3">
-                                <img 
+                                <Image 
                                     src={post.url} 
                                     alt={post.caption}
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    fill
+                                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 50vw, 20vw"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                                     <div className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full transform translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
