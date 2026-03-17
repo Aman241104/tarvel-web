@@ -17,7 +17,7 @@ const INSTA_POSTS = [
     },
     {
         id: 2,
-        url: "/assets/insta-post-2.webp",
+        url: "/assets/insta-post-2.jpg",
         postUrl: "https://www.instagram.com/p/DUfzsppjzL7/",
         caption: "Escape the ordinary.",
         rotation: 2,

@@ -68,7 +68,7 @@ export default function Home() {
                 </section>
 
                 <section id="marquee-bottom" className="relative z-20 py-8 md:py-12 overflow-hidden">
-                    <TapeMarquee reverse rotate={1} speed={30} text="Bespoke Itineraries 🗺 Luxury Travel Planning 🌴 Hidden Gems 💎 Curated Memories ✨ • " />
+                    <TapeMarquee reverse rotate={1} speed={30} text="Bespoke Itineraries 🗺 Luxury Travel Planner 🌴 Hidden Gems 💎 Curated Memories ✨ • " />
                 </section>
 
                 <InstagramFeed />

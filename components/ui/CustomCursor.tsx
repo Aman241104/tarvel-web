@@ -98,13 +98,13 @@ export default function CustomCursor() {
             {/* Main Dot - The Anchor */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-1.5 h-1.5 bg-brand-coral rounded-full z-[9999] shadow-sm"
+                className="fixed top-0 left-0 w-1.5 h-1.5 bg-brand-coral rounded-full z-[9999] shadow-sm will-change-transform"
             />
 
             {/* Follower - The "Luggage Tag" / Concierge Label */}
             <div
                 ref={followerRef}
-                className={`fixed top-0 left-0 z-[9998] flex items-center justify-center transition-[width,height,padding,background-color,border-color,border-radius,opacity] duration-300 ease-out
+                className={`fixed top-0 left-0 z-[9998] flex items-center justify-center transition-[width,height,padding,background-color,border-color,border-radius,opacity] duration-500 cubic-bezier(0.16, 1, 0.3, 1) will-change-transform
             ${isHovering
                         ? 'w-auto h-auto px-4 py-2 bg-white rounded-full shadow-2xl border border-brand-coral/20'
                         : 'w-8 h-8 rounded-full border border-brand-coral/30 bg-brand-coral/5'

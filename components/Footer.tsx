@@ -129,7 +129,7 @@ export default function Footer() {
                                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading text-[#ffffff] leading-none tracking-tighter">
                                     Destination<br />Anywhere & Co.
                                 </h3>
-                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Planning</p>
+                                <p className="text-[#9ca3af] font-body text-[12px] md:text-[14px] uppercase tracking-[0.4em] mt-3 font-black">Luxury Travel Planner</p>
                             </div>
                         </div>
                         

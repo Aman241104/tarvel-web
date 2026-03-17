@@ -151,7 +151,7 @@ export default function Navbar() {
                             Destination Anywhere
                         </span>
                         <span className="text-[7px] md:text-[9px] lg:text-[10px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80 whitespace-nowrap">
-                            Luxury Travel Planning
+                            Luxury Travel Planner
                         </span>
                     </div>
                 </Link>

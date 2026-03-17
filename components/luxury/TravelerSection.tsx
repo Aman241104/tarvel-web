@@ -171,7 +171,7 @@ export default function TravelerSection() {
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="w-2.5 h-2.5 bg-brand-coral rounded-full shadow-[0_0_15px_rgba(255,107,107,0.6)]" />
-                                    <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase font-black text-black/40">Luxury Travel Planning</span>
+                                    <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase font-black text-black/40">Luxury Travel Planner</span>
                                 </div>
                             </div>
                         </div>
