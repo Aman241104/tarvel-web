@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/luxury/SmoothScroll"; // Lenis Wrapper
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import CustomCursor from "@/components/ui/CustomCursor";
 import RightSideNav from "@/components/ui/RightSideNav";
+import Navbar from "@/components/Navbar";
 import { Providers } from "./providers";
 
 
@@ -82,6 +83,7 @@ export default function RootLayout({
                 <CustomCursor />
                 <NoiseOverlay />
                 <RightSideNav />
+                <Navbar />
                 <SmoothScroll>
                     <Providers>
                         <div className="page-reveal">

@@ -32,7 +32,8 @@ export default function Navbar() {
         const sections = ['home', 'usp', 'services', 'about-captain', 'packages', 'testimonials', 'instagram', 'contact'];
         
         const handleScroll = () => {
-            setScrolled(window.scrollY > 30);
+            // Increase threshold to avoid glitches at the very top
+            setScrolled(window.scrollY > 150);
             
             // Robust active section detection
             let current = 'home';
@@ -83,17 +84,12 @@ export default function Navbar() {
             const isInsideContainer = linksContainer.contains(activeLink);
 
             if (isInsideContainer) {
-                let offsetLeft = 0;
-                let curr = activeLink;
-                while (curr && curr !== linksContainer) {
-                    offsetLeft += curr.offsetLeft;
-                    // @ts-ignore
-                    curr = curr.offsetParent;
-                }
+                const linkRect = activeLink.getBoundingClientRect();
+                const containerRect = linksContainer.getBoundingClientRect();
 
                 gsap.to(indicator, {
-                    x: offsetLeft,
-                    width: activeLink.offsetWidth,
+                    x: linkRect.left - containerRect.left,
+                    width: linkRect.width,
                     duration: 0.6,
                     ease: 'expo.out',
                     opacity: 1,
@@ -124,20 +120,20 @@ export default function Navbar() {
         <>
             <nav
                 ref={containerRef}
-                className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 rounded-full border flex items-center justify-between lg:justify-center gap-4 lg:gap-12 px-4 md:px-6 lg:px-10 py-2 md:py-2.5 ${
+                className={`fixed z-[9999] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center justify-between rounded-full border left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-6xl ${
                     scrolled 
-                    ? 'bg-white/95 backdrop-blur-2xl scale-[0.98] shadow-2xl border-black/5' 
-                    : 'bg-white/60 backdrop-blur-xl shadow-lg border-black/5'
-                } w-[92%] lg:w-auto min-w-fit max-w-6xl`}
+                    ? 'top-4 bg-white/90 backdrop-blur-2xl shadow-2xl px-5 md:px-10 py-2.5 md:py-3 border-black/5 opacity-100 scale-100' 
+                    : 'top-6 md:w-auto md:min-w-fit bg-white/70 backdrop-blur-xl shadow-lg px-5 md:px-10 lg:px-12 py-2.5 opacity-100 border-transparent md:border-black/5'
+                } ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
             >
                 {/* Left: Logo */}
                 <Link 
                     href="#home" 
                     onClick={() => handleLinkClick('home')} 
                     data-nav-id="home"
-                    className="flex items-center gap-2 md:gap-3 lg:gap-4 group shrink-0"
+                    className="flex items-center gap-2 md:gap-4 group shrink-0"
                 >
-                    <div className="relative w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 group-hover:scale-105 transition-transform duration-500">
+                    <div className={`relative transition-all duration-500 ${scrolled ? 'w-8 h-8 md:w-10 md:h-10' : 'w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16'} group-hover:scale-105`}>
                          <Image 
                             src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
@@ -147,17 +143,17 @@ export default function Navbar() {
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span className="text-xs md:text-lg lg:text-xl font-black text-text-navy leading-none whitespace-nowrap tracking-tighter">
+                        <span className={`font-black text-text-navy leading-none whitespace-nowrap tracking-tighter transition-all duration-500 ${scrolled ? 'text-[11px] md:text-base' : 'text-[11px] md:text-lg lg:text-xl'}`}>
                             Destination Anywhere
                         </span>
-                        <span className="text-[7px] md:text-[9px] lg:text-[10px] font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-80 whitespace-nowrap">
+                        <span className={`font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-60 whitespace-nowrap hidden md:block ${scrolled ? 'text-[6px] md:text-[8px]' : 'text-[7px] md:text-[9px] lg:text-[10px]'}`}>
                             Luxury Travel Planner
                         </span>
                     </div>
                 </Link>
 
                 {/* Center: Navigation Links (Desktop) */}
-                <div className="hidden lg:flex items-center gap-1 relative bg-black/[0.03] p-1 rounded-full border border-black/[0.05] whitespace-nowrap" ref={linksRef}>
+                <div className={`hidden lg:flex items-center gap-1 relative bg-black/[0.03] p-1 rounded-full border border-black/[0.05] whitespace-nowrap transition-all duration-500 ${scrolled ? 'scale-100' : 'scale-95'}`} ref={linksRef}>
                     <div 
                         ref={indicatorRef}
                         className="nav-indicator absolute h-[calc(100%-8px)] top-1 left-0 bg-white rounded-full shadow-sm z-0 pointer-events-none opacity-0" 
@@ -182,16 +178,16 @@ export default function Navbar() {
                 </div>
 
                 {/* Right: CTA Button */}
-                <div className="flex items-center gap-4 shrink-0">
+                <div className="flex items-center gap-2 md:gap-4 shrink-0">
                     <Magnetic>
                         <a
                             ref={ctaRef}
                             href="https://wa.me/918511071506?text=Hi%20Sujal,%20I%20want%20to%20plan%20a%20trip!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-3.5 bg-text-navy text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden whitespace-nowrap"
+                            className={`inline-flex items-center justify-center bg-text-navy text-white font-black uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(15,23,42,0.3)] shadow-lg group relative overflow-hidden whitespace-nowrap px-4 py-2 text-[9px] md:px-6 md:py-2.5 md:text-[10px]`}
                         >
-                            <span className="relative z-10">Plan Your Journey</span>
+                            <span className="relative z-10">Plan Journey</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
                         </a>
                     </Magnetic>
@@ -202,9 +198,9 @@ export default function Navbar() {
                         aria-label="Open mobile menu"
                         aria-expanded={isMobileMenuOpen}
                         aria-controls="mobile-menu"
-                        className={`lg:hidden w-11 h-11 rounded-full transition-all duration-300 flex items-center justify-center ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/80 text-text-navy shadow-md border border-black/5'}`}
+                        className={`w-9 h-9 md:w-11 md:h-11 rounded-full transition-all duration-300 flex items-center justify-center lg:hidden ${scrolled ? 'bg-black/5 text-text-navy' : 'bg-white/80 text-text-navy shadow-md border border-black/5'}`}
                     >
-                        <Menu className="w-5 h-5" aria-hidden="true" />
+                        <Menu className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
                     </button>
                 </div>
             </nav>

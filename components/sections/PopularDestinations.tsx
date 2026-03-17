@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowRight, MapPin, X, Clock, CheckCircle2, MessageCircle } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
+import PackageModal from '../ui/PackageModal';
 
 const destinations = [
     {
@@ -80,6 +81,11 @@ export default function PopularDestinations() {
 
     return (
         <section id="packages" className="pt-10 md:pt-16 lg:pt-24 pb-4 md:pb-12 bg-bg-light relative overflow-hidden">
+            <PackageModal
+                isOpen={!!selectedPackage}
+                onClose={() => setSelectedPackage(null)}
+                pkg={selectedPackage}
+            />
             <div className="container mx-auto px-6 max-w-6xl lg:max-w-7xl">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                     <div className="text-left">
@@ -159,95 +165,6 @@ export default function PopularDestinations() {
                     ))}
                 </div>
             </div>
-
-            {/* Detailed Package Modal */}
-            <AnimatePresence>
-                {selectedPackage && (
-                    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setSelectedPackage(null)}
-                            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-                        />
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-2xl bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[85vh]"
-                        >
-                            {/* Close Button */}
-                            <button 
-                                onClick={() => setSelectedPackage(null)}
-                                data-cursor="close"
-                                className="absolute top-4 right-4 z-50 p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all active:scale-90 md:text-text-navy md:bg-black/5"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-
-                            {/* Left: Visual */}
-                            <div className="relative w-full md:w-[40%] h-40 md:h-auto overflow-hidden">
-                                <Image 
-                                    src={selectedPackage.image} 
-                                    alt={selectedPackage.name} 
-                                    fill 
-                                    className="object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                <div className="absolute bottom-5 left-5">
-                                    <span className="px-2 py-0.5 bg-brand-coral text-white text-[7px] font-black uppercase tracking-widest rounded-full mb-1.5 inline-block">
-                                        {selectedPackage.badge}
-                                    </span>
-                                    <h3 className="text-2xl font-heading font-black text-white leading-tight">
-                                        Let's go to<br />
-                                        <span className="text-brand-coral">{selectedPackage.name}</span>
-                                    </h3>
-                                </div>
-                            </div>
-
-                            {/* Right: Info */}
-                            <div className="flex-1 p-6 md:p-8 overflow-y-auto">
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className="flex items-center gap-3 text-brand-coral">
-                                        <Clock className="w-4 h-4" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">{selectedPackage.duration}</span>
-                                    </div>
-                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-brand-teal/10 rounded-full">
-                                        <CheckCircle2 className="w-3 h-3 text-brand-teal" />
-                                        <span className="text-[8px] font-black text-brand-teal uppercase tracking-widest">Available Now</span>
-                                    </div>
-                                </div>
-
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4 border-b border-black/5 pb-2">Your Curated Experience</h4>
-                                
-                                <ul className="space-y-2 mb-6">
-                                    {selectedPackage.details.map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 group">
-                                            <CheckCircle2 className="w-4 h-4 text-brand-teal mt-0.5" />
-                                            <span className="text-gray-600 font-body text-sm leading-tight">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className="pt-4 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                                    <div>
-                                        <p className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-0.5">Starting At</p>
-                                        <p className="text-xl font-black text-text-navy">{selectedPackage.price}</p>
-                                    </div>
-                                    <button 
-                                        onClick={() => handleWhatsAppClick(selectedPackage)}
-                                        className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-teal text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-brand-teal/20"
-                                    >
-                                        <MessageCircle className="w-4 h-4 fill-current" />
-                                        WhatsApp Enquiry
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
         </section>
     );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import USP from "@/components/sections/USP";
 import WhatsAppButton from "@/components/luxury/WhatsAppButton";
@@ -23,7 +22,6 @@ export default function Home() {
     return (
         <main className="bg-bg-light min-h-screen relative overflow-x-hidden">
 
-            <Navbar />
             <WhatsAppButton />
             <MobileStickyCTA />
 

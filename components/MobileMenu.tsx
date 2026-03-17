@@ -61,7 +61,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection, onSe
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[110] invisible pointer-events-none"
+            className="fixed inset-0 z-[10000] invisible pointer-events-none"
         >
             {/* Backdrop */}
             <div
@@ -73,7 +73,7 @@ export default function MobileMenu({ isOpen, onClose, links, activeSection, onSe
             <div
                 id="mobile-menu"
                 ref={tagRef}
-                className="absolute top-0 right-4 md:right-20 w-[90%] md:w-[400px] bg-white text-text-navy rounded-b-[40px] pt-24 pb-12 px-8 shadow-2xl -translate-y-full pointer-events-auto border-x-[6px] border-b-[6px] border-black/5"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] bg-white text-text-navy rounded-b-[40px] pt-24 pb-12 px-8 shadow-2xl -translate-y-full pointer-events-auto border-x-[6px] border-b-[6px] border-black/5"
             >
                 {/* Hole Punch Visual */}
                 <div className="absolute top-8 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-bg-light shadow-inner flex items-center justify-center">
