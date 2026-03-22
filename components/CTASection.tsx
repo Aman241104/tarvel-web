@@ -72,16 +72,15 @@ export default function CTASection() {
                 {/* Trust Signal: Recent Review Snippet */}
                 <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/20 text-white shadow-2xl animate-float">
                     <div className="flex -space-x-2">
-                        <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative">
-                            <Image 
-                                src="https://i.pravatar.cc/100?img=32" 
-                                alt="Reviewer" 
-                                fill 
-                                className="object-cover" 
+                        <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-lg">
+                            <Image
+                                src="/customer/image copy 7.png"
+                                alt="Reviewer"
+                                fill
+                                className="object-cover"
                                 sizes="40px"
                             />
-                        </div>
-                    </div>
+                        </div>                    </div>
                     <div className="text-left">
                         <p className="text-[11px] font-black italic leading-tight">"Sujal made our Bali trip magical. 10/10!"</p>
                         <div className="flex gap-0.5 mt-1">

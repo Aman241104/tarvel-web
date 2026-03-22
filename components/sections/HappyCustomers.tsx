@@ -18,7 +18,7 @@ const customers = [
     { src: "/customer/image copy 6.png", review: "Beyond expectations.", stars: 5, rotate: "-rotate-3" },
     { src: "/customer/image copy 7.png", review: "Pure luxury.", stars: 5, rotate: "rotate-2" },
     { src: "/customer/image copy 8.png", review: "Simply the best.", stars: 5, rotate: "-rotate-2" },
-    { src: "/customer/image copy 9.png", review: "Exquisite experience.", stars: 5, rotate: "rotate-1" },
+    { src: "/customer/image copy 10.png", review: "Exquisite experience.", stars: 5, rotate: "rotate-1" },
 ];
 
 const washiColors = [

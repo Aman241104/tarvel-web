@@ -33,7 +33,7 @@ const testimonials = [
         id: 3,
         quote: "Sujal protects your time. If you want stress-free travel that exceeds expectations, this is it.",
         author: "Business Professional",
-        avatar: "/customer/image copy 9.png",
+        avatar: "/customer/image copy 8.png",
         highlight: "Exceptional",
         rotation: "-rotate-1",
         bgColor: "bg-[#F8FAFB]",

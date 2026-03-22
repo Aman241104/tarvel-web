@@ -131,22 +131,22 @@ export default function Navbar() {
                     href="#home" 
                     onClick={() => handleLinkClick('home')} 
                     data-nav-id="home"
-                    className="flex items-center gap-2 md:gap-4 group shrink-0"
+                    className="flex items-center gap-3 md:gap-4 group shrink-0"
                 >
-                    <div className={`relative transition-all duration-500 ${scrolled ? 'w-8 h-8 md:w-10 md:h-10' : 'w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16'} group-hover:scale-105`}>
+                    <div className={`relative transition-all duration-500 ${scrolled ? 'w-10 h-10 md:w-12 md:h-12' : 'w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20'} group-hover:scale-105 drop-shadow-sm`}>
                          <Image 
                             src="/logo-removebg-preview.png" 
                             alt="Destination Anywhere Logo" 
                             fill 
                             className="object-contain" 
-                            sizes="(max-width: 768px) 40px, 64px"
+                            sizes="(max-width: 768px) 64px, 80px"
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <span className={`font-black text-text-navy leading-none whitespace-nowrap tracking-tighter transition-all duration-500 ${scrolled ? 'text-[11px] md:text-base' : 'text-[11px] md:text-lg lg:text-xl'}`}>
+                        <span className={`font-black text-text-navy leading-none whitespace-nowrap tracking-tighter transition-all duration-500 ${scrolled ? 'text-[13px] md:text-lg' : 'text-base md:text-xl lg:text-2xl'}`}>
                             Destination Anywhere
                         </span>
-                        <span className={`font-bold text-brand-coral uppercase tracking-[0.2em] mt-0.5 opacity-60 whitespace-nowrap hidden md:block ${scrolled ? 'text-[6px] md:text-[8px]' : 'text-[7px] md:text-[9px] lg:text-[10px]'}`}>
+                        <span className={`font-bold text-brand-coral uppercase tracking-[0.2em] mt-1 opacity-60 whitespace-nowrap hidden md:block ${scrolled ? 'text-[7px] md:text-[8px]' : 'text-[8px] md:text-[9px] lg:text-[10px]'}`}>
                             Luxury Travel Planner
                         </span>
                     </div>

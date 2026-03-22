@@ -101,11 +101,11 @@ export default function Footer() {
             {/* Floating Paper Plane */}
             <div
                 ref={planeRef}
-                className="absolute top-40 left-0 text-white w-24 h-24 md:w-48 md:h-48 z-20 cursor-pointer drop-shadow-2xl"
+                className="absolute top-20 right-4 md:right-10 text-white w-20 h-20 md:w-32 md:h-32 z-20 cursor-pointer drop-shadow-2xl"
                 onMouseEnter={handleFlyPlane}
                 onClick={handleFlyPlane}
             >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="opacity-60 hover:opacity-100 transition-opacity">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="opacity-40 hover:opacity-100 transition-opacity">
                     <path d="M22 2L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -115,15 +115,15 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12 items-start">
 
                     {/* Col 1: The Boutique Identity (4 cols) */}
-                    <div className="lg:col-span-4 space-y-10">
-                        <div className="flex flex-col gap-8">
-                            <div className="relative w-40 h-40 md:w-56 md:h-56 group-hover:scale-105 transition-transform duration-500">
+                    <div className="lg:col-span-4 space-y-8 md:space-y-10">
+                        <div className="flex flex-col gap-6 md:gap-8">
+                            <div className="relative w-32 h-32 md:w-56 md:h-56 group-hover:scale-105 transition-transform duration-500 drop-shadow-2xl">
                                 <Image
                                    src="/logo-removebg-preview.png"
                                    alt="Destination Anywhere Logo"
                                    fill
                                    className="object-contain"
-                                   sizes="(max-width: 768px) 160px, 224px"
+                                   sizes="(max-width: 768px) 128px, 224px"
                                 />                            </div>
                             <div className="mt-2">
                                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading text-[#ffffff] leading-none tracking-tighter">
