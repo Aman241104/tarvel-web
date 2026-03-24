@@ -180,13 +180,13 @@ export default function Footer() {
                     <div className="lg:col-span-3 pt-16 md:pt-20">
                         <h4 className="font-black text-[10px] uppercase tracking-[0.4em] mb-10 text-[#9ca3af] border-l-2 border-brand-yellow/50 pl-4">Contact Us</h4>
                         <div className="space-y-8">
-                            <div className="footer-contact-item flex items-center gap-4 group cursor-pointer" onClick={() => window.open('mailto:concierge@destanywhere.com')}>
+                            <div className="footer-contact-item flex items-center gap-4 group cursor-pointer" onClick={() => window.open('mailto:destinationanywhereo@gmail.com')}>
                                 <div className="border border-white/10 p-3 rounded-xl group-hover:bg-brand-yellow group-hover:text-text-navy transition-colors shrink-0">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <div className="min-w-0">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-[#9ca3af] mb-0.5">Email Us</p>
-                                    <p className="text-sm font-bold tracking-tight text-[#ffffff] truncate">concierge@destanywhere.com</p>
+                                    <p className="text-sm font-bold tracking-tight text-[#ffffff] truncate">destinationanywhereo@gmail.com</p>
                                 </div>
                             </div>
 

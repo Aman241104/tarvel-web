@@ -18,7 +18,7 @@ export default function FooterContact() {
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <FaEnvelope className="text-arctic-gold text-xl" />
-                                    <a href="mailto:destinationanywhere@gmail.com" className="hover:text-arctic-snow transition break-all">destinationanywhere@gmail.com</a>
+                                    <a href="mailto:destinationanywhereo@gmail.com" className="hover:text-arctic-snow transition break-all">destinationanywhereo@gmail.com</a>
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <FaMapMarkerAlt className="text-arctic-gold text-xl mt-1" />
